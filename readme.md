@@ -1,1 +1,1 @@
-# freebill-app
+# liinkart-app
