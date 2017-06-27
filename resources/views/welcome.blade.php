@@ -4,6 +4,6 @@
     Accueil
 @endsection
 
-@section('contenu')
+@section('content')
     <p>Facture n°</p>
 @endsection

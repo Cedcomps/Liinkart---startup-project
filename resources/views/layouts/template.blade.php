@@ -85,7 +85,7 @@
                     LiinkArt
                 </div>
                 <section>
-                    @yield('contenu')
+                    @yield('content')
                 </section>
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>

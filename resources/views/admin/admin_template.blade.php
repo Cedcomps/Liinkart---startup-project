@@ -78,7 +78,7 @@ desired effect
     <section class="content">
 
       <!-- Your Page Content Here -->
-        @yield('contenu')
+        @yield('content')
 
     </section>
     <!-- /.content -->

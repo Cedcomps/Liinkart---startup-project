@@ -16,9 +16,25 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
+		'name'           => $faker->name,
+		'email'          => $faker->safeEmail,
+		'password'       => bcrypt('secret'),
+		'admin'          => $faker->boolean,
+		'remember_token' => str_random(10),
+    ];
+});
+$factory->define(App\Post::class, function (Faker\Generator $faker) {
+    return [
+		'titre'      => $faker->sentence(2),
+		'contenu'    => $faker->paragraph(rand(8, 15)),
+		'created_at' => $faker->dateTimeThisYear(),
+    ];
+});
+
+$factory->define(App\Tag::class, function (Faker\Generator $faker) {
+    $tag = $faker->unique()->word();
+    return [
+		'tag'     => $tag,
+		'tag_url' => $tag,
     ];
 });
