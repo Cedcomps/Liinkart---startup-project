@@ -59,6 +59,7 @@ class PostController extends Controller
         $posts = $this->postRepository->getWithUserAndTagsForTagPaginate($tag, $this->nbrPerPage);
         $links = $posts->render();
 
+
         return view('posts.liste', compact('posts', 'links'))
             ->with('info', 'Résultats pour la recherche du mot-clé : ' . $tag);
     }

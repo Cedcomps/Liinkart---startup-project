@@ -20,11 +20,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Posts
-Route::resource('post', 'PostController', ['except' => ['show', 'edit', 'update']]);
-Route::resource('post/tag/{tag}', 'PostController@indexTag');
 //Users
 Route::resource('user', 'UserController');
+
+//Posts
+Route::resource('post', 'PostController', ['except' => ['show', 'edit', 'update']]);
+Route::get('post/tag/{tag}', 'PostController@indexTag');
+
+
 
 
 //Signature
@@ -41,3 +44,4 @@ Route::get('admin', function () {
 //Contact Form
 Route::get('contact', 'ContactController@getForm');
 Route::post('contact', 'ContactController@postForm');
+

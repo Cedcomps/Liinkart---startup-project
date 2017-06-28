@@ -167,7 +167,10 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
-
+        /**
+         * Debug Bar
+         */
+        Barryvdh\Debugbar\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -177,7 +180,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
+        /*
+        Email Confirmation
+         */
+        Bestmomo\LaravelEmailConfirmation\ServiceProvider::class,
 
     ],
 
