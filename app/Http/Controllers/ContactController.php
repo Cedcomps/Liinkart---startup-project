@@ -12,12 +12,12 @@ use App\Mail\Contact;
 class ContactController extends Controller
 {
 
-    public function getForm()
+    public function create()
     {
 		return view('form.contact');
 	}
 
-	public function postForm(ContactRequest $request)
+	public function store(ContactRequest $request)
 	{
 		Mail::to('cedric.compagnon@outlook.fr')
 			->send(new Contact($request->except('_token')));

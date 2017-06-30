@@ -13,7 +13,7 @@
 
 //Index
 Route::get('/', function() {
-	return redirect()->route('post.index');
+	return redirect()->route('artworks.index');
 });
 
 Auth::routes();
@@ -23,25 +23,23 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Users
 Route::resource('user', 'UserController');
 
-//Posts
-Route::resource('post', 'PostController', ['except' => ['show', 'edit', 'update']]);
-Route::get('post/tag/{tag}', 'PostController@indexTag');
-
-
+//Artworks
+Route::resource('artworks', 'PostController', ['except' => ['show', 'edit', 'update']]);
+Route::get('artworks/tag/{tag}', 'PostController@indexTag');
 
 
 //Signature
 Route::get('signature', 'SignatureController@getSign');
 Route::post('signature', 'SignatureController@postSign');
-//Email
+//Email newsletter
 Route::get('email', 'EmailController@create');
 Route::post('email', 'EmailController@store')->name('store.email');
-
-//Admin LTE
-Route::get('admin', function () {
-    return view('admin.admin_template');
-});
 //Contact Form
-Route::get('contact', 'ContactController@getForm');
-Route::post('contact', 'ContactController@postForm');
+Route::get('contact', 'ContactController@create');
+Route::post('contact', 'ContactController@store');
 
+/*
+ * PAGES Annexes
+ */
+
+Route::resource('pages', 'PagesController');

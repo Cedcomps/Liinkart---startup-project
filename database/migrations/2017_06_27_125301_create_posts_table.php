@@ -18,6 +18,9 @@ class CreatePostsTable extends Migration
             $table->timestamps();
             $table->string('titre');
             $table->text('contenu');
+            $table->enum('technique', ['Peinture', 'Peinture à Huile', 'Peinture acrylique', 'Aquarelle', 'Photographie', 'Photographie argentique', 'Photographie numérique', 'Oeuvres sur papier', 'Dessin', 'Encre', 'Estampe', 'Sérigraphie', 'Lithographie', 'Collage', 'Gravure', 'Linogravure', 'Sculpture', 'Sculpture bois', 'Sculpture argile', 'Sculpture métal', 'Sculpture bronze', 'Sculpture pierre', 'Sculpture terre cuite', 'Sculpture céramique', 'Sculpture platre', 'Sculpture marbre', 'Sculpture verre', 'Technique mixte']);
+            $table->enum('theme', ['Animaux', 'Architecture', 'Fantastique', 'Femme', 'Floral', 'Insolite', 'Mer', 'Nature morte', 'Noir et blanc', 'Nu', 'Paysage', 'Portrait', 'Scène de Vie', 'Urbain', 'Voyage']); 
+            $table->enum('style', ['Abstrait', 'Couleur', 'Cubiste', 'Expressionniste', 'Figuratif', 'Géométrique', 'Impressionniste', 'Noir et blanc', 'Pop Art', 'Street Art']);
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')
                   ->references('id')

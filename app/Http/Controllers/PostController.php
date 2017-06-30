@@ -26,12 +26,12 @@ class PostController extends Controller
         $posts = $this->postRepository->getWithUserAndTagsPaginate($this->nbrPerPage);
         $links = $posts->render();
  
-        return view('posts.liste', compact('posts', 'links'));
+        return view('artworks.liste', compact('posts', 'links'));
     }
  
     public function create()
     {
-        return view('posts.create');
+        return view('artworks.create');
     }
  
     public function store(PostRequest $request, TagRepository $tagRepository)
@@ -44,7 +44,7 @@ class PostController extends Controller
             $tagRepository->store($post, $inputs['tags']);
         }
  
-        return redirect(route('post.index'));
+        return redirect(route('artworks.index'));
     }
  
     public function destroy(Post $post)
@@ -60,7 +60,7 @@ class PostController extends Controller
         $links = $posts->render();
 
 
-        return view('posts.liste', compact('posts', 'links'))
+        return view('artworks.liste', compact('posts', 'links'))
             ->with('info', 'Résultats pour la recherche du mot-clé : ' . $tag);
     }
 }

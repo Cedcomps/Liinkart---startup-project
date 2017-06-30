@@ -181,10 +181,13 @@ return [
         App\Providers\RouteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         /*
-        Email Confirmation
+         * Email Confirmation
          */
         Bestmomo\LaravelEmailConfirmation\ServiceProvider::class,
-
+        /**
+         * Role permission
+         */
+        Spatie\Permission\PermissionServiceProvider::class,
     ],
 
     /*
