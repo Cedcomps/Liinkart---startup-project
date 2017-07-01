@@ -11,7 +11,7 @@ class PostController extends Controller
 {
     protected $postRepository;
  
-    protected $nbrPerPage = 4;
+    protected $nbrPerPage = 8;
  
     public function __construct(PostRepository $postRepository)
     {

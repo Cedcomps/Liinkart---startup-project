@@ -1,0 +1,64 @@
+ 
+<?php $__env->startSection('content'); ?>
+    <div class="container">
+        <div class="row">
+            <?php if(isset($info)): ?>
+                <div class="row"><?php echo e($info); ?></div>
+            <?php endif; ?>
+            <?php echo $posts->links(); ?>
+
+            <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <div id="artworks" class="col s12 m6 l4">
+                    <div class="card hoverable sticky-action">
+                        <div class="card-content">
+                            <div class="valign-wrapper">
+                                <div class="col s2">
+                                    <img src="<?php echo e(asset('uploads/logo.png')); ?>" alt="" class="circle responsive-img">
+                                </div>
+                                <div class="col s10">
+                                    <a class="black-text" href="#"> Artiste
+                                    </a>
+                                </div>
+                            </div>
+                        
+                        
+                        </div>
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="<?php echo e(asset ('uploads/office.jpg')); ?>">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4"><?php echo e($post->titre); ?><i class="material-icons right">more_vert</i></span>
+                            
+                            <span class=""><?php echo e($post->created_at->diffForHumans()); ?> </span>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4"><?php echo e($post->titre); ?><i class="material-icons right">close</i></span>
+                            <p><?php echo e($post->contenu); ?></p>
+                            <?php $__currentLoopData = $post->tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <a href="<?php echo e(url('artworks/tag/' . $tag->tag_url)); ?>" class="chip"><?php echo e($tag->tag); ?></a></li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </div>
+                        <div class="card-action">
+                            <span class="chip-technique left-align"><?php echo e($post->technique); ?></span>
+                            <a href="#" class="right-align"> VOIR EN DETAILS</a>
+
+                            <?php if(auth()->check() and auth()->user()->admin): ?>
+                                <form method="POST" action="<?php echo e(route('artworks.destroy', ['id' => $post->id])); ?>">
+                                    <?php echo e(method_field('DELETE')); ?>
+
+                                    <?php echo e(csrf_field()); ?>
+
+                                    <input class="btn btn-danger btn-xs" onclick="return confirm('Vraiment supprimer cet article ?')" type="submit" value="Supprimer cet article">
+                                </form>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>  
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <?php echo $posts->links(); ?>
+
+        </div>
+    </div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

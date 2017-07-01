@@ -34,6 +34,6 @@ class Contact extends Mailable
      */
     public function build()
     {
-        return $this->from('noreply@liinkart.com')->view('email.contact');
+        return $this->from('noreply@liinkart.com', env('APP_NAME'))->view('email.contact');
     }
 }
