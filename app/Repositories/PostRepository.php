@@ -30,7 +30,7 @@ class PostRepository
                 $query->where('tags.tag_url', $tag);
             })->paginate($n);
     }
- 
+
     public function store($inputs)
     {
         return $this->post->create($inputs);

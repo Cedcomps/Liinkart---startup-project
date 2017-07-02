@@ -21,6 +21,7 @@ class UserRepository
     public function store(Array $inputs)
     {
         $inputs['password'] = bcrypt($inputs['password']);
+        $inputs['visitor'] = \Request::ip();
         return $this->user->create($inputs);
     }
  

@@ -16,8 +16,7 @@
                                     <img src="{{ asset('uploads/logo.png')}}" alt="" class="circle responsive-img">
                                 </div>
                                 <div class="col s10">
-                                    <a class="black-text" href="#">{{-- Lien de la fiche --}} Artiste
-                                    </a>
+                                    <a class="black-text" href="{{ route('user.show', ['id' => $post->user->id]) }}">By {{ $post->user->name or "Artiste"}}</a>
                                 </div>
                             </div>
                         
@@ -28,8 +27,8 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">{{ $post->titre }}<i class="material-icons right">more_vert</i></span>
-                            
-                            <span class="">{{ $post->created_at->diffForHumans() }} </span>
+                            <span class="chip-technique left-align">{{ $post->technique }}</span>
+                            <span class="time-ago">{{ $post->created_at->diffForHumans() }} </span>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">{{ $post->titre }}<i class="material-icons right">close</i></span>
@@ -39,14 +38,13 @@
                             @endforeach
                         </div>
                         <div class="card-action">
-                            <span class="chip-technique left-align">{{ $post->technique }}</span>
-                            <a href="#" class="right-align">{{-- lien post --}} VOIR EN DETAILS</a>
+                            <a href="{{ route('artworks.show', ['id' => $post]) }}" class="right-align">VOIR EN DETAILS</a>
 
                             @if(auth()->check() and auth()->user()->admin)
                                 <form method="POST" action="{{ route('artworks.destroy', ['id' => $post->id]) }}">
                                     {{ method_field('DELETE') }}
                                     {{ csrf_field() }}
-                                    <input class="btn btn-danger btn-xs" onclick="return confirm('Vraiment supprimer cet article ?')" type="submit" value="Supprimer cet article">
+                                    <input class="btn btn-danger" onclick="return confirm('Vraiment supprimer cet article ?')" type="submit" value="Supprimer">
                                 </form>
                             @endif
                         </div>

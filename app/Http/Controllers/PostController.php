@@ -1,7 +1,7 @@
 <?php
  
 namespace App\Http\Controllers;
- 
+
 use App\Repositories\PostRepository;
 use App\Repositories\TagRepository;
 use App\Http\Requests\PostRequest;
@@ -15,7 +15,7 @@ class PostController extends Controller
  
     public function __construct(PostRepository $postRepository)
     {
-        $this->middleware('auth')->except('index', 'indexTag');
+        $this->middleware('auth')->except('index', 'indexTag', 'show');
         $this->middleware('admin')->only('destroy');
  
         $this->postRepository = $postRepository;
@@ -25,8 +25,9 @@ class PostController extends Controller
     {
         $posts = $this->postRepository->getWithUserAndTagsPaginate($this->nbrPerPage);
         $links = $posts->render();
+        $users = Post::with(array('user'))->get();
  
-        return view('artworks.liste', compact('posts', 'links'));
+        return view('artworks.liste', compact('posts', 'links', 'users'));
     }
  
     public function create()
@@ -45,6 +46,12 @@ class PostController extends Controller
         }
  
         return redirect(route('artworks.index'));
+    }
+
+    public function show($id)
+    {
+        $post = Post::find($id);
+        return view('artworks.artwork', compact('post'));
     }
  
     public function destroy(Post $post)

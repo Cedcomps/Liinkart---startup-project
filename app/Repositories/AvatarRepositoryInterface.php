@@ -4,7 +4,7 @@ namespace App\Repositories;
  
 use Illuminate\Http\UploadedFile;
  
-interface SignatureRepositoryInterface
+interface AvatarRepositoryInterface
 {
     public function save(UploadedFile $image);
 }

@@ -24,13 +24,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('user', 'UserController');
 
 //Artworks
-Route::resource('artworks', 'PostController', ['except' => ['show', 'edit', 'update']]);
+Route::resource('artworks', 'PostController', ['except' => ['edit', 'update']]);
 Route::get('artworks/tag/{tag}', 'PostController@indexTag');
 
 
-//Signature
-Route::get('signature', 'SignatureController@getSign');
-Route::post('signature', 'SignatureController@postSign');
+//Avatar
+Route::get('avatar', 'AvatarController@create');
+Route::post('avatar', 'AvatarController@store');
 //Email newsletter
 Route::get('email', 'EmailController@create');
 Route::post('email', 'EmailController@store')->name('store.email');
@@ -42,4 +42,4 @@ Route::post('contact', 'ContactController@store');
  * PAGES Annexes
  */
 
-Route::resource('pages', 'PagesController');
+Route::resource('pages', 'PagesController', ['except' => ['show', 'edit', 'update', 'destroy']]);

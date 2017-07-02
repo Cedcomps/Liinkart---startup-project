@@ -41,7 +41,7 @@
                                 @endif
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary pull-right">Envoyer !</button>
+                        <button type="submit" class="btn">Envoyer !</button>
                     </form>
                 </div>
             </div>

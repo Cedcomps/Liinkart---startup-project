@@ -16,8 +16,7 @@
                                     <img src="<?php echo e(asset('uploads/logo.png')); ?>" alt="" class="circle responsive-img">
                                 </div>
                                 <div class="col s10">
-                                    <a class="black-text" href="#"> Artiste
-                                    </a>
+                                    <a class="black-text" href="<?php echo e(route('user.show', ['id' => $post->user->id])); ?>">By <?php echo e(isset($post->user->name) ? $post->user->name : "Artiste"); ?></a>
                                 </div>
                             </div>
                         
@@ -28,8 +27,8 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4"><?php echo e($post->titre); ?><i class="material-icons right">more_vert</i></span>
-                            
-                            <span class=""><?php echo e($post->created_at->diffForHumans()); ?> </span>
+                            <span class="chip-technique left-align"><?php echo e($post->technique); ?></span>
+                            <span class="time-ago"><?php echo e($post->created_at->diffForHumans()); ?> </span>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4"><?php echo e($post->titre); ?><i class="material-icons right">close</i></span>
@@ -39,8 +38,7 @@
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
                         <div class="card-action">
-                            <span class="chip-technique left-align"><?php echo e($post->technique); ?></span>
-                            <a href="#" class="right-align"> VOIR EN DETAILS</a>
+                            <a href="<?php echo e(route('artworks.show', ['id' => $post])); ?>" class="right-align">VOIR EN DETAILS</a>
 
                             <?php if(auth()->check() and auth()->user()->admin): ?>
                                 <form method="POST" action="<?php echo e(route('artworks.destroy', ['id' => $post->id])); ?>">
@@ -48,7 +46,7 @@
 
                                     <?php echo e(csrf_field()); ?>
 
-                                    <input class="btn btn-danger btn-xs" onclick="return confirm('Vraiment supprimer cet article ?')" type="submit" value="Supprimer cet article">
+                                    <input class="btn btn-danger" onclick="return confirm('Vraiment supprimer cet article ?')" type="submit" value="Supprimer">
                                 </form>
                             <?php endif; ?>
                         </div>

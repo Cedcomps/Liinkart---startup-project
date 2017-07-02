@@ -25,8 +25,8 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            'App\Repositories\SignatureRepositoryInterface', 
-            'App\Repositories\SignatureRepository'
+            'App\Repositories\AvatarRepositoryInterface', 
+            'App\Repositories\AvatarRepository'
         );
     }
 }

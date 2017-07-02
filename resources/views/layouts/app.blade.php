@@ -22,7 +22,7 @@
     <div id="app">
         <nav id="navbar-fixed">
             <div class="nav-wrapper">
-                <i class="material-icons right">apps</i>
+                
                 <a href="{{ url('/') }}" class="brand-logo"> {{ config('app.name', 'Laravel') }}</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     @if (Auth::guest())
@@ -31,7 +31,7 @@
                     @else
                         <li><a href="{{ url('/artworks/create') }}">Créer un article</a></li>
                         <li><a href="#!" class="dropdown-button" data-activates="dropdown1">
-                                {{ Auth::user()->name }} <i class="material-icons right">more_vert</i>
+                                {{ Auth::user()->name }} <i class="material-icons right">apps</i>
                             </a>
                             <ul id="dropdown1" class="dropdown-content">
                                 <li>

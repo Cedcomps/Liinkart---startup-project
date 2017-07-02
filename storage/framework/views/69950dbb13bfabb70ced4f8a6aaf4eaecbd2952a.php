@@ -24,7 +24,7 @@
     <div id="app">
         <nav id="navbar-fixed">
             <div class="nav-wrapper">
-                <i class="material-icons right">apps</i>
+                
                 <a href="<?php echo e(url('/')); ?>" class="brand-logo"> <?php echo e(config('app.name', 'Laravel')); ?></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <?php if(Auth::guest()): ?>
@@ -33,7 +33,7 @@
                     <?php else: ?>
                         <li><a href="<?php echo e(url('/artworks/create')); ?>">Créer un article</a></li>
                         <li><a href="#!" class="dropdown-button" data-activates="dropdown1">
-                                <?php echo e(Auth::user()->name); ?> <i class="material-icons right">more_vert</i>
+                                <?php echo e(Auth::user()->name); ?> <i class="material-icons right">apps</i>
                             </a>
                             <ul id="dropdown1" class="dropdown-content">
                                 <li>

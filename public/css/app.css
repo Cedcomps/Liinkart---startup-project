@@ -1,16 +1,20 @@
 input:not([type]).valid, input:not([type]):focus.valid, input[type=text]:not(.browser-default).valid, input[type=text]:not(.browser-default):focus.valid, input[type=password]:not(.browser-default).valid, input[type=password]:not(.browser-default):focus.valid, input[type=email]:not(.browser-default).valid, input[type=email]:not(.browser-default):focus.valid, input[type=url]:not(.browser-default).valid, input[type=url]:not(.browser-default):focus.valid, input[type=time]:not(.browser-default).valid, input[type=time]:not(.browser-default):focus.valid, input[type=date]:not(.browser-default).valid, input[type=date]:not(.browser-default):focus.valid, input[type=datetime]:not(.browser-default).valid, input[type=datetime]:not(.browser-default):focus.valid, input[type=datetime-local]:not(.browser-default).valid, input[type=datetime-local]:not(.browser-default):focus.valid, input[type=tel]:not(.browser-default).valid, input[type=tel]:not(.browser-default):focus.valid, input[type=number]:not(.browser-default).valid, input[type=number]:not(.browser-default):focus.valid, input[type=search]:not(.browser-default).valid, input[type=search]:not(.browser-default):focus.valid, textarea.materialize-textarea.valid, textarea.materialize-textarea:focus.valid {
 	font-size: inherit;
 }
+/*card artwork*/
 .chip-technique {
-	display: inline-block;
-	height: 32px;
-	font-size: 13px;
-	font-weight: 500;
-	color: rgba(0,0,0,0.85);
-	line-height: 32px;
-	padding: 0 12px;
-	border-radius: 16px;
-	margin-bottom: 5px;
-	margin-right: 5px;
-	opacity: 0.7;
+	margin-right: 24px;
+	text-transform: ;
+}
+.btn-danger {
+	background-color: #ef5350;
+}
+.btn-danger:hover {
+	background-color: #d32f2f; 
+}
+.card .card-content {
+	padding-bottom: 16px;
+}
+.time-ago {
+	color: #bbb;
 }
