@@ -32,7 +32,9 @@
 	$( "span:contains('Sculpture marbre')" ).css( "color", "#ad1457");
 	$( "span:contains('Sculpture verre')" ).css( "color", "#6a1b9a");
 	$( "span:contains('Technique mixte')" ).css( "color", "#00695c");
-
+//Pagination
+$("ul[class='pagination'] li span")[0].text("<i class='material-icons'>chevron_left</i>");
+//$("a:contains("»")").replaceWith("<i class='material-icons'>chevron_right</i>");
 
 //menu sidebar
 $(".button-collapse").sideNav('show');

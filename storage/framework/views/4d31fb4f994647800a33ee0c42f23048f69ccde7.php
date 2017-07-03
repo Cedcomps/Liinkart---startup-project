@@ -1,8 +1,9 @@
 <?php $__env->startSection('content'); ?>
     <div class="container">
 		<div class="row">
-			<div class="col s6 push-s3"> 
-				<h1 class="text-center">Contactez-moi</h1>
+			<div class="col s8 push-s2"> 
+				<h1 class="text-center">Contactez-nous</h1>
+					<h3><i class='material-icons md-36'>send</i></h3>
 					<?php echo Form::open(['url' => 'contact', 'class' => 'col s12']); ?>
 
 						<div class="input-field col s6 <?php echo $errors->has('nom') ? 'has-error' : ''; ?>">
@@ -25,12 +26,12 @@
 
 						</div>
 						<div class="input-field col s12 <?php echo $errors->has('texte') ? 'has-error' : ''; ?>">
-							<?php echo Form::textarea ('texte', null, ['class' => 'materialize-textarea', 'placeholder' => 'Votre message']); ?>
+							<?php echo Form::textarea ('texte', null, ['class' => 'materialize-textarea', 'data-length' => '400', 'placeholder' => 'Votre message']); ?>
 
 							<?php echo $errors->first('texte', '<small class="help-block">:message</small>'); ?>
 
 						</div>
-						<?php echo Form::submit('Envoyer !', ['class' => 'btn waves-effect waves-light']); ?>
+						<?php echo Form::submit('Envoyer ', ['class' => 'btn waves-effect waves-light']); ?>
 
 					<?php echo Form::close(); ?>
 

@@ -21,10 +21,10 @@
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        <nav id="navbar-fixed">
+    <div class="navbar-fixed">
+        <nav>
             <div class="nav-wrapper">
-                
+                <img src="<?php echo e(asset('uploads/liinkart logo blanc_petit.png')); ?>" width="32px" height="48px" alt="liinkart logo white">
                 <a href="<?php echo e(url('/')); ?>" class="brand-logo"> <?php echo e(config('app.name', 'Laravel')); ?></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <?php if(Auth::guest()): ?>
@@ -52,41 +52,11 @@
                     <?php endif; ?>
                 </ul>
             </div>
-        </nav><a href="#" data-activates="slide-out" class="show-on-large button-collapse">Side nav demo</a>
-        <ul id="slide-out" class="side-nav">
-            <li><div class="user-view">
-              <div class="background">
-                <img src="images/office.jpg">
-              </div>
-              <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
-              <a href="#!name"><span class="white-text name">John Doe</span></a>
-              <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
-            </div></li>
-            <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-            <li><a href="#!">Second Link</a></li>
-            <li><div class="divider"></div></li>
-            <li><a class="subheader">Subheader</a></li>
-            <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-        </ul>        <ul id="slide-out" class="side-nav">
-            <li><div class="user-view">
-              <div class="background">
-                <img src="images/office.jpg">
-              </div>
-              <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
-              <a href="#!name"><span class="white-text name">John Doe</span></a>
-              <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
-            </div></li>
-            <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-            <li><a href="#!">Second Link</a></li>
-            <li><div class="divider"></div></li>
-            <li><a class="subheader">Subheader</a></li>
-            <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-        </ul>
-  <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-        
-       
+        </nav>
     </div>        
-
+    <?php if(Auth::user()): ?>
+        <?php echo $__env->yieldContent('sidebar'); ?>
+    <?php endif; ?>
         <?php echo $__env->yieldContent('content'); ?>
     
     <footer>

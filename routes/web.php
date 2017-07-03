@@ -15,15 +15,20 @@
 Route::get('/', function() {
 	return redirect()->route('artworks.index');
 });
+Route::get('/home', 'HomeController@index')->name('home');
 
+//Authentification
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Administration Back office
+Route::get('dashboard', function() {
+	return view('admin.dashboard');
+})->name('dashboard');
 
 //Users
 Route::resource('user', 'UserController');
 
-//Artworks
+//Artworks & tags
 Route::resource('artworks', 'PostController', ['except' => ['edit', 'update']]);
 Route::get('artworks/tag/{tag}', 'PostController@indexTag');
 
@@ -41,5 +46,8 @@ Route::post('contact', 'ContactController@store');
 /*
  * PAGES Annexes
  */
-
-Route::resource('pages', 'PagesController', ['except' => ['show', 'edit', 'update', 'destroy']]);
+Route::get('about', function(){	return view('pages.about'); })->name('about');
+Route::get('team', function(){ return view('pages.team'); })->name('team');
+Route::get('faq', function(){ return view('pages.faq'); })->name('faq');
+Route::get('cgu', function(){ return view('pages.cgu'); })->name('cgu');
+Route::get('press', function(){	return view('pages.press'); })->name('press');
