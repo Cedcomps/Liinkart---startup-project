@@ -59,11 +59,10 @@
     <footer>
        @include('layouts._footer')           
     </footer>
-    <!-- Scripts -->
-    <!-- Compiled and minified JavaScript -->    
-    {!! Html::script("//code.jquery.com/jquery-2.1.1.min.js") !!}
-    {!! Html::script("//cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js") !!}
-    <script src={{ asset("js/app.js") }}></script>
+    <!-- Scripts --> 
+    {!! MaterializeCSS::include_full() !!}
+
+    <script src={{ asset("js/script.js") }}></script>
 
 
 </body>

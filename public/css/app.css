@@ -1,11 +1,14 @@
 input:not([type]).valid, input:not([type]):focus.valid, input[type=text]:not(.browser-default).valid, input[type=text]:not(.browser-default):focus.valid, input[type=password]:not(.browser-default).valid, input[type=password]:not(.browser-default):focus.valid, input[type=email]:not(.browser-default).valid, input[type=email]:not(.browser-default):focus.valid, input[type=url]:not(.browser-default).valid, input[type=url]:not(.browser-default):focus.valid, input[type=time]:not(.browser-default).valid, input[type=time]:not(.browser-default):focus.valid, input[type=date]:not(.browser-default).valid, input[type=date]:not(.browser-default):focus.valid, input[type=datetime]:not(.browser-default).valid, input[type=datetime]:not(.browser-default):focus.valid, input[type=datetime-local]:not(.browser-default).valid, input[type=datetime-local]:not(.browser-default):focus.valid, input[type=tel]:not(.browser-default).valid, input[type=tel]:not(.browser-default):focus.valid, input[type=number]:not(.browser-default).valid, input[type=number]:not(.browser-default):focus.valid, input[type=search]:not(.browser-default).valid, input[type=search]:not(.browser-default):focus.valid, textarea.materialize-textarea.valid, textarea.materialize-textarea:focus.valid {
 	font-size: inherit;
 }
-
+/*subheading*/
+.subheading {
+	color: rgb(145, 145, 145);
+	font-size: 0.9em;
+}
 /*card artwork*/
 .chip-technique {
 	margin-right: 24px;
-	text-transform: ;
 }
 .btn-danger {
 	background-color: #ef5350;
@@ -21,4 +24,29 @@ input:not([type]).valid, input:not([type]):focus.valid, input[type=text]:not(.br
 }
 a, .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
 	color: #EE6e73;
+}
+/*artwork-article*/
+.artwork-article {
+	margin-top: 50px;
+}
+.artwork-image-first {
+	margin-top: 46.5px;
+}
+.tooltipped {
+	transition: all .5s ease-in-out;
+}
+.tooltipped:hover {
+	transform: scale(1.1);
+	cursor: default;
+}
+/*enchere propositon*/
+#modal1 {
+	height: 52%;
+}
+output:after {
+  content: " €";
+  font-size: 0.6em;
+}
+.proposition {
+	color: #EE6E73;
 }

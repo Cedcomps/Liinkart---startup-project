@@ -13,7 +13,7 @@
                         <div class="card-content">
                             <div class="valign-wrapper">
                                 <div class="col s2">
-                                    <img src="<?php echo e(asset('uploads/logo.png')); ?>" alt="" class="circle responsive-img">
+                                    <a href="<?php echo e(route('user.show', ['id' => $post->user->id])); ?>"><img src="<?php echo e(asset('uploads/logo.png')); ?>" alt="avatar artiste" class="circle responsive-img"></a>
                                 </div>
                                 <div class="col s10">
                                     <a class="black-text" href="<?php echo e(route('user.show', ['id' => $post->user->id])); ?>">By <?php echo e(isset($post->user->name) ? $post->user->name : "Artiste"); ?></a>

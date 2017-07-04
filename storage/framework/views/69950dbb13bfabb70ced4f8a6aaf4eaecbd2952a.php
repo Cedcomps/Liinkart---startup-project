@@ -62,13 +62,11 @@
     <footer>
        <?php echo $__env->make('layouts._footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>           
     </footer>
-    <!-- Scripts -->
-    <!-- Compiled and minified JavaScript -->    
-    <?php echo Html::script("//code.jquery.com/jquery-2.1.1.min.js"); ?>
+    <!-- Scripts --> 
+    <?php echo MaterializeCSS::include_full(); ?>
 
-    <?php echo Html::script("//cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"); ?>
 
-    <script src=<?php echo e(asset("js/app.js")); ?>></script>
+    <script src=<?php echo e(asset("js/script.js")); ?>></script>
 
 
 </body>

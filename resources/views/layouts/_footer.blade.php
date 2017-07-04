@@ -13,7 +13,7 @@
                 <p class="grey-text text-lighten-4">Une idée, une proposition? Votre avis nous intéresse car vous êtes au coeur de notre réflexion</p>
                 <a class="waves-effect waves-light red lighten-3 btn" href="{{ url('contact') }}">CONTACT</a>
               </div>
-              <div class="col l2 m3 s12">
+              <div class="col l2 m3 s12 hide-on-small-only">
                 <h5 class="white-text">A propos de nous</h5>
                 <ul>
                   <li><a class="grey-text text-lighten-3" href="{{ route('about') }}">Le concept</a></li>
@@ -28,7 +28,7 @@
           <div class="footer-copyright">
             <div class="container">
             2016 - {{ Carbon\Carbon::now()->year }} LiinkArt 
-              <span class="right">
+              <span class="right hide-on-small-only">
                 <a class="grey-text text-lighten-4" href="https://cedeev.com">Réalisé par CeDeeV - </a>
                 <a class="grey-text text-lighten-4" href="#">Mentions légales</a>
               </span>
