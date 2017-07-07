@@ -9,7 +9,7 @@ class EmailController extends Controller
 {
     public function create()
     {
-        return view('email.email');
+        return view('form.contact');
     }
  
     public function store(EmailRequest $request, Email $email)
@@ -18,6 +18,6 @@ class EmailController extends Controller
         $email->email = $request->email;
         $email->save();
          
-        return view('email.email_ok');
+        return view('form.email_slack_ok');
     }
 }

@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	$(".button-collapse").sideNav();
 // Technique artistique
 	$( "span:contains('Peinture')" ).css( "color", "#ef9a9a");
 	$( "span:contains('Peinture à Huile')" ).css( "color", "#f48fb1");

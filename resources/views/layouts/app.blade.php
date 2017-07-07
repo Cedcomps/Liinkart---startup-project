@@ -14,56 +14,163 @@
     <!-- Styles -->
     <!--Import Google Icon Font-->
         {!! Html::style("https://fonts.googleapis.com/icon?family=Material+Icons") !!}
-    <!-- Compiled and minified CSS -->
-        {!! Html::style("https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css") !!}
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div class="navbar-fixed">
-        <nav>
-            <div class="nav-wrapper">
-                <img src="{{ asset('uploads/liinkart logo blanc_petit.png')}}" width="32px" height="48px" alt="liinkart logo white">
-                <a href="{{ url('/') }}" class="brand-logo"> {{ config('app.name', 'Laravel') }}</a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    @if (Auth::guest())
-                        <li><a href="{{ route('login') }}">Login</a></li>
-                        <li><a href="{{ route('register') }}">Register</a></li>
-                    @else
-                        <li><a href="{{ url('/artworks/create') }}">Créer un article</a></li>
-                        <li><a href="#!" class="dropdown-button" data-activates="dropdown1">
-                                {{ Auth::user()->name }} <i class="material-icons right">apps</i>
-                            </a>
-                            <ul id="dropdown1" class="dropdown-content">
-                                <li>
-                                    <a href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                        Logout
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                </li>
-                            </ul>
-                        </li>
-                    @endif
-                </ul>
-            </div>
-        </nav>
-    </div>        
+<section id="background-design">
+    <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+         viewBox="0 0 382 955" style="enable-background:new 0 0 382 955;" xml:space="preserve">
+    <style type="text/css">
+        .back0{fill:#7670AE;}
+        .back1{fill:#8BAE87;}
+        .back2{fill:#7D7ABC;}
+        .back3{fill:#6D82B8;}
+        .back4{fill:#8BB6A6;}
+        .back5{fill:#AEC380;}
+    </style>
+    <polygon class="back0" points="382,191 191,0 191,382 "/>
+    <polygon class="back1" points="382,573 191,382 191,764 "/>
+    <polygon class="back2" points="191,382 382,573 382,191 "/>
+    <polygon class="back3" points="0,191 191,382 191,0 "/>
+    <polygon class="back4" points="0,573 191,764 191,382 "/>
+    <polygon class="back5" points="191,764 382,955 382,573 "/>
+    </svg>
+</section>
+<div class="navbar-fixed">
+    <nav class="liinkart-medium z-depth-2">
+        <div class="nav-wrapper">
+            <a id="liinkart-logo" href="{{ url('/') }}" class="brand-logo">
+                <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 764 1146" style="enable-background:new 0 0 764 1146;" xml:space="preserve">
+                    <style type="text/css">
+                        .st0{fill:#73A9C0;}
+                        .st1{fill:#7670AE;}
+                        .st2{fill:#8BAE87;}
+                        .st3{fill:#7D7ABC;}
+                        .st4{fill:#7B5B97;}
+                        .st5{fill:#6D82B8;}
+                        .st6{fill:#8BB6A6;}
+                        .st7{fill:#AEC380;}
+                        .st8{fill:#D38450;}
+                        .st9{fill:#F3A368;}
+                        .st10{fill:#B55677;}
+                        .st11{fill:#C97077;}
+                        .st12{fill:#DBD175;}
+                        .st13{fill:#EAC76B;}
+                        .st14{fill:#E06666;}
+                        .st15{fill:#934782;}
+                        .st16{fill:#FFFFFF;}
+                    </style>
+                    <polygon class="st0" points="191,573 0,382 0,764 "/>
+                    <polygon class="st1" points="382,382 191,191 191,573 "/>
+                    <polygon class="st2" points="382,764 191,573 191,955 "/>
+                    <polygon class="st3" points="191,573 382,764 382,382 "/>
+                    <polygon class="st4" points="191,191 382,382 382,0 "/>
+                    <polygon class="st5" points="0,382 191,573 191,191 "/>
+                    <polygon class="st6" points="0,764 191,955 191,573 "/>
+                    <polygon class="st7" points="191,955 382,1146 382,764 "/>
+                    <polygon class="st8" points="573,573 764,764 764,382 "/>
+                    <polygon class="st9" points="382,764 573,955 573,573 "/>
+                    <polygon class="st10" points="382,382 573,573 573,191 "/>
+                    <polygon class="st11" points="573,573 382,382 382,764 "/>
+                    <polygon class="st12" points="573,955 382,764 382,1146 "/>
+                    <polygon class="st13" points="764,764 573,573 573,955 "/>
+                    <polygon class="st14" points="764,382 573,191 573,573 "/>
+                    <polygon class="st15" points="573,191 382,0 382,382 "/>
+                    <polyline class="st16" points="418,469.9 537,436 537,837 418,837 "/>
+                    <polyline class="st16" points="346,469.9 227,436 227,837 346,837 "/>
+                    <ellipse class="st16" cx="477.5" cy="336" rx="59.5" ry="56"/>
+                    <ellipse class="st16" cx="286.5" cy="336" rx="59.5" ry="56"/>
+                    </svg>
+            </a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                @if (Auth::guest())
+                    <li><a href="{{ route('login') }}">Login</a></li>
+                    <li><a href="{{ route('register') }}">Register</a></li>
+                @else
+                    <li><a href="{{ url('/artworks/create') }}">Créer un article</a></li>
+                    <li><a href="#!" class="dropdown-button" data-activates="dropdown1">
+                            {{ Auth::user()->name }} <i class="material-icons right">apps</i>
+                        </a>
+                        <ul id="dropdown1" class="dropdown-content">
+                            <li>
+                                <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+            </ul>
+            <ul id="nav-mobile" class="side-nav">
+                @if (Auth::guest())
+                    <li><a href="{{ route('login') }}">Login</a></li>
+                    <li><a href="{{ route('register') }}">Register</a></li>
+                @else
+                    <li><a href="{{ url('/artworks/create') }}">Créer un article</a></li>
+                    <li><a href="#!" class="dropdown-button" data-activates="dropdown1">
+                            {{ Auth::user()->name }} <i class="material-icons right">apps</i>
+                        </a>
+                        <ul id="dropdown1" class="dropdown-content">
+                            <li>
+                                <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+            </ul>
+        </div>
+    </nav>
+</div>  
+
     @if (Auth::user())
         @yield('sidebar')
     @endif
         @yield('content')
-    
-    <footer>
+
+<section>
+    <div id="background-design2">
+        <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             viewBox="0 0 2000 382" style="enable-background:new 0 0 2000 382;" xml:space="preserve">
+        <style type="text/css">
+            .bgb0{fill:#7670AE;}
+            .bgb1{fill:#7B5B97;}
+            .bgb2{fill:#AEC380;}
+            .bgb3{fill:#B55677;}
+            .bgb4{fill:#DBD175;}
+            .bgb5{fill:#E06666;}
+            .bgb6{fill:#934782;}
+        </style>
+        <polygon class="bgb0" points="191,382 0,191 0,382 "/>
+        <polygon class="bgb1" points="0,191 191,382 191,0 "/>
+        <polygon class="bgb2" points="1616,382 1807,382 1807,191 "/>
+        <polygon class="bgb3" points="191,382 382,382 382,191 "/>
+        <polygon class="bgb4" points="1998,382 1807,191 1807,382 "/>
+        <polygon class="bgb5" points="573,382 382,191 382,382 "/>
+        <polygon class="bgb6" points="382,191 191,0 191,382 "/>
+        </svg>
+    </div>  
+</section>
+
        @include('layouts._footer')           
-    </footer>
     <!-- Scripts --> 
     {!! MaterializeCSS::include_full() !!}
 
     <script src={{ asset("js/script.js") }}></script>
-
 
 </body>
 </html>

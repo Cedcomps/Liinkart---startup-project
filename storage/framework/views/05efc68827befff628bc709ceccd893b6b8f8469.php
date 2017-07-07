@@ -1,6 +1,5 @@
-@extends('layouts.app')
  
-@section('content')
+<?php $__env->startSection('content'); ?>
 <section class="reference">
   <div class="container">
     <div class="row">
@@ -49,11 +48,12 @@
               </div>
             </div>
           </div>
-        <p>Votre message a bien été transmis à notre équipe. Nous vous répondrons d'ici 48h jour ouvré. <br>En attendant si vous le souhaitez, vous pouvez visualiser notre <a href="{{ route('faq') }}">FAQ </a> ou vous connectez sur notre <a href="https://liinkart.slack.com/">#Slack</a>.</p>
+        <p>Votre message a bien été transmis à notre équipe. Nous vous répondrons d'ici 48h jour ouvré. <br>En attendant si vous le souhaitez, vous pouvez visualiser notre <a href="<?php echo e(route('faq')); ?>">FAQ </a> ou vous connectez sur notre <a href="https://liinkart.slack.com/">#Slack</a>.</p>
         <br><br>
-        <a class="waves-effect waves-light btn-large" href="{{ route('artworks.index')}}">RETOURNER DANS LA GALERIE</a>
+        <a class="waves-effect waves-light btn-large" href="<?php echo e(route('artworks.index')); ?>">RETOURNER DANS LA GALERIE</a>
       </div>
     </div>
   </div>
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -12,10 +12,10 @@
 */
 
 //Index
-Route::get('/', function() {
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', function() {
 	return redirect()->route('artworks.index');
 });
-Route::get('/home', 'HomeController@index')->name('home');
 
 //Authentification
 Auth::routes();

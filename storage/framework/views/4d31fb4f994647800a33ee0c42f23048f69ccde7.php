@@ -1,11 +1,51 @@
 <?php $__env->startSection('content'); ?>
-    <div class="container">
+<header class="header-page">
+	<div class="row">
+		<div class="col s12 center">
+        	<h1>Contactez-nous</h1>
+	    </div>
+	</div>
+</header>
+<section class="reference">
+	<div class="container">
 		<div class="row">
-			<div class="col s8 push-s2"> 
-				<h1 class="text-center">Contactez-nous</h1>
-					<h3><i class='material-icons md-36'>send</i></h3>
+			<div class="col m2"></div>
+			<div class="col s12 m8 center">
+				<h2>Sur slack</h2><img class="responsive-img" src="<?php echo e(asset("/uploads/slack.png")); ?>">
+				<h5>Vous souhaitez discuter sur le chat d'un soucis technique ou simplement apporter votre pierre a l'édifice?</h5><br>
+				<p>Nous sommes à l'écoute de toutes personnes souhaitant apporter son expérience sur la plateforme LiinkART. La communauté est au coeur de notre réflexion. Afin de répondre à vos besoins et d'améliorer considérablement votre expérience sur le site, enregistrez votre adresse email pour que nous vous envoyons une invitation à vous connecter sur notre slack.</p>
+				<br><br>
+				<div class="card-panel">
+	            	<p>Enregistrez votre adresse mail afin de recevoir votre invitation au <a href="https://liinkart.slack.com/">#Slack</a></p>
+	            	<?php echo Form::open(['route' => 'store.email']); ?>
+
+                    <div class="form-group <?php echo $errors->has('email') ? 'has-error' : ''; ?>">
+                        <?php echo Form::email('email', null, array('class' => 'form-control', 'placeholder' => 'Entrez votre email')); ?>
+
+                        <?php echo $errors->first('email', '<small class="help-block">:message</small>'); ?>
+
+                	</div>
+		                <?php echo Form::submit('Envoyer !', ['class' => 'btn waves-effect waves-light liinkart-light']); ?>
+
+	            </div>
+		                <?php echo Form::close(); ?>
+
+	        </div>
+	        <div class="col m2"></div>
+		</div>
+	</div>
+</section>
+<div class="divider"></div>
+<section class="reference">
+    <div class="container">
+    	
+		<div class="row">
+			<div class="col m2"></div>
+			<div class="col s12 m8 center"> 
+				<h2 class="center">Par eMail</h2><i class='material-icons medium'>email</i>
 					<?php echo Form::open(['url' => 'contact', 'class' => 'col s12']); ?>
 
+				<div class="card-panel">
 						<div class="input-field col s6 <?php echo $errors->has('nom') ? 'has-error' : ''; ?>">
 							<?php echo Form::text('nom', null, ['class' => 'validate', 'placeholder' => 'Votre nom']); ?>
 
@@ -31,14 +71,16 @@
 							<?php echo $errors->first('texte', '<small class="help-block">:message</small>'); ?>
 
 						</div>
-						<?php echo Form::submit('Envoyer ', ['class' => 'btn waves-effect waves-light']); ?>
-
-					<?php echo Form::close(); ?>
+						<?php echo Form::submit('Envoyer ', ['class' => 'btn waves-effect waves-light liinkart-light']); ?>
 
 				</div>
-			</div>
-		</div>
+					<?php echo Form::close(); ?>
 
+			</div>
+			<div class="col m2"></div>
+		</div>
+	</div>
+</section>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

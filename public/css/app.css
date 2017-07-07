@@ -1,10 +1,181 @@
 input:not([type]).valid, input:not([type]):focus.valid, input[type=text]:not(.browser-default).valid, input[type=text]:not(.browser-default):focus.valid, input[type=password]:not(.browser-default).valid, input[type=password]:not(.browser-default):focus.valid, input[type=email]:not(.browser-default).valid, input[type=email]:not(.browser-default):focus.valid, input[type=url]:not(.browser-default).valid, input[type=url]:not(.browser-default):focus.valid, input[type=time]:not(.browser-default).valid, input[type=time]:not(.browser-default):focus.valid, input[type=date]:not(.browser-default).valid, input[type=date]:not(.browser-default):focus.valid, input[type=datetime]:not(.browser-default).valid, input[type=datetime]:not(.browser-default):focus.valid, input[type=datetime-local]:not(.browser-default).valid, input[type=datetime-local]:not(.browser-default):focus.valid, input[type=tel]:not(.browser-default).valid, input[type=tel]:not(.browser-default):focus.valid, input[type=number]:not(.browser-default).valid, input[type=number]:not(.browser-default):focus.valid, input[type=search]:not(.browser-default).valid, input[type=search]:not(.browser-default):focus.valid, textarea.materialize-textarea.valid, textarea.materialize-textarea:focus.valid {
 	font-size: inherit;
 }
+input:not([type]):focus:not([readonly]), input[type=text]:focus:not([readonly]), input[type=password]:focus:not([readonly]), input[type=email]:focus:not([readonly]), input[type=url]:focus:not([readonly]), input[type=time]:focus:not([readonly]), input[type=date]:focus:not([readonly]), input[type=datetime]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), input[type=number]:focus:not([readonly]), input[type=search]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+	border-bottom: 1px solid #9575ff !important;
+	box-shadow: 0 1px 0 0 #9575ff !important;
+}
 /*subheading*/
 .subheading {
 	color: rgb(145, 145, 145);
-	font-size: 0.9em;
+	font-weight: 200;
+	line-height: 1.3;
+}
+h2 {
+	font-size: 3.3rem !important;
+}
+h3 {
+	font-size: 2.5rem !important;
+}
+/*charte graphique*/
+.liinkart-light {
+	background-color: #9575ff !important;
+}
+.liinkart-medium {
+	background-color: #614ca5 !important;
+}
+.liinkart-dark {
+	background-color: #342959 !important;
+}
+#background-design {
+	position: relative;
+}
+#background-design svg {
+	position: absolute;
+	width: 17%;
+	top: -170px;
+	right: 0;
+}
+section div#background-design2 {
+	position: relative;
+}
+#background-design2 {
+	position: absolute;
+	top: 5px;
+}
+.mockup {
+	height: 500px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+.mockup2 img {
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+}
+/*liinkart logo*/
+#liinkart {	
+	z-index: 20;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+#liinkart-logo {
+	z-index: 10;
+	display: block;
+	width: 225px;
+	height: 160px;
+	background-image: url("/uploads/logo-back.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#liinkart-logo svg:hover {
+	transform: rotateY(180deg);
+}
+#liinkart-logo svg {
+	margin-top: 15px;
+	height: 100px;
+	margin-left: 22%;
+	transition: all 1s;
+}
+@media screen and (min-width: 1441px) {
+	#liinkart{
+		max-width: 300px;
+		margin-top: -225px;
+	}
+}
+@media screen and (max-width: 1440px) and (min-width: 1025px){
+	#liinkart{
+		max-width: 200px;
+		margin-top: -150px;
+	}
+}
+@media screen and (max-width: 1024px){
+	#liinkart{
+		max-width: 150px;
+		margin-top: -115px;
+	}
+}
+@media screen and (max-width: 992px){
+	#liinkart-logo{
+		background-image: none;
+		width: auto;
+	}#liinkart-logo svg{
+		background-image: none;
+		margin-left: auto;
+	}
+}
+button, a[class^='btn']:not(.btn-danger), a[class*=' btn']:not(.btn-danger), a[class*=' btn']:focus, .waves-effect {
+	background-color: white;
+	color: #614ca5;
+}
+button:hover, a[class*=' btn']:hover, a[class^='btn']:hover, .waves-effect:hover {
+	background-color: #9575ff;
+	color: white;
+}
+button:before, a[class^='btn']:before, a[class*=' btn']:before, a[class^='btn']:not(.tooltipped)  {
+	width: 0;
+	height: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	content: '';
+	border-top: 0 solid transparent;
+	border-bottom: 20px solid transparent;
+	border-left: 20px solid #9575ff;
+}
+/*header*/
+header {
+	margin-top: -50px;
+	background-image: url("/uploads/header-liinkart1.jpg");
+	background-size: cover;
+	width: 100%;
+	background-repeat: no-repeat;
+	height: 800px;
+	display: flex !important;
+	align-items: center;
+}
+header h1 {
+	color: white;
+	font-size: 3.6rem;
+	line-height: 1.3;
+	font-weight: 100;
+}
+header div a {
+	margin: 25px;
+}
+/*prefooter*/
+.reference {
+	padding-top: 70px;
+	padding-bottom: 70px;
+}
+.partenaire {
+	width: 40%;
+}
+.end-section {
+	background-color: #F6F6F6;
+	min-height: 250px;
+}
+.end-section i {
+	padding-top: 50px;
+}
+/*about*/
+.header-page {
+	color: white;
+	background-image: url("/uploads/header-liinkart1.jpg");
+	height: 350px;
+}
+.weblogo {
+	width: 25%;
+	margin-top: 30px;
+}
+.section h4 {
+	font-weight: 200;
+}
+.section h6 {
+	font-size: 1.2em;
 }
 /*card artwork*/
 .chip-technique {
@@ -22,8 +193,8 @@ input:not([type]).valid, input:not([type]):focus.valid, input[type=text]:not(.br
 .time-ago {
 	color: #bbb;
 }
-a, .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
-	color: #EE6e73;
+a, .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
+	color: #9575ff;
 }
 /*artwork-article*/
 .artwork-article {
@@ -44,9 +215,27 @@ a, .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-float
 	height: 52%;
 }
 output:after {
-  content: " €";
-  font-size: 0.6em;
+	content: " €";
+	font-size: 0.6em;
 }
 .proposition {
-	color: #EE6E73;
+	color: ##9575ff;
+}
+#zoom-gavel {
+	-webkit-animation: zoom 2s ease-in-out infinite alternate;
+	animation: zoom 2s ease-in-out infinite alternate;
+}
+@keyframes zoom {
+    0% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
+    50% {
+        transform: scale(1.5);
+        -webkit-transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
 }

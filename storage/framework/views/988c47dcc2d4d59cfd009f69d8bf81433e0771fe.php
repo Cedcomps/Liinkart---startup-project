@@ -29,8 +29,8 @@
 						    	<p>Et n'oubliez pas une chose : la vente peut s'avérer être une véritable surprise pour les amoureux de l'Art !</p>
 					    		<span class="center-align">
 							    	<h2 class="proposition" ><output name="result">--</output></h2>
-							    	<a class="z-depth-3 waves-effect modal-close waves-light btn-large red darken-1"><i class="material-icons left">cancel</i>ANNULER</a>
-							    	<a class="z-depth-3 waves-effect waves-light btn-large right"><i class="material-icons left">gavel</i>FAIRE UNE OFFRE</a>
+							    	<a class="z-depth-3 waves-effect modal-close waves-light btn-danger btn-large red darken-1"><i class="material-icons left">cancel</i>ANNULER</a>
+							    	<a class="z-depth-3 waves-effect waves-light btn-large right"><i id="zoom-gavel" class="material-icons left">gavel</i>FAIRE UNE OFFRE</a>
 						    	</span>
 						    </div>
 						</div>
