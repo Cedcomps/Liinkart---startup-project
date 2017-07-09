@@ -1,12 +1,12 @@
-@extends('layouts.template')
+@extends('layouts.app')
  
 @section('content')
-    <div class="col-sm-offset-4 col-sm-4">
+    <div class="container">
         <br>
-        <div class="panel panel-primary">   
-            <div class="panel-heading">Modification d'un utilisateur</div>
+        <div class="row">   
+            <div>Modification d'un utilisateur</div>
             <div class="panel-body"> 
-                <div class="col-sm-12">
+                <div class="col s10 offset-s1">
                     {!! Form::model($user, ['route' => ['user.update', $user->id], 'method' => 'put', 'class' => 'form-horizontal panel']) !!}
                         <div class="form-group {!! $errors->has('name') ? 'has-error' : '' !!}">
                             {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nom']) !!}

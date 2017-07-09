@@ -93,15 +93,13 @@
                 <?php else: ?>
                     <li><a href="<?php echo e(url('/artworks/create')); ?>">Créer un article</a></li>
                     <li><a href="#!" class="dropdown-button" data-activates="dropdown1">
+                            <img class="avatar" src="<?php echo e(asset('storage/uploads/avatars/' . Auth::user()->avatar)); ?>">
                             <?php echo e(Auth::user()->name); ?> <i class="material-icons right">apps</i>
                         </a>
                         <ul id="dropdown1" class="dropdown-content">
                             <li>
-                                <a href="<?php echo e(route('logout')); ?>"
-                                    onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
+                                <a href="<?php echo e(route('user.show', [auth()->user()->id])); ?>">Profil</a>
+                                <a href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                                 <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
                                     <?php echo e(csrf_field()); ?>
 
@@ -111,31 +109,7 @@
                     </li>
                 <?php endif; ?>
             </ul>
-            <ul id="nav-mobile" class="side-nav">
-                <?php if(Auth::guest()): ?>
-                    <li><a href="<?php echo e(route('login')); ?>">Login</a></li>
-                    <li><a href="<?php echo e(route('register')); ?>">Register</a></li>
-                <?php else: ?>
-                    <li><a href="<?php echo e(url('/artworks/create')); ?>">Créer un article</a></li>
-                    <li><a href="#!" class="dropdown-button" data-activates="dropdown1">
-                            <?php echo e(Auth::user()->name); ?> <i class="material-icons right">apps</i>
-                        </a>
-                        <ul id="dropdown1" class="dropdown-content">
-                            <li>
-                                <a href="<?php echo e(route('logout')); ?>"
-                                    onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
-                                <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
-                                    <?php echo e(csrf_field()); ?>
-
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                <?php endif; ?>
-            </ul>
+            
         </div>
     </nav>
 </div>  

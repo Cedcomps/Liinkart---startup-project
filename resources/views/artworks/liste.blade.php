@@ -13,7 +13,7 @@
                         <div class="card-content">
                             <div class="valign-wrapper">
                                 <div class="col s2">
-                                    <a href="{{ route('user.show', ['id' => $post->user->id]) }}"><img src="{{ asset('uploads/logo.png')}}" alt="avatar artiste" class="circle responsive-img"></a>
+                                    <a href="{{ route('user.show', ['id' => $post->user->id]) }}"><img src=" {{ asset('storage/uploads/avatars/' . $post->user->avatar) }}" alt="avatar artiste" class="circle responsive-img"></a>
                                 </div>
                                 <div class="col s10">
                                     <a class="black-text" href="{{ route('user.show', ['id' => $post->user->id]) }}">By {{ $post->user->name or "Artiste"}}</a>

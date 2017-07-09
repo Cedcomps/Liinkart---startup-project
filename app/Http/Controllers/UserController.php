@@ -7,6 +7,8 @@ use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Repositories\UserRepository;
 use App\User;
+use Image;
+use Auth;
  
 class UserController extends Controller
 {
@@ -50,9 +52,21 @@ class UserController extends Controller
  
     public function update(UserUpdateRequest $request, User $user)
     {
+        if($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            $destinationPath = public_path('storage/uploads/avatars/');
+            Image::make($avatar->getRealPath())->fit(150, 150)->save($destinationPath.'/'.$filename);
+            $avatar->move($destinationPath, $filename);
+
+            $user = Auth::user();
+            $user->avatar = $filename;
+            $user->save();
+        }
+
         $this->userRepository->update($user, $request->all());
          
-        return redirect()->route('user.index')->withOk("L'utilisateur " . $request->name . " a été modifié.");
+        return redirect()->route('user.show', ['id' => $user->id])->withOk("Le profil " . $request->name . " a été mis à jour.");
     }
  
     public function destroy(User $user)

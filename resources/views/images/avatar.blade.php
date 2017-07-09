@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-	<div class="raw">
+	<div class="row">
     <div class="col s12 offset-l3 l6">
         {!! Form::open(['url' => 'avatar', 'files' => true]) !!}
         <div class="file-field input-field">Envoi d'un avatar</div>

@@ -92,15 +92,13 @@
                 @else
                     <li><a href="{{ url('/artworks/create') }}">Créer un article</a></li>
                     <li><a href="#!" class="dropdown-button" data-activates="dropdown1">
+                            <img class="avatar" src="{{ asset('storage/uploads/avatars/' . Auth::user()->avatar) }}">
                             {{ Auth::user()->name }} <i class="material-icons right">apps</i>
                         </a>
                         <ul id="dropdown1" class="dropdown-content">
                             <li>
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
+                                <a href="{{ route('user.show', [auth()->user()->id]) }}">Profil</a>
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
@@ -109,30 +107,7 @@
                     </li>
                 @endif
             </ul>
-            <ul id="nav-mobile" class="side-nav">
-                @if (Auth::guest())
-                    <li><a href="{{ route('login') }}">Login</a></li>
-                    <li><a href="{{ route('register') }}">Register</a></li>
-                @else
-                    <li><a href="{{ url('/artworks/create') }}">Créer un article</a></li>
-                    <li><a href="#!" class="dropdown-button" data-activates="dropdown1">
-                            {{ Auth::user()->name }} <i class="material-icons right">apps</i>
-                        </a>
-                        <ul id="dropdown1" class="dropdown-content">
-                            <li>
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                @endif
-            </ul>
+            
         </div>
     </nav>
 </div>  

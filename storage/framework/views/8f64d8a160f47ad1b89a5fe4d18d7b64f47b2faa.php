@@ -1,5 +1,5 @@
 <?php $__env->startSection('content'); ?>
-	<div class="raw">
+	<div class="row">
     <div class="col s12 offset-l3 l6">
         <?php echo Form::open(['url' => 'avatar', 'files' => true]); ?>
 

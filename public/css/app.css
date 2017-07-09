@@ -56,6 +56,12 @@ section div#background-design2 {
 	margin-right: auto;
 }
 /*liinkart logo*/
+.avatar {
+	vertical-align: middle;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}
 #liinkart {	
 	z-index: 20;
 	display: block;
