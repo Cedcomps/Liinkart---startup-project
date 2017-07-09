@@ -10,32 +10,32 @@
                 <p> Description bio</p>
             </div>
         </div>
-    <div class="row">
-        <div class="col s12 m5 offset-m5"><p>activité</p>
-                <p>Oeuvres publiées</p>
-                <p>Oeuvres remportées</p>
+        <div class="row">
+            <div class="col s12 m5 offset-m5"><p>activité</p>
+                    <p>Oeuvres publiées</p>
+                    <p>Oeuvres remportées</p>
+            </div>
         </div>
     </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col s12 m10 offset-m1">
-           {!! Form::model($user, ['route' => ['user.update', $user->id], 'method' => 'put', 'class' => 'form-horizontal panel', 'files' => true]) !!}
-                <div class="form-group {!! $errors->has('name') ? 'has-error' : '' !!}">
-                    {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nom']) !!}
-                    {!! $errors->first('name', '<small class="help-block">:message</small>') !!}
-                </div>
-                <div class="form-group {!! $errors->has('email') ? 'has-error' : '' !!}">
-                    {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Email']) !!}
-                    {!! $errors->first('email', '<small class="help-block">:message</small>') !!}
-                </div>
-                <div class="form-group {!! $errors->has('avatar') ? 'has-error' : '' !!}">
-                    {!! Form::file('avatar', ['class' => 'form-control', 'placeholder' => 'Avatar']) !!}
-                    {!! $errors->first('avatar', '<small class="help-block">:message</small>') !!}
-                </div>
-                {!! Form::submit('Envoyer', ['class' => 'btn btn-primary pull-right']) !!}
-                </div>
-            {!! Form::close() !!} 
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m10 offset-m1">
+               {!! Form::model($user, ['route' => ['user.update', $user->id], 'method' => 'put', 'files' => true]) !!}
+                    <div class="col s6 {!! $errors->has('name') ? 'has-error' : '' !!}">
+                        {!! Form::text('name', null, ['placeholder' => 'Nom']) !!}
+                        {!! $errors->first('name', '<small class="help-block">:message</small>') !!}
+                    </div>
+                    <div class="col s6 {!! $errors->has('email') ? 'has-error' : '' !!}">
+                        {!! Form::email('email', null, ['placeholder' => 'Email']) !!}
+                        {!! $errors->first('email', '<small class="help-block">:message</small>') !!}
+                    </div>
+                    <div class="col s6 {!! $errors->has('avatar') ? 'has-error' : '' !!}">
+                        {!! Form::file('avatar') !!}
+                        {!! $errors->first('avatar', '<small class="help-block">:message</small>') !!}
+                    </div>
+                    {!! Form::submit('Envoyer', ['class' => 'btn btn-primary pull-right']) !!}
+                {!! Form::close() !!} 
+            </div>
         </div>
     </div>
 </div>
