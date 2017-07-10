@@ -15,7 +15,7 @@
     <!--Import Google Icon Font-->
         <?php echo Html::style("https://fonts.googleapis.com/icon?family=Material+Icons"); ?>
 
-
+    <?php echo $__env->yieldContent('css'); ?>
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
 </head>
 <body>
@@ -23,12 +23,12 @@
     <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
          viewBox="0 0 382 955" style="enable-background:new 0 0 382 955;" xml:space="preserve">
     <style type="text/css">
-        .back0{fill:#7670AE;}
-        .back1{fill:#8BAE87;}
-        .back2{fill:#7D7ABC;}
-        .back3{fill:#6D82B8;}
-        .back4{fill:#8BB6A6;}
-        .back5{fill:#AEC380;}
+        .back0{fill:#E0AFD6;}
+        .back1{fill:#D4E5D1;}
+        .back2{fill:#E8CDE5;}
+        .back3{fill:#D4DAE8;}
+        .back4{fill:#C4E8D9;}
+        .back5{fill:#E8EDDA;}
     </style>
     <polygon class="back0" points="382,191 191,0 191,382 "/>
     <polygon class="back1" points="382,573 191,382 191,764 "/>
@@ -124,13 +124,13 @@
         <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
              viewBox="0 0 2000 382" style="enable-background:new 0 0 2000 382;" xml:space="preserve">
         <style type="text/css">
-            .bgb0{fill:#7670AE;}
-            .bgb1{fill:#7B5B97;}
-            .bgb2{fill:#AEC380;}
-            .bgb3{fill:#B55677;}
-            .bgb4{fill:#DBD175;}
-            .bgb5{fill:#E06666;}
-            .bgb6{fill:#934782;}
+            .bgb0{fill:#C9C7E5;}
+            .bgb1{fill:#D8CCE5;}
+            .bgb2{fill:#E8EFD5;}
+            .bgb3{fill:#E2C5D0;}
+            .bgb4{fill:#E8E4CD;}
+            .bgb5{fill:#EDBEBE;}
+            .bgb6{fill:#E0AFD6;}
         </style>
         <polygon class="bgb0" points="191,382 0,191 0,382 "/>
         <polygon class="bgb1" points="0,191 191,382 191,0 "/>

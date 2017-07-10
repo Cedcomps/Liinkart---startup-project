@@ -54,6 +54,7 @@ class UserController extends Controller
     {
         $this->userRepository->update($user, $request->all());
         
+
         if($request->hasFile('avatar')) 
         {
             $destinationPath = public_path('storage/uploads/avatars/');
@@ -66,13 +67,12 @@ class UserController extends Controller
             $img->save($destinationPath.'/'.$filename);
             $user = Auth::user();
             $user->avatar = $filename;
-
-            if ($user->avatar != 'default.jpg') {  
-              \Storage::delete(public_path( '/storage/uploads/avatars/' ). $user->avatar);
-            }
-
+            // if ($user->avatar != 'default.jpg') {  
+            //   \Storage::delete(public_path( '/storage/uploads/avatars/' ). $user->avatar);
+            // }
             $user->save();
         }
+        
         return redirect()->route('user.show', ['id' => $user->id])->withOk("Le profil " . $request->name . " a été mis à jour.");
     }
  

@@ -1,21 +1,9 @@
 input:not([type]).valid, input:not([type]):focus.valid, input[type=text]:not(.browser-default).valid, input[type=text]:not(.browser-default):focus.valid, input[type=password]:not(.browser-default).valid, input[type=password]:not(.browser-default):focus.valid, input[type=email]:not(.browser-default).valid, input[type=email]:not(.browser-default):focus.valid, input[type=url]:not(.browser-default).valid, input[type=url]:not(.browser-default):focus.valid, input[type=time]:not(.browser-default).valid, input[type=time]:not(.browser-default):focus.valid, input[type=date]:not(.browser-default).valid, input[type=date]:not(.browser-default):focus.valid, input[type=datetime]:not(.browser-default).valid, input[type=datetime]:not(.browser-default):focus.valid, input[type=datetime-local]:not(.browser-default).valid, input[type=datetime-local]:not(.browser-default):focus.valid, input[type=tel]:not(.browser-default).valid, input[type=tel]:not(.browser-default):focus.valid, input[type=number]:not(.browser-default).valid, input[type=number]:not(.browser-default):focus.valid, input[type=search]:not(.browser-default).valid, input[type=search]:not(.browser-default):focus.valid, textarea.materialize-textarea.valid, textarea.materialize-textarea:focus.valid {
 	font-size: inherit;
 }
-input:not([type]):focus:not([readonly]), input[type=text]:focus:not([readonly]), input[type=password]:focus:not([readonly]), input[type=email]:focus:not([readonly]), input[type=url]:focus:not([readonly]), input[type=time]:focus:not([readonly]), input[type=date]:focus:not([readonly]), input[type=datetime]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), input[type=number]:focus:not([readonly]), input[type=search]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+input:not([type]):focus:not([readonly]), input[type=text]:focus:not([readonly]), input[type=password]:focus:not([readonly]), input[type=email]:focus:not([readonly]), input[type=url]:focus:not([readonly]), input[type=time]:focus:not([readonly]), input[type=date]:focus:not([readonly]), input[type=datetime]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), input[type=number]:focus:not([readonly]), input[type=search]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]),  {
 	border-bottom: 1px solid #9575ff !important;
 	box-shadow: 0 1px 0 0 #9575ff !important;
-}
-/*subheading*/
-.subheading {
-	color: rgb(145, 145, 145);
-	font-weight: 200;
-	line-height: 1.3;
-}
-h2 {
-	font-size: 3.3rem !important;
-}
-h3 {
-	font-size: 2.5rem !important;
 }
 /*charte graphique*/
 .liinkart-light {
@@ -43,6 +31,21 @@ section div#background-design2 {
 	position: absolute;
 	top: 5px;
 }
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+	color: #9575ff !important;
+}
+/*subheading*/
+.subheading {
+	color: rgb(145, 145, 145);
+	font-weight: 200;
+	line-height: 1.3;
+}
+h2 {
+	font-size: 3.3rem !important;
+}
+h3 {
+	font-size: 2.5rem !important;
+}
 .mockup {
 	height: 500px;
 	display: flex;
@@ -55,7 +58,7 @@ section div#background-design2 {
 	margin-left: auto;
 	margin-right: auto;
 }
-/*liinkart logo*/
+/*profil*/
 .avatar {
 	vertical-align: middle;
 	width: 40px;
@@ -63,6 +66,7 @@ section div#background-design2 {
 	border-radius: 50%;
 	margin-right: 10px;
 }
+/*liinkart logo*/
 #liinkart {	
 	z-index: 20;
 	display: block;
@@ -115,8 +119,8 @@ section div#background-design2 {
 	}
 }
 button, a[class^='btn']:not(.btn-danger), a[class*=' btn']:not(.btn-danger), a[class*=' btn']:focus, .waves-effect {
-	background-color: white;
-	color: #614ca5;
+	background-color: white !important;
+	color: #614ca5 !important;
 }
 button:hover, a[class*=' btn']:hover, a[class^='btn']:hover, .waves-effect:hover {
 	background-color: #9575ff;
@@ -211,10 +215,15 @@ a, .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
 	margin-top: 46.5px;
 }
 .tooltipped {
+	display:inline-flex; vertical-align:middle; text-align:center;
 	transition: all .5s ease-in-out;
+	line-height: 36px;
+	margin: 5px;
+	text-transform: uppercase;
+	vertical-align: middle;
+	-webkit-tap-highlight-color: transparent;
 }
 .tooltipped:hover {
-	transform: scale(1.1);
 	cursor: default;
 }
 /*enchere propositon*/
