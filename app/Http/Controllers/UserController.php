@@ -53,18 +53,26 @@ class UserController extends Controller
     public function update(UserUpdateRequest $request, User $user)
     {
         $this->userRepository->update($user, $request->all());
-
-        if($request->hasFile('avatar')) {
+        
+        if($request->hasFile('avatar')) 
+        {
+            $destinationPath = public_path('storage/uploads/avatars/');
             $avatar = $request->file('avatar');
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            $destinationPath = public_path('storage/uploads/avatars/');
-            Image::make($avatar->getRealPath())->fit(150, 150)->save($destinationPath.'/'.$filename);
+            $img = Image::make($avatar)->fit(150, 150);
+            //Must separate fit and save method, both don't work on same line
             $avatar->move($destinationPath, $filename);
+            //idem
+            $img->save($destinationPath.'/'.$filename);
             $user = Auth::user();
             $user->avatar = $filename;
+
+            if ($user->avatar != 'default.jpg') {  
+              \Storage::delete(public_path( '/storage/uploads/avatars/' ). $user->avatar);
+            }
+
             $user->save();
         }
-        
         return redirect()->route('user.show', ['id' => $user->id])->withOk("Le profil " . $request->name . " a été mis à jour.");
     }
  
