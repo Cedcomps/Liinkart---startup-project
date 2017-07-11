@@ -51,9 +51,18 @@ class UserController extends Controller
     }
  
     public function update(UserUpdateRequest $request, User $user)
+            //dd($user->avatar);
     {
+ 
+        if($request->hasFile('avatar')) 
+        {
+            if ($user->avatar != 'default.jpg') 
+            {  
+               \File::delete(public_path( '/storage/uploads/avatars/' ). $user->avatar);
+            }
+        }
+
         $this->userRepository->update($user, $request->all());
-        
 
         if($request->hasFile('avatar')) 
         {
@@ -65,11 +74,9 @@ class UserController extends Controller
             $avatar->move($destinationPath, $filename);
             //idem
             $img->save($destinationPath.'/'.$filename);
+            
             $user = Auth::user();
             $user->avatar = $filename;
-            // if ($user->avatar != 'default.jpg') {  
-            //   \Storage::delete(public_path( '/storage/uploads/avatars/' ). $user->avatar);
-            // }
             $user->save();
         }
         
