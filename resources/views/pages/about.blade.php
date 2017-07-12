@@ -60,6 +60,6 @@
             </div>
         </div></div>
     </div>
-    <br><a class="waves-effect waves-light liinkart-light btn" href="{{ url('contact') }}">DONNEZ VOTRE AVIS</a></h6>
+    <br><a class="waves-effect waves-light btn" href="{{ url('contact') }}">DONNEZ VOTRE AVIS</a></h6>
 </div>
 @endsection

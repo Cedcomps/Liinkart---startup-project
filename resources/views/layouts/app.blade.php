@@ -12,9 +12,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('bower_components/sweetalert2/dist/sweetalert2.min.css') }}">
     <!--Import Google Icon Font-->
-        {!! Html::style("https://fonts.googleapis.com/icon?family=Material+Icons") !!}
+    {!! Html::style("https://fonts.googleapis.com/icon?family=Material+Icons") !!}
     @yield('css')
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -110,6 +112,17 @@
             
         </div>
     </nav>
+    <script src={{ asset('bower_components/sweetalert2/dist/sweetalert2.min.js')}}></script>
+
+    @if(Session::has('achievement'))
+    <script type="text/javascript">
+        swal({
+            title: 'Hey !',
+            text: 'Vous avez débloqué "{{Session::get('achievement')}}" Achievement',
+            type: 'success'
+        });
+    </script>
+    @endif
 </div>  
 
     @if (Auth::user())
@@ -141,11 +154,10 @@
     </div>  
 </section>
 
-       @include('layouts._footer')           
+    @include('layouts._footer')           
     <!-- Scripts --> 
     {!! MaterializeCSS::include_full() !!}
 
     <script src={{ asset("js/script.js") }}></script>
-
 </body>
 </html>

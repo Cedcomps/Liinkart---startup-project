@@ -38,8 +38,8 @@ Route::get('artworks/tag/{tag}', 'PostController@indexTag');
 Route::get('avatar', 'AvatarController@create');
 Route::post('avatar', 'AvatarController@store');
 //Email newsletter
-Route::get('email', 'EmailController@create');
-Route::post('email', 'EmailController@store')->name('store.email');
+Route::get('email', 'SlackController@create');
+Route::post('email', 'SlackController@store')->name('store.email');
 //Contact Form
 Route::get('contact', 'ContactController@create');
 Route::post('contact', 'ContactController@store');

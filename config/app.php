@@ -193,6 +193,10 @@ return [
          * Intervention Image
          */
         Intervention\Image\ImageServiceProvider::class,
+        /**
+         * Gamification
+         */
+        Gstt\Achievements\AchievementsServiceProvider::class,
     ],
 
     /*

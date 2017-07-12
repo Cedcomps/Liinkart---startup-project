@@ -12,10 +12,12 @@
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
     <!-- Styles -->
+    <link rel="stylesheet" href="<?php echo e(asset('bower_components/sweetalert2/dist/sweetalert2.min.css')); ?>">
     <!--Import Google Icon Font-->
-        <?php echo Html::style("https://fonts.googleapis.com/icon?family=Material+Icons"); ?>
+    <?php echo Html::style("https://fonts.googleapis.com/icon?family=Material+Icons"); ?>
 
     <?php echo $__env->yieldContent('css'); ?>
+
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
 </head>
 <body>
@@ -112,6 +114,17 @@
             
         </div>
     </nav>
+    <script src=<?php echo e(asset('bower_components/sweetalert2/dist/sweetalert2.min.js')); ?>></script>
+
+    <?php if(Session::has('achievement')): ?>
+    <script type="text/javascript">
+        swal({
+            title: 'Hey !',
+            text: 'Vous avez débloqué "<?php echo e(Session::get('achievement')); ?>" Achievement',
+            type: 'success'
+        });
+    </script>
+    <?php endif; ?>
 </div>  
 
     <?php if(Auth::user()): ?>
@@ -143,12 +156,11 @@
     </div>  
 </section>
 
-       <?php echo $__env->make('layouts._footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>           
+    <?php echo $__env->make('layouts._footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>           
     <!-- Scripts --> 
     <?php echo MaterializeCSS::include_full(); ?>
 
 
     <script src=<?php echo e(asset("js/script.js")); ?>></script>
-
 </body>
 </html>

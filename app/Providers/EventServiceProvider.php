@@ -13,9 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\Event' => [
-            'App\Listeners\EventListener',
-        ],
+        'App\Events\Event' => ['App\Listeners\EventListener'],
+        'Gstt\Achievements\Event\Unlocked' => ['App\Listeners\AchievementUnlocked']
     ];
 
     /**

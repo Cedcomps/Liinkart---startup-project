@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Repositories\UserRepository;
+use App\Achievements\UserChangedAvatar;
+use App\Achievements\UserCompletedProfile;
 use App\User;
 use Image;
 use Auth;
@@ -42,7 +44,10 @@ class UserController extends Controller
  
     public function show(User $user)
     {
-        return view('show', compact('user'));
+        $posts = $user->posts()->get();
+        $achievements = $user->achievements;
+
+        return view('show', compact('user', 'posts', 'achievements'));
     }
  
     public function edit(User $user)
@@ -78,8 +83,11 @@ class UserController extends Controller
             $user = Auth::user();
             $user->avatar = $filename;
             $user->save();
+            $user->unlock(new UserChangedAvatar());
         }
         
+        $user->unlock(new UserCompletedProfile());
+
         return redirect()->route('user.show', ['id' => $user->id])->withOk("Le profil " . $request->name . " a été mis à jour.");
     }
  

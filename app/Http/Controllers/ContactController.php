@@ -11,7 +11,6 @@ use App\Mail\Contact;
  */
 class ContactController extends Controller
 {
-
     public function create()
     {
 		return view('form.contact');

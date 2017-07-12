@@ -4,11 +4,13 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Gstt\Achievements\Achiever;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use Achiever;
     use HasRoles;
 
     /**
@@ -17,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'avatar', 'password', 'password',
+        'name', 'country', 'city', 'email', 'avatar', 'description', 'specialist', 'password', 'password',
     ];
 
     /**

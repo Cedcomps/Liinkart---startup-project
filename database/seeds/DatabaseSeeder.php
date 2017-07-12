@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
         factory(App\User::class, 10)
             ->create()
             ->each(function ($user) {
-                $user->posts()->saveMany(factory(App\Post::class, rand(2, 5))->make());
+                $user->posts()->saveMany(factory(App\Post::class, rand(10, 35))->make());
             }
         );
  

@@ -5,7 +5,12 @@ namespace App\Http\Controllers;
 use App\Repositories\PostRepository;
 use App\Repositories\TagRepository;
 use App\Http\Requests\PostRequest;
+use App\User;
 use App\Post;
+use App\Achievements\UserMadeAPost;
+use App\Achievements\UserMade10Posts;
+use App\Achievements\UserMade100Posts;
+use App\Achievements\UserMade1000Posts;
  
 class PostController extends Controller
 {
@@ -44,7 +49,14 @@ class PostController extends Controller
         if(isset($inputs['tags'])) {
             $tagRepository->store($post, $inputs['tags']);
         }
- 
+        // Gets the active user. Should come from session in a default app.
+        $user = User::find(1);
+        
+        $user->unlock(new UserMadeAPost(), 1);
+        $user->addProgress(new UserMade10Posts(), 1);
+        $user->addProgress(new UserMade100Posts(), 1);
+        $user->addProgress(new UserMade1000Posts(), 1);
+
         return redirect(route('artworks.index'));
     }
 

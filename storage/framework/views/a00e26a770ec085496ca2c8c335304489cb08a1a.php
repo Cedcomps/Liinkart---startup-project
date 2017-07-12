@@ -11,10 +11,10 @@
       <div class="col l5 m4 s12">
         <h5 class="white-text">Rejoignez-nous</h5>
         <p class="grey-text text-lighten-4">Une idée, une proposition? Votre avis nous intéresse car vous êtes au coeur de notre réflexion</p>
-        <a class="waves-effect waves-light liinkart-light btn" href="<?php echo e(url('contact')); ?>">CONTACT</a>
+        <a class="waves-effect waves-light btn" href="<?php echo e(url('contact')); ?>">CONTACT</a>
       </div>
       <div class="col l2 m3 s12 hide-on-small-only">
-        <h5 class="white-text">A propos de nous</h5>
+        <h5 class="white-text">A propos</h5>
         <ul>
           <li><a class="grey-text text-lighten-3" href="<?php echo e(route('about')); ?>">Le concept</a></li>
           <li><a class="grey-text text-lighten-3" href="<?php echo e(route('team')); ?>">L'équipe</a></li>
