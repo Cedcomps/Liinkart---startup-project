@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('css')
+ <link href="{{ asset('css/user.css') }}" rel="stylesheet">
 @endsection
 @section('content')
 <section class="reference">
@@ -13,40 +14,20 @@
                             <h3>{{ $user->name }}</h3><br>
                             <h5>{{ $user->country }}</h5>
                             <h6>{{ $user->city }}</h6><br>
-                            @foreach($achievements as $item)
+                            @foreach($achievements->sortByDesc('unlocked_at') as $item)
                             <tr>
                                 @if($item->isUnlocked())
-                                    <td>{{ $item->details->name }}</td>
-                                @else
-                                    <td>Progress: {{$item->points}}/{{$item->details->points}}</td>
+                                    <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{ $item->details->name }}">
+                                        <img src="{{ asset('uploads/achievement/' . $item->details->name . '.png') }}" alt="{{ $item->details->name }}">
+                                    </a>
+                                @elseif($item->isLocked())
+                                    <a class="tooltipped achievement-locked" data-position="bottom" data-delay="50" data-tooltip="{{ $item->details->name }}">
+                                        <img src="{{ asset('uploads/achievement/' . $item->details->name . '.png') }}" alt="{{ $item->details->name }}">
+                                    </a>
                                 @endif
                             </tr>
                             @endforeach
                             <p>Membre depuis : {{ $user->created_at->diffForHumans(null, true) }}</p><br>
-                        </div>
-                        <div class="card-content center">
-                        <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am toolfdsfdfsqfdsqdftip"><img class="liinkart-profile-achievement liinkart-profile-achievement1" src="/uploads/achievement/acorn.png"></a>
-                        <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am toolfdsfdfsqfdsqdftip"><img class="liinkart-profile-achievement liinkart-profile-achievement1" src="/uploads/achievement/adduser.png"></a>
-                        <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am toolfdsfdfsqfdsqdftip"><img class="liinkart-profile-achievement liinkart-profile-achievement1" src="/uploads/achievement/arrow.png"></a>
-                        <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am toolfdsfdfsqfdsqdftip"><img class="liinkart-profile-achievement liinkart-profile-achievement1" src="/uploads/achievement/badge.png"></a>
-                        <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am toolfdsfdfsqfdsqdftip"><img class="liinkart-profile-achievement liinkart-profile-achievement1" src="/uploads/achievement/bag.png"></a>
-                        <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am toolfdsfdfsqfdsqdftip"><img class="liinkart-profile-achievement liinkart-profile-achievement1" src="/uploads/achievement/balloon.png"></a>
-                        <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am toolfdsfdfsqfdsqdftip"><img class="liinkart-profile-achievement liinkart-profile-achievement1" src="/uploads/achievement/barchart.png"></a>
-                        <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am toolfdsfdfsqfdsqdftip"><img class="liinkart-profile-achievement liinkart-profile-achievement1" src="/uploads/achievement/bolt.png"></a>
-                        <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am toolfdsfdfsqfdsqdftip"><img class="liinkart-profile-achievement liinkart-profile-achievement1" src="/uploads/achievement/brew.png"></a>
-                        <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am toolfdsfdfsqfdsqdftip"><img class="liinkart-profile-achievement liinkart-profile-achievement1" src="/uploads/achievement/bronze.png"></a>
-                        <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am toolfdsfdfsqfdsqdftip"><img class="liinkart-profile-achievement liinkart-profile-achievement1" src="/uploads/achievement/brush.png"></a>
-                        <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am toolfdsfdfsqfdsqdftip"><img class="liinkart-profile-achievement liinkart-profile-achievement1" src="/uploads/achievement/bug.png"></a>
-                        <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am toolfdsfdfsqfdsqdftip"><img class="liinkart-profile-achievement liinkart-profile-achievement1" src="/uploads/achievement/calendar.png"></a>
-                        <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am toolfdsfdfsqfdsqdftip"><img class="liinkart-profile-achievement liinkart-profile-achievement1" src="/uploads/achievement/cards.png"></a>
-                        <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am toolfdsfdfsqfdsqdftip"><img class="liinkart-profile-achievement liinkart-profile-achievement1" src="/uploads/achievement/chat.png"></a>
-                        <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am toolfdsfdfsqfdsqdftip"><img class="liinkart-profile-achievement liinkart-profile-achievement1" src="/uploads/achievement/clock.png"></a>
-                        <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am toolfdsfdfsqfdsqdftip"><img class="liinkart-profile-achievement liinkart-profile-achievement1" src="/uploads/achievement/cloud.png"></a>
-                        <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am toolfdsfdfsqfdsqdftip"><img class="liinkart-profile-achievement liinkart-profile-achievement1" src="/uploads/achievement/coffee.png"></a>
-                        <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am toolfdsfdfsqfdsqdftip"><img class="liinkart-profile-achievement liinkart-profile-achievement1" src="/uploads/achievement/conversation.png"></a>
-                        <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am toolfdsfdfsqfdsqdftip"><img class="liinkart-profile-achievement liinkart-profile-achievement1" src="/uploads/achievement/crosshair.png"></a>
-                        <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am toolfdsfdfsqfdsqdftip"><img class="liinkart-profile-achievement liinkart-profile-achievement1" src="/uploads/achievement/cut.png"></a>
-                        <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am toolfdsfdfsqfdsqdftip"><img class="liinkart-profile-achievement liinkart-profile-achievement1" src="/uploads/achievement/doc.png"></a>
                         </div>
                     <p></p>
                     </div>

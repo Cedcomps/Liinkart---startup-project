@@ -6,11 +6,18 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Repositories\UserRepository;
-use App\Achievements\UserChangedAvatar;
-use App\Achievements\UserCompletedProfile;
 use App\User;
+
 use Image;
 use Auth;
+
+use App\Achievements\UserChangedAvatar; //Achievement
+use App\Achievements\UserCompletedProfile; //Achievement
+use App\Achievements\UserMember1Year; //Achievement
+use App\Achievements\UserMember6Months; //Achievement
+use App\Achievements\UserMemberFoundater; //Achievement
+
+use Carbon\Carbon;
  
 class UserController extends Controller
 {
@@ -20,6 +27,7 @@ class UserController extends Controller
  
     public function __construct(UserRepository $userRepository)
     {
+        $this->middleware('admin')->except('show', 'update');
         $this->userRepository = $userRepository;
     }
  
@@ -44,9 +52,21 @@ class UserController extends Controller
  
     public function show(User $user)
     {
+       
+        
+        //$user->unlock(new UserMemberFoundater); membre fondateur
+        $creer = new Carbon($user->created_at);
+        $now = Carbon::now();
+
+        if ($creer->diffInYears($now) >= 1) {
+            $user->unlock(new UserMember1Year); //Achievement
+        }
+        elseif ($creer->diffInMonths($now) >= 6) {
+            $user->unlock(new UserMember6Months); //Achievement
+        }
+
         $posts = $user->posts()->get();
         $achievements = $user->achievements;
-
         return view('show', compact('user', 'posts', 'achievements'));
     }
  
@@ -83,10 +103,10 @@ class UserController extends Controller
             $user = Auth::user();
             $user->avatar = $filename;
             $user->save();
-            $user->unlock(new UserChangedAvatar());
+            $user->unlock(new UserChangedAvatar()); //Achievement
         }
         
-        $user->unlock(new UserCompletedProfile());
+        $user->unlock(new UserCompletedProfile()); //Achievement
 
         return redirect()->route('user.show', ['id' => $user->id])->withOk("Le profil " . $request->name . " a été mis à jour.");
     }

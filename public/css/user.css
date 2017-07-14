@@ -1,13 +1,5 @@
-.achievement {
-	border-radius: 50%;
-	background-color: black;
-	display: block;
-}
-.liinkart-profile-achievement {
-	height: 40px;
-	width: 40px;
-}
-
-.liinkart-profile-achievement2 {
-
+.achievement-locked {
+	opacity: 0.4;
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
 }

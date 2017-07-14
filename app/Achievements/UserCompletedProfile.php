@@ -9,7 +9,7 @@ class UserCompletedProfile extends Achievement
     /*
      * The achievement name
      */
-    public $name = "Profil terminé à 100%";
+    public $name = "Profil complet";
 
     /*
      * A small description for the achievement

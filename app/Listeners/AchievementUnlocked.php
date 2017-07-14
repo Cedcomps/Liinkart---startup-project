@@ -29,6 +29,6 @@ class AchievementUnlocked
     public function handle(Unlocked $event)
     {
         // There's an AchievementProgress instance located on $event->progress
-        Session::flash('achievement', $event->progress->details->name);
+        Session::flash('achievement', $event->progress->details->description);
     }
 }

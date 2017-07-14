@@ -40,7 +40,7 @@ class PostController extends Controller
         return view('artworks.create');
     }
  
-    public function store(PostRequest $request, TagRepository $tagRepository)
+    public function store(PostRequest $request, TagRepository $tagRepository, User $user)
     {
         $inputs = array_merge($request->all(), ['user_id' => $request->user()->id]);
  

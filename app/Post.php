@@ -3,9 +3,12 @@
 namespace App;
  
 use Illuminate\Database\Eloquent\Model;
+use Gstt\Achievements\Achiever;
  
 class Post extends Model
 {
+    use Achiever;
+
     protected $fillable = [
         'titre','contenu','user_id', 'technique', 'theme', 'style'
     ];

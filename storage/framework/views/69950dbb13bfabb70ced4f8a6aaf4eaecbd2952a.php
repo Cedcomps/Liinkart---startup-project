@@ -24,20 +24,12 @@
 <section id="background-design">
     <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
          viewBox="0 0 382 955" style="enable-background:new 0 0 382 955;" xml:space="preserve">
-    <style type="text/css">
-        .back0{fill:#E0AFD6;}
-        .back1{fill:#D4E5D1;}
-        .back2{fill:#E8CDE5;}
-        .back3{fill:#D4DAE8;}
-        .back4{fill:#C4E8D9;}
-        .back5{fill:#E8EDDA;}
-    </style>
-    <polygon class="back0" points="382,191 191,0 191,382 "/>
-    <polygon class="back1" points="382,573 191,382 191,764 "/>
-    <polygon class="back2" points="191,382 382,573 382,191 "/>
-    <polygon class="back3" points="0,191 191,382 191,0 "/>
-    <polygon class="back4" points="0,573 191,764 191,382 "/>
-    <polygon class="back5" points="191,764 382,955 382,573 "/>
+    <polygon fill="#E0AFD6" points="382,191 191,0 191,382 "/>
+    <polygon fill="#D4E5D1" points="382,573 191,382 191,764 "/>
+    <polygon fill="#E8CDE5" points="191,382 382,573 382,191 "/>
+    <polygon fill="#D4DAE8" points="0,191 191,382 191,0 "/>
+    <polygon fill="#C4E8D9" points="0,573 191,764 191,382 "/>
+    <polygon fill="#E8EDDA" points="191,764 382,955 382,573 "/>
     </svg>
 </section>
 <div class="navbar-fixed">
@@ -46,45 +38,26 @@
             <a id="liinkart-logo" href="<?php echo e(url('/')); ?>" class="brand-logo">
                 <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          viewBox="0 0 764 1146" style="enable-background:new 0 0 764 1146;" xml:space="preserve">
-                    <style type="text/css">
-                        .st0{fill:#73A9C0;}
-                        .st1{fill:#7670AE;}
-                        .st2{fill:#8BAE87;}
-                        .st3{fill:#7D7ABC;}
-                        .st4{fill:#7B5B97;}
-                        .st5{fill:#6D82B8;}
-                        .st6{fill:#8BB6A6;}
-                        .st7{fill:#AEC380;}
-                        .st8{fill:#D38450;}
-                        .st9{fill:#F3A368;}
-                        .st10{fill:#B55677;}
-                        .st11{fill:#C97077;}
-                        .st12{fill:#DBD175;}
-                        .st13{fill:#EAC76B;}
-                        .st14{fill:#E06666;}
-                        .st15{fill:#934782;}
-                        .st16{fill:#FFFFFF;}
-                    </style>
-                    <polygon class="st0" points="191,573 0,382 0,764 "/>
-                    <polygon class="st1" points="382,382 191,191 191,573 "/>
-                    <polygon class="st2" points="382,764 191,573 191,955 "/>
-                    <polygon class="st3" points="191,573 382,764 382,382 "/>
-                    <polygon class="st4" points="191,191 382,382 382,0 "/>
-                    <polygon class="st5" points="0,382 191,573 191,191 "/>
-                    <polygon class="st6" points="0,764 191,955 191,573 "/>
-                    <polygon class="st7" points="191,955 382,1146 382,764 "/>
-                    <polygon class="st8" points="573,573 764,764 764,382 "/>
-                    <polygon class="st9" points="382,764 573,955 573,573 "/>
-                    <polygon class="st10" points="382,382 573,573 573,191 "/>
-                    <polygon class="st11" points="573,573 382,382 382,764 "/>
-                    <polygon class="st12" points="573,955 382,764 382,1146 "/>
-                    <polygon class="st13" points="764,764 573,573 573,955 "/>
-                    <polygon class="st14" points="764,382 573,191 573,573 "/>
-                    <polygon class="st15" points="573,191 382,0 382,382 "/>
-                    <polyline class="st16" points="418,469.9 537,436 537,837 418,837 "/>
-                    <polyline class="st16" points="346,469.9 227,436 227,837 346,837 "/>
-                    <ellipse class="st16" cx="477.5" cy="336" rx="59.5" ry="56"/>
-                    <ellipse class="st16" cx="286.5" cy="336" rx="59.5" ry="56"/>
+                    <polygon fill="#73A9C0" points="191,573 0,382 0,764 "/>
+                    <polygon fill="#7670AE" points="382,382 191,191 191,573 "/>
+                    <polygon fill="#8BAE87" points="382,764 191,573 191,955 "/>
+                    <polygon fill="#7D7ABC" points="191,573 382,764 382,382 "/>
+                    <polygon fill="#7B5B97" points="191,191 382,382 382,0 "/>
+                    <polygon fill="#6D82B8" points="0,382 191,573 191,191 "/>
+                    <polygon fill="#8BB6A6" points="0,764 191,955 191,573 "/>
+                    <polygon fill="#AEC380" points="191,955 382,1146 382,764 "/>
+                    <polygon fill="#D38450" points="573,573 764,764 764,382 "/>
+                    <polygon fill="#F3A368" points="382,764 573,955 573,573 "/>
+                    <polygon fill="#B55677" points="382,382 573,573 573,191 "/>
+                    <polygon fill="#C97077" points="573,573 382,382 382,764 "/>
+                    <polygon fill="#DBD175" points="573,955 382,764 382,1146 "/>
+                    <polygon fill="#EAC76B" points="764,764 573,573 573,955 "/>
+                    <polygon fill="#E06666" points="764,382 573,191 573,573 "/>
+                    <polygon fill="#934782" points="573,191 382,0 382,382 "/>
+                    <polyline fill="#FFFFFF" points="418,469.9 537,436 537,837 418,837 "/>
+                    <polyline fill="#FFFFFF" points="346,469.9 227,436 227,837 346,837 "/>
+                    <ellipse fill="#FFFFFF" cx="477.5" cy="336" rx="59.5" ry="56"/>
+                    <ellipse fill="#FFFFFF" cx="286.5" cy="336" rx="59.5" ry="56"/>
                     </svg>
             </a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -117,13 +90,13 @@
     <script src=<?php echo e(asset('bower_components/sweetalert2/dist/sweetalert2.min.js')); ?>></script>
 
     <?php if(Session::has('achievement')): ?>
-    <script type="text/javascript">
-        swal({
-            title: 'Hey !',
-            text: 'Vous avez débloqué "<?php echo e(Session::get('achievement')); ?>" Achievement',
-            type: 'success'
-        });
-    </script>
+        <script type="text/javascript">
+            swal({
+                title: 'Hey !',
+                text: 'Vous avez débloqué un nouveau badge: <?php echo e(Session::get('achievement')); ?>',
+                type: 'success'
+            });
+        </script>
     <?php endif; ?>
 </div>  
 
@@ -135,23 +108,14 @@
 <section>
     <div id="background-design2">
         <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-             viewBox="0 0 2000 382" style="enable-background:new 0 0 2000 382;" xml:space="preserve">
-        <style type="text/css">
-            .bgb0{fill:#C9C7E5;}
-            .bgb1{fill:#D8CCE5;}
-            .bgb2{fill:#E8EFD5;}
-            .bgb3{fill:#E2C5D0;}
-            .bgb4{fill:#E8E4CD;}
-            .bgb5{fill:#EDBEBE;}
-            .bgb6{fill:#E0AFD6;}
-        </style>
-        <polygon class="bgb0" points="191,382 0,191 0,382 "/>
-        <polygon class="bgb1" points="0,191 191,382 191,0 "/>
-        <polygon class="bgb2" points="1616,382 1807,382 1807,191 "/>
-        <polygon class="bgb3" points="191,382 382,382 382,191 "/>
-        <polygon class="bgb4" points="1998,382 1807,191 1807,382 "/>
-        <polygon class="bgb5" points="573,382 382,191 382,382 "/>
-        <polygon class="bgb6" points="382,191 191,0 191,382 "/>
+             viewBox="0 0 2000 382" style="enable-background:new 0 0 2000 382;" xml:space="preserve">   
+        <polygon fill="#C9C7E5" points="191,382 0,191 0,382 "/>
+        <polygon fill="#D8CCE5" points="0,191 191,382 191,0 "/>
+        <polygon fill="#E8EFD5" points="1616,382 1807,382 1807,191 "/>
+        <polygon fill="#E2C5D0" points="191,382 382,382 382,191 "/>
+        <polygon fill="#E8E4CD" points="1998,382 1807,191 1807,382 "/>
+        <polygon fill="#EDBEBE" points="573,382 382,191 382,382 "/>
+        <polygon fill="#E0AFD6" points="382,191 191,0 191,382 "/>
         </svg>
     </div>  
 </section>
