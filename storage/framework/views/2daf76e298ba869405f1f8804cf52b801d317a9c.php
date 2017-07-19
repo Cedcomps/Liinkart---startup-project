@@ -1,16 +1,20 @@
 <?php $__env->startSection('css'); ?>
- <link href="<?php echo e(asset('css/user.css')); ?>" rel="stylesheet">
+   <link href="<?php echo e(asset('css/user.css')); ?>" rel="stylesheet">
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <section class="reference">
     <div class="container">
         <div class="row">
-            <div class="col s12">  
+            <div class="col s12 l6">  
                 <div class="card">
                     <div class="card-content center">
                         <div>
                         <img class="responsive-img" src=" <?php echo e(asset('storage/uploads/avatars/' . $user->avatar)); ?>" style="border-radius: 50%;">
-                            <h3><?php echo e($user->name); ?></h3><br>
+                            <h3 data-userid="<?php echo e($user->id); ?>"><?php echo e($user->name); ?></h3><br>
+                            <div class="interaction">
+                                <a href="#" class="like"></a> |
+                                <a href="#" class="like"></a>
+                            </div>
                             <h5><?php echo e($user->country); ?></h5>
                             <h6><?php echo e($user->city); ?></h6><br>
                             <?php $__currentLoopData = $achievements->sortByDesc('unlocked_at'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -39,7 +43,7 @@
                                             <div class="col s12 m10 offset-m1">
                                                 <?php echo Form::model($user, ['route' => ['user.update', $user->id], 'method' => 'put', 'files' => true]); ?>
 
-                                                    <div class="col s12 <?php echo $errors->has('name') ? 'has-error' : ''; ?>">
+                                                    <div class="col s6 <?php echo $errors->has('name') ? 'has-error' : ''; ?>">
                                                         <?php echo e(Form::label('name', 'Votre nom')); ?>
 
                                                         <?php echo Form::text('name', null, ['placeholder' => 'Nom']); ?>
@@ -47,7 +51,7 @@
                                                         <?php echo $errors->first('name', '<small class="help-block">:message</small>'); ?>
 
                                                     </div>
-                                                    <div class="col s12 <?php echo $errors->has('email') ? 'has-error' : ''; ?>">
+                                                    <div class="col s6 <?php echo $errors->has('email') ? 'has-error' : ''; ?>">
                                                         <?php echo e(Form::label('email', 'Votre email')); ?>
 
                                                         <?php echo Form::email('email', null, ['placeholder' => 'Email']); ?>
@@ -70,14 +74,14 @@
 
                                                         <?php echo $errors->first('city', '<small class="help-block">:message</small>'); ?>
 
-                                                    </div>
-                                                    <div class="col s6 <?php echo $errors->has('specialist') ? 'has-error' : ''; ?>">
-                                                        <?php echo e(Form::label('specialist', 'Votre specialité')); ?>
-
-                                                        <?php echo Form::text('specialist', null, ['placeholder' => 'Votre specialité']); ?>
+                                                    <div class="input-field col s6 <?php echo $errors->has('specialist') ? 'has-error' : ''; ?>">
+                                                        <?php echo Form::select('specialist', ['Peinture', 'Peinture à Huile', 'Peinture acrylique', 'Aquarelle', 'Photographie', 'Photographie argentique', 'Photographie numérique', 'Oeuvres sur papier', 'Dessin', 'Encre', 'Estampe', 'Sérigraphie', 'Lithographie', 'Collage', 'Gravure', 'Linogravure', 'Sculpture', 'Sculpture bois', 'Sculpture argile', 'Sculpture métal', 'Sculpture bronze', 'Sculpture pierre', 'Sculpture terre cuite', 'Sculpture céramique', 'Sculpture platre', 'Sculpture marbre', 'Sculpture verre', 'Technique mixte'], null, ['placeholder' => 'Votre spécialité artistique']); ?>
 
                                                         <?php echo $errors->first('specialist', '<small class="help-block">:message</small>'); ?>
 
+                                                        <?php echo e(Form::label('specialist', 'Votre specialité')); ?>
+
+                                                    </div>
                                                     </div>
                                                     <div class="col s6 <?php echo $errors->has('avatar') ? 'has-error' : ''; ?>">
                                                         <?php echo e(Form::label('avatar', 'Votre image de profil')); ?>
@@ -108,15 +112,8 @@
                 </div>
             </div>
 
-            <div class="col s12 m4">  
-                <div class="card">
-                    <div class="card-content">
-                        <h5>Spécialisation</h5>
-                        <h6><span><?php echo e($user->specialist); ?></span></h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m8">  
+           
+            <div class="col s12 l6">  
                 <div class="card">
                     <div class="card-content">
                         <h5>Description bio</h5>
@@ -131,9 +128,6 @@
         <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div id="artworks" class="col s6 m4 l3">
                 <div class="card hoverable sticky-action">
-                    <div class="card-content">                        
-                    
-                    </div>
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="activator" src="<?php echo e(asset ('uploads/office.jpg')); ?>">
                     </div>
@@ -149,8 +143,8 @@
                     <div class="card-action">
                         <a href="<?php echo e(route('artworks.show', ['id' => $post])); ?>" class="right-align">VOIR EN DETAILS</a>
 
-                        <?php if(auth()->check() and auth()->user()->admin): ?>
-                            <form method="POST" action="<?php echo e(route('artworks.destroy', ['id' => $post->id])); ?>">
+                        <?php if(Auth::id() === $user->id || isset(Auth::user()->admin) && Auth::user()->admin == 1): ?>
+                            <br><form method="POST" action="<?php echo e(route('artworks.destroy', ['id' => $post->id])); ?>">
                                 <?php echo e(method_field('DELETE')); ?>
 
                                 <?php echo e(csrf_field()); ?>
@@ -177,5 +171,12 @@
             <span class="glyphicon glyphicon-circle-arrow-left"></span> Retour
         </a>
     </div>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('js'); ?>
+    <script src="<?php echo e(asset('js/user.js')); ?>"></script>
+    <script>
+        var token = '<?php echo e(Session::token()); ?>';
+        var urlLike = '<?php echo e(route('like')); ?>';
+    </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

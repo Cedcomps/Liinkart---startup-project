@@ -19,19 +19,27 @@ input:not([type]).valid, input:not([type]):focus.valid, input[type=text]:not(.br
 }
 #background-design svg {
 	position: absolute;
+	z-index: -1;
 	width: 17%;
 	top: -170px;
 	right: 0;
 }
-section div#background-design2 {
-	position: relative;
-}
 #background-design2 {
+	position: relative;
+	margin-bottom: -35px;
+}
+#background-design2 svg { 
 	position: absolute;
-	top: 5px;
+	bottom: 0px;
+	z-index: -1;
 }
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
 	color: #9575ff !important;
+}
+.side-nav li:first-child img {
+	display: block;
+	margin: auto;
+	padding: 10px 0 10px 0;
 }
 /*subheading*/
 .subheading {
@@ -64,6 +72,40 @@ h6 {
 	height: 40px;
 	border-radius: 50%;
 	margin-right: 10px;
+}
+/*sidenav*/
+.user-view {
+	position: relative;
+	margin-bottom: 8px;
+	padding: 32px 32px 0;
+}
+.user-background {
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: -1;
+}
+.side-nav .user-view .circle, .side-nav {
+	height: 80px;
+	width: 80px;
+}
+.side-nav .user-view .email, .side-nav .user-view .name {
+	line-height: 24px;
+}
+.side-nav .user-view .name {
+	display: block;
+	font-size: 17px;
+	font-weight: 500;
+}
+.side-nav .user-view .email {
+	font-size: 16px;
+	font-weight: 400;
+}
+.side-nav .user-view>a {
+	padding: 0; 
 }
 /*liinkart logo*/
 #liinkart {	
@@ -112,22 +154,14 @@ h6 {
 	#liinkart-logo{
 		background-image: none;
 		width: auto;
-	}#liinkart-logo svg{
+	}
+	#liinkart-logo svg{
 		background-image: none;
 		margin-left: auto;
 	}
-}
-
-button:before, a[class^='btn']:before, a[class*=' btn']:before, a[class^='btn']:not(.tooltipped)  {
-	width: 0;
-	height: 0;
-	position: absolute;
-	top: 0;
-	left: 0;
-	content: '';
-	border-top: 0 solid transparent;
-	border-bottom: 20px solid transparent;
-	border-left: 20px solid #9575ff;
+	.side-nav .user-view {
+	padding: 16px 16px 0;
+	}
 }
 /*header*/
 header {
@@ -199,6 +233,9 @@ header div a {
 a, .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
 	color: #9575ff;
 }
+.certificat {
+	cursor: initial !important;
+}
 /*artwork-article*/
 .artwork-article {
 	margin-top: 50px;
@@ -213,7 +250,7 @@ a, .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
 	margin: 5px;
 	text-transform: uppercase;
 	vertical-align: middle;
-	-webkit-tap-highlight-color: transparent;
+	-webkit-tap-highlight-color: transparent;	
 }
 .tooltipped:hover {
 	cursor: default;
@@ -246,4 +283,9 @@ output:after {
         transform: scale(1.0);
         -webkit-transform: scale(1.0);
     }
+}
+.creation-article {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
 }

@@ -1,7 +1,6 @@
 <?php
  
 namespace App\Http\Controllers;
-
 use App\Repositories\PostRepository;
 use App\Repositories\TagRepository;
 use App\Http\Requests\PostRequest;
@@ -56,10 +55,8 @@ class PostController extends Controller
         $user->addProgress(new UserMade10Posts(), 1);
         $user->addProgress(new UserMade100Posts(), 1);
         $user->addProgress(new UserMade1000Posts(), 1);
-
         return redirect(route('artworks.index'));
     }
-
     public function show($id)
     {
         $post = Post::find($id);
@@ -77,8 +74,6 @@ class PostController extends Controller
     {
         $posts = $this->postRepository->getWithUserAndTagsForTagPaginate($tag, $this->nbrPerPage);
         $links = $posts->render();
-
-
         return view('artworks.liste', compact('posts', 'links'))
             ->with('info', 'Résultats pour la recherche du mot-clé : ' . $tag);
     }

@@ -1,17 +1,21 @@
 @extends('layouts.app')
 @section('css')
- <link href="{{ asset('css/user.css') }}" rel="stylesheet">
+   <link href="{{ asset('css/user.css') }}" rel="stylesheet">
 @endsection
 @section('content')
 <section class="reference">
     <div class="container">
         <div class="row">
-            <div class="col s12">  
+            <div class="col s12 l6">  
                 <div class="card">
                     <div class="card-content center">
                         <div>
                         <img class="responsive-img" src=" {{ asset('storage/uploads/avatars/' . $user->avatar) }}" style="border-radius: 50%;">
-                            <h3>{{ $user->name }}</h3><br>
+                            <h3 data-userid="{{ $user->id }}">{{ $user->name }}</h3><br>
+                            <div class="interaction">
+                                <a href="#" class="like">{{  Auth::user()->likes()->where('user_id', $user->id)->first() ? Auth::user()->likes()->where('user_id', $user->id)->first()->like == 1 ? 'You like this user' : 'Like' : 'Like'  }}</a> |
+                                <a href="#" class="like">{{ Auth::user()->likes()->where('user_id', $user->id)->first() ? Auth::user()->likes()->where('user_id', $user->id)->first()->like == 0 ? 'You don\'t like this user' : 'Dislike' : 'Dislike'  }}</a>
+                            </div>
                             <h5>{{ $user->country }}</h5>
                             <h6>{{ $user->city }}</h6><br>
                             @foreach($achievements->sortByDesc('unlocked_at') as $item)
@@ -39,12 +43,12 @@
                                         <div class="row">
                                             <div class="col s12 m10 offset-m1">
                                                 {!! Form::model($user, ['route' => ['user.update', $user->id], 'method' => 'put', 'files' => true]) !!}
-                                                    <div class="col s12 {!! $errors->has('name') ? 'has-error' : '' !!}">
+                                                    <div class="col s6 {!! $errors->has('name') ? 'has-error' : '' !!}">
                                                         {{ Form::label('name', 'Votre nom') }}
                                                         {!! Form::text('name', null, ['placeholder' => 'Nom']) !!}
                                                         {!! $errors->first('name', '<small class="help-block">:message</small>') !!}
                                                     </div>
-                                                    <div class="col s12 {!! $errors->has('email') ? 'has-error' : '' !!}">
+                                                    <div class="col s6 {!! $errors->has('email') ? 'has-error' : '' !!}">
                                                         {{ Form::label('email', 'Votre email') }}
                                                         {!! Form::email('email', null, ['placeholder' => 'Email']) !!}
                                                         {!! $errors->first('email', '<small class="help-block">:message</small>') !!}
@@ -58,11 +62,11 @@
                                                         {{ Form::label('city', 'Votre ville actuelle') }}
                                                         {!! Form::text('city', null, ['placeholder' => 'Votre ville actuelle']) !!}
                                                         {!! $errors->first('city', '<small class="help-block">:message</small>') !!}
-                                                    </div>
-                                                    <div class="col s6 {!! $errors->has('specialist') ? 'has-error' : '' !!}">
-                                                        {{ Form::label('specialist', 'Votre specialité') }}
-                                                        {!! Form::text('specialist', null, ['placeholder' => 'Votre specialité']) !!}
+                                                    <div class="input-field col s6 {!! $errors->has('specialist') ? 'has-error' : '' !!}">
+                                                        {!! Form::select('specialist', ['Peinture', 'Peinture à Huile', 'Peinture acrylique', 'Aquarelle', 'Photographie', 'Photographie argentique', 'Photographie numérique', 'Oeuvres sur papier', 'Dessin', 'Encre', 'Estampe', 'Sérigraphie', 'Lithographie', 'Collage', 'Gravure', 'Linogravure', 'Sculpture', 'Sculpture bois', 'Sculpture argile', 'Sculpture métal', 'Sculpture bronze', 'Sculpture pierre', 'Sculpture terre cuite', 'Sculpture céramique', 'Sculpture platre', 'Sculpture marbre', 'Sculpture verre', 'Technique mixte'], null, ['placeholder' => 'Votre spécialité artistique']) !!}
                                                         {!! $errors->first('specialist', '<small class="help-block">:message</small>') !!}
+                                                        {{ Form::label('specialist', 'Votre specialité') }}
+                                                    </div>
                                                     </div>
                                                     <div class="col s6 {!! $errors->has('avatar') ? 'has-error' : '' !!}">
                                                         {{ Form::label('avatar', 'Votre image de profil') }}
@@ -86,15 +90,15 @@
                 </div>
             </div>
 
-            <div class="col s12 m4">  
+           {{--  <div class="col s12 m4">  
                 <div class="card">
                     <div class="card-content">
                         <h5>Spécialisation</h5>
                         <h6><span>{{ $user->specialist }}</span></h6>
                     </div>
                 </div>
-            </div>
-            <div class="col s12 m8">  
+            </div> --}}
+            <div class="col s12 l6">  
                 <div class="card">
                     <div class="card-content">
                         <h5>Description bio</h5>
@@ -109,9 +113,6 @@
         @foreach($posts as $post)
             <div id="artworks" class="col s6 m4 l3">
                 <div class="card hoverable sticky-action">
-                    <div class="card-content">                        
-                    {{-- <a class="btn-floating halfway-feb btn-large waves-effect waves-light red"><i class="material-icons">favorite_border</i></a> --}}
-                    </div>
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="activator" src="{{ asset ('uploads/office.jpg')}}">
                     </div>
@@ -127,8 +128,8 @@
                     <div class="card-action">
                         <a href="{{ route('artworks.show', ['id' => $post]) }}" class="right-align">VOIR EN DETAILS</a>
 
-                        @if(auth()->check() and auth()->user()->admin)
-                            <form method="POST" action="{{ route('artworks.destroy', ['id' => $post->id]) }}">
+                        @if (Auth::id() === $user->id || isset(Auth::user()->admin) && Auth::user()->admin == 1)
+                            <br><form method="POST" action="{{ route('artworks.destroy', ['id' => $post->id]) }}">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}
                                 <input class="btn btn-danger" onclick="return confirm('Vraiment supprimer cet article ?')" type="submit" value="Supprimer">
@@ -153,4 +154,11 @@
             <span class="glyphicon glyphicon-circle-arrow-left"></span> Retour
         </a>
     </div>
+@endsection
+@section('js')
+    <script src="{{ asset('js/user.js') }}"></script>
+    <script>
+        var token = '{{ Session::token()}}';
+        var urlLike = '{{ route('like')}}';
+    </script>
 @endsection

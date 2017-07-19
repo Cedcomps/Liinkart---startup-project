@@ -197,6 +197,10 @@ return [
          * Gamification
          */
         Gstt\Achievements\AchievementsServiceProvider::class,
+        /**
+         * PDF generator
+         */
+        Barryvdh\DomPDF\ServiceProvider::class,
     ],
 
     /*
@@ -250,6 +254,7 @@ return [
         'Debugbar'       => Barryvdh\Debugbar\Facade::class,
         'MaterializeCSS' => Skydiver\LaravelMaterializeCSS\MaterializeCSS::class,
         'Image'          => Intervention\Image\Facades\Image::class,
+        'PDF'            => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

@@ -8,7 +8,7 @@
             @endif
             {!! $posts->links() !!}
             @foreach($posts as $post)
-                <div id="artworks" class="col s12 m6 l4">
+                <div class="artworks col s12 m6 l4" data-postid="{{ $post->id }}">
                     <div class="card hoverable sticky-action">
                         <div class="card-content">
                             <div class="valign-wrapper">
@@ -19,8 +19,6 @@
                                     <a class="black-text" href="{{ route('user.show', ['id' => $post->user->id]) }}">By {{ $post->user->name or "Artiste"}}</a>
                                 </div>
                             </div>
-                        
-                        {{-- <a class="btn-floating halfway-feb btn-large waves-effect waves-light red"><i class="material-icons">favorite_border</i></a> --}}
                         </div>
                         <div class="card-image waves-effect waves-block waves-light">
                             <img class="activator" src="{{ asset ('uploads/office.jpg')}}">
@@ -39,14 +37,6 @@
                         </div>
                         <div class="card-action">
                             <a href="{{ route('artworks.show', ['id' => $post]) }}" class="right-align">VOIR EN DETAILS</a>
-
-                            @if(auth()->check() and auth()->user()->admin)
-                                <form method="POST" action="{{ route('artworks.destroy', ['id' => $post->id]) }}">
-                                    {{ method_field('DELETE') }}
-                                    {{ csrf_field() }}
-                                    <input class="btn btn-danger" onclick="return confirm('Vraiment supprimer cet article ?')" type="submit" value="Supprimer">
-                                </form>
-                            @endif
                         </div>
                     </div>
                 </div>  

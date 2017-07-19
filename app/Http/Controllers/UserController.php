@@ -7,7 +7,7 @@ use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Repositories\UserRepository;
 use App\User;
-
+use App\Like;
 use Image;
 use Auth;
 
@@ -27,7 +27,7 @@ class UserController extends Controller
  
     public function __construct(UserRepository $userRepository)
     {
-        $this->middleware('admin')->except('show', 'update');
+        $this->middleware('admin')->except('show', 'update', 'likeUser');
         $this->userRepository = $userRepository;
     }
  
@@ -76,7 +76,6 @@ class UserController extends Controller
     }
  
     public function update(UserUpdateRequest $request, User $user)
-            //dd($user->avatar);
     {
  
         if($request->hasFile('avatar')) 
@@ -116,5 +115,34 @@ class UserController extends Controller
         $this->userRepository->destroy($user);
  
         return back();
+    }
+
+    public function likeUser(Request $request)
+    {
+        $user_id = $request['userId'];
+        $is_like = $request['isLike'] === 'true';
+        $update = false;
+        $user = User::find($user_id);
+        
+        $userHasLike = Auth::user();
+        $like = $userHasLike->likes()->where('user_id', $user_id)->first();
+        if ($like) {
+            $already_like = $like->like;
+            $update = true;
+            if ($already_like == $is_like) {
+                $like->delete();
+                return null;
+            }
+        } else {
+            $like = new Like();
+        }
+        $like->like = $is_like;
+        $like->user_id = $userHasLike->id;
+        if ($update) {
+            $like->update();
+        } else {
+            $like->save();
+        }
+        return null;
     }
 }

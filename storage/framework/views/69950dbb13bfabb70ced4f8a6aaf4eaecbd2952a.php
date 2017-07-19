@@ -16,9 +16,10 @@
     <!--Import Google Icon Font-->
     <?php echo Html::style("https://fonts.googleapis.com/icon?family=Material+Icons"); ?>
 
+    <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
+    
     <?php echo $__env->yieldContent('css'); ?>
 
-    <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
 </head>
 <body>
 <section id="background-design">
@@ -32,7 +33,6 @@
     <polygon fill="#E8EDDA" points="191,764 382,955 382,573 "/>
     </svg>
 </section>
-<div class="navbar-fixed">
     <nav class="liinkart-medium z-depth-2">
         <div class="nav-wrapper">
             <a id="liinkart-logo" href="<?php echo e(url('/')); ?>" class="brand-logo">
@@ -58,15 +58,15 @@
                     <polyline fill="#FFFFFF" points="346,469.9 227,436 227,837 346,837 "/>
                     <ellipse fill="#FFFFFF" cx="477.5" cy="336" rx="59.5" ry="56"/>
                     <ellipse fill="#FFFFFF" cx="286.5" cy="336" rx="59.5" ry="56"/>
-                    </svg>
+                </svg>
             </a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">more_vert</i></a>
+            <ul class="right hide-on-med-and-down">
                 <?php if(Auth::guest()): ?>
-                    <li><a href="<?php echo e(route('login')); ?>">Login</a></li>
-                    <li><a href="<?php echo e(route('register')); ?>">Register</a></li>
+                    <li><a href="<?php echo e(route('login')); ?>">Se connecter</a></li>
+                    <li><a href="<?php echo e(route('register')); ?>">Créer un compte</a></li>
                 <?php else: ?>
-                    <li><a href="<?php echo e(url('/artworks/create')); ?>">Créer un article</a></li>
+                    <li><a href="<?php echo e(url('/artworks/create')); ?>">Créer une oeuvre</a></li>
                     <li><a href="#!" class="dropdown-button" data-activates="dropdown1">
                             <img class="avatar" src="<?php echo e(asset('storage/uploads/avatars/' . Auth::user()->avatar)); ?>">
                             <?php echo e(Auth::user()->name); ?> <i class="material-icons right">apps</i>
@@ -74,7 +74,7 @@
                         <ul id="dropdown1" class="dropdown-content">
                             <li>
                                 <a href="<?php echo e(route('user.show', [auth()->user()->id])); ?>">Profil</a>
-                                <a href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                <a href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnexion</a>
                                 <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
                                     <?php echo e(csrf_field()); ?>
 
@@ -84,9 +84,35 @@
                     </li>
                 <?php endif; ?>
             </ul>
-            
+            <ul class="side-nav" id="mobile-demo">
+            <li><img src="<?php echo e(asset('/uploads/liinkart-logo-sidenav.png')); ?>"></li>
+                <?php if(Auth::guest()): ?>
+                    <li><a href="<?php echo e(route('login')); ?>"><i class="material-icons">perm_identity</i>Se connecter</a></li>
+                    <li><a href="<?php echo e(route('register')); ?>"><i class="material-icons">person_add</i>Créer un compte</a></li>
+                <?php else: ?>
+                    <li>
+                        <div class="user-view">
+                            <div class="user-background"><img src="<?php echo e(asset ('uploads/user-bg.jpg')); ?>"></div>
+                        <img class="circle" src="<?php echo e(asset('storage/uploads/avatars/' . Auth::user()->avatar)); ?>">
+                        <span class="white-text name"><?php echo e(Auth::user()->name); ?></span>
+                        <span class="white-text email"><?php echo e(Auth::user()->email); ?></span>
+                        </div>
+                    </li>
+                    <li><a href="<?php echo e(route('artworks.index')); ?>"><i class="material-icons">home</i>Accueil</a></li>
+                    <li><a href="<?php echo e(route('user.show', [auth()->user()->id])); ?>"><i class="material-icons">face</i>Profil</a>
+                    <li><a href="<?php echo e(url('/artworks/create')); ?>"><i class="material-icons">add</i>Créer une oeuvre</a></li>
+                <?php endif; ?>
+                    <li><div class="divider"></div></li>
+                    <li><a class="text-lighten-3" href="<?php echo e(route('faq')); ?>"><i class="material-icons">help</i>Aide</a></li>
+                    <li><a class="text-lighten-3" href="<?php echo e(url('contact')); ?>"><i class="material-icons">email</i>Nous contacter</a></li>
+                <?php if(Auth::check()): ?>
+                    <li><div class="divider"></div></li>
+                    <li><a href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="material-icons">close</i>Se déconnecter</a><form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;"><?php echo e(csrf_field()); ?></form></li>
+                <?php endif; ?>
+            </ul>
         </div>
     </nav>
+     
     <script src=<?php echo e(asset('bower_components/sweetalert2/dist/sweetalert2.min.js')); ?>></script>
 
     <?php if(Session::has('achievement')): ?>
@@ -98,26 +124,14 @@
             });
         </script>
     <?php endif; ?>
-</div>  
 
     <?php if(Auth::user()): ?>
         <?php echo $__env->yieldContent('sidebar'); ?>
     <?php endif; ?>
         <?php echo $__env->yieldContent('content'); ?>
 
-<section>
-    <div id="background-design2">
-        <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-             viewBox="0 0 2000 382" style="enable-background:new 0 0 2000 382;" xml:space="preserve">   
-        <polygon fill="#C9C7E5" points="191,382 0,191 0,382 "/>
-        <polygon fill="#D8CCE5" points="0,191 191,382 191,0 "/>
-        <polygon fill="#E8EFD5" points="1616,382 1807,382 1807,191 "/>
-        <polygon fill="#E2C5D0" points="191,382 382,382 382,191 "/>
-        <polygon fill="#E8E4CD" points="1998,382 1807,191 1807,382 "/>
-        <polygon fill="#EDBEBE" points="573,382 382,191 382,382 "/>
-        <polygon fill="#E0AFD6" points="382,191 191,0 191,382 "/>
-        </svg>
-    </div>  
+<section id="background-design2">
+    <?php echo $__env->make('layouts.background-footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 </section>
 
     <?php echo $__env->make('layouts._footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>           
@@ -126,5 +140,6 @@
 
 
     <script src=<?php echo e(asset("js/script.js")); ?>></script>
+    <?php echo $__env->yieldContent('js'); ?>
 </body>
 </html>

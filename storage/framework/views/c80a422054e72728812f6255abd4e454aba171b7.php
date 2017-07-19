@@ -8,7 +8,7 @@
             <?php echo $posts->links(); ?>
 
             <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div id="artworks" class="col s12 m6 l4">
+                <div class="artworks col s12 m6 l4" data-postid="<?php echo e($post->id); ?>">
                     <div class="card hoverable sticky-action">
                         <div class="card-content">
                             <div class="valign-wrapper">
@@ -19,8 +19,6 @@
                                     <a class="black-text" href="<?php echo e(route('user.show', ['id' => $post->user->id])); ?>">By <?php echo e(isset($post->user->name) ? $post->user->name : "Artiste"); ?></a>
                                 </div>
                             </div>
-                        
-                        
                         </div>
                         <div class="card-image waves-effect waves-block waves-light">
                             <img class="activator" src="<?php echo e(asset ('uploads/office.jpg')); ?>">
@@ -39,16 +37,6 @@
                         </div>
                         <div class="card-action">
                             <a href="<?php echo e(route('artworks.show', ['id' => $post])); ?>" class="right-align">VOIR EN DETAILS</a>
-
-                            <?php if(auth()->check() and auth()->user()->admin): ?>
-                                <form method="POST" action="<?php echo e(route('artworks.destroy', ['id' => $post->id])); ?>">
-                                    <?php echo e(method_field('DELETE')); ?>
-
-                                    <?php echo e(csrf_field()); ?>
-
-                                    <input class="btn btn-danger" onclick="return confirm('Vraiment supprimer cet article ?')" type="submit" value="Supprimer">
-                                </form>
-                            <?php endif; ?>
                         </div>
                     </div>
                 </div>  

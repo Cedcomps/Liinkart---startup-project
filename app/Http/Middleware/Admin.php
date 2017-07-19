@@ -19,6 +19,6 @@ class Admin
             return $next($request);
         }
  
-        return redirect('post');
+        return redirect('artworks');
     }
 }

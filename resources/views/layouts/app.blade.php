@@ -15,9 +15,10 @@
     <link rel="stylesheet" href="{{ asset('bower_components/sweetalert2/dist/sweetalert2.min.css') }}">
     <!--Import Google Icon Font-->
     {!! Html::style("https://fonts.googleapis.com/icon?family=Material+Icons") !!}
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
     @yield('css')
 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
 <section id="background-design">
@@ -31,7 +32,6 @@
     <polygon fill="#E8EDDA" points="191,764 382,955 382,573 "/>
     </svg>
 </section>
-<div class="navbar-fixed">
     <nav class="liinkart-medium z-depth-2">
         <div class="nav-wrapper">
             <a id="liinkart-logo" href="{{ url('/') }}" class="brand-logo">
@@ -57,15 +57,15 @@
                     <polyline fill="#FFFFFF" points="346,469.9 227,436 227,837 346,837 "/>
                     <ellipse fill="#FFFFFF" cx="477.5" cy="336" rx="59.5" ry="56"/>
                     <ellipse fill="#FFFFFF" cx="286.5" cy="336" rx="59.5" ry="56"/>
-                    </svg>
+                </svg>
             </a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">more_vert</i></a>
+            <ul class="right hide-on-med-and-down">
                 @if (Auth::guest())
-                    <li><a href="{{ route('login') }}">Login</a></li>
-                    <li><a href="{{ route('register') }}">Register</a></li>
+                    <li><a href="{{ route('login') }}">Se connecter</a></li>
+                    <li><a href="{{ route('register') }}">Créer un compte</a></li>
                 @else
-                    <li><a href="{{ url('/artworks/create') }}">Créer un article</a></li>
+                    <li><a href="{{ url('/artworks/create') }}">Créer une oeuvre</a></li>
                     <li><a href="#!" class="dropdown-button" data-activates="dropdown1">
                             <img class="avatar" src="{{ asset('storage/uploads/avatars/' . Auth::user()->avatar) }}">
                             {{ Auth::user()->name }} <i class="material-icons right">apps</i>
@@ -73,7 +73,7 @@
                         <ul id="dropdown1" class="dropdown-content">
                             <li>
                                 <a href="{{ route('user.show', [auth()->user()->id]) }}">Profil</a>
-                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnexion</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
@@ -82,9 +82,35 @@
                     </li>
                 @endif
             </ul>
-            
+            <ul class="side-nav" id="mobile-demo">
+            <li><img src="{{ asset('/uploads/liinkart-logo-sidenav.png')}}"></li>
+                @if (Auth::guest())
+                    <li><a href="{{ route('login') }}"><i class="material-icons">perm_identity</i>Se connecter</a></li>
+                    <li><a href="{{ route('register') }}"><i class="material-icons">person_add</i>Créer un compte</a></li>
+                @else
+                    <li>
+                        <div class="user-view">
+                            <div class="user-background"><img src="{{ asset ('uploads/user-bg.jpg')}}"></div>
+                        <img class="circle" src="{{ asset('storage/uploads/avatars/' . Auth::user()->avatar) }}">
+                        <span class="white-text name">{{ Auth::user()->name }}</span>
+                        <span class="white-text email">{{ Auth::user()->email }}</span>
+                        </div>
+                    </li>
+                    <li><a href="{{ route('artworks.index')}}"><i class="material-icons">home</i>Accueil</a></li>
+                    <li><a href="{{ route('user.show', [auth()->user()->id]) }}"><i class="material-icons">face</i>Profil</a>
+                    <li><a href="{{ url('/artworks/create') }}"><i class="material-icons">add</i>Créer une oeuvre</a></li>
+                @endif
+                    <li><div class="divider"></div></li>
+                    <li><a class="text-lighten-3" href="{{ route('faq') }}"><i class="material-icons">help</i>Aide</a></li>
+                    <li><a class="text-lighten-3" href="{{ url('contact') }}"><i class="material-icons">email</i>Nous contacter</a></li>
+                @if(Auth::check())
+                    <li><div class="divider"></div></li>
+                    <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="material-icons">close</i>Se déconnecter</a><form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form></li>
+                @endif
+            </ul>
         </div>
     </nav>
+     
     <script src={{ asset('bower_components/sweetalert2/dist/sweetalert2.min.js')}}></script>
 
     @if(Session::has('achievement'))
@@ -96,26 +122,14 @@
             });
         </script>
     @endif
-</div>  
 
     @if (Auth::user())
         @yield('sidebar')
     @endif
         @yield('content')
 
-<section>
-    <div id="background-design2">
-        <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-             viewBox="0 0 2000 382" style="enable-background:new 0 0 2000 382;" xml:space="preserve">   
-        <polygon fill="#C9C7E5" points="191,382 0,191 0,382 "/>
-        <polygon fill="#D8CCE5" points="0,191 191,382 191,0 "/>
-        <polygon fill="#E8EFD5" points="1616,382 1807,382 1807,191 "/>
-        <polygon fill="#E2C5D0" points="191,382 382,382 382,191 "/>
-        <polygon fill="#E8E4CD" points="1998,382 1807,191 1807,382 "/>
-        <polygon fill="#EDBEBE" points="573,382 382,191 382,382 "/>
-        <polygon fill="#E0AFD6" points="382,191 191,0 191,382 "/>
-        </svg>
-    </div>  
+<section id="background-design2">
+    @include('layouts.background-footer')
 </section>
 
     @include('layouts._footer')           
@@ -123,5 +137,6 @@
     {!! MaterializeCSS::include_full() !!}
 
     <script src={{ asset("js/script.js") }}></script>
+    @yield('js')
 </body>
 </html>
