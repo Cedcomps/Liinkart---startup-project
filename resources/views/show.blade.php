@@ -159,6 +159,7 @@
     <script src="{{ asset('js/user.js') }}"></script>
     <script>
         var token = '{{ Session::token()}}';
+        var userHasLiked = '{{ Auth::user()->id }}';
         var urlLike = '{{ route('like')}}';
     </script>
 @endsection

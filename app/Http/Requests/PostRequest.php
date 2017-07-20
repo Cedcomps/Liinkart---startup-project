@@ -24,8 +24,13 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'titre'   => 'bail|required|max:255',
-            'contenu' => 'required',
+            'titre'   => 'bail|required|alpha|max:255',
+            'contenu' => 'bail|required',
+            'year' => 'bail|required|alpha_num|max:4'
+            'largeur' => 'alpha_num|max:5'
+            'longueur' => 'alpha_num|max:5'
+            'hauteur' => 'alpha_num|max:5'
+            'categories' => 'bail|required'
             'tags'    => ['Regex:/^[A-Za-z0-9-éèàù]{1,50}?(,[A-Za-z0-9-éèàù]{1,50})*$/']
         ];
     }

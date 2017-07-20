@@ -12,7 +12,11 @@
 				<div class="col l6 s12">
 					<div class="section">
 						<h1>{{ $post->titre }}</h1>
-						<span class="chip-technique">{{ $post->technique }}</span>
+						<span class="chip-technique">
+							@if (isset($post->category))
+	                            {{ $post->category->category }}
+	                        @endif
+                        </span>
 						<span class="right-align"><a class="waves-effect waves-light btn-large z-depth-3" href="#modal1"><i class="material-icons right">gavel</i>Faire une offre</a></span><br>
 						{{-- gavel modal --}}
 						<div id="modal1" class="modal">

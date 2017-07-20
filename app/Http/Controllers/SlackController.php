@@ -30,10 +30,11 @@ class SlackController extends Controller
             ->send(new Slack($request->except('_token')));
 
         $user = User::where('email', '=', Input::get('email'));
-       // dd($user);
         if ($user->exists()) {
-            Auth::user()->unlock(new UserConnectedSlack());
-        }
+            $user = $user->first();
+            User::find($user->id)->unlock(new UserConnectedSlack());
+        } 
+
 
         return view('form.email_slack_ok');
     }

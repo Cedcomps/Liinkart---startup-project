@@ -59,7 +59,7 @@
             </div>
         </div></div>
     </div>
-    <br><a class="waves-effect waves-light btn" href="<?php echo e(url('contact')); ?>">DONNEZ VOTRE AVIS</a></p>
+    <br>
 </div>
 <?php $__env->stopSection(); ?>
 

@@ -55,9 +55,22 @@
 		<br>
 		Titre de l’œuvre : {{$post->titre}}<br>
 		Nom de l'artiste : {{ $post->user->name }}<br>
-		Technique et matériaux : {{$post->titre}}<br>
-		Dimensions :<br>
-		Année de réalisation :<br>
+		Technique et matériaux : {{$post->category->category}}<br>
+		Dimensions : 
+			@if(!empty($post->largeur))
+				largeur: {{$post->largeur}}cm,&nbsp;
+			@endif
+			@if(!empty($post->longueur))
+				longueur: {{$post->longueur}}cm,&nbsp;
+			@endif
+			@if(!empty($post->hauteur))
+				hauteur: {{$post->hauteur}}cm
+			@endif
+		@if(empty($post->largeur) AND empty($post->longueur) AND empty($post->hauteur))
+		Non connues
+		@endif
+		<br>
+		Année de réalisation : {{$post->year}}<br>
 		N° d’identification LiinkART: {{ Carbon\Carbon::now()->formatLocalized('%Y') }}{{ $post->id }}
 		<br>
 		<br>

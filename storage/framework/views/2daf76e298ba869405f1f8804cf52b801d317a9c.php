@@ -12,8 +12,8 @@
                         <img class="responsive-img" src=" <?php echo e(asset('storage/uploads/avatars/' . $user->avatar)); ?>" style="border-radius: 50%;">
                             <h3 data-userid="<?php echo e($user->id); ?>"><?php echo e($user->name); ?></h3><br>
                             <div class="interaction">
-                                <a href="#" class="like"></a> |
-                                <a href="#" class="like"></a>
+                                <a href="#" class="like"><?php echo e(Auth::user()->likes()->where('user_id', $user->id)->first() ? Auth::user()->likes()->where('user_id', $user->id)->first()->like == 1 ? 'You like this user' : 'Like' : 'Like'); ?></a> |
+                                <a href="#" class="like"><?php echo e(Auth::user()->likes()->where('user_id', $user->id)->first() ? Auth::user()->likes()->where('user_id', $user->id)->first()->like == 0 ? 'You don\'t like this user' : 'Dislike' : 'Dislike'); ?></a>
                             </div>
                             <h5><?php echo e($user->country); ?></h5>
                             <h6><?php echo e($user->city); ?></h6><br>
@@ -176,6 +176,7 @@
     <script src="<?php echo e(asset('js/user.js')); ?>"></script>
     <script>
         var token = '<?php echo e(Session::token()); ?>';
+        var userHasLiked = '<?php echo e(Auth::user()->id); ?>';
         var urlLike = '<?php echo e(route('like')); ?>';
     </script>
 <?php $__env->stopSection(); ?>

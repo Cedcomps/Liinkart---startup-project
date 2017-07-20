@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         );
  
         factory(App\Tag::class, 10)->create();
+        factory(App\Category::class, 10)->create();
  
         $posts = App\Post::all();
  

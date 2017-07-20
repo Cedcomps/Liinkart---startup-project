@@ -10,7 +10,7 @@ class Post extends Model
     use Achiever;
 
     protected $fillable = [
-        'titre','contenu','user_id', 'technique', 'theme', 'style'
+        'titre','contenu','user_id', 'category_id'
     ];
  
     public function user() 
@@ -21,6 +21,11 @@ class Post extends Model
     public function tags()
     {
         return $this->belongsToMany(\App\Tag::class);
+    } 
+
+    public function category()
+    {
+        return $this->belongsTo(\App\Category::class);
     } 
 
 }

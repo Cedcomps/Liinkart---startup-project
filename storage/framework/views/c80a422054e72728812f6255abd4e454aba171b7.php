@@ -25,7 +25,12 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4"><?php echo e($post->titre); ?><i class="material-icons right">more_vert</i></span>
-                            <span class="chip-technique left-align"><?php echo e($post->technique); ?></span>
+                            <span class="chip-technique left-align">
+                                <?php if(isset($post->category)): ?>
+                                <?php echo e($post->category->category); ?>
+
+                                <?php endif; ?>
+                            </span>
                             <span class="time-ago"><?php echo e($post->created_at->diffForHumans()); ?> </span>
                         </div>
                         <div class="card-reveal">

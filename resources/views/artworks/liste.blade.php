@@ -25,7 +25,11 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">{{ $post->titre }}<i class="material-icons right">more_vert</i></span>
-                            <span class="chip-technique left-align">{{ $post->technique }}</span>
+                            <span class="chip-technique left-align">
+                                @if (isset($post->category))
+                                {{ $post->category->category }}
+                                @endif
+                            </span>
                             <span class="time-ago">{{ $post->created_at->diffForHumans() }} </span>
                         </div>
                         <div class="card-reveal">

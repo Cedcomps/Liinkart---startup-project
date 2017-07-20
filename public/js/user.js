@@ -8,7 +8,7 @@ $(document).ready(function(){
  		$.ajax({
  			method: 'post',
  			url: urlLike,
- 			data: {isLike: isLike, userId: userId, _token: token}
+ 			data: {userHasLiked : userHasLiked, isLike: isLike, userId: userId, _token: token}
  		})
  			.done(function() {
 				event.target.innerText = isLike ? event.target.innerText == 'Like' ? 'You like this dude' : 'Like' :  event.target.innerText == "Dislike" ? 'Tu aimes pas ' : 'Dislike';

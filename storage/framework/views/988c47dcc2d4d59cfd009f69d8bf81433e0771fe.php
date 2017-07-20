@@ -10,7 +10,12 @@
 				<div class="col l6 s12">
 					<div class="section">
 						<h1><?php echo e($post->titre); ?></h1>
-						<span class="chip-technique"><?php echo e($post->technique); ?></span>
+						<span class="chip-technique">
+							<?php if(isset($post->category)): ?>
+	                            <?php echo e($post->category->category); ?>
+
+	                        <?php endif; ?>
+                        </span>
 						<span class="right-align"><a class="waves-effect waves-light btn-large z-depth-3" href="#modal1"><i class="material-icons right">gavel</i>Faire une offre</a></span><br>
 						
 						<div id="modal1" class="modal">

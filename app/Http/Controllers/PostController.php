@@ -29,9 +29,10 @@ class PostController extends Controller
     {
         $posts = $this->postRepository->getWithUserAndTagsPaginate($this->nbrPerPage);
         $links = $posts->render();
+        $categories = Post::with(array('category'))->get();
         $users = Post::with(array('user'))->get();
  
-        return view('artworks.liste', compact('posts', 'links', 'users'));
+        return view('artworks.liste', compact('posts', 'links', 'users', 'categories'));
     }
  
     public function create()
@@ -48,9 +49,13 @@ class PostController extends Controller
         if(isset($inputs['tags'])) {
             $tagRepository->store($post, $inputs['tags']);
         }
-        // Gets the active user. Should come from session in a default app.
-        $user = User::find(1);
+
         
+        // Gets the active user. Should come from session in a default app.
+        $user = $request->user()->id;
+        dd($user);
+        $posts = $user->posts()->get();
+
         $user->unlock(new UserMadeAPost(), 1);
         $user->addProgress(new UserMade10Posts(), 1);
         $user->addProgress(new UserMade100Posts(), 1);
@@ -77,4 +82,5 @@ class PostController extends Controller
         return view('artworks.liste', compact('posts', 'links'))
             ->with('info', 'Résultats pour la recherche du mot-clé : ' . $tag);
     }
+
 }
