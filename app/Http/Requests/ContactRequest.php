@@ -27,7 +27,7 @@ class ContactRequest extends FormRequest
             'nom'   => 'bail|required|between:5,30|alpha',
             'objet' => 'bail|required|between:5,45',
             'email' => 'bail|required|email',
-            'texte' => 'bail|required|max:400'
+            'texte' => 'bail|required|max:400',
         ];
     }
 }

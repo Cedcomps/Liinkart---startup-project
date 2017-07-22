@@ -56,7 +56,12 @@
 		<br>
 		Titre de l’œuvre : <?php echo e($post->titre); ?><br>
 		Nom de l'artiste : <?php echo e($post->user->name); ?><br>
-		Technique et matériaux : <?php echo e($post->category->category); ?><br>
+		Technique et matériaux : 
+		<?php if(isset($post->category)): ?>
+            <?php echo e($post->category->category); ?>
+
+        <?php else: ?> Non connues
+        <?php endif; ?><br>
 		Dimensions : 
 			<?php if(!empty($post->largeur)): ?>
 				largeur: <?php echo e($post->largeur); ?>cm,&nbsp;
@@ -67,11 +72,16 @@
 			<?php if(!empty($post->hauteur)): ?>
 				hauteur: <?php echo e($post->hauteur); ?>cm
 			<?php endif; ?>
-		<?php if(empty($post->largeur) AND empty($post->longueur) AND empty($post->hauteur)): ?>
+		<?php if(($post->largeur) == NULL AND ($post->longueur) == NULL AND ($post->hauteur) == NULL): ?>
 		Non connues
 		<?php endif; ?>
 		<br>
-		Année de réalisation : <?php echo e($post->year); ?><br>
+		Année de réalisation : 
+		<?php if(isset($post->year)): ?>
+            <?php echo e($post->year); ?>
+
+        <?php else: ?> Non connue
+        <?php endif; ?><br>
 		N° d’identification LiinkART: <?php echo e(Carbon\Carbon::now()->formatLocalized('%Y')); ?><?php echo e($post->id); ?>
 
 		<br>

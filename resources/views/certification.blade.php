@@ -55,7 +55,11 @@
 		<br>
 		Titre de l’œuvre : {{$post->titre}}<br>
 		Nom de l'artiste : {{ $post->user->name }}<br>
-		Technique et matériaux : {{$post->category->category}}<br>
+		Technique et matériaux : 
+		@if (isset($post->category))
+            {{ $post->category->category }}
+        @else Non connues
+        @endif<br>
 		Dimensions : 
 			@if(!empty($post->largeur))
 				largeur: {{$post->largeur}}cm,&nbsp;
@@ -66,11 +70,15 @@
 			@if(!empty($post->hauteur))
 				hauteur: {{$post->hauteur}}cm
 			@endif
-		@if(empty($post->largeur) AND empty($post->longueur) AND empty($post->hauteur))
+		@if(($post->largeur) == NULL AND ($post->longueur) == NULL AND ($post->hauteur) == NULL)
 		Non connues
 		@endif
 		<br>
-		Année de réalisation : {{$post->year}}<br>
+		Année de réalisation : 
+		@if (isset($post->year))
+            {{ $post->year }}
+        @else Non connue
+        @endif<br>
 		N° d’identification LiinkART: {{ Carbon\Carbon::now()->formatLocalized('%Y') }}{{ $post->id }}
 		<br>
 		<br>

@@ -10,7 +10,7 @@ class Post extends Model
     use Achiever;
 
     protected $fillable = [
-        'titre','contenu','user_id', 'category_id'
+        'titre', 'contenu', 'user_id', 'year', 'largeur', 'longueur', 'hauteur', 'category_id'
     ];
  
     public function user() 

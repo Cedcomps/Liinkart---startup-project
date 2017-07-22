@@ -46,32 +46,33 @@
 					<?php echo Form::open(['url' => 'contact', 'class' => 'col s12']); ?>
 
 				<div class="card-panel">
-						<div class="input-field col s6 <?php echo $errors->has('nom') ? 'has-error' : ''; ?>">
-							<?php echo Form::text('nom', null, ['class' => 'validate', 'placeholder' => 'Votre nom']); ?>
+					<div class="input-field col s6 <?php echo $errors->has('nom') ? 'has-error' : ''; ?>">
+						<?php echo Form::text('nom', null, ['class' => 'validate', 'placeholder' => 'Votre nom']); ?>
 
-							<?php echo $errors->first('nom', '<small class="help-block">:message</small>'); ?>
+						<?php echo $errors->first('nom', '<small class="help-block">:message</small>'); ?>
 
-						</div>
-						<div class="input-field col s6 <?php echo $errors->has('objet') ? 'has-error' : ''; ?>">
-							<?php echo Form::text('objet', null, ['class' => 'validate', 'placeholder' => 'Sujet']); ?>
+					</div>
+					<div class="input-field col s6 <?php echo $errors->has('objet') ? 'has-error' : ''; ?>">
+						<?php echo Form::text('objet', null, ['class' => 'validate', 'placeholder' => 'Sujet']); ?>
 
-							<?php echo $errors->first('objet', '<small class="help-block">:message</small>'); ?>
+						<?php echo $errors->first('objet', '<small class="help-block">:message</small>'); ?>
 
-						</div>
-						<div class="input-field col s12 <?php echo $errors->has('email') ? 'has-error' : ''; ?>">
-							<?php echo Form::email('email', null, ['class' => 'validate', 'placeholder' => 'Votre email']); ?>
+					</div>
+					<div class="input-field col s12 <?php echo $errors->has('email') ? 'has-error' : ''; ?>">
+						<?php echo Form::email('email', null, ['class' => 'validate', 'placeholder' => 'Votre email']); ?>
 
-							<label for="email" data-error="wrong" data-success="right"></label>
-							<?php echo $errors->first('email', '<small class="help-block">:message</small>'); ?>
+						<label for="email" data-error="wrong" data-success="right"></label>
+						<?php echo $errors->first('email', '<small class="help-block">:message</small>'); ?>
 
-						</div>
-						<div class="input-field col s12 <?php echo $errors->has('texte') ? 'has-error' : ''; ?>">
-							<?php echo Form::textarea ('texte', null, ['class' => 'materialize-textarea', 'data-length' => '400', 'placeholder' => 'Votre message']); ?>
+					</div>
+					<div class="input-field col s12 <?php echo $errors->has('texte') ? 'has-error' : ''; ?>">
+						<?php echo Form::textarea ('texte', null, ['class' => 'materialize-textarea', 'data-length' => '400', 'placeholder' => 'Votre message']); ?>
 
-							<?php echo $errors->first('texte', '<small class="help-block">:message</small>'); ?>
+						<?php echo $errors->first('texte', '<small class="help-block">:message</small>'); ?>
 
-						</div>
-						<?php echo Form::submit('Envoyer ', ['class' => 'btn waves-effect waves-light liinkart-light']); ?>
+					</div>
+					
+					<?php echo Form::submit('Envoyer ', ['class' => 'btn waves-effect waves-light liinkart-light']); ?>
 
 				</div>
 					<?php echo Form::close(); ?>

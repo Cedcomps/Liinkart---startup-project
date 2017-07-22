@@ -6,6 +6,7 @@ use App\Repositories\TagRepository;
 use App\Http\Requests\PostRequest;
 use App\User;
 use App\Post;
+use App\PostsPhoto;
 use App\Achievements\UserMadeAPost;
 use App\Achievements\UserMade10Posts;
 use App\Achievements\UserMade100Posts;
@@ -40,26 +41,35 @@ class PostController extends Controller
         return view('artworks.create');
     }
  
-    public function store(PostRequest $request, TagRepository $tagRepository, User $user)
+    public function store(PostRequest $request, TagRepository $tagRepository)
     {
         $inputs = array_merge($request->all(), ['user_id' => $request->user()->id]);
+        $files = $request->file('photos');
+        foreach ($files as $file) {
+            //$destinationPath = public_path('storage/uploads/artworks/');
+            //$filename = time() . '.' . $photo->getClientOriginalExtension();
+            //$photo->move($destinationPath, $filename);
+            // $filename = $file->store('photos');
+            // PostsPhoto::create([
+            //     'post_id' => $inputs->id,
+            //     'filename' => $filename
+            // ]);
+            \Storage::put($file->getClientOriginalName(), file_get_contents($file));
+        }
+        dd($inputs);
  
         $post = $this->postRepository->store($inputs);
  
         if(isset($inputs['tags'])) {
             $tagRepository->store($post, $inputs['tags']);
-        }
-
-        
+        }      
         // Gets the active user. Should come from session in a default app.
-        $user = $request->user()->id;
-        dd($user);
-        $posts = $user->posts()->get();
-
+        $user = User::find($post->user_id);
         $user->unlock(new UserMadeAPost(), 1);
         $user->addProgress(new UserMade10Posts(), 1);
         $user->addProgress(new UserMade100Posts(), 1);
         $user->addProgress(new UserMade1000Posts(), 1);
+
         return redirect(route('artworks.index'));
     }
     public function show($id)

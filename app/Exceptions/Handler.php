@@ -47,7 +47,12 @@ class Handler extends ExceptionHandler
         if($exception instanceof \PDOException) {
             return response()->view('errors.pdo', [], 500);
         }
+        if($exception instanceof \ModelNotFoundException)
+        {
+            abort(404);
+        }
         return parent::render($request, $exception);
+
     }
 
     /**

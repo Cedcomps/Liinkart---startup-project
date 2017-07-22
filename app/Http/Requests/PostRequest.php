@@ -23,15 +23,21 @@ class PostRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'titre'   => 'bail|required|alpha|max:255',
-            'contenu' => 'bail|required',
-            'year' => 'bail|required|alpha_num|max:4'
-            'largeur' => 'alpha_num|max:5'
-            'longueur' => 'alpha_num|max:5'
-            'hauteur' => 'alpha_num|max:5'
-            'categories' => 'bail|required'
-            'tags'    => ['Regex:/^[A-Za-z0-9-éèàù]{1,50}?(,[A-Za-z0-9-éèàù]{1,50})*$/']
+        $rules = [
+            'titre'       => 'bail|required|max:30|regex:/^[\pL\s\-]+$/u',
+            'contenu'     => 'bail|required|min:100',
+            'year'        => 'bail|required|digits:4',
+            'largeur'     => 'sometimes|between:0,5', ['Regex:/^[0-9]+/'],
+            'longueur'    => 'sometimes|between:0,5', ['Regex:/^[0-9]+/'],
+            'hauteur'     => 'sometimes|between:0,5', ['Regex:/^[0-9]+/'],
+            'category_id' => 'required',
+            'tags'        => 'sometimes|', ['Regex:/^[A-Za-z0-9-éèàù]{1,50}?(,[A-Za-z0-9-éèàù]{1,50})*$/']
         ];
+        $photos = count($this->input('photos'));
+        foreach(range(0, $photos) as $index) {
+            $rules['photos.' . $index] = 'image|mimes:jpeg,bmp,png|max:2000';
+        }
+ 
+        return $rules;
     }
 }

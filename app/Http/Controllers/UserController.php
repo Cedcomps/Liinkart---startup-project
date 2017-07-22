@@ -52,8 +52,6 @@ class UserController extends Controller
  
     public function show(User $user)
     {
-       
-        
         //$user->unlock(new UserMemberFoundater); membre fondateur
         $creer = new Carbon($user->created_at);
         $now = Carbon::now();
@@ -130,10 +128,10 @@ class UserController extends Controller
         if ($like) { //si existant du like
             //$already_like = $like->like; // déjà aimé on attribut le like
             $update = true; //accepte de MAJ
-            //if ($already_like == $is_like) { //Si déja aimé == Si aimé début
+            if ($already_like == $is_like) { //Si déja aimé == Si aimé début
             $like->delete();
             return null;
-          //  }
+            }
         } else {
             $like = new Like();
         }

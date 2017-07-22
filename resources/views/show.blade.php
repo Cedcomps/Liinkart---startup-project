@@ -43,35 +43,40 @@
                                         <div class="row">
                                             <div class="col s12 m10 offset-m1">
                                                 {!! Form::model($user, ['route' => ['user.update', $user->id], 'method' => 'put', 'files' => true]) !!}
-                                                    <div class="col s6 {!! $errors->has('name') ? 'has-error' : '' !!}">
+                                                    <div class="col s12 {!! $errors->has('name') ? 'has-error' : '' !!}">
                                                         {{ Form::label('name', 'Votre nom') }}
                                                         {!! Form::text('name', null, ['placeholder' => 'Nom']) !!}
                                                         {!! $errors->first('name', '<small class="help-block">:message</small>') !!}
                                                     </div>
-                                                    <div class="col s6 {!! $errors->has('email') ? 'has-error' : '' !!}">
+                                                    <div class="col s12 {!! $errors->has('email') ? 'has-error' : '' !!}">
                                                         {{ Form::label('email', 'Votre email') }}
                                                         {!! Form::email('email', null, ['placeholder' => 'Email']) !!}
                                                         {!! $errors->first('email', '<small class="help-block">:message</small>') !!}
                                                     </div>
-                                                    <div class="col s6 {!! $errors->has('country') ? 'has-error' : '' !!}">
+                                                    <div class="col s12 {!! $errors->has('country') ? 'has-error' : '' !!}">
                                                         {{ Form::label('country', 'Votre Pays') }}
                                                         {!! Form::text('country', null, ['placeholder' => 'Votre pays']) !!}
                                                         {!! $errors->first('country', '<small class="help-block">:message</small>') !!}
                                                     </div>
-                                                    <div class="col s6 {!! $errors->has('city') ? 'has-error' : '' !!}">
+                                                    <div class="col s12 {!! $errors->has('city') ? 'has-error' : '' !!}">
                                                         {{ Form::label('city', 'Votre ville actuelle') }}
                                                         {!! Form::text('city', null, ['placeholder' => 'Votre ville actuelle']) !!}
                                                         {!! $errors->first('city', '<small class="help-block">:message</small>') !!}
-                                                    <div class="input-field col s6 {!! $errors->has('specialist') ? 'has-error' : '' !!}">
+                                                    </div>
+                                                    <div class="input-field col s12 {!! $errors->has('specialist') ? 'has-error' : '' !!}">
                                                         {!! Form::select('specialist', ['Peinture', 'Peinture à Huile', 'Peinture acrylique', 'Aquarelle', 'Photographie', 'Photographie argentique', 'Photographie numérique', 'Oeuvres sur papier', 'Dessin', 'Encre', 'Estampe', 'Sérigraphie', 'Lithographie', 'Collage', 'Gravure', 'Linogravure', 'Sculpture', 'Sculpture bois', 'Sculpture argile', 'Sculpture métal', 'Sculpture bronze', 'Sculpture pierre', 'Sculpture terre cuite', 'Sculpture céramique', 'Sculpture platre', 'Sculpture marbre', 'Sculpture verre', 'Technique mixte'], null, ['placeholder' => 'Votre spécialité artistique']) !!}
                                                         {!! $errors->first('specialist', '<small class="help-block">:message</small>') !!}
                                                         {{ Form::label('specialist', 'Votre specialité') }}
                                                     </div>
-                                                    </div>
-                                                    <div class="col s6 {!! $errors->has('avatar') ? 'has-error' : '' !!}">
+                                                    <div class="col s12 file-field {!! $errors->has('avatar') ? 'has-error' : '' !!}">
+                                                        <div class="btn">
                                                         {{ Form::label('avatar', 'Votre image de profil') }}
                                                         {!! Form::file('avatar') !!}
+                                                        </div>
+                                                        <div class="file-path-wrapper">
                                                         {!! $errors->first('avatar', '<small class="help-block">:message</small>') !!}
+                                                            <input class="file-path validate" type="text">
+                                                        </div>
                                                     </div>
                                                     <div class="col s12 {!! $errors->has('description') ? 'has-error' : '' !!}">
                                                         {{ Form::label('description', 'Votre description') }}
@@ -111,18 +116,21 @@
       <div class="card">
                            
         @foreach($posts as $post)
-            <div id="artworks" class="col s6 m4 l3">
+            <div id="artworks" class="col s12 m6 l4">
                 <div class="card hoverable sticky-action">
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="activator" src="{{ asset ('uploads/office.jpg')}}">
                     </div>
                     <div class="card-content">
                         <span class="card-title activator grey-text text-darken-4">{{ $post->titre }}<i class="material-icons right">more_vert</i></span>
-                        <span class="chip-technique left-align">{{ $post->technique }}</span>
+                        <span class="chip-technique left-align">
+                            @if (isset($post->category))
+                                {{ $post->category->category }}
+                            @endif</span>
                         <span class="time-ago">{{ $post->created_at->diffForHumans() }} </span>
                     </div>
                     <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">{{ $post->titre }}<i class="material-icons right">close</i></span>
+                        <span class="raccourcir-titre card-title grey-text text-darken-4">{{ $post->titre }}<i class="material-icons right">close</i></span>
                         <p>{{ $post->contenu }}</p>
                     </div>
                     <div class="card-action">

@@ -31,6 +31,10 @@ $factory->define(App\Post::class, function (Faker\Generator $faker) {
     return [
 		'titre'      => $faker->sentence(2),
 		'contenu'    => $faker->paragraph(rand(20, 75)),
+		'year'       => $faker->year($max = 'now'),
+		'largeur'    => $faker->numberBetween($min = 10, $max = 5000),
+		'longueur'   => $faker->numberBetween($min = 10, $max = 5000),
+		'hauteur'    => $faker->numberBetween($min = 10, $max = 5000),
 		'created_at' => $faker->dateTimeThisYear(),
     ];
 });

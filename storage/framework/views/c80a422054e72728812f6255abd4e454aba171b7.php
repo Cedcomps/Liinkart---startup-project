@@ -23,7 +23,7 @@
                         <div class="card-image waves-effect waves-block waves-light">
                             <img class="activator" src="<?php echo e(asset ('uploads/office.jpg')); ?>">
                         </div>
-                        <div class="card-content">
+                        <div class=" card-content">
                             <span class="card-title activator grey-text text-darken-4"><?php echo e($post->titre); ?><i class="material-icons right">more_vert</i></span>
                             <span class="chip-technique left-align">
                                 <?php if(isset($post->category)): ?>
@@ -43,7 +43,7 @@
                         <div class="card-action">
                             <a href="<?php echo e(route('artworks.show', ['id' => $post])); ?>" class="right-align">VOIR EN DETAILS</a>
                         </div>
-                    </div>
+                    </div>  
                 </div>  
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             <?php echo $posts->links(); ?>

@@ -25,12 +25,10 @@ input:not([type]).valid, input:not([type]):focus.valid, input[type=text]:not(.br
 	right: 0;
 }
 #background-design2 {
-	position: relative;
-	margin-bottom: -35px;
+	margin-bottom: -10px;
 }
 #background-design2 svg { 
-	position: absolute;
-	bottom: 0px;
+	margin-top: -150px;
 	z-index: -1;
 }
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
@@ -236,7 +234,14 @@ a, .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
 .certificat {
 	cursor: initial !important;
 }
+.raccourcir-titre {
+	text-overflow: ellipsis;
+}
 /*artwork-article*/
+.artworks {
+	break-inside: avoid;
+
+}
 .artwork-article {
 	margin-top: 50px;
 }

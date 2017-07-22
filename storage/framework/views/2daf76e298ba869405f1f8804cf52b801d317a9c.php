@@ -43,7 +43,7 @@
                                             <div class="col s12 m10 offset-m1">
                                                 <?php echo Form::model($user, ['route' => ['user.update', $user->id], 'method' => 'put', 'files' => true]); ?>
 
-                                                    <div class="col s6 <?php echo $errors->has('name') ? 'has-error' : ''; ?>">
+                                                    <div class="col s12 <?php echo $errors->has('name') ? 'has-error' : ''; ?>">
                                                         <?php echo e(Form::label('name', 'Votre nom')); ?>
 
                                                         <?php echo Form::text('name', null, ['placeholder' => 'Nom']); ?>
@@ -51,7 +51,7 @@
                                                         <?php echo $errors->first('name', '<small class="help-block">:message</small>'); ?>
 
                                                     </div>
-                                                    <div class="col s6 <?php echo $errors->has('email') ? 'has-error' : ''; ?>">
+                                                    <div class="col s12 <?php echo $errors->has('email') ? 'has-error' : ''; ?>">
                                                         <?php echo e(Form::label('email', 'Votre email')); ?>
 
                                                         <?php echo Form::email('email', null, ['placeholder' => 'Email']); ?>
@@ -59,7 +59,7 @@
                                                         <?php echo $errors->first('email', '<small class="help-block">:message</small>'); ?>
 
                                                     </div>
-                                                    <div class="col s6 <?php echo $errors->has('country') ? 'has-error' : ''; ?>">
+                                                    <div class="col s12 <?php echo $errors->has('country') ? 'has-error' : ''; ?>">
                                                         <?php echo e(Form::label('country', 'Votre Pays')); ?>
 
                                                         <?php echo Form::text('country', null, ['placeholder' => 'Votre pays']); ?>
@@ -67,14 +67,15 @@
                                                         <?php echo $errors->first('country', '<small class="help-block">:message</small>'); ?>
 
                                                     </div>
-                                                    <div class="col s6 <?php echo $errors->has('city') ? 'has-error' : ''; ?>">
+                                                    <div class="col s12 <?php echo $errors->has('city') ? 'has-error' : ''; ?>">
                                                         <?php echo e(Form::label('city', 'Votre ville actuelle')); ?>
 
                                                         <?php echo Form::text('city', null, ['placeholder' => 'Votre ville actuelle']); ?>
 
                                                         <?php echo $errors->first('city', '<small class="help-block">:message</small>'); ?>
 
-                                                    <div class="input-field col s6 <?php echo $errors->has('specialist') ? 'has-error' : ''; ?>">
+                                                    </div>
+                                                    <div class="input-field col s12 <?php echo $errors->has('specialist') ? 'has-error' : ''; ?>">
                                                         <?php echo Form::select('specialist', ['Peinture', 'Peinture à Huile', 'Peinture acrylique', 'Aquarelle', 'Photographie', 'Photographie argentique', 'Photographie numérique', 'Oeuvres sur papier', 'Dessin', 'Encre', 'Estampe', 'Sérigraphie', 'Lithographie', 'Collage', 'Gravure', 'Linogravure', 'Sculpture', 'Sculpture bois', 'Sculpture argile', 'Sculpture métal', 'Sculpture bronze', 'Sculpture pierre', 'Sculpture terre cuite', 'Sculpture céramique', 'Sculpture platre', 'Sculpture marbre', 'Sculpture verre', 'Technique mixte'], null, ['placeholder' => 'Votre spécialité artistique']); ?>
 
                                                         <?php echo $errors->first('specialist', '<small class="help-block">:message</small>'); ?>
@@ -82,14 +83,18 @@
                                                         <?php echo e(Form::label('specialist', 'Votre specialité')); ?>
 
                                                     </div>
-                                                    </div>
-                                                    <div class="col s6 <?php echo $errors->has('avatar') ? 'has-error' : ''; ?>">
+                                                    <div class="col s12 file-field <?php echo $errors->has('avatar') ? 'has-error' : ''; ?>">
+                                                        <div class="btn">
                                                         <?php echo e(Form::label('avatar', 'Votre image de profil')); ?>
 
                                                         <?php echo Form::file('avatar'); ?>
 
+                                                        </div>
+                                                        <div class="file-path-wrapper">
                                                         <?php echo $errors->first('avatar', '<small class="help-block">:message</small>'); ?>
 
+                                                            <input class="file-path validate" type="text">
+                                                        </div>
                                                     </div>
                                                     <div class="col s12 <?php echo $errors->has('description') ? 'has-error' : ''; ?>">
                                                         <?php echo e(Form::label('description', 'Votre description')); ?>
@@ -126,18 +131,22 @@
       <div class="card">
                            
         <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <div id="artworks" class="col s6 m4 l3">
+            <div id="artworks" class="col s12 m6 l4">
                 <div class="card hoverable sticky-action">
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="activator" src="<?php echo e(asset ('uploads/office.jpg')); ?>">
                     </div>
                     <div class="card-content">
                         <span class="card-title activator grey-text text-darken-4"><?php echo e($post->titre); ?><i class="material-icons right">more_vert</i></span>
-                        <span class="chip-technique left-align"><?php echo e($post->technique); ?></span>
+                        <span class="chip-technique left-align">
+                            <?php if(isset($post->category)): ?>
+                                <?php echo e($post->category->category); ?>
+
+                            <?php endif; ?></span>
                         <span class="time-ago"><?php echo e($post->created_at->diffForHumans()); ?> </span>
                     </div>
                     <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4"><?php echo e($post->titre); ?><i class="material-icons right">close</i></span>
+                        <span class="raccourcir-titre card-title grey-text text-darken-4"><?php echo e($post->titre); ?><i class="material-icons right">close</i></span>
                         <p><?php echo e($post->contenu); ?></p>
                     </div>
                     <div class="card-action">

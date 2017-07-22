@@ -16,12 +16,12 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function(Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('titre');
+            $table->string('titre', 30);
             $table->text('contenu');
             $table->char('year', 4);
-            $table->string('largeur', 5);
-            $table->string('longueur', 5);
-            $table->string('hauteur', 5);
+            $table->string('largeur', 5)->nullable();
+            $table->string('longueur', 5)->nullable();
+            $table->string('hauteur', 5)->nullable();
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')
                   ->references('id')
