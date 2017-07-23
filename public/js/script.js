@@ -42,8 +42,7 @@ $(document).ready(function(){
 		var $set = $(this).val();
 		$('output').text($set);
 	});
-    // Select specialisation edit user
-    $('select').material_select();
+    
     //Menu right profil user
     $('.dropdown-button').dropdown({
 		inDuration: 300,
@@ -56,5 +55,16 @@ $(document).ready(function(){
 		stopPropagation: false // Stops event propagation
     	}
  	);
+ 	//Lien pour remonter en haut du site
+ 	$(window).scroll(function() {
+	 	if($(document).scrollTop() <= 400 ){
+	 		$("#scrollButton").fadeOut("fast");
+	 	} else {
+	 		$("#scrollButton").fadeIn();
+	 	};
+ 	});
+ 	$("#scrollButton").click(function(){
+    	$("html, body").animate({scrollTop: 0},2500);
+    });
  // 	
 });

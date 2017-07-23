@@ -1,6 +1,5 @@
 $(document).ready(function(){
 	//Like artist
-
  	$('.like').on('click', function(event) {
  		event.preventDefault();
 		userId = $('h3').data('userid');
@@ -19,6 +18,6 @@ $(document).ready(function(){
             	}
             });
  		});
-
-
+ 	// Select specialisation edit user
+    $('select').material_select();
 });

@@ -130,6 +130,9 @@
     <?php endif; ?>
         <?php echo $__env->yieldContent('content'); ?>
 
+
+<a href="#" id="scrollButton"><i class="material-icons medium">arrow_upward</i></a>
+
 <section id="background-design2">
     <?php echo $__env->make('layouts.background-footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 </section>

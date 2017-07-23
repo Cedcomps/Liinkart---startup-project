@@ -3,9 +3,9 @@
 		<div class="row artwork-article">
 			<div class="col s12">
 				<div class="col l6 s12 artwork-image-first">
-					
-					 	<img  class="responsive-img" src="<?php echo e(asset ('uploads/office.jpg')); ?>">
-					
+				<?php $__currentLoopData = $post->posts_photos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts_photo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+					 	<img class="responsive-img" src=" <?php echo e(asset('storage/uploads/artworks/' . $posts_photo->filename)); ?>">
+				<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>	
 				</div>
 				<div class="col l6 s12">
 					<div class="section">

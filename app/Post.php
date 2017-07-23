@@ -28,4 +28,9 @@ class Post extends Model
         return $this->belongsTo(\App\Category::class);
     } 
 
+    public function posts_photos()
+    {
+        return $this->hasMany(\App\PostsPhoto::class);
+    } 
+
 }

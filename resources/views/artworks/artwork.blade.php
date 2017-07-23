@@ -5,9 +5,9 @@
 		<div class="row artwork-article">
 			<div class="col s12">
 				<div class="col l6 s12 artwork-image-first">
-					
-					 	<img  class="responsive-img" src="{{ asset ('uploads/office.jpg')}}">
-					
+				@foreach($post->posts_photos as $posts_photo)
+					 	<img class="responsive-img" src=" {{ asset('storage/uploads/artworks/' . $posts_photo->filename) }}" alt="oeuvre d'art liinkart">
+				@endforeach	
 				</div>
 				<div class="col l6 s12">
 					<div class="section">

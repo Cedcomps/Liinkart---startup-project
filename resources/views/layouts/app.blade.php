@@ -128,6 +128,9 @@
     @endif
         @yield('content')
 
+{{-- bouton scroll top --}}
+<a href="#" id="scrollButton"><i class="material-icons medium">arrow_upward</i></a>
+
 <section id="background-design2">
     @include('layouts.background-footer')
 </section>

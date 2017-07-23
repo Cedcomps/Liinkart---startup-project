@@ -5,6 +5,15 @@ input:not([type]).valid, input:not([type]):focus.valid, input[type=text]:not(.br
 	color: #fff;
 }
 /*charte graphique*/
+a#scrollButton {
+	position: fixed;
+	bottom: 100px;
+	right: 60px;
+	display: none;
+}
+a#scrollButton i{
+	font-size: 3rem;
+}
 .liinkart-light {
 	background-color: #9575ff !important;
 }
@@ -28,7 +37,6 @@ input:not([type]).valid, input:not([type]):focus.valid, input[type=text]:not(.br
 	margin-bottom: -10px;
 }
 #background-design2 svg { 
-	margin-top: -150px;
 	z-index: -1;
 }
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {

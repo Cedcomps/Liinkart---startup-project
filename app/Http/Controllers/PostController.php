@@ -7,6 +7,7 @@ use App\Http\Requests\PostRequest;
 use App\User;
 use App\Post;
 use App\PostsPhoto;
+use Image;
 use App\Achievements\UserMadeAPost;
 use App\Achievements\UserMade10Posts;
 use App\Achievements\UserMade100Posts;
@@ -30,10 +31,10 @@ class PostController extends Controller
     {
         $posts = $this->postRepository->getWithUserAndTagsPaginate($this->nbrPerPage);
         $links = $posts->render();
-        $categories = Post::with(array('category'))->get();
+        //$categories = Post::with(array('category'))->get();
         $users = Post::with(array('user'))->get();
  
-        return view('artworks.liste', compact('posts', 'links', 'users', 'categories'));
+        return view('artworks.liste', compact('posts', 'links', 'users'));
     }
  
     public function create()
@@ -44,21 +45,22 @@ class PostController extends Controller
     public function store(PostRequest $request, TagRepository $tagRepository)
     {
         $inputs = array_merge($request->all(), ['user_id' => $request->user()->id]);
+        $post = $this->postRepository->store($inputs);
+        
         $files = $request->file('photos');
         foreach ($files as $file) {
-            //$destinationPath = public_path('storage/uploads/artworks/');
-            //$filename = time() . '.' . $photo->getClientOriginalExtension();
-            //$photo->move($destinationPath, $filename);
-            // $filename = $file->store('photos');
-            // PostsPhoto::create([
-            //     'post_id' => $inputs->id,
-            //     'filename' => $filename
-            // ]);
-            \Storage::put($file->getClientOriginalName(), file_get_contents($file));
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $img = Image::make($file)->resize(600, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $watermark = Image::make('storage/uploads/watermark.png');
+            $img->insert($watermark, 'bottom-right', 15, 15);
+            $img->save(public_path('storage/uploads/artworks/').$filename);
+            PostsPhoto::create([
+                'post_id' => $post->id,
+                'filename' => $filename
+            ]);
         }
-        dd($inputs);
- 
-        $post = $this->postRepository->store($inputs);
  
         if(isset($inputs['tags'])) {
             $tagRepository->store($post, $inputs['tags']);
@@ -75,7 +77,8 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-        return view('artworks.artwork', compact('post'));
+        $photos = PostsPhoto::get();
+        return view('artworks.artwork', compact('post', 'photos'));
     }
  
     public function destroy(Post $post)
