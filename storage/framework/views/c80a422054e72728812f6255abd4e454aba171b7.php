@@ -21,7 +21,11 @@
                             </div>
                         </div>
                         <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="<?php echo e(asset ('uploads/office.jpg')); ?>">
+                            <?php if(count($post->posts_photos)): ?>
+                                <img class="activator" src=" <?php echo e(asset('storage/uploads/artworks/' . $post->posts_photos[0]->filename)); ?>" alt="oeuvre d'art liinkart">
+                            <?php else: ?>
+                                <img class="activator" src=" <?php echo e(asset('uploads/office.jpg')); ?>" alt="oeuvre d'art liinkart">
+                            <?php endif; ?>
                         </div>
                         <div class=" card-content">
                             <span class="card-title activator grey-text text-darken-4"><?php echo e($post->titre); ?><i class="material-icons right">more_vert</i></span>

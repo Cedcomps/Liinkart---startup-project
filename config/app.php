@@ -201,6 +201,10 @@ return [
          * PDF generator
          */
         Barryvdh\DomPDF\ServiceProvider::class,
+        /**
+         * search
+         */
+        AlgoliaSearch\Laravel\AlgoliaServiceProvider::class,
     ],
 
     /*

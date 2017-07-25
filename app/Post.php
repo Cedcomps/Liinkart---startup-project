@@ -32,5 +32,5 @@ class Post extends Model
     {
         return $this->hasMany(\App\PostsPhoto::class);
     } 
-
+    
 }

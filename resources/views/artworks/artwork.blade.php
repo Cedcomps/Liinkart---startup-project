@@ -1,17 +1,33 @@
 @extends('layouts.app')
-
+@section('css')
+   <link href="{{ asset('bower_components/easyzoom/css/easyzoom.css') }}" rel="stylesheet">
+@endsection
 @section('content')
 	<div class="container">
 		<div class="row artwork-article">
 			<div class="col s12">
 				<div class="col l6 s12 artwork-image-first">
-				@foreach($post->posts_photos as $posts_photo)
-					 	<img class="responsive-img" src=" {{ asset('storage/uploads/artworks/' . $posts_photo->filename) }}" alt="oeuvre d'art liinkart">
-				@endforeach	
+				@if(count($post->posts_photos))
+					<div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails is-ready">
+					    <a href="{{ asset('storage/uploads/artworks/' . $post->posts_photos[0]->filename) }}">
+						 	<img class="responsive-img" src=" {{ asset('storage/uploads/artworks/' . $post->posts_photos[0]->filename) }}" alt="oeuvre d'art liinkart">
+					    </a>
+					</div>
+				@endif
+				<ul class="thumbnails">
+			        @foreach($post->posts_photos as $posts_photo)
+						<li>
+							<a href="{{ asset('storage/uploads/artworks/' . $posts_photo->filename) }}" data-standard="{{ asset('storage/uploads/artworks/' . $posts_photo->filename) }}">
+								<img src="{{ asset('storage/uploads/artworks/' . $posts_photo->filename) }}" width="30%" height="30%" alt="photos de l'oeuvre d'art liinkart">
+							</a>
+						</li>
+					@endforeach	
+				</ul>
 				</div>
 				<div class="col l6 s12">
 					<div class="section">
 						<h1>{{ $post->titre }}</h1>
+						<span class="grey-text">Créé le {{ $post->created_at->format('d/m/Y') }} et se termine d'ici {{ $post->created_at->addDays(30)->diffForHumans(null, true) }}</span><br><br>
 						<span class="right-align"><a class="waves-effect waves-light btn-large z-depth-3" href="#modal1"><i class="material-icons right">gavel</i>Faire une offre</a></span><br>
 						{{-- gavel modal --}}
 						<div id="modal1" class="modal">
@@ -39,7 +55,7 @@
 					<br>
 					<div class="section">
 					<div class="row">
-						<div class="col s6">
+						<div class="col s12 m6">
 							<div class="card-panel">
 							<h5>Technique</h5>
 								<span class="chip-technique">
@@ -49,7 +65,7 @@
 		                        </span>
 							</div>
 						</div>
-						<div class="col s6">
+						<div class="col s12 m6">
 							<div class="card-panel">
 							<h5>Dimensions</h5>
 								@if(!empty($post->largeur))
@@ -106,4 +122,8 @@
                 </div>	
 		</div>
 	</div>
+@endsection
+@section('js')
+    <script src="{{ asset('bower_components/easyzoom/src/easyzoom.js') }}"></script>
+    <script src="{{ asset('js/artwork.js') }}"></script>
 @endsection

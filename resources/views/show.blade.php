@@ -94,15 +94,6 @@
                     @endif
                 </div>
             </div>
-
-           {{--  <div class="col s12 m4">  
-                <div class="card">
-                    <div class="card-content">
-                        <h5>Spécialisation</h5>
-                        <h6><span>{{ $user->specialist }}</span></h6>
-                    </div>
-                </div>
-            </div> --}}
             <div class="col s12 l6">  
                 <div class="card">
                     <div class="card-content">
@@ -119,7 +110,11 @@
             <div id="artworks" class="col s12 m6 l4">
                 <div class="card hoverable sticky-action">
                     <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="{{ asset ('uploads/office.jpg')}}">
+                        @if(count($post->posts_photos))
+                                <img class="activator" src=" {{ asset('storage/uploads/artworks/' . $post->posts_photos[0]->filename)}}" alt="oeuvre d'art liinkart">
+                            @else
+                                <img class="activator" src=" {{ asset('uploads/office.jpg')}}" alt="oeuvre d'art liinkart">
+                            @endif
                     </div>
                     <div class="card-content">
                         <span class="card-title activator grey-text text-darken-4">{{ $post->titre }}<i class="material-icons right">more_vert</i></span>

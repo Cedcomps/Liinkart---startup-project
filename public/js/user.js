@@ -18,6 +18,4 @@ $(document).ready(function(){
             	}
             });
  		});
- 	// Select specialisation edit user
-    $('select').material_select();
 });

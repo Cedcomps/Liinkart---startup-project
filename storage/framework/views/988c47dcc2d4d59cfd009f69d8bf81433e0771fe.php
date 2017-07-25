@@ -1,15 +1,32 @@
+<?php $__env->startSection('css'); ?>
+   <link href="<?php echo e(asset('bower_components/easyzoom/css/easyzoom.css')); ?>" rel="stylesheet">
+<?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 	<div class="container">
 		<div class="row artwork-article">
 			<div class="col s12">
 				<div class="col l6 s12 artwork-image-first">
-				<?php $__currentLoopData = $post->posts_photos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts_photo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-					 	<img class="responsive-img" src=" <?php echo e(asset('storage/uploads/artworks/' . $posts_photo->filename)); ?>">
-				<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>	
+				<?php if(count($post->posts_photos)): ?>
+					<div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails is-ready">
+					    <a href="<?php echo e(asset('storage/uploads/artworks/' . $post->posts_photos[0]->filename)); ?>">
+						 	<img class="responsive-img" src=" <?php echo e(asset('storage/uploads/artworks/' . $post->posts_photos[0]->filename)); ?>" alt="oeuvre d'art liinkart">
+					    </a>
+					</div>
+				<?php endif; ?>
+				<ul class="thumbnails">
+			        <?php $__currentLoopData = $post->posts_photos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts_photo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+						<li>
+							<a href="<?php echo e(asset('storage/uploads/artworks/' . $posts_photo->filename)); ?>" data-standard="<?php echo e(asset('storage/uploads/artworks/' . $posts_photo->filename)); ?>">
+								<img src="<?php echo e(asset('storage/uploads/artworks/' . $posts_photo->filename)); ?>" width="30%" height="30%" alt="photos de l'oeuvre d'art liinkart">
+							</a>
+						</li>
+					<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>	
+				</ul>
 				</div>
 				<div class="col l6 s12">
 					<div class="section">
 						<h1><?php echo e($post->titre); ?></h1>
+						<span class="grey-text">Créé le <?php echo e($post->created_at->format('d/m/Y')); ?> et se termine d'ici <?php echo e($post->created_at->addDays(30)->diffForHumans(null, true)); ?></span><br><br>
 						<span class="right-align"><a class="waves-effect waves-light btn-large z-depth-3" href="#modal1"><i class="material-icons right">gavel</i>Faire une offre</a></span><br>
 						
 						<div id="modal1" class="modal">
@@ -37,7 +54,7 @@
 					<br>
 					<div class="section">
 					<div class="row">
-						<div class="col s6">
+						<div class="col s12 m6">
 							<div class="card-panel">
 							<h5>Technique</h5>
 								<span class="chip-technique">
@@ -48,7 +65,7 @@
 		                        </span>
 							</div>
 						</div>
-						<div class="col s6">
+						<div class="col s12 m6">
 							<div class="card-panel">
 							<h5>Dimensions</h5>
 								<?php if(!empty($post->largeur)): ?>
@@ -107,5 +124,9 @@
                 </div>	
 		</div>
 	</div>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('js'); ?>
+    <script src="<?php echo e(asset('bower_components/easyzoom/src/easyzoom.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/artwork.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -248,7 +248,6 @@ a, .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
 /*artwork-article*/
 .artworks {
 	break-inside: avoid;
-
 }
 .artwork-article {
 	margin-top: 50px;

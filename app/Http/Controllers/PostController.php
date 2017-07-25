@@ -30,8 +30,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = $this->postRepository->getWithUserAndTagsPaginate($this->nbrPerPage);
-        $links = $posts->render();
-        //$categories = Post::with(array('category'))->get();
+        $links = $posts->render();        
         $users = Post::with(array('user'))->get();
  
         return view('artworks.liste', compact('posts', 'links', 'users'));
@@ -50,8 +49,9 @@ class PostController extends Controller
         $files = $request->file('photos');
         foreach ($files as $file) {
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $img = Image::make($file)->resize(600, null, function ($constraint) {
+            $img = Image::make($file)->orientate()->resize(1000, null, function ($constraint) {
                 $constraint->aspectRatio();
+                $constraint->upsize();
             });
             $watermark = Image::make('storage/uploads/watermark.png');
             $img->insert($watermark, 'bottom-right', 15, 15);
@@ -77,8 +77,7 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-        $photos = PostsPhoto::get();
-        return view('artworks.artwork', compact('post', 'photos'));
+        return view('artworks.artwork', compact('post'));
     }
  
     public function destroy(Post $post)

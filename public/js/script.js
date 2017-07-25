@@ -55,6 +55,10 @@ $(document).ready(function(){
 		stopPropagation: false // Stops event propagation
     	}
  	);
+
+ 	// Select specialisation and categories
+    $('select').material_select();
+    
  	//Lien pour remonter en haut du site
  	$(window).scroll(function() {
 	 	if($(document).scrollTop() <= 400 ){
@@ -66,5 +70,4 @@ $(document).ready(function(){
  	$("#scrollButton").click(function(){
     	$("html, body").animate({scrollTop: 0},2500);
     });
- // 	
 });
