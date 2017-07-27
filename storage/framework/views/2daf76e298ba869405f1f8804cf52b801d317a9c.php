@@ -1,3 +1,7 @@
+<?php $__env->startSection('titre'); ?>
+   Profil de <?php echo e(ucfirst($user->name)); ?>
+
+<?php $__env->stopSection(); ?>
 <?php $__env->startSection('css'); ?>
    <link href="<?php echo e(asset('css/user.css')); ?>" rel="stylesheet">
 <?php $__env->stopSection(); ?>
@@ -152,7 +156,7 @@
                         <span class="time-ago"><?php echo e($post->created_at->diffForHumans()); ?> </span>
                     </div>
                     <div class="card-reveal">
-                        <span class="raccourcir-titre card-title grey-text text-darken-4"><?php echo e($post->titre); ?><i class="material-icons right">close</i></span>
+                        <span class="raccourcir-titre card-title grey-text text-darken-4"><?php echo e(ucfirst($post->titre)); ?><i class="material-icons right">close</i></span>
                         <p><?php echo e($post->contenu); ?></p>
                     </div>
                     <div class="card-action">

@@ -1,5 +1,15 @@
- 
+<?php $__env->startSection('titre'); ?>
+    Dernières oeuvres d'art postées
+<?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
+<section class="header-page gradient--pink">
+    <div class="row">
+    <div class="section"></div>
+        <div class="col s12 center">
+            <h1>Recherche</h1>
+        </div>
+    </div>
+</section>
     <div class="container">
         <div class="row">
             <?php if(isset($info)): ?>
@@ -32,7 +42,7 @@
                             <?php endif; ?>
                         </div>
                         <div class=" card-content">
-                            <span class="card-title activator grey-text text-darken-4"><?php echo e($post->titre); ?><i class="material-icons right">more_vert</i></span>
+                            <span class="card-title activator grey-text text-darken-4"><?php echo e(ucfirst($post->titre)); ?><i class="material-icons right">more_vert</i></span>
                             <span class="chip-technique left-align">
                                 <?php if(isset($post->category)): ?>
                                 <?php echo e($post->category->category); ?>
@@ -42,7 +52,7 @@
                             <span class="time-ago"><?php echo e($post->created_at->diffForHumans()); ?> </span>
                         </div>
                         <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><?php echo e($post->titre); ?><i class="material-icons right">close</i></span>
+                            <span class="card-title grey-text text-darken-4"><?php echo e(ucfirst($post->titre)); ?><i class="material-icons right">close</i></span>
                             <p><?php echo e($post->contenu); ?></p>
                             <?php $__currentLoopData = $post->tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <a href="<?php echo e(url('artworks/tag/' . $tag->tag_url)); ?>" class="chip"><?php echo e($tag->tag); ?></a></li>

@@ -2,11 +2,17 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
-<section class="reference">
+<section class="header-page gradient--lemon">
+<div class="row">
+<div class="section"></div>
+    <div class="col s12 center"></div>
+</div>
+</section>
+<section class="reference" >
     <div class="container">
         <div class="row">
-            <div class="col s12 offset-m2 m8 offset-l3 l6">  
-                <div class="card grey lighten-5">
+            <div class="col s12 offset-m2 m8 offset-l3 l6" style="position: relative;">  
+                <div class="card grey lighten-5" style="position: absolute; top: -200px;">
                     <div class="card-content center">
                         <h4>Créer un compte </h4>
                         <?php if(session('confirmation-success')): ?>

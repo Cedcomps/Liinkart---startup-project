@@ -1,6 +1,16 @@
 @extends('layouts.app')
- 
+@section('titre')
+    Dernières oeuvres d'art postées
+@endsection
 @section('content')
+<section class="header-page gradient--pink">
+    <div class="row">
+    <div class="section"></div>
+        <div class="col s12 center">
+            <h1>Recherche</h1>
+        </div>
+    </div>
+</section>
     <div class="container">
         <div class="row">
             @if(isset($info))
@@ -30,7 +40,7 @@
                             @endif
                         </div>
                         <div class=" card-content">
-                            <span class="card-title activator grey-text text-darken-4">{{ $post->titre }}<i class="material-icons right">more_vert</i></span>
+                            <span class="card-title activator grey-text text-darken-4">{{ ucfirst($post->titre) }}<i class="material-icons right">more_vert</i></span>
                             <span class="chip-technique left-align">
                                 @if (isset($post->category))
                                 {{ $post->category->category }}
@@ -39,7 +49,7 @@
                             <span class="time-ago">{{ $post->created_at->diffForHumans() }} </span>
                         </div>
                         <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">{{ $post->titre }}<i class="material-icons right">close</i></span>
+                            <span class="card-title grey-text text-darken-4">{{ ucfirst($post->titre) }}<i class="material-icons right">close</i></span>
                             <p>{{ $post->contenu }}</p>
                             @foreach($post->tags as $tag)
                                 <a href="{{ url('artworks/tag/' . $tag->tag_url) }}" class="chip">{{ $tag->tag }}</a></li>

@@ -8,6 +8,7 @@ use Illuminate\Contracts\Auth\Authenticatable;
 use Bestmomo\LaravelEmailConfirmation\Traits\AuthenticatesUsers;
 use App\Achievements\UserMember;
 use App\User;
+use Alert;
 use Illuminate\Support\Facades\Auth;
 use App\SocialProvider;
 use Socialite;
@@ -55,7 +56,8 @@ class LoginController extends Controller
     {
         $user->unlock(new UserMember);
     }
-/**
+
+    /**
      * Redirect the user to the OAuth Provider.
      *
      * @return Response
@@ -91,17 +93,19 @@ class LoginController extends Controller
      */
     public function findOrCreateUser($user, $provider)
     {
-        $authUser = User::where('provider_id', $user->id)->first();
-        if ($authUser) {
+        $authUser = User::where('provider_id', $user->id)->orWhere('email', $user->email)->orWhere('name', $user->name)->first();
+        if ($authUser !== null) {
+            \Alert::error('L\'adresse email ou le nom est déjà utilisé sur LiinkART', 'Connexion depuis un réseau social');
             return $authUser;
-            //TODO avertir de l'erreur
         }
-        return User::create([
-            'name'        => $user->getName(),
-            'email'       => $user->getEmail(),
-            'avatar'      => $user->getAvatar(),
-            'provider'    => $provider,
-            'provider_id' => $user->getId()
-        ]);
+        else {
+            return User::create([
+                'name'        => $user->getName(),
+                'email'       => $user->getEmail(),
+                'avatar'      => $user->getAvatar(),
+                'provider'    => $provider,
+                'provider_id' => $user->getId()
+            ]);   
+        }       
     }
 }

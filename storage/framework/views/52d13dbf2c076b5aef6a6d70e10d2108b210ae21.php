@@ -1,3 +1,6 @@
+<?php $__env->startSection('titre'); ?>
+    Erreur 404
+<?php $__env->stopSection(); ?>
 <?php $__env->startSection('contenu'); ?>
     <br>
     <div class="container">

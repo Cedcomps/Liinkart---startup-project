@@ -1,12 +1,13 @@
 <?php $__env->startSection('content'); ?>
 
-<header class="header-page">
+<section class="header-page gradient--sunset">
 	<div class="row">
+    <div class="section"></div>
 		<div class="col s12 center">
         	<h1>Le concept</h1>
 	    </div>
 	</div>
-</header>
+</section>
 
 <div class="container center">
 	<div class="row">

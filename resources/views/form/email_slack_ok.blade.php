@@ -1,5 +1,7 @@
 @extends('layouts.app')
- 
+ @section('titre')
+    Inscription au Slack
+@endsection
 @section('content')
 <section class="reference">
 	<div class="container">

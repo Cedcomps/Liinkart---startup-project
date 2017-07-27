@@ -105,7 +105,7 @@ class UserController extends Controller
         
         $user->unlock(new UserCompletedProfile()); //Achievement
 
-        return redirect()->route('user.show', ['id' => $user->id])->withOk("Le profil " . $request->name . " a été mis à jour.");
+        return redirect()->route('user.show', ['id' => $user->id])->with('success', 'Profil mis à jour !');
     }
  
     public function destroy(User $user)

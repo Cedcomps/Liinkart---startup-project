@@ -37,9 +37,7 @@ Route::post('/like', ['as' => 'like', 'uses' => 'UserController@likeUser']);
 Route::resource('artworks', 'PostController', ['except' => ['edit', 'update']]);
 Route::get('artworks/tag/{tag}', 'PostController@indexTag');
 
-//Avatar
-Route::get('avatar', 'AvatarController@create');
-Route::post('avatar', 'AvatarController@store');
+
 //Email for Slack
 Route::get('email', 'SlackController@create');
 Route::post('email', 'SlackController@store')->name('store.email');

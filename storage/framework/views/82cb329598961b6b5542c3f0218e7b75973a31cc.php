@@ -1,3 +1,6 @@
+<?php $__env->startSection('titre'); ?>
+    La plateforme qui démocratise l'art en ligne
+<?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <header>
     <div class="row center">

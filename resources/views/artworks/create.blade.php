@@ -1,5 +1,7 @@
 @extends('layouts.app')
- 
+ @section('titre')
+    Poster une nouvelle oeuvre 
+@endsection
 @section('content')
     <div class="container">
         <div class="row">

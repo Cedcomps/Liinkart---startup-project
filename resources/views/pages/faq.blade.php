@@ -1,7 +1,16 @@
 @extends('layouts.app')
-	
+	@section('titre')
+    Questions fréquentes
+@endsection
 @section('content')
-	FAQ.
+	<section class="header-page gradient--bloody">
+  <div class="row">
+    <div class="section"></div>
+    <div class="col s12 center">
+          <h1>Questions fréquentes</h1>
+      </div>
+  </div>
+</section>
 
 	<ul class="collapsible popout" data-collapsible="accordion">
     <li>

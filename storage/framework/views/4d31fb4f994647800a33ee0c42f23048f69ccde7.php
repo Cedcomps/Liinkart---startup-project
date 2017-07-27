@@ -1,3 +1,6 @@
+<?php $__env->startSection('titre'); ?>
+    Demande de contact
+<?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <header class="header-page">
 	<div class="row">

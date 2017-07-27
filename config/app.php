@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'LiinkART'),
 
     /*
     |--------------------------------------------------------------------------
@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://liinkart.app'),
 
     /*
     |--------------------------------------------------------------------------
@@ -209,6 +209,10 @@ return [
          * Socialite FB, Twitter ...
          */
         Laravel\Socialite\SocialiteServiceProvider::class,
+        /**
+         * sweet alert
+         */
+        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
     ],
 
     /*
@@ -264,6 +268,7 @@ return [
         'Image'          => Intervention\Image\Facades\Image::class,
         'PDF'            => Barryvdh\DomPDF\Facade::class,
         'Socialite'      => Laravel\Socialite\Facades\Socialite::class,
+        'Alert'          => UxWeb\SweetAlert\SweetAlert::class,
     ],
 
 ];

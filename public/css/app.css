@@ -26,6 +26,21 @@ a#scrollButton i{
 .liinkart-dark {
 	background-color: #342959 !important;
 }
+.gradient--sunset {
+	background: radial-gradient(circle at 1.98% 38.00%, #FF8008, transparent 100%),radial-gradient(circle at 98.02% 80.00%, #FFC837, transparent 100%),radial-gradient(circle at 50% 50%, #ffffff, #ffffff 100%);
+}
+.gradient--bloody {
+	background: radial-gradient(circle at 1.98% 83.05%, #FF512F, transparent 100%),radial-gradient(circle at 98.02% 80.00%, #DD2476, transparent 100%),radial-gradient(circle at 50% 50%, #ffffff, #ffffff 100%);
+}
+.gradient--cloud {
+	background: radial-gradient(circle at 1.98% 92.00%, #73C8A9, transparent 100%),radial-gradient(circle at 98.02% 42.00%, #373B44, transparent 100%),radial-gradient(circle at 50% 50%, #ffffff, #ffffff 100%);
+}
+.gradient--lemon {
+	background: radial-gradient(circle at 1.98% 92.00%, #3CA55C, transparent 100%),radial-gradient(circle at 98.02% 22.00%, #B5AC49, transparent 100%),radial-gradient(circle at 50% 50%, #ffffff, #ffffff 100%);
+}
+.gradient--pink {
+	background: radial-gradient(circle at 55.68% 98.11%, #25e186, transparent 23%),radial-gradient(circle at 15.63% 56.21%, #7781f1, transparent 76%),radial-gradient(circle at 90.52% 58.11%, #a2dcd4, transparent 43%),radial-gradient(circle at 31.98% 21.05%, #7c6084, transparent 47%),radial-gradient(circle at 70.57% 40.74%, #9846ea, transparent 65%),radial-gradient(circle at 50% 50%, #e9906a, #e9906a 100%);
+}
 #background-design {
 	position: relative;
 }
@@ -64,6 +79,16 @@ a#scrollButton i{
 }
 nav a, nav ul a {
 	color: #342959 !important;
+}
+.forget-password {
+	position: absolute;
+	bottom: 10px;
+	left: 15px;
+}
+.havent-acount {
+	position: absolute;
+	bottom: 10px;
+	right: 15px;
 }
 .sign-up {
 	background: radial-gradient(circle at 1.98% 17.05%, #DD5E89, transparent 100%),radial-gradient(circle at 98.02% 97.05%, #F7BB97, transparent 100%),radial-gradient(circle at 50% 50%, #ffffff, #ffffff 100%);
@@ -233,8 +258,24 @@ header div a {
 /*about*/
 .header-page {
 	color: white;
-	background-image: url("/uploads/header-liinkart1.jpg");
-	height: 350px;
+	position: relative;
+	height: 200px;
+}
+.header-page::before {
+	background-position: center center;
+	background-size: 750px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 400%;
+	max-height: 200px;
+	width: 100%;
+	display: block;
+	z-index: 0;
+	content: '';
+	opacity: 0.15;
+	pointer-events: none;
+	background: url("/uploads/main-background.png");
 }
 .weblogo {
 	width: 25%;

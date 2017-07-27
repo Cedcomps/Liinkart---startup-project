@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('titre')
+    Erreur 404
+@endsection
 @section('contenu')
     <br>
     <div class="container">

@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('titre')
+    Demande de contact
+@endsection
 @section('content')
 <header class="header-page">
 	<div class="row">

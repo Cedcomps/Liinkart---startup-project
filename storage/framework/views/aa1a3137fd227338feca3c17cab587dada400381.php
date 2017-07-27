@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <section class="header-page gradient--sunset">
 <div class="row">
 <div class="section"></div>
@@ -14,45 +12,47 @@
             <div class="card grey lighten-5">
                 <div class="card-content center">
                     <h4>Nouveau mot de passe</h4>
-                    @if (session('status'))
+                    <?php if(session('status')): ?>
                         <div class="green-text">
-                            {{ session('status') }}
+                            <?php echo e(session('status')); ?>
+
                         </div>
-                    @endif
+                    <?php endif; ?>
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('password.request') }}">
-                        {{ csrf_field() }}
+                    <form class="form-horizontal" role="form" method="POST" action="<?php echo e(route('password.request')); ?>">
+                        <?php echo e(csrf_field()); ?>
 
-                        <input type="hidden" name="token" value="{{ $token }}">
 
-                        <div class="red-text{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <input type="hidden" name="token" value="<?php echo e($token); ?>">
+
+                        <div class="red-text<?php echo e($errors->has('email') ? ' has-error' : ''); ?>">
                             <label for="email">Vérification de l'adresse Email</label>
-                            <input id="email" type="email" class="validate" name="email" value="{{ $email or old('email') }}" required autofocus>
-                                @if ($errors->has('email'))
+                            <input id="email" type="email" class="validate" name="email" value="<?php echo e(isset($email) ? $email : old('email')); ?>" required autofocus>
+                                <?php if($errors->has('email')): ?>
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong><?php echo e($errors->first('email')); ?></strong>
                                     </span>
-                                @endif                            
+                                <?php endif; ?>                            
                         </div>
 
-                        <div class="red-text{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <div class="red-text<?php echo e($errors->has('password') ? ' has-error' : ''); ?>">
                             <label for="password">Nouveau mot de passe</label>
                             <input id="password" type="password" name="password" required>
-                                @if ($errors->has('password'))
+                                <?php if($errors->has('password')): ?>
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
+                                        <strong><?php echo e($errors->first('password')); ?></strong>
                                     </span>
-                                @endif
+                                <?php endif; ?>
                         </div>
 
-                        <div class="red-text{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                        <div class="red-text<?php echo e($errors->has('password_confirmation') ? ' has-error' : ''); ?>">
                             <label for="password-confirm">Confirmer le nouveau mot de passe</label>
                             <input id="password-confirm" type="password" name="password_confirmation" required>
-                                @if ($errors->has('password_confirmation'))
+                                <?php if($errors->has('password_confirmation')): ?>
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                        <strong><?php echo e($errors->first('password_confirmation')); ?></strong>
                                     </span>
-                                @endif
+                                <?php endif; ?>
                         </div>
 
                        <div class="row">
@@ -69,4 +69,6 @@
     </div>
 </div>
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

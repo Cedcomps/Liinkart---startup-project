@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('titre')
+    La plateforme qui démocratise l'art en ligne
+@endsection
 @section('content')
 <header>
     <div class="row center">

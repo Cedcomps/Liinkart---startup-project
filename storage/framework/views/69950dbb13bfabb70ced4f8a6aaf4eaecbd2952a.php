@@ -130,7 +130,7 @@
 
     <script src=<?php echo e(asset("js/script.js")); ?>></script>
     <script src=<?php echo e(asset('bower_components/sweetalert2/dist/sweetalert2.min.js')); ?>></script>
-
+    <?php echo $__env->make('sweet::alert', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     <?php if(Session::has('achievement')): ?>
         <script type="text/javascript">
             swal({

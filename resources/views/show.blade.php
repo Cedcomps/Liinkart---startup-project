@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('titre')
+   Profil de {{ ucfirst($user->name) }}
+@endsection
 @section('css')
    <link href="{{ asset('css/user.css') }}" rel="stylesheet">
 @endsection
@@ -127,7 +130,7 @@
                         <span class="time-ago">{{ $post->created_at->diffForHumans() }} </span>
                     </div>
                     <div class="card-reveal">
-                        <span class="raccourcir-titre card-title grey-text text-darken-4">{{ $post->titre }}<i class="material-icons right">close</i></span>
+                        <span class="raccourcir-titre card-title grey-text text-darken-4">{{ ucfirst($post->titre) }}<i class="material-icons right">close</i></span>
                         <p>{{ $post->contenu }}</p>
                     </div>
                     <div class="card-action">

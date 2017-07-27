@@ -1,5 +1,7 @@
 @extends('layouts.app')
- 
+ @section('titre')
+    Demande de contact envoyée
+@endsection
 @section('content')
 <section class="reference">
   <div class="container">

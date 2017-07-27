@@ -123,7 +123,7 @@
 
     <script src={{ asset("js/script.js") }}></script>
     <script src={{ asset('bower_components/sweetalert2/dist/sweetalert2.min.js')}}></script>
-
+    @include('sweet::alert')
     @if(Session::has('achievement'))
         <script type="text/javascript">
             swal({

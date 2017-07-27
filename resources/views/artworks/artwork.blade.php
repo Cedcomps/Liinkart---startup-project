@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('titre')
+	{{ ucfirst($post->titre) }}
+@endsection
 @section('css')
    <link href="{{ asset('bower_components/easyzoom/css/easyzoom.css') }}" rel="stylesheet">
 @endsection
@@ -26,7 +29,7 @@
 				</div>
 				<div class="col l6 s12">
 					<div class="section">
-						<h1>{{ $post->titre }}</h1>
+						<h1>{{ ucfirst($post->titre) }}</h1>
 						<span class="grey-text">Créé le {{ $post->created_at->format('d/m/Y') }} et se termine d'ici {{ $post->created_at->addDays(30)->diffForHumans(null, true) }}</span><br><br>
 						<span class="right-align"><a class="waves-effect waves-light btn-large z-depth-3" href="#modal1"><i class="material-icons right">gavel</i>Faire une offre</a></span><br>
 						{{-- gavel modal --}}

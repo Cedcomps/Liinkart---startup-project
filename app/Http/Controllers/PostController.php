@@ -72,8 +72,8 @@ class PostController extends Controller
         $user->addProgress(new UserMade10Posts(), 1);
         $user->addProgress(new UserMade100Posts(), 1);
         $user->addProgress(new UserMade1000Posts(), 1);
-
-        return redirect(route('artworks.index'))->with('success', 'Post créé!');
+        \Alert::success('Oeuvre créée!');
+        return redirect(route('artworks.index'));
     }
     public function show($id)
     {
