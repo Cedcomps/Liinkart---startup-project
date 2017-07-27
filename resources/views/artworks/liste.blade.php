@@ -13,14 +13,16 @@
                         <div class="card-content">
                             <div class="valign-wrapper">
                                 <div class="col s2">
-                                    <a href="{{ route('user.show', ['id' => $post->user->id]) }}"><img src=" {{ asset('storage/uploads/avatars/' . $post->user->avatar) }}" alt="avatar artiste" class="circle responsive-img"></a>
+                                    <a href="{{ route('user.show', ['id' => $post->user->id]) }}"><img src="@if(filter_var($post->user->avatar, FILTER_VALIDATE_URL)) {{$post->user->avatar}}
+                                @else {{ asset('storage/uploads/avatars/' . $post->user->avatar) }}
+                                @endif" alt="avatar artiste" class="circle responsive-img"></a>
                                 </div>
                                 <div class="col s10">
                                     <a class="black-text" href="{{ route('user.show', ['id' => $post->user->id]) }}">By {{ $post->user->name or "Artiste"}}</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-image waves-effect waves-block waves-light">
+                        <div class="card-image grey lighten-5 waves-effect waves-block waves-light">
                             @if(count($post->posts_photos))
                                 <img class="activator" src=" {{ asset('storage/uploads/artworks/' . $post->posts_photos[0]->filename)}}" alt="oeuvre d'art liinkart">
                             @else

@@ -31,8 +31,26 @@ return [
 
     'stripe' => [
         'model' => App\User::class,
-        'key' => env('STRIPE_KEY'),
-        'secret' => env('STRIPE_SECRET'),
+        'key' => env('pk_test_OLLIrBWLyXFHRK97jaLjyTR3'),
+        'secret' => env('sk_test_IUTIfgb2MdyKnWJLFquVfVCJ'),
+    ],
+
+    'facebook' => [
+        'client_id' => '500013280340412',
+        'client_secret' => '89c82d4b5ae3a34346339bdf413e4700',
+        'redirect' => 'http://liinkart.app/login/facebook/callback',
+    ],
+
+    'twitter' => [
+        'client_id' => 'OOZrinWCQiehDdS9rbIJ35U7U',
+        'client_secret' => 'yX0XbWBNO66xfcwK5gb17tQj5b1y2AFBanHnReD2ojqZvlYTpp',
+        'redirect' => 'http://liinkart.app/login/twitter/callback',
+    ],
+
+    'google' => [
+        'client_id' => '488906779477-mu1iu1kipq783lh48scrgld32sqs1bb0.apps.googleusercontent.com',
+        'client_secret' => 'DLdCc_rYmAM2cgQ_WhZX0sHe',
+        'redirect' => 'http://liinkart.app/login/google/callback',
     ],
 
 ];

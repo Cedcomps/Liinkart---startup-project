@@ -9,7 +9,11 @@
                 <div class="card">
                     <div class="card-content center">
                         <div>
-                        <img class="responsive-img" src=" <?php echo e(asset('storage/uploads/avatars/' . $user->avatar)); ?>" style="border-radius: 50%;">
+                        <img class="responsive-img" src="<?php if(filter_var($user->avatar, FILTER_VALIDATE_URL)): ?> <?php echo e($user->avatar); ?>
+
+                                                        <?php else: ?> <?php echo e(asset('storage/uploads/avatars/' . $user->avatar)); ?>
+
+                                                        <?php endif; ?>" style="border-radius: 50%;">
                             <h3 data-userid="<?php echo e($user->id); ?>"><?php echo e($user->name); ?></h3><br>
                             <div class="interaction">
                                 <a href="#" class="like"><?php echo e(Auth::user()->likes()->where('user_id', $user->id)->first() ? Auth::user()->likes()->where('user_id', $user->id)->first()->like == 1 ? 'You like this user' : 'Like' : 'Like'); ?></a> |

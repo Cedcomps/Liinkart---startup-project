@@ -20,6 +20,9 @@ Route::get('/home', function() {
 
 //Authentification
 Auth::routes();
+// OAuth google/facebook/twitter
+Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
 //Administration Back office
 Route::get('dashboard', function() {

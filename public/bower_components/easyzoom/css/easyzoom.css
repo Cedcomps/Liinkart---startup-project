@@ -8,19 +8,23 @@
 	*display: inline;
 	*zoom: 1;
 	width: 100%;
-	height: 455px;
 }
 
 .easyzoom img {
 	vertical-align: bottom;
 }
 
+.easyzoom a img {
+	max-height: 367px;
+	display: block;
+	margin: auto;
+}
 .easyzoom.is-loading img {
 	cursor: progress;
 }
 
 .easyzoom.is-ready img {
-	cursor: crosshair;
+	cursor: zoom-in;
 }
 
 .easyzoom.is-error  img {

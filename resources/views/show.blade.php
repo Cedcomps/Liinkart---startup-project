@@ -10,7 +10,9 @@
                 <div class="card">
                     <div class="card-content center">
                         <div>
-                        <img class="responsive-img" src=" {{ asset('storage/uploads/avatars/' . $user->avatar) }}" style="border-radius: 50%;">
+                        <img class="responsive-img" src="@if(filter_var($user->avatar, FILTER_VALIDATE_URL)) {{$user->avatar}}
+                                                        @else {{ asset('storage/uploads/avatars/' . $user->avatar) }}
+                                                        @endif" style="border-radius: 50%;">
                             <h3 data-userid="{{ $user->id }}">{{ $user->name }}</h3><br>
                             <div class="interaction">
                                 <a href="#" class="like">{{  Auth::user()->likes()->where('user_id', $user->id)->first() ? Auth::user()->likes()->where('user_id', $user->id)->first()->like == 1 ? 'You like this user' : 'Like' : 'Like'  }}</a> |

@@ -17,7 +17,7 @@
 				<h5>Vous souhaitez discuter sur le chat d'un soucis technique ou simplement apporter votre pierre a l'édifice?</h5><br>
 				<p>Nous sommes à l'écoute de toutes personnes souhaitant apporter son expérience sur la plateforme LiinkART. La communauté est au coeur de notre réflexion. Afin de répondre à vos besoins et d'améliorer considérablement votre expérience sur le site, enregistrez votre adresse email pour que nous vous envoyons une invitation à vous connecter sur notre slack.</p>
 				<br><br>
-				<div class="card-panel">
+				<div class="card-panel grey lighten-5">
 	            	<p>Enregistrez votre adresse mail afin de recevoir votre invitation au <a href="https://liinkart.slack.com/">#Slack</a></p>
 	            	{!! Form::open(['route' => 'store.email']) !!}
                     <div class="form-group {!! $errors->has('email') ? 'has-error' : '' !!}">
@@ -41,7 +41,7 @@
 			<div class="col s12 m8 center"> 
 				<h2 class="center">Par eMail</h2><i class='material-icons medium'>email</i>
 					{!! Form::open(['url' => 'contact', 'class' => 'col s12']) !!}
-				<div class="card-panel">
+				<div class="card-panel grey lighten-5">
 					<div class="input-field col s6 {!! $errors->has('nom') ? 'has-error' : '' !!}">
 						{!! Form::text('nom', null, ['class' => 'validate', 'placeholder' => 'Votre nom']) !!}
 						{!! $errors->first('nom', '<small class="help-block">:message</small>') !!}

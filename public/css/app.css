@@ -14,6 +14,9 @@ a#scrollButton {
 a#scrollButton i{
 	font-size: 3rem;
 }
+.liinkart-white {
+	background-color: #fff;
+}
 .liinkart-light {
 	background-color: #9575ff !important;
 }
@@ -46,6 +49,29 @@ a#scrollButton i{
 	display: block;
 	margin: auto;
 	padding: 10px 0 10px 0;
+}
+.btn-facebook {
+	background-color: #3b5998 !important;
+	color: white !important;
+}
+.btn-twitter {
+	background-color: #1583d7 !important;
+	color: white !important;
+}
+.btn-google {
+	background-color: #dd4b39 !important;
+	color: white !important;
+}
+nav a, nav ul a {
+	color: #342959 !important;
+}
+.sign-up {
+	background: radial-gradient(circle at 1.98% 17.05%, #DD5E89, transparent 100%),radial-gradient(circle at 98.02% 97.05%, #F7BB97, transparent 100%),radial-gradient(circle at 50% 50%, #ffffff, #ffffff 100%);
+	margin-left: 10px;
+	margin-bottom: 2px;
+	border-radius: 2px;
+	padding: 0 25px;
+	color: #fff !important;
 }
 /*subheading*/
 .subheading {
@@ -221,6 +247,11 @@ header div a {
 	font-size: 1.2em;
 }
 /*card artwork*/
+.card .card-image img {
+	max-height: 400px;
+	margin: auto;
+	width: inherit !important;
+}
 .chip-technique {
 	margin-right: 24px;
 }

@@ -6,20 +6,21 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Gstt\Achievements\Achiever;
 use Spatie\Permission\Traits\HasRoles;
+use Laravel\Cashier\Billable;
 
 class User extends Authenticatable
 {
     use Notifiable;
     use Achiever;
     use HasRoles;
-
+    use Billable;
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'country', 'city', 'email', 'avatar', 'description', 'specialist', 'password', 'password',
+        'provider_id', 'provider', 'name', 'country', 'city', 'email', 'avatar', 'description', 'specialist', 'password', 'password',
     ];
 
     /**
@@ -40,5 +41,10 @@ class User extends Authenticatable
     public function likes()
     {
         return $this->hasMany('App\Like');
+    } 
+
+    public function socialProviders()
+    {
+        return $this->hasMany(\App\SocialProvider::class);
     } 
 }

@@ -48,8 +48,9 @@ class PostController extends Controller
         
         $files = $request->file('photos');
         foreach ($files as $file) {
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $img = Image::make($file)->orientate()->resize(1000, null, function ($constraint) {
+            $filename = rand(0, 9999) . "_" . time() . '.' . $file->getClientOriginalExtension();
+            $img = Image::make($file)->orientate();
+            $img->resize(1000, null, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
             });
@@ -72,7 +73,7 @@ class PostController extends Controller
         $user->addProgress(new UserMade100Posts(), 1);
         $user->addProgress(new UserMade1000Posts(), 1);
 
-        return redirect(route('artworks.index'));
+        return redirect(route('artworks.index'))->with('success', 'Post créé!');
     }
     public function show($id)
     {

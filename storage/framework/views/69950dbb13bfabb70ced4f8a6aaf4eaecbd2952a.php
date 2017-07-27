@@ -22,18 +22,7 @@
 
 </head>
 <body>
-<section id="background-design">
-    <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-         viewBox="0 0 382 955" style="enable-background:new 0 0 382 955;" xml:space="preserve">
-    <polygon fill="#E0AFD6" points="382,191 191,0 191,382 "/>
-    <polygon fill="#D4E5D1" points="382,573 191,382 191,764 "/>
-    <polygon fill="#E8CDE5" points="191,382 382,573 382,191 "/>
-    <polygon fill="#D4DAE8" points="0,191 191,382 191,0 "/>
-    <polygon fill="#C4E8D9" points="0,573 191,764 191,382 "/>
-    <polygon fill="#E8EDDA" points="191,764 382,955 382,573 "/>
-    </svg>
-</section>
-    <nav class="liinkart-medium z-depth-2">
+    <nav class="liinkart-white z-depth-2">
         <div class="nav-wrapper">
             <a id="liinkart-logo" href="<?php echo e(url('/')); ?>" class="brand-logo">
                 <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -64,11 +53,15 @@
             <ul class="right hide-on-med-and-down">
                 <?php if(Auth::guest()): ?>
                     <li><a href="<?php echo e(route('login')); ?>">Se connecter</a></li>
-                    <li><a href="<?php echo e(route('register')); ?>">Créer un compte</a></li>
+                    <li><a class="waves-effect waves-light sign-up" href="<?php echo e(route('register')); ?>">Créer un compte</a></li>
                 <?php else: ?>
                     <li><a href="<?php echo e(url('/artworks/create')); ?>">Créer une oeuvre</a></li>
                     <li><a href="#!" class="dropdown-button" data-activates="dropdown1">
-                            <img class="avatar" src="<?php echo e(asset('storage/uploads/avatars/' . Auth::user()->avatar)); ?>">
+                            <img class="avatar" src="<?php if(filter_var(Auth::user()->avatar, FILTER_VALIDATE_URL)): ?> <?php echo e(Auth::user()->avatar); ?>
+
+                                                        <?php else: ?> <?php echo e(asset('storage/uploads/avatars/' .  Auth::user()->avatar)); ?>
+
+                                                        <?php endif; ?>">
                             <?php echo e(Auth::user()->name); ?> <i class="material-icons right">apps</i>
                         </a>
                         <ul id="dropdown1" class="dropdown-content">
@@ -93,7 +86,11 @@
                     <li>
                         <div class="user-view">
                             <div class="user-background"><img src="<?php echo e(asset ('uploads/user-bg.jpg')); ?>"></div>
-                        <img class="circle" src="<?php echo e(asset('storage/uploads/avatars/' . Auth::user()->avatar)); ?>">
+                        <img class="circle" src="<?php if(filter_var(Auth::user()->avatar, FILTER_VALIDATE_URL)): ?> <?php echo e(Auth::user()->avatar); ?>
+
+                                                        <?php else: ?> <?php echo e(asset('storage/uploads/avatars/' .  Auth::user()->avatar)); ?>
+
+                                                        <?php endif; ?>">
                         <span class="white-text name"><?php echo e(Auth::user()->name); ?></span>
                         <span class="white-text email"><?php echo e(Auth::user()->email); ?></span>
                         </div>
@@ -113,17 +110,6 @@
         </div>
     </nav>
      
-    <script src=<?php echo e(asset('bower_components/sweetalert2/dist/sweetalert2.min.js')); ?>></script>
-
-    <?php if(Session::has('achievement')): ?>
-        <script type="text/javascript">
-            swal({
-                title: 'Hey !',
-                text: 'Vous avez débloqué un nouveau badge: <?php echo e(Session::get('achievement')); ?>',
-                type: 'success'
-            });
-        </script>
-    <?php endif; ?>
 
     <?php if(Auth::user()): ?>
         <?php echo $__env->yieldContent('sidebar'); ?>
@@ -143,6 +129,17 @@
 
 
     <script src=<?php echo e(asset("js/script.js")); ?>></script>
+    <script src=<?php echo e(asset('bower_components/sweetalert2/dist/sweetalert2.min.js')); ?>></script>
+
+    <?php if(Session::has('achievement')): ?>
+        <script type="text/javascript">
+            swal({
+                title: 'Hey !',
+                text: 'Vous avez débloqué un nouveau badge: <?php echo e(Session::get('achievement')); ?>',
+                type: 'success'
+            });
+        </script>
+    <?php endif; ?>
     <?php echo $__env->yieldContent('js'); ?>
 </body>
 </html>

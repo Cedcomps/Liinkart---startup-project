@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Bestmomo\LaravelEmailConfirmation\Traits\RegistersUsers;
 use App\Achievements\UserMember;
-// use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {

@@ -113,7 +113,11 @@
 					<h4>Détails sur l'artiste</h4>
 					<div class="valign-wrapper">
                         <div class="col s2">
-                            <a href="<?php echo e(route('user.show', ['id' => $post->user->id])); ?>"><img src="<?php echo e(asset('storage/uploads/avatars/' . $post->user->avatar)); ?>" alt="avatar artiste" class="circle responsive-img"></a>
+                            <a href="<?php echo e(route('user.show', ['id' => $post->user->id])); ?>"><img src="<?php if(filter_var($post->user->avatar, FILTER_VALIDATE_URL)): ?> <?php echo e($post->user->avatar); ?>
+
+                                <?php else: ?> <?php echo e(asset('storage/uploads/avatars/' . $post->user->avatar)); ?>
+
+                                <?php endif; ?>" alt="avatar artiste" class="circle responsive-img"></a>
                         </div>
                         <div class="col s10">
                             <a class="black-text" href="<?php echo e(route('user.show', ['id' => $post->user->id])); ?>"><h5>By <?php echo e(isset($post->user->name) ? $post->user->name : "Artiste"); ?></h5></a>    

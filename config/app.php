@@ -202,9 +202,13 @@ return [
          */
         Barryvdh\DomPDF\ServiceProvider::class,
         /**
-         * search
+         * Payement
          */
-        AlgoliaSearch\Laravel\AlgoliaServiceProvider::class,
+        Laravel\Cashier\CashierServiceProvider::class,
+        /**
+         * Socialite FB, Twitter ...
+         */
+        Laravel\Socialite\SocialiteServiceProvider::class,
     ],
 
     /*
@@ -259,6 +263,7 @@ return [
         'MaterializeCSS' => Skydiver\LaravelMaterializeCSS\MaterializeCSS::class,
         'Image'          => Intervention\Image\Facades\Image::class,
         'PDF'            => Barryvdh\DomPDF\Facade::class,
+        'Socialite'      => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];

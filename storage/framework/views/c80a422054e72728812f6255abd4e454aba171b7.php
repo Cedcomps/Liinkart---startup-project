@@ -13,14 +13,18 @@
                         <div class="card-content">
                             <div class="valign-wrapper">
                                 <div class="col s2">
-                                    <a href="<?php echo e(route('user.show', ['id' => $post->user->id])); ?>"><img src=" <?php echo e(asset('storage/uploads/avatars/' . $post->user->avatar)); ?>" alt="avatar artiste" class="circle responsive-img"></a>
+                                    <a href="<?php echo e(route('user.show', ['id' => $post->user->id])); ?>"><img src="<?php if(filter_var($post->user->avatar, FILTER_VALIDATE_URL)): ?> <?php echo e($post->user->avatar); ?>
+
+                                <?php else: ?> <?php echo e(asset('storage/uploads/avatars/' . $post->user->avatar)); ?>
+
+                                <?php endif; ?>" alt="avatar artiste" class="circle responsive-img"></a>
                                 </div>
                                 <div class="col s10">
                                     <a class="black-text" href="<?php echo e(route('user.show', ['id' => $post->user->id])); ?>">By <?php echo e(isset($post->user->name) ? $post->user->name : "Artiste"); ?></a>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-image waves-effect waves-block waves-light">
+                        <div class="card-image grey lighten-5 waves-effect waves-block waves-light">
                             <?php if(count($post->posts_photos)): ?>
                                 <img class="activator" src=" <?php echo e(asset('storage/uploads/artworks/' . $post->posts_photos[0]->filename)); ?>" alt="oeuvre d'art liinkart">
                             <?php else: ?>
