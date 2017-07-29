@@ -13,9 +13,11 @@ use Auth;
 
 use App\Achievements\UserChangedAvatar; //Achievement
 use App\Achievements\UserCompletedProfile; //Achievement
+use App\Achievements\UserMember; //Achievement
 use App\Achievements\UserMember1Year; //Achievement
 use App\Achievements\UserMember6Months; //Achievement
 use App\Achievements\UserMemberFoundater; //Achievement
+use App\Achievements\UserSocialProvider; //Achievement
 
 use Carbon\Carbon;
  
@@ -23,7 +25,7 @@ class UserController extends Controller
 {
     protected $userRepository;
     
-    protected $nbrPerPage = 4;
+    protected $nbrPerPage = 6;
  
     public function __construct(UserRepository $userRepository)
     {
@@ -34,8 +36,8 @@ class UserController extends Controller
     public function index()
     {
         $users = $this->userRepository->getPaginate($this->nbrPerPage);
- 
-        return view('index', compact('users'));
+        $countUser = User::count();
+        return view('admin.dashboard', compact('users', 'countUser'));
     }
  
     public function create()
@@ -63,6 +65,14 @@ class UserController extends Controller
             $user->unlock(new UserMember6Months); //Achievement
         }
 
+        if (!empty($user->provider)) {
+            $user->unlock(new UserSocialProvider);//Achievement
+        }    
+
+        $user->unlock(new UserMember); //Achievement
+        if ($user->avatar != 'default.jpg') {
+            $user->unlock(new UserChangedAvatar()); //Achievement
+        }
         $posts = $user->posts()->get();
         $achievements = $user->achievements;
         return view('show', compact('user', 'posts', 'achievements'));
@@ -100,7 +110,6 @@ class UserController extends Controller
             $user = Auth::user();
             $user->avatar = $filename;
             $user->save();
-            $user->unlock(new UserChangedAvatar()); //Achievement
         }
         
         $user->unlock(new UserCompletedProfile()); //Achievement

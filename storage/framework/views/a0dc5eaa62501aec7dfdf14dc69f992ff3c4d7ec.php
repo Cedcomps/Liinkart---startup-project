@@ -6,12 +6,9 @@
             <?php if(session()->has('ok')): ?>
                 <div class="alert alert-success alert-dismissible"><?php echo session('ok'); ?></div>
             <?php endif; ?>
-            
             <div class="row">
-                
-                    <div class="col s12 m3 l3"><p>s12 m6 l3</p></div>
                     <div class="col s12 m6 l6">
-                        <h3 class="align-center">Liste des utilisateurs</h3>
+                        <h3 class="center">Liste des utilisateurs</h3>
                             <table class="table highlight responsive-table">
                             <thead>
                                 <tr>
@@ -23,7 +20,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php $__currentLoopData = $users->sortByDesc('id'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
                                     <td><?php echo $user->id; ?></td>
                                     <td class=""><strong><?php echo $user->name; ?></strong></td>
@@ -42,7 +39,6 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="col s12 m3 l3"><p>s12 m6 l3</p></div>
                 
             </div>
             <?php echo link_to_route('user.create', 'Ajouter un utilisateur', [], ['class' => 'btn btn-info pull-right']); ?>

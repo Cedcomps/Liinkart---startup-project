@@ -14,5 +14,5 @@ class UserChangedAvatar extends Achievement
     /*
      * A small description for the achievement
      */
-    public $description = "Bravo! Maintenant nous pouvons mettre un visage à l'artiste!";
+    public $description = "Bravo, nous pouvons voir qui se cache derrière cet artiste!";
 }

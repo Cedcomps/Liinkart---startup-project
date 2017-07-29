@@ -10,10 +10,9 @@ class UserRepository
  
     public function __construct(User $user)
     {
-
         $this->user = $user;
     }
- 
+
     public function getPaginate($n)
     {
         return $this->user->paginate($n);
@@ -32,6 +31,7 @@ class UserRepository
  
     public function destroy(User $user)
     {
+        $user->posts()->delete();
         $user->delete();
     }
 }

@@ -7,12 +7,9 @@
             @if(session()->has('ok'))
                 <div class="alert alert-success alert-dismissible">{!! session('ok') !!}</div>
             @endif
-            
             <div class="row">
-                
-                    <div class="col s12 m3 l3"><p>s12 m6 l3</p></div>
                     <div class="col s12 m6 l6">
-                        <h3 class="align-center">Liste des utilisateurs</h3>
+                        <h3 class="center">Liste des utilisateurs</h3>
                             <table class="table highlight responsive-table">
                             <thead>
                                 <tr>
@@ -24,7 +21,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach ($users as $user)
+                            @foreach ($users->sortByDesc('id') as $user)
                                 <tr>
                                     <td>{!! $user->id !!}</td>
                                     <td class=""><strong>{!! $user->name !!}</strong></td>
@@ -40,7 +37,6 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="col s12 m3 l3"><p>s12 m6 l3</p></div>
                 
             </div>
             {!! link_to_route('user.create', 'Ajouter un utilisateur', [], ['class' => 'btn btn-info pull-right']) !!}

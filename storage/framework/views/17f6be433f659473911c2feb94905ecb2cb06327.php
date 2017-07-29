@@ -1,3 +1,6 @@
+<?php $__env->startSection('titre'); ?>
+    A propos
+<?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 
 <section class="header-page gradient--sunset">

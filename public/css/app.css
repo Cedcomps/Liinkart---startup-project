@@ -5,6 +5,10 @@ input:not([type]).valid, input:not([type]):focus.valid, input[type=text]:not(.br
 	color: #fff;
 }
 /*charte graphique*/
+/*pagination*/
+.pagination li.active {
+	background-color: #9575ff !important;
+}
 a#scrollButton {
 	position: fixed;
 	bottom: 100px;

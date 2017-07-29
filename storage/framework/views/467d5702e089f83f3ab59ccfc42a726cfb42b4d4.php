@@ -1,4 +1,6 @@
-	
+	<?php $__env->startSection('titre'); ?>
+    Questions fréquentes
+<?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 	<section class="header-page gradient--bloody">
   <div class="row">

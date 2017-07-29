@@ -1,6 +1,8 @@
 <?php
  
 namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
 use App\Repositories\PostRepository;
 use App\Repositories\TagRepository;
 use App\Http\Requests\PostRequest;
@@ -22,18 +24,20 @@ class PostController extends Controller
     public function __construct(PostRepository $postRepository)
     {
         $this->middleware('auth')->except('index', 'indexTag', 'show');
-        $this->middleware('admin')->only('destroy');
+       //$this->middleware('admin')->only('destroy');
  
         $this->postRepository = $postRepository;
     }
  
-    public function index()
+    public function index(Request $request)
     {
         $posts = $this->postRepository->getWithUserAndTagsPaginate($this->nbrPerPage);
         $links = $posts->render();        
         $users = Post::with(array('user'))->get();
- 
-        return view('artworks.liste', compact('posts', 'links', 'users'));
+        if ($request->ajax()){
+            return view('artworks.liste', compact('posts', 'users'));
+        }
+        return view('artworks.index', compact('posts', 'links', 'users'));
     }
  
     public function create()
@@ -81,10 +85,11 @@ class PostController extends Controller
         return view('artworks.artwork', compact('post'));
     }
  
-    public function destroy(Post $post)
+    public function destroy($post)
     {
+        $post = Post::find($post);
         $this->postRepository->destroy($post);
- 
+        \Alert::info('Oeuvre supprimée');
         return back();
     }
  
@@ -92,7 +97,7 @@ class PostController extends Controller
     {
         $posts = $this->postRepository->getWithUserAndTagsForTagPaginate($tag, $this->nbrPerPage);
         $links = $posts->render();
-        return view('artworks.liste', compact('posts', 'links'))
+        return view('artworks.index', compact('posts', 'links'))
             ->with('info', 'Résultats pour la recherche du mot-clé : ' . $tag);
     }
 

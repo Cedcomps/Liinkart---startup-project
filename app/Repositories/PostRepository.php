@@ -34,7 +34,6 @@ class PostRepository
     public function store($inputs)
     {
         return $this->post->create($inputs);
-        
     }
  
     public function destroy(Post $post)

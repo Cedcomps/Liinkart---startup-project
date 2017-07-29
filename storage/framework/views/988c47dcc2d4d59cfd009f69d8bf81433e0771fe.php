@@ -6,6 +6,15 @@
    <link href="<?php echo e(asset('bower_components/easyzoom/css/easyzoom.css')); ?>" rel="stylesheet">
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
+<section class="header-page gradient--bloody">
+	<div class="row">
+    <div class="section"></div>
+		<div class="col s12 center">
+        	<h1><?php echo e(ucfirst($post->titre)); ?></h1>
+        	<span class="white-text">Mise en ligne le <?php echo e($post->created_at->format('d/m/Y')); ?> et se termine d'ici <?php echo e($post->created_at->addDays(30)->diffForHumans(null, true)); ?></span>
+	    </div>
+	</div>
+</section>	
 	<div class="container">
 		<div class="row artwork-article">
 			<div class="col s12">
@@ -28,9 +37,63 @@
 				</ul>
 				</div>
 				<div class="col l6 s12">
+					
+					<br>
 					<div class="section">
-						<h1><?php echo e(ucfirst($post->titre)); ?></h1>
-						<span class="grey-text">Créé le <?php echo e($post->created_at->format('d/m/Y')); ?> et se termine d'ici <?php echo e($post->created_at->addDays(30)->diffForHumans(null, true)); ?></span><br><br>
+						<div class="card-panel"><h3>Description de l'oeuvre</h3>
+						<p><?php echo e($post->contenu); ?></p>
+						<div class="section"></div>
+						<h5>Technique</h5>
+							<span class="chip-technique">
+								<?php if(isset($post->category)): ?>
+		                            <?php echo e($post->category->category); ?>
+
+		                        <?php endif; ?>
+	                        </span>
+	                        <div class="section"></div>
+	                        <h5>Dimensions</h5>
+									<?php if(!empty($post->largeur)): ?>
+										Largeur: <?php echo e($post->largeur); ?>cm<br>
+									<?php endif; ?>
+									<?php if(!empty($post->longueur)): ?>
+										Longueur: <?php echo e($post->longueur); ?>cm<br>
+									<?php endif; ?>
+									<?php if(!empty($post->hauteur)): ?>
+										Hauteur: <?php echo e($post->hauteur); ?>cm
+									<?php endif; ?>
+									<?php if(empty($post->largeur) AND empty($post->longueur) AND empty($post->hauteur)): ?>
+									<p>Non renseignées</p>
+									<?php endif; ?>
+	                        <div class="section"></div>
+							<h5>Détails sur l'artiste</h5>
+							<div class="valign-wrapper">
+		                        <div class="col s2">
+		                            <a href="<?php echo e(route('user.show', ['id' => $post->user->id])); ?>"><img src="<?php if(filter_var($post->user->avatar, FILTER_VALIDATE_URL)): ?> <?php echo e($post->user->avatar); ?>
+
+		                                <?php else: ?> <?php echo e(asset('storage/uploads/avatars/' . $post->user->avatar)); ?>
+
+		                                <?php endif; ?>" alt="avatar artiste" class="circle responsive-img"></a>
+		                        </div>
+		                        <div class="col s10">
+		                            <a class="black-text" href="<?php echo e(route('user.show', ['id' => $post->user->id])); ?>"><h4><?php echo e(isset($post->user->name) ? $post->user->name : "Artiste"); ?></h4></a>    
+		                            <span><?php echo e($post->user->specialist); ?></span>
+		                            <p><?php echo e($post->user->country); ?></p><br>
+		                        </div>
+		                    </div>  
+                    		<div class="section"></div>
+							<div class="col s4 center">
+								<a class="tooltipped waves-effect certificat" target=_blank href="<?php echo e(route('certificat.pdf',$post)); ?>"" data-position="bottom" data-delay="50" data-tooltip="Télécharger le certificat d'authenticité"><img src="<?php echo e(asset('uploads/achievement/Certificat d\'authenticité créé.png')); ?>" alt="certificat d'authenticité"></a>
+							</div>
+							<div class="col s4 center">
+								<a class="btn tooltipped waves-effect btn-large btn-floating light-blue accent-3" data-position="bottom" data-delay="50" data-tooltip="Livraison offerte"><i class="material-icons">local_shipping</i></a>
+							</div>
+							<div class="col s4 center">
+								<a class="btn tooltipped waves-effect btn-large btn-floating green accent-3" data-position="bottom" data-delay="50" data-tooltip="Membre vérifié par notre équipe"><i class="material-icons">verified_user</i></a>
+							</div>
+						</div>
+					</div>
+					<div class="section"></div>
+					<div class="section">
 						<span class="right-align"><a class="waves-effect waves-light btn-large z-depth-3" href="#modal1"><i class="material-icons right">gavel</i>Faire une offre</a></span><br>
 						
 						<div id="modal1" class="modal">
@@ -55,81 +118,8 @@
 						    </div>
 						</div>
 					</div>
-					<br>
-					<div class="section">
-					<div class="row">
-						<div class="col s12 m6">
-							<div class="card-panel">
-							<h5>Technique</h5>
-								<span class="chip-technique">
-									<?php if(isset($post->category)): ?>
-			                            <?php echo e($post->category->category); ?>
-
-			                        <?php endif; ?>
-		                        </span>
-							</div>
-						</div>
-						<div class="col s12 m6">
-							<div class="card-panel">
-							<h5>Dimensions</h5>
-								<?php if(!empty($post->largeur)): ?>
-									Largeur: <?php echo e($post->largeur); ?>cm<br>
-								<?php endif; ?>
-								<?php if(!empty($post->longueur)): ?>
-									Longueur: <?php echo e($post->longueur); ?>cm<br>
-								<?php endif; ?>
-								<?php if(!empty($post->hauteur)): ?>
-									Hauteur: <?php echo e($post->hauteur); ?>cm
-								<?php endif; ?>
-								<?php if(empty($post->largeur) AND empty($post->longueur) AND empty($post->hauteur)): ?>
-								<p>Non renseignées</p>
-								<?php endif; ?>
-							</div>
-				    	</div>
-			    	</div>
-						<div class="card-panel"><h5>Description de l'oeuvre</h4>
-						<p><?php echo e($post->contenu); ?></p>
-							<div class="col s4 center">
-								<a class="tooltipped waves-effect certificat" target=_blank href="<?php echo e(route('certificat.pdf',$post)); ?>"" data-position="bottom" data-delay="50" data-tooltip="Télécharger le certificat d'authenticité"><img src="<?php echo e(asset('uploads/achievement/Certificat d\'authenticité créé.png')); ?>" alt="certificat d'authenticité"></a>
-							</div>
-							<div class="col s4 center">
-								<a class="btn tooltipped waves-effect btn-large btn-floating light-blue accent-3" data-position="bottom" data-delay="50" data-tooltip="Livraison offerte"><i class="material-icons">local_shipping</i></a>
-							</div>
-							<div class="col s4 center">
-								<a class="btn tooltipped waves-effect btn-large btn-floating green accent-3" data-position="bottom" data-delay="50" data-tooltip="Membre vérifié par notre équipe"><i class="material-icons">verified_user</i></a>
-							</div>
-						</div>
-					</div>
-					<br><br><br>
-					<div class="divider"></div>
-						<?php if(Auth::id() === $post->user->id || isset(Auth::user()->admin) && Auth::user()->admin == 1): ?>
-							<br><form method="POST" action="<?php echo e(route('artworks.destroy', ['id' => $post->id])); ?>">
-                                <?php echo e(method_field('DELETE')); ?>
-
-                                <?php echo e(csrf_field()); ?>
-
-                                <input class="btn btn-danger" onclick="return confirm('Vraiment supprimer cet article ?')" type="submit" value="Supprimer">
-                            </form>
-                        <?php endif; ?>
-					</div>
-				</div>
-				<div class="section">
-					<h4>Détails sur l'artiste</h4>
-					<div class="valign-wrapper">
-                        <div class="col s2">
-                            <a href="<?php echo e(route('user.show', ['id' => $post->user->id])); ?>"><img src="<?php if(filter_var($post->user->avatar, FILTER_VALIDATE_URL)): ?> <?php echo e($post->user->avatar); ?>
-
-                                <?php else: ?> <?php echo e(asset('storage/uploads/avatars/' . $post->user->avatar)); ?>
-
-                                <?php endif; ?>" alt="avatar artiste" class="circle responsive-img"></a>
-                        </div>
-                        <div class="col s10">
-                            <a class="black-text" href="<?php echo e(route('user.show', ['id' => $post->user->id])); ?>"><h5>By <?php echo e(isset($post->user->name) ? $post->user->name : "Artiste"); ?></h5></a>    
-                            <p><?php echo e($post->user->country); ?></p>
-                            <p><?php echo e($post->user->city); ?></p><br>
-                        </div>
-                    </div>
-                </div>	
+				</div>  
+            </div>	
 		</div>
 	</div>
 <?php $__env->stopSection(); ?>

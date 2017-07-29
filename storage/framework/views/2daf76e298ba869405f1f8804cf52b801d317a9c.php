@@ -163,13 +163,12 @@
                         <a href="<?php echo e(route('artworks.show', ['id' => $post])); ?>" class="right-align">VOIR EN DETAILS</a>
 
                         <?php if(Auth::id() === $user->id || isset(Auth::user()->admin) && Auth::user()->admin == 1): ?>
-                            <br><form method="POST" action="<?php echo e(route('artworks.destroy', ['id' => $post->id])); ?>">
-                                <?php echo e(method_field('DELETE')); ?>
+                            <br><?php echo Form::open(['method' => 'DELETE', 'route' => ['artworks.destroy',  $post->id]]); ?>
 
-                                <?php echo e(csrf_field()); ?>
+                                    <?php echo Form::submit('Delete', ['class' => 'btn btn-danger']); ?>
 
-                                <input class="btn btn-danger" onclick="return confirm('Vraiment supprimer cet article ?')" type="submit" value="Supprimer">
-                            </form>
+                            <?php echo Form::close(); ?>
+
                         <?php endif; ?>
                     </div>
                 </div>

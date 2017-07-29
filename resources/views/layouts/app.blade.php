@@ -127,7 +127,7 @@
     @if(Session::has('achievement'))
         <script type="text/javascript">
             swal({
-                title: 'Hey !',
+                title: 'Challenge débloqué !',
                 text: 'Vous avez débloqué un nouveau badge: {{Session::get('achievement')}}',
                 type: 'success'
             });

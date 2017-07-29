@@ -137,11 +137,9 @@
                         <a href="{{ route('artworks.show', ['id' => $post]) }}" class="right-align">VOIR EN DETAILS</a>
 
                         @if (Auth::id() === $user->id || isset(Auth::user()->admin) && Auth::user()->admin == 1)
-                            <br><form method="POST" action="{{ route('artworks.destroy', ['id' => $post->id]) }}">
-                                {{ method_field('DELETE') }}
-                                {{ csrf_field() }}
-                                <input class="btn btn-danger" onclick="return confirm('Vraiment supprimer cet article ?')" type="submit" value="Supprimer">
-                            </form>
+                            <br>{!! Form::open(['method' => 'DELETE', 'route' => ['artworks.destroy',  $post->id]]) !!}
+                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                            {!! Form::close() !!}
                         @endif
                     </div>
                 </div>

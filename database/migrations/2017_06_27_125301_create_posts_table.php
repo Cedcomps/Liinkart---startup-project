@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration
             $table->string('largeur', 5)->nullable();
             $table->string('longueur', 5)->nullable();
             $table->string('hauteur', 5)->nullable();
+            $table->boolean('revision')->default(false);
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')
                   ->references('id')

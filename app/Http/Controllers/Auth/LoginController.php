@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Bestmomo\LaravelEmailConfirmation\Traits\AuthenticatesUsers;
-use App\Achievements\UserMember;
+use App\Achievements\UserMember; //Achievement
+
 use App\User;
 use Alert;
 use Illuminate\Support\Facades\Auth;
@@ -53,8 +54,8 @@ class LoginController extends Controller
      * @return mixed
      */
     protected function authenticated(Request $request, $user)
-    {
-        $user->unlock(new UserMember);
+    {       
+        $user->unlock(new UserMember); //Achievement
     }
 
     /**
@@ -105,7 +106,7 @@ class LoginController extends Controller
                 'avatar'      => $user->getAvatar(),
                 'provider'    => $provider,
                 'provider_id' => $user->getId()
-            ]);   
-        }       
+            ]);  
+        } 
     }
 }

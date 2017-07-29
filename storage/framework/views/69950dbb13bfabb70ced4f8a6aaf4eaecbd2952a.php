@@ -134,7 +134,7 @@
     <?php if(Session::has('achievement')): ?>
         <script type="text/javascript">
             swal({
-                title: 'Hey !',
+                title: 'Challenge débloqué !',
                 text: 'Vous avez débloqué un nouveau badge: <?php echo e(Session::get('achievement')); ?>',
                 type: 'success'
             });
