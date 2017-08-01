@@ -66,6 +66,9 @@
                         </a>
                         <ul id="dropdown1" class="dropdown-content">
                             <li>
+                                <?php if(Auth::user()->admin): ?>
+                                <a href="<?php echo e(url('dashboard')); ?>">Administration</a>
+                                <?php endif; ?>
                                 <a href="<?php echo e(route('user.show', [auth()->user()->id])); ?>">Profil</a>
                                 <a href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnexion</a>
                                 <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
@@ -95,6 +98,9 @@
                         <span class="white-text email"><?php echo e(Auth::user()->email); ?></span>
                         </div>
                     </li>
+                    <?php if(Auth::user()->admin): ?>
+                    <li><a href="<?php echo e(url('dashboard')); ?>"><i class="material-icons">settings_input_component</i>Administration</a></li>
+                    <?php endif; ?>
                     <li><a href="<?php echo e(route('artworks.index')); ?>"><i class="material-icons">home</i>Accueil</a></li>
                     <li><a href="<?php echo e(route('user.show', [auth()->user()->id])); ?>"><i class="material-icons">face</i>Profil</a>
                     <li><a href="<?php echo e(url('/artworks/create')); ?>"><i class="material-icons">add</i>Créer une oeuvre</a></li>
@@ -140,6 +146,7 @@
             });
         </script>
     <?php endif; ?>
+    <?php echo $__env->make('analytics', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     <?php echo $__env->yieldContent('js'); ?>
 </body>
 </html>

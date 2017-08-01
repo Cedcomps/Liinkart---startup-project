@@ -34,6 +34,6 @@ class Slack extends Mailable
      */
     public function build()
     {
-        return $this->from('noreply@liinkart.com', env('APP_NAME'))->view('email.slack');
+        return $this->from('noreply@liinkart.com', env('APP_NAME'))->markdown('email.slack');
     }
 }

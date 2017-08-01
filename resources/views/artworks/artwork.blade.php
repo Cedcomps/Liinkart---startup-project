@@ -79,10 +79,13 @@
 		                    </div>  
                     		<div class="section"></div>
 							<div class="col s4 center">
-								<a class="tooltipped waves-effect certificat" target=_blank href="{{route('certificat.pdf',$post)}}"" data-position="bottom" data-delay="50" data-tooltip="Télécharger le certificat d'authenticité"><img src="{{ asset('uploads/achievement/Certificat d\'authenticité créé.png') }}" alt="certificat d'authenticité"></a>
+								<a class="tooltipped waves-effect icone-artwork" target=_blank href="{{route('certificat.pdf',$post)}}"" data-position="bottom" data-delay="50" data-tooltip="Télécharger le certificat d'authenticité"><img src="{{ asset('uploads/achievement/Certificat d\'authenticité créé.png') }}" alt="certificat d'authenticité liinkart"></a>
 							</div>
 							<div class="col s4 center">
-								<a class="btn tooltipped waves-effect btn-large btn-floating light-blue accent-3" data-position="bottom" data-delay="50" data-tooltip="Livraison offerte"><i class="material-icons">local_shipping</i></a>
+								<a class="tooltipped waves-effect icone-artwork" data-position="bottom" data-delay="50" data-tooltip="Signaler à la modération?" href="{{ route('artworks.revision',$post) }}" onclick="event.preventDefault(); document.getElementById('revision').submit();"><img src="{{ asset('uploads/achievement/Signaler moderation.png') }}" alt="Signalement modération liinkart"></a>
+                                <form id="revision" action="{{ route('artworks.revision',$post)  }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
 							</div>
 							<div class="col s4 center">
 								<a class="btn tooltipped waves-effect btn-large btn-floating green accent-3" data-position="bottom" data-delay="50" data-tooltip="Membre vérifié par notre équipe"><i class="material-icons">verified_user</i></a>

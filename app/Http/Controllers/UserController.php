@@ -37,7 +37,7 @@ class UserController extends Controller
     {
         $users = $this->userRepository->getPaginate($this->nbrPerPage);
         $countUser = User::count();
-        return view('admin.dashboard', compact('users', 'countUser'));
+        return view('index', compact('users', 'countUser'));
     }
  
     public function create()
@@ -49,7 +49,7 @@ class UserController extends Controller
     {
         $user = $this->userRepository->store($request->all());
  
-        return redirect()->route('user.index')->withOk("L'utilisateur " . $user->name . " a été créé.");
+        return redirect()->route('index')->withOk("L'utilisateur " . $user->name . " a été créé.");
     }
  
     public function show(User $user)

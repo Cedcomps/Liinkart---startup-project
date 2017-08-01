@@ -12,14 +12,20 @@
             <li class="tab col s3"><a href="#artworks">Oeuvres en ligne</a></li>
         </ul>
     </div>
-    <div id="admin" class="col s12">@include('admin.admin')</div>
+    <div id="admin" class="col s12">
+        @include('admin.admin')
+    </div>
     <div id="utilisateurs" class="col s12">
         <section class="liste-pagination">
             @include('admin.user')
         </section>
     </div>
     <div id="payement" class="col s12">@include('admin.payement')</div>
-    <div id="artworks" class="col s12">@include('admin.artworks')</div>
+    <div id="artworks" class="col s12">
+        <section class="liste-pagination">
+            @include('admin.artworks')
+        </section>
+    </div>
 </div>
     
 @endsection

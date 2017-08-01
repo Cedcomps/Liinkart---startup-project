@@ -1,4 +1,6 @@
- 
+ <?php $__env->startSection('titre'); ?>
+    Inscription au Slack
+<?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <section class="reference">
 	<div class="container">

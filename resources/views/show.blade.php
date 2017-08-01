@@ -18,8 +18,10 @@
                                                         @endif" style="border-radius: 50%;">
                             <h3 data-userid="{{ $user->id }}">{{ $user->name }}</h3><br>
                             <div class="interaction">
+                            @if(Auth::check())
                                 <a href="#" class="like">{{  Auth::user()->likes()->where('user_id', $user->id)->first() ? Auth::user()->likes()->where('user_id', $user->id)->first()->like == 1 ? 'You like this user' : 'Like' : 'Like'  }}</a> |
                                 <a href="#" class="like">{{ Auth::user()->likes()->where('user_id', $user->id)->first() ? Auth::user()->likes()->where('user_id', $user->id)->first()->like == 0 ? 'You don\'t like this user' : 'Dislike' : 'Dislike'  }}</a>
+                            @endif
                             </div>
                             <h5>{{ $user->country }}</h5>
                             <h6>{{ $user->city }}</h6><br>
@@ -163,9 +165,11 @@
 @endsection
 @section('js')
     <script src="{{ asset('js/user.js') }}"></script>
+    @if(Auth::check())
     <script>
         var token = '{{ Session::token()}}';
         var userHasLiked = '{{ Auth::user()->id }}';
         var urlLike = '{{ route('like')}}';
     </script>
+    @endif
 @endsection

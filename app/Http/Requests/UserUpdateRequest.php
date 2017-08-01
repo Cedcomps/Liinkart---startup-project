@@ -24,13 +24,13 @@ class UserUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'   => 'bail|required|max:255',
-            'country'   => 'bail|required|max:90',
-            'city'   => 'bail|required|max:80',
-            'email'  => 'bail|required|email|max:255|unique:users,email,' . $this->user->id,
-            'avatar' => 'bail|image|dimensions:min_width=150,min_height=150',
+            'name'        => 'bail|required|max:255',
+            'country'     => 'bail|required|max:90',
+            'city'        => 'bail|required|max:80',
+            'email'       => 'bail|required|email|max:255|unique:users,email,' . $this->user->id,
+            'avatar'      => 'bail|image|dimensions:min_width=150,min_height=150',
             'description' => 'bail|required',
-            'specialist' => 'bail|required',
+            'specialist'  => 'bail|required',
         ];
     }
 }

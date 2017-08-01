@@ -11,14 +11,20 @@
             <li class="tab col s3"><a href="#artworks">Oeuvres en ligne</a></li>
         </ul>
     </div>
-    <div id="admin" class="col s12"><?php echo $__env->make('admin.admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?></div>
+    <div id="admin" class="col s12">
+        <?php echo $__env->make('admin.admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    </div>
     <div id="utilisateurs" class="col s12">
         <section class="liste-pagination">
             <?php echo $__env->make('admin.user', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         </section>
     </div>
     <div id="payement" class="col s12"><?php echo $__env->make('admin.payement', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?></div>
-    <div id="artworks" class="col s12"><?php echo $__env->make('admin.artworks', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?></div>
+    <div id="artworks" class="col s12">
+        <section class="liste-pagination">
+            <?php echo $__env->make('admin.artworks', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        </section>
+    </div>
 </div>
     
 <?php $__env->stopSection(); ?>

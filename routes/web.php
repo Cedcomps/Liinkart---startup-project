@@ -25,7 +25,7 @@ Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
 //Administration Back office
-Route::get('dashboard', 'UserController@index');
+Route::resource('dashboard', 'EspaceAdminController');
 
 //Users & Like system
 Route::resource('user', 'UserController');
@@ -34,6 +34,7 @@ Route::post('/like', ['as' => 'like', 'uses' => 'UserController@likeUser']);
 //Artworks & tags
 Route::resource('artworks', 'PostController', ['except' => ['edit', 'update']]);
 Route::get('artworks/tag/{tag}', 'PostController@indexTag');
+Route::post('revision/{post}', ['as' => 'artworks.revision', 'uses' => 'PostController@revision']);
 
 //Email for Slack
 Route::get('email', 'SlackController@create');

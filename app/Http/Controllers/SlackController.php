@@ -34,8 +34,6 @@ class SlackController extends Controller
             $user = $user->first();
             User::find($user->id)->unlock(new UserConnectedSlack());
         } 
-
-
         return view('form.email_slack_ok');
     }
 }

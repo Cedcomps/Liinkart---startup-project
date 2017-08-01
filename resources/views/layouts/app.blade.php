@@ -63,6 +63,9 @@
                         </a>
                         <ul id="dropdown1" class="dropdown-content">
                             <li>
+                                @if(Auth::user()->admin)
+                                <a href="{{ url('dashboard')}}">Administration</a>
+                                @endif
                                 <a href="{{ route('user.show', [auth()->user()->id]) }}">Profil</a>
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnexion</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -89,6 +92,9 @@
                         <span class="white-text email">{{ Auth::user()->email }}</span>
                         </div>
                     </li>
+                    @if(Auth::user()->admin)
+                    <li><a href="{{ url('dashboard')}}"><i class="material-icons">settings_input_component</i>Administration</a></li>
+                    @endif
                     <li><a href="{{ route('artworks.index')}}"><i class="material-icons">home</i>Accueil</a></li>
                     <li><a href="{{ route('user.show', [auth()->user()->id]) }}"><i class="material-icons">face</i>Profil</a>
                     <li><a href="{{ url('/artworks/create') }}"><i class="material-icons">add</i>Créer une oeuvre</a></li>
@@ -133,6 +139,7 @@
             });
         </script>
     @endif
+    @include('analytics')
     @yield('js')
 </body>
 </html>

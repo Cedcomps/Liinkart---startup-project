@@ -20,8 +20,10 @@
                                                         <?php endif; ?>" style="border-radius: 50%;">
                             <h3 data-userid="<?php echo e($user->id); ?>"><?php echo e($user->name); ?></h3><br>
                             <div class="interaction">
+                            <?php if(Auth::check()): ?>
                                 <a href="#" class="like"><?php echo e(Auth::user()->likes()->where('user_id', $user->id)->first() ? Auth::user()->likes()->where('user_id', $user->id)->first()->like == 1 ? 'You like this user' : 'Like' : 'Like'); ?></a> |
                                 <a href="#" class="like"><?php echo e(Auth::user()->likes()->where('user_id', $user->id)->first() ? Auth::user()->likes()->where('user_id', $user->id)->first()->like == 0 ? 'You don\'t like this user' : 'Dislike' : 'Dislike'); ?></a>
+                            <?php endif; ?>
                             </div>
                             <h5><?php echo e($user->country); ?></h5>
                             <h6><?php echo e($user->city); ?></h6><br>
@@ -192,10 +194,12 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('js'); ?>
     <script src="<?php echo e(asset('js/user.js')); ?>"></script>
+    <?php if(Auth::check()): ?>
     <script>
         var token = '<?php echo e(Session::token()); ?>';
         var userHasLiked = '<?php echo e(Auth::user()->id); ?>';
         var urlLike = '<?php echo e(route('like')); ?>';
     </script>
+    <?php endif; ?>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -30,14 +30,14 @@
 	    <div class="col s12 m6 l6">
 			<img class="responsive-img weblogo" src="{{ asset ('uploads/weblogo/logo-reco.png') }}" alt="Avantage de liinkart">     
             <div class="section">
-                <h3>La solution dédiée aux artistes</h3><br>
+                <h3>Pour les artistes</h3><br>
                 <p>Dans un milieu de l'art extrêmement compétitif, où il est difficile d'être diffusé et reconnu; LiinkART facilite la génération de revenus en augmentant votre visibilité ainsi que votre notoriété.</p>
             </div>
         </div>
 	    <div class="col s12 m6 l6">
 			<img class="responsive-img weblogo" src="{{ asset ('uploads/weblogo/logo-money.png') }}" alt="Bénéfice de liinkart">
             <div class="section">
-                <h3>La solution dédiée aux acheteurs</h3><br>
+                <h3>Pour les acheteurs</h3><br>
                 <p>Découvrez de nouveaux talents en estimant vous-même les oeuvres exposées. Investissez dans un bénéfice émotionnel à votre portée.</p>
             </div>
         </div>
@@ -50,7 +50,7 @@
         <div class="col s12 offset-m2 m8">
             <div class="section">
                 <h3>Comment ça marche ?</h3><br>
-                <p>Toute personne peut librement poster une oeuvre d'art durant un certain laps de temps. Si l'oeuvre ne trouve pas d'acquéreur durant cette période, l'annonce sera supprimée afin de fluidifier la galerie web. Si une oeuvre vous intéresse, il suffit de lancer une proposition à l'artiste. Libre à lui d'accepter ou de décliner votre offre. LiinkART s'engage à ce que vous ne payez aucun frais de transport <br>                <br><em>Prochainement un algorythme sera mis en place afin de faire monter la cote d'un artiste, selon que les oeuvres présentées plaisent ou non à la communauté. Le tout dans le but de démarquer certains talents, et d'en faire profiter les amoureux de l'Art !</em><br>
+                <p>Toute personne peut librement poster une oeuvre d'art durant un certain laps de temps. Si l'oeuvre ne trouve pas d'acquéreur durant cette période, l'annonce sera supprimée afin de fluidifier la galerie web. Si une oeuvre vous intéresse, il suffit de lancer une proposition à l'artiste. Libre à lui d'accepter ou de décliner votre offre. LiinkART met en place un certificat d'authenticité disponible pour chacune des oeuvres créées sur le site. <br>                <br><em>Prochainement un algorythme sera mis en place afin de faire monter la cote d'un artiste, selon que les oeuvres présentées plaisent ou non à la communauté. Le tout dans le but de démarquer certains talents, et d'en faire profiter les amoureux de l'Art !</em><br>
             </div>
         </div>
     </div>

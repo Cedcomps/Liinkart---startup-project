@@ -10,10 +10,13 @@ use App\User;
 use App\Post;
 use App\PostsPhoto;
 use Image;
+use Auth;
 use App\Achievements\UserMadeAPost;
 use App\Achievements\UserMade10Posts;
 use App\Achievements\UserMade100Posts;
 use App\Achievements\UserMade1000Posts;
+use App\Achievements\UserEyesLynx;
+use App\Achievements\UserModerator;
  
 class PostController extends Controller
 {
@@ -84,7 +87,19 @@ class PostController extends Controller
         $post = Post::find($id);
         return view('artworks.artwork', compact('post'));
     }
- 
+
+    public function revision(Request $request, $post)
+    {
+        $post = Post::findOrFail($post);
+        $post->revision = true;
+        $post->update();
+        
+        $user = Auth::user();
+        $user->unlock(new UserEyesLynx());
+        $user->addProgress(new UserModerator(), 1);
+        \Alert::info('Oeuvre signalée, merci de votre attention')->autoclose(3000);
+        return back();
+    } 
     public function destroy($post)
     {
         $post = Post::find($post);

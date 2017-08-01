@@ -7,24 +7,24 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class Contact extends Mailable
+class Revision extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
-     * Elements de contact
+     * Elements de post
      * @var array
      */
-    public $contact;
+    public $post;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Array $contact)
+    public function __construct($post)
     {
-        $this->contact = $contact;
+        $this->post = $post;
     }
 
     /**
@@ -34,6 +34,6 @@ class Contact extends Mailable
      */
     public function build()
     {
-        return $this->from('noreply@liinkart.com', env('APP_NAME'))->markdown('email.contact');
+        return $this->from('noreply@liinkart.com', env('APP_NAME'))->subject('Modération de votre annonce')->markdown('email.revision');
     }
 }
