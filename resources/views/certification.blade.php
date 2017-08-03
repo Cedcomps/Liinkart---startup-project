@@ -49,7 +49,7 @@
 	<div class="row">
 		<div class="col s12">
 			<h1>CERTIFICAT D'AUTHENTICITE</h1>
-			Je, soussigné(e) {{ $post->user->name }}
+			Je soussigné(e) {{ $post->user->name }},
 		certifie que l’œuvre désignée ci-dessous est l'originale et une pièce unique.
 		<br>
 		<br>

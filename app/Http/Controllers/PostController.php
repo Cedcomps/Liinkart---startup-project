@@ -54,22 +54,23 @@ class PostController extends Controller
         $post = $this->postRepository->store($inputs);
         
         $files = $request->file('photos');
-        foreach ($files as $file) {
-            $filename = rand(0, 9999) . "_" . time() . '.' . $file->getClientOriginalExtension();
-            $img = Image::make($file)->orientate();
-            $img->resize(1000, null, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            });
-            $watermark = Image::make('storage/uploads/watermark.png');
-            $img->insert($watermark, 'bottom-right', 15, 15);
-            $img->save(public_path('storage/uploads/artworks/').$filename);
-            PostsPhoto::create([
-                'post_id' => $post->id,
-                'filename' => $filename
-            ]);
+        if($files) {
+            foreach ($files as $file) {
+                $filename = rand(0, 9999) . "_" . time() . '.' . $file->getClientOriginalExtension();
+                $img = Image::make($file)->orientate();
+                $img->resize(1000, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                });
+                $watermark = Image::make('storage/uploads/watermark.png');
+                $img->insert($watermark, 'bottom-right', 15, 15);
+                $img->save(public_path('storage/uploads/artworks/').$filename);
+                PostsPhoto::create([
+                    'post_id' => $post->id,
+                    'filename' => $filename
+                ]);
+            }
         }
- 
         if(isset($inputs['tags'])) {
             $tagRepository->store($post, $inputs['tags']);
         }      

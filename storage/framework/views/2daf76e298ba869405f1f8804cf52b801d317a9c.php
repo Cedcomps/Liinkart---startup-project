@@ -21,8 +21,11 @@
                             <h3 data-userid="<?php echo e($user->id); ?>"><?php echo e($user->name); ?></h3><br>
                             <div class="interaction">
                             <?php if(Auth::check()): ?>
-                                <a href="#" class="like"><?php echo e(Auth::user()->likes()->where('user_id', $user->id)->first() ? Auth::user()->likes()->where('user_id', $user->id)->first()->like == 1 ? 'You like this user' : 'Like' : 'Like'); ?></a> |
-                                <a href="#" class="like"><?php echo e(Auth::user()->likes()->where('user_id', $user->id)->first() ? Auth::user()->likes()->where('user_id', $user->id)->first()->like == 0 ? 'You don\'t like this user' : 'Dislike' : 'Dislike'); ?></a>
+                            <a href="#" class="like">
+                            <?php echo $user->likes()->where('user_id', $user->id)->first() ? $user->likes()->where('user_id', $user->id)->first()->like == 1 ? '<i class="material-icons">favorite</i>' : '<i class="material-icons">favorite_border</i>' : '<i class="material-icons">favorite_border</i>'; ?>
+
+                            </a> 
+                                <span><?php echo e($user->likes() ? $user->likes()->count() : 'non'); ?></span>
                             <?php endif; ?>
                             </div>
                             <h5><?php echo e($user->country); ?></h5>
@@ -161,13 +164,13 @@
                         <span class="raccourcir-titre card-title grey-text text-darken-4"><?php echo e(ucfirst($post->titre)); ?><i class="material-icons right">close</i></span>
                         <p><?php echo e($post->contenu); ?></p>
                     </div>
-                    <div class="card-action">
+                    <div class="card-action post-delete">
                         <a href="<?php echo e(route('artworks.show', ['id' => $post])); ?>" class="right-align">VOIR EN DETAILS</a>
 
                         <?php if(Auth::id() === $user->id || isset(Auth::user()->admin) && Auth::user()->admin == 1): ?>
                             <br><?php echo Form::open(['method' => 'DELETE', 'route' => ['artworks.destroy',  $post->id]]); ?>
 
-                                    <?php echo Form::submit('Delete', ['class' => 'btn btn-danger']); ?>
+                                    <?php echo Form::submit('supprimer', ['style' =>'color:white;', 'class' => 'btn red']); ?>
 
                             <?php echo Form::close(); ?>
 
@@ -197,7 +200,7 @@
     <?php if(Auth::check()): ?>
     <script>
         var token = '<?php echo e(Session::token()); ?>';
-        var userHasLiked = '<?php echo e(Auth::user()->id); ?>';
+        var ajaxUserHasLiked = '<?php echo e(Auth::user()->id); ?>';
         var urlLike = '<?php echo e(route('like')); ?>';
     </script>
     <?php endif; ?>

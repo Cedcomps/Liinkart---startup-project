@@ -352,7 +352,7 @@ output:after {
 	font-size: 0.6em;
 }
 .proposition {
-	color: ##9575ff;
+	color: #9575ff;
 }
 #zoom-gavel {
 	-webkit-animation: zoom 2s ease-in-out infinite alternate;

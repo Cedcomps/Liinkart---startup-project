@@ -126,32 +126,26 @@ class UserController extends Controller
 
     public function likeUser(Request $request)
     {
-        $user_id = $request['userId']; //ID de l'user aimé
-        $is_like = $request['isLike'] === 'true'; //SI aimé
-        $userHasLiked = $request['userHasLiked']; //ID de l'user qui VA aimé
-        $update = false; //MAJ de la table true false
-        $user = User::find($user_id);
-        
+        $userId = $request['userId']; //ID de l'user aimé
+        $is_like = $request['isLike'] == 'true'; //SI aimé
+        $ajaxUserHasLiked = $request['ajaxUserHasLiked']; //ID de l'user qui VA aimé
+
+        $user = User::find($userId);
         $userHasLike = Auth::user();
-        $like = $userHasLike->likes()->where(['user_id' => $user_id, 'userhasliked_id' => $userHasLike->id])->first(); //$like = User qui a aimé, dans sa table, cherche l'id de l'user aimé en premier
+        $like = $userHasLike->likes()->where('user_id', $userId)->first(); //$like = User qui a aimé, dans sa table, cherche l'id de l'user aimé en premier
         if ($like) { //si existant du like
-            //$already_like = $like->like; // déjà aimé on attribut le like
-            $update = true; //accepte de MAJ
-            if ($already_like == $is_like) { //Si déja aimé == Si aimé début
-            $like->delete();
-            return null;
+            if ($is_like == 'false') {
+                $like->delete(); //alors on supprime le like
+                return null;
             }
         } else {
-            $like = new Like();
-        }
-        $like->like = $is_like;
-        $like->userhasliked_id = $userHasLiked;
-        $like->user_id = $user_id;
-        if ($update) {
-            $like->update();
-        } else {
+            $like = new Like(); //sinon on créé le like si n'existe pas encore
+            $like->like = false;
+            $like->userhasliked_id = $userHasLike->id;
+            $like->user_id = $userId;
             $like->save();
         }
+
         return null;
     }
 }

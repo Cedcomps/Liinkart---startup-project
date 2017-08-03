@@ -19,7 +19,6 @@
           <li><a class="grey-text text-lighten-3" href="{{ route('about') }}">Le concept</a></li>
           <li><a class="grey-text text-lighten-3" href="{{ route('team') }}">L'équipe</a></li>
           <li><a class="grey-text text-lighten-3" href="{{ route('faq') }}">FAQ</a></li>
-          <li><a class="grey-text text-lighten-3" href="{{ route('cgu') }}">CGU</a></li>
           <li><a class="grey-text text-lighten-3" href="{{ route('press') }}">Presse</a></li>
         </ul>
       </div>
@@ -30,7 +29,7 @@
     2016 - {{ Carbon\Carbon::now()->year }} LiinkArt 
       <span class="right hide-on-small-only">
         <a class="grey-text text-lighten-4" href="https://cedeev.com">Réalisé par CeDeeV - </a>
-        <a class="grey-text text-lighten-4" href="#">Mentions légales</a>
+        <a class="grey-text text-lighten-4" href="{{ route('mentions')}}">Mentions légales</a>
       </span>
     </div>
   </div>

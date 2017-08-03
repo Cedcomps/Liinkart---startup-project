@@ -58,7 +58,7 @@
                 <div class="section center">
                     <h2>Vous êtes Acheteur ?</h2>
                     <h3 class="light">C'est vous qui devenez l'expert</h3>
-                    <p>Vous estimez les oeuvres des artistes amateurs et proposez un tarif afin d'acquérir leurs oeuvres exposées en ligne. Investir dans un bénéfice émotionnel est enfin à votre portée.</p>
+                    <p>Vous estimez les oeuvres des artistes et proposez un tarif afin d'acquérir leurs oeuvres exposées en ligne. Investir dans un bénéfice émotionnel est enfin à votre portée.</p>
                 </div>
             </div>
             <div class="col s12 m6 mockup2">

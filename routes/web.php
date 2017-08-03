@@ -18,14 +18,14 @@ Route::get('/home', function() {
 	return redirect()->route('artworks.index');
 });
 
+//Administration Back office
+Route::resource('dashboard', 'EspaceAdminController');
+
 //Authentification
 Auth::routes();
 // OAuth google/facebook/twitter
 Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
-
-//Administration Back office
-Route::resource('dashboard', 'EspaceAdminController');
 
 //Users & Like system
 Route::resource('user', 'UserController');
@@ -35,6 +35,8 @@ Route::post('/like', ['as' => 'like', 'uses' => 'UserController@likeUser']);
 Route::resource('artworks', 'PostController', ['except' => ['edit', 'update']]);
 Route::get('artworks/tag/{tag}', 'PostController@indexTag');
 Route::post('revision/{post}', ['as' => 'artworks.revision', 'uses' => 'PostController@revision']);
+//Mise en relation
+Route::post('linking/{post}', 'PropositionController@sendEmail')->name('linking');
 
 //Email for Slack
 Route::get('email', 'SlackController@create');
@@ -49,8 +51,8 @@ Route::post('contact', 'ContactController@store');
 Route::get('about', function(){	return view('pages.about'); })->name('about');
 Route::get('team', function(){ return view('pages.team'); })->name('team');
 Route::get('faq', function(){ return view('pages.faq'); })->name('faq');
-Route::get('cgu', function(){ return view('pages.cgu'); })->name('cgu');
 Route::get('press', function(){	return view('pages.press'); })->name('press');
+Route::get('mentions', function(){ return view('pages.mentions'); })->name('mentions');
 
 /**
  * Certificat Authenticité Pdf

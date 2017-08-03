@@ -19,8 +19,10 @@
                             <h3 data-userid="{{ $user->id }}">{{ $user->name }}</h3><br>
                             <div class="interaction">
                             @if(Auth::check())
-                                <a href="#" class="like">{{  Auth::user()->likes()->where('user_id', $user->id)->first() ? Auth::user()->likes()->where('user_id', $user->id)->first()->like == 1 ? 'You like this user' : 'Like' : 'Like'  }}</a> |
-                                <a href="#" class="like">{{ Auth::user()->likes()->where('user_id', $user->id)->first() ? Auth::user()->likes()->where('user_id', $user->id)->first()->like == 0 ? 'You don\'t like this user' : 'Dislike' : 'Dislike'  }}</a>
+                            <a href="#" class="like">
+                            {!! $user->likes()->where('user_id', $user->id)->first() ? $user->likes()->where('user_id', $user->id)->first()->like == 1 ? '<i class="material-icons">favorite</i>' : '<i class="material-icons">favorite_border</i>' : '<i class="material-icons">favorite_border</i>' !!}
+                            </a> 
+                                <span>{{ $user->likes() ? $user->likes()->count() : 'non'}}</span>
                             @endif
                             </div>
                             <h5>{{ $user->country }}</h5>
@@ -135,12 +137,12 @@
                         <span class="raccourcir-titre card-title grey-text text-darken-4">{{ ucfirst($post->titre) }}<i class="material-icons right">close</i></span>
                         <p>{{ $post->contenu }}</p>
                     </div>
-                    <div class="card-action">
+                    <div class="card-action post-delete">
                         <a href="{{ route('artworks.show', ['id' => $post]) }}" class="right-align">VOIR EN DETAILS</a>
 
                         @if (Auth::id() === $user->id || isset(Auth::user()->admin) && Auth::user()->admin == 1)
                             <br>{!! Form::open(['method' => 'DELETE', 'route' => ['artworks.destroy',  $post->id]]) !!}
-                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                    {!! Form::submit('supprimer', ['style' =>'color:white;', 'class' => 'btn red']) !!}
                             {!! Form::close() !!}
                         @endif
                     </div>
@@ -168,7 +170,7 @@
     @if(Auth::check())
     <script>
         var token = '{{ Session::token()}}';
-        var userHasLiked = '{{ Auth::user()->id }}';
+        var ajaxUserHasLiked = '{{ Auth::user()->id }}';
         var urlLike = '{{ route('like')}}';
     </script>
     @endif

@@ -1,16 +1,17 @@
 <div class="row">
 	<div class="col s12">
         <h3 class="align-center">Modération des oeuvres signalées</h3>
-            <table class="table highlight responsive-table">
+            <table class="centered table highlight responsive-table">
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Oeuvre</th>
-                    <th>Photos</th>
-                    <th>Description</th>
-                    <th>Auteur</th>
-                    <th></th>
-                    <th></th>
+                    <th><i class="material-icons">track_changes</i></th>
+                    <th><i class="material-icons">opacity</i> Oeuvre</th>
+                    <th><i class="material-icons">perm_media</i> Photos</th>
+                    <th><i class="material-icons">subject</i> Description</th>
+                    <th><i class="material-icons">account_box</i> Auteur</th>
+                    <th><i class="material-icons">remove_red_eye</i></th>
+                    <th><i class="material-icons">done_all</i></th>
+                    <th><i class="material-icons">delete_forever</i></th>
                 </tr>
             </thead>
             <tbody>
@@ -30,10 +31,15 @@
 	                    </td>
 	                    <td>{!! $post->contenu !!}</td>
 	                    <td>{!! $post->user->name !!}</td>
-	                    <td>{!! link_to_route('artworks.show', 'Voir', [$post->id], ['class' => 'btn']) !!}</td><
+	                    <td>{!! link_to_route('artworks.show', 'Voir', [$post->id], ['class' => 'btn']) !!}</td>
+	                    <td>
+	                    	{!! Form::open(['method' => 'PUT', 'route' => ['dashboard.update', $post->id]]) !!}
+	                            {!! Form::submit('Valider', ['class' => 'btn green','style' =>'color:white;', 'onclick' => 'return confirm(\'Ne pas modérer ce post?\')']) !!}
+	                        {!! Form::close() !!}
+                        </td>
 	                    <td>
 	                        {!! Form::open(['method' => 'DELETE', 'route' => ['dashboard.destroy', $post->id]]) !!}
-	                            {!! Form::submit('Supprimer', ['class' => 'btn', 'onclick' => 'return confirm(\'Vraiment supprimer ce post?\')']) !!}
+	                            {!! Form::submit('Supprimer', ['class' => 'btn red','style' =>'color:white;', 'onclick' => 'return confirm(\'Vraiment supprimer ce post?\')']) !!}
 	                        {!! Form::close() !!}
 	                    </td>
 	                </tr>

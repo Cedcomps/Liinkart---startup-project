@@ -19,7 +19,6 @@
           <li><a class="grey-text text-lighten-3" href="<?php echo e(route('about')); ?>">Le concept</a></li>
           <li><a class="grey-text text-lighten-3" href="<?php echo e(route('team')); ?>">L'équipe</a></li>
           <li><a class="grey-text text-lighten-3" href="<?php echo e(route('faq')); ?>">FAQ</a></li>
-          <li><a class="grey-text text-lighten-3" href="<?php echo e(route('cgu')); ?>">CGU</a></li>
           <li><a class="grey-text text-lighten-3" href="<?php echo e(route('press')); ?>">Presse</a></li>
         </ul>
       </div>
@@ -30,7 +29,7 @@
     2016 - <?php echo e(Carbon\Carbon::now()->year); ?> LiinkArt 
       <span class="right hide-on-small-only">
         <a class="grey-text text-lighten-4" href="https://cedeev.com">Réalisé par CeDeeV - </a>
-        <a class="grey-text text-lighten-4" href="#">Mentions légales</a>
+        <a class="grey-text text-lighten-4" href="<?php echo e(route('mentions')); ?>">Mentions légales</a>
       </span>
     </div>
   </div>

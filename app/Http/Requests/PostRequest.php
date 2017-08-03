@@ -36,7 +36,7 @@ class PostRequest extends FormRequest
         $photos = count($this->input('photos'));
         foreach(range(0, $photos) as $index) {
             try {
-                $rules['photos.' . $index] = 'image|mimes:jpeg,bmp,png';     
+                $rules['photos.' . $index] = 'bail|required|image|mimes:jpeg,bmp,png';     
             }
             catch(\Exception $e) {
                 $request->session()->flash('error', 'Erreur lors du dl ' . $e);
