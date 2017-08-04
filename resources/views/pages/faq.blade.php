@@ -33,6 +33,48 @@
       <div class="collapsible-body"><span>LiinkART souhaite se construire sur l'expérience de la communauté. Vos avis et vos retours sur la plateforme comptent beaucoup pour nous, nous vous invitons à participer sur le <a href="{{ url('contact') }}">Slack de Liinkart</a>,via le formulaire de contact ou encore sur notre page <a href="https://www.facebook.com/Liinkart/">Facebook</a>. Sachez qu'un membre investi sera toujours récompensé de différentes facons. Un système de badge a été mis en place afin de différencier les personnes souhaitant se démarquer au service de la communauté LiinkART. Maintenant il ne vous reste plus qu'une seule chose à faire: démocratisons le marché de l'art en ligne ensemble!</span></div>
     </li>
     <li>
+      <div class="collapsible-header"><i class="proposition material-icons">favorite_border</i>Profil d'évaluation et coup de coeur</div>
+      <div class="collapsible-body"><span>Le nombre de coup de coeur apparait sur le profil de l'utilisateur ainsi que sur chacune de ses oeuvres. Il apparaît entre parenthèses à côté du pseudo du membre. La couleur associée au coeur correspond au nombre d'appréciation de la communauté vis à vis de son talent, de ses oeuvres ...Plus un membre reçoit de coup de coeur, plus son profil d'évaluation est élevé. Au fur et à mesure que votre nombre de coup de coeur augmente, le coeur changera de couleur.
+      <br>Voici leur signification:<br>
+      <table>
+        <thead>
+          <tr>
+              <th>Coeur</th>
+              <th>Couleur</th>
+              <th>Nombre de coups de coeur</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td><i class="material-icons" style="color: #FFD905;">favorite</i></td>
+            <td>Jaune</td>
+            <td>1 à 49</td>
+          </tr>
+          <tr>
+            <td><i class="material-icons" style="color: #E8490C;">favorite</i></td>
+            <td>Orange</td>
+            <td>50 à 99</td>
+          </tr>
+          <tr>
+            <td><i class="material-icons" style="color: #0DFF41;">favorite</i></td>
+            <td>Vert</td>
+            <td>100 à 499</td>
+          </tr>
+          <tr>
+            <td><i class="material-icons" style="color: #0C77E8;">favorite</i></td>
+            <td>Bleu</td>
+            <td>500 à 999</td>
+          </tr>
+          <tr>
+            <td><i class="material-icons" style="color: #C700FF;">favorite</i></td>
+            <td>Violet</td>
+            <td>Plus de 1000</td>
+          </tr>
+        </tbody>
+      </table></span></div>
+    </li>
+    <li>
       <div class="collapsible-header"><i class="proposition material-icons">language</i>Langues supportées</div>
       <div class="collapsible-body"><span>Le Français est la langue utilisée sur LiinkART. Bientôt nous rajouterons la langue anglaise ainsi que la localisation.</span></div>
     </li>

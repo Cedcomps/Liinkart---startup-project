@@ -1,22 +1,9 @@
+/*charte graphique*/
 input:not([type]).valid, input:not([type]):focus.valid, input[type=text]:not(.browser-default).valid, input[type=text]:not(.browser-default):focus.valid, input[type=password]:not(.browser-default).valid, input[type=password]:not(.browser-default):focus.valid, input[type=email]:not(.browser-default).valid, input[type=email]:not(.browser-default):focus.valid, input[type=url]:not(.browser-default).valid, input[type=url]:not(.browser-default):focus.valid, input[type=time]:not(.browser-default).valid, input[type=time]:not(.browser-default):focus.valid, input[type=date]:not(.browser-default).valid, input[type=date]:not(.browser-default):focus.valid, input[type=datetime]:not(.browser-default).valid, input[type=datetime]:not(.browser-default):focus.valid, input[type=datetime-local]:not(.browser-default).valid, input[type=datetime-local]:not(.browser-default):focus.valid, input[type=tel]:not(.browser-default).valid, input[type=tel]:not(.browser-default):focus.valid, input[type=number]:not(.browser-default).valid, input[type=number]:not(.browser-default):focus.valid, input[type=search]:not(.browser-default).valid, input[type=search]:not(.browser-default):focus.valid, textarea.materialize-textarea.valid, textarea.materialize-textarea:focus.valid {
 	font-size: inherit;
 }
 .btn:hover, .btn-large:hover { 
 	color: #fff;
-}
-/*charte graphique*/
-/*pagination*/
-.pagination li.active {
-	background-color: #9575ff !important;
-}
-a#scrollButton {
-	position: fixed;
-	bottom: 100px;
-	right: 60px;
-	display: none;
-}
-a#scrollButton i{
-	font-size: 3rem;
 }
 .liinkart-white {
 	background-color: #fff;
@@ -102,6 +89,19 @@ nav a, nav ul a {
 	padding: 0 25px;
 	color: #fff !important;
 }
+/*pagination*/
+.pagination li.active {
+	background-color: #9575ff !important;
+}
+a#scrollButton {
+	position: fixed;
+	bottom: 100px;
+	right: 60px;
+	display: none;
+}
+a#scrollButton i{
+	font-size: 3rem;
+}
 /*subheading*/
 .subheading {
 	color: rgb(145, 145, 145);
@@ -133,6 +133,9 @@ h6 {
 	height: 40px;
 	border-radius: 50%;
 	margin-right: 10px;
+}
+.countLike {
+	color: grey;
 }
 /*sidenav*/
 .user-view {
@@ -343,6 +346,9 @@ a, .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
 .tooltipped:hover {
 	cursor: default;
 }
+.cancel {
+	color: white !important;
+}
 /*enchere propositon*/
 #modal1 {
 	height: 52%;
@@ -354,7 +360,7 @@ output:after {
 .proposition {
 	color: #9575ff;
 }
-#zoom-gavel {
+.zoom-gavel {
 	-webkit-animation: zoom 2s ease-in-out infinite alternate;
 	animation: zoom 2s ease-in-out infinite alternate;
 }

@@ -42,44 +42,4 @@ $(document).ready(function(){
 		} else if(countLike >= 1000 && countLike <= 9999){
 			$('.countLike').prev().css("color", "#C700FF");
 		}
-//Proposition de prix
- 	// the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-    $('.modal').modal({
-    	startingTop: '5%',
-    	endingTop: '15%',
-    });
-
-    //Input en temps réel
-    $('.range').on('input', function() {
-		var $set = $(this).val();
-		$('output').text($set);
-	});
-    
-//Menu right profil user
-    $('.dropdown-button').dropdown({
-		inDuration: 300,
-		outDuration: 225,
-		constrainWidth: true, // Does not change width of dropdown to that of the activator
-		hover: true, // Activate on hover
-		gutter: 0, // Spacing from edge
-		belowOrigin: true, // Displays dropdown below the button
-		alignment: 'left', // Displays dropdown with edge aligned to the left of button
-		stopPropagation: false // Stops event propagation
-    	}
- 	);
-
- 	// Select specialisation and categories
-    $('select').material_select();
-    
- 	//Lien pour remonter en haut du site
- 	$(window).scroll(function() {
-	 	if($(document).scrollTop() <= 400 ){
-	 		$("#scrollButton").fadeOut("fast");
-	 	} else {
-	 		$("#scrollButton").fadeIn();
-	 	};
- 	});
- 	$("#scrollButton").click(function(){
-    	$("html, body").animate({scrollTop: 0},2500);
-    });
 });

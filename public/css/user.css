@@ -8,3 +8,11 @@
 	align-items: center;
 	justify-content: space-around;
 }
+#nameandlike {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.justlike {
+	margin: 15px 0 0 10px;
+}

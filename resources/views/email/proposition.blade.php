@@ -4,11 +4,11 @@ Vous venez de recevoir une nouvelle proposition d'achat concernant votre oeuvre 
 
 @component('mail::panel')
 <p style="text-align: center;">
-<strong>{{ $user->name }}</strong> vous en propose <strong>{{ $price }} €</strong>
+<strong>{{ $user->name }}</strong> vous propose <strong>{{ $price }} €</strong>
 </p>
 @endcomponent
 Vous pouvez dès à présent lui répondre en cliquant ci-dessous.
-@component('mail::button', ['url' => '{!! $user->email !!}'])
+@component('mail::button', ['url' => 'mailto:' . $user->email])
 Répondre à cette offre
 @endcomponent
 

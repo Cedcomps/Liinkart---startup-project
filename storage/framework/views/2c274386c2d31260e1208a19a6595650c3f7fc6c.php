@@ -4,11 +4,11 @@ Vous venez de recevoir une nouvelle proposition d'achat concernant votre oeuvre 
 
 <?php $__env->startComponent('mail::panel'); ?>
 <p style="text-align: center;">
-<strong><?php echo e($user->name); ?></strong> vous propose <strong><?php echo e($price); ?> €</strong>
+<strong><?php echo e($user->name); ?></strong> vous en propose <strong><?php echo e($price); ?> €</strong>
 </p>
 <?php echo $__env->renderComponent(); ?>
 Vous pouvez dès à présent lui répondre en cliquant ci-dessous.
-<?php $__env->startComponent('mail::button', ['url' => '<?php echo $user->email; ?>']); ?>
+<?php $__env->startComponent('mail::button', ['url' => 'mailto:' . $user->email]); ?>
 Répondre à cette offre
 <?php echo $__env->renderComponent(); ?>
 

@@ -131,17 +131,16 @@ class UserController extends Controller
         $ajaxUserHasLiked = $request['ajaxUserHasLiked']; //ID de l'user qui VA aimé
 
         $user = User::find($userId);
-        $userHasLike = Auth::user();
-        $like = $userHasLike->likes()->where('user_id', $userId)->first(); //$like = User qui a aimé, dans sa table, cherche l'id de l'user aimé en premier
+        $like = $user->likes()->where('user_id', $userId)->first(); //$like = User qui a aimé, dans sa table, cherche l'id de l'user aimé en premier
         if ($like) { //si existant du like
-            if ($is_like == 'false') {
+           
                 $like->delete(); //alors on supprime le like
                 return null;
-            }
+            
         } else {
             $like = new Like(); //sinon on créé le like si n'existe pas encore
-            $like->like = false;
-            $like->userhasliked_id = $userHasLike->id;
+            $like->like = $is_like;
+            $like->userhasliked_id = $ajaxUserHasLiked;
             $like->user_id = $userId;
             $like->save();
         }

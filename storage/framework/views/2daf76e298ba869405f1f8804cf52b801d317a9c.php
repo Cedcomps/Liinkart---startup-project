@@ -13,20 +13,25 @@
                 <div class="card">
                     <div class="card-content center">
                         <div>
-                        <img class="responsive-img" src="<?php if(filter_var($user->avatar, FILTER_VALIDATE_URL)): ?> <?php echo e($user->avatar); ?>
+                            <img class="responsive-img" src="<?php if(filter_var($user->avatar, FILTER_VALIDATE_URL)): ?> <?php echo e($user->avatar); ?>
 
                                                         <?php else: ?> <?php echo e(asset('storage/uploads/avatars/' . $user->avatar)); ?>
 
                                                         <?php endif; ?>" style="border-radius: 50%;">
-                            <h3 data-userid="<?php echo e($user->id); ?>"><?php echo e($user->name); ?></h3><br>
+                            <span id="nameandlike">
+                                <h3 data-userid="<?php echo e($user->id); ?>"><?php echo e($user->name); ?></h3>
+                                <?php if($user->likes()->first()): ?>
+                                <span>
+                                    <i class="justlike tiny material-icons">favorite</i>
+                                    <span class="countLike"><?php echo e($user->likes()->count()); ?></span>
+                                </span>
+                                <?php endif; ?>
+                            </span>
                             <div class="interaction">
-                            <?php if(Auth::check()): ?>
-                            <a href="#" class="like">
-                            <?php echo $user->likes()->where('user_id', $user->id)->first() ? $user->likes()->where('user_id', $user->id)->first()->like == 1 ? '<i class="material-icons">favorite</i>' : '<i class="material-icons">favorite_border</i>' : '<i class="material-icons">favorite_border</i>'; ?>
+                                <a href="#" class="like">
+                                <?php echo $user->likes()->where('user_id', $user->id)->first() ? $user->likes()->where('user_id', $user->id)->first()->like ? '<i class="material-icons">favorite</i>' : '<i class="material-icons">favorite_border</i>' : '<i class="material-icons">favorite_border</i>'; ?>
 
-                            </a> 
-                                <span><?php echo e($user->likes() ? $user->likes()->count() : 'non'); ?></span>
-                            <?php endif; ?>
+                                </a> 
                             </div>
                             <h5><?php echo e($user->country); ?></h5>
                             <h6><?php echo e($user->city); ?></h6><br>

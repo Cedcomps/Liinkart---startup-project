@@ -13,17 +13,22 @@
                 <div class="card">
                     <div class="card-content center">
                         <div>
-                        <img class="responsive-img" src="@if(filter_var($user->avatar, FILTER_VALIDATE_URL)) {{$user->avatar}}
+                            <img class="responsive-img" src="@if(filter_var($user->avatar, FILTER_VALIDATE_URL)) {{$user->avatar}}
                                                         @else {{ asset('storage/uploads/avatars/' . $user->avatar) }}
                                                         @endif" style="border-radius: 50%;">
-                            <h3 data-userid="{{ $user->id }}">{{ $user->name }}</h3><br>
+                            <span id="nameandlike">
+                                <h3 data-userid="{{ $user->id }}">{{ $user->name }}</h3>
+                                @if($user->likes()->first())
+                                <span>
+                                    <i class="justlike tiny material-icons">favorite</i>
+                                    <span class="countLike">{{ $user->likes()->count() }}</span>
+                                </span>
+                                @endif
+                            </span>
                             <div class="interaction">
-                            @if(Auth::check())
-                            <a href="#" class="like">
-                            {!! $user->likes()->where('user_id', $user->id)->first() ? $user->likes()->where('user_id', $user->id)->first()->like == 1 ? '<i class="material-icons">favorite</i>' : '<i class="material-icons">favorite_border</i>' : '<i class="material-icons">favorite_border</i>' !!}
-                            </a> 
-                                <span>{{ $user->likes() ? $user->likes()->count() : 'non'}}</span>
-                            @endif
+                                <a href="#" class="like">
+                                {!! $user->likes()->where('user_id', $user->id)->first() ? $user->likes()->where('user_id', $user->id)->first()->like ? '<i class="material-icons">favorite</i>' : '<i class="material-icons">favorite_border</i>' : '<i class="material-icons">favorite_border</i>' !!}
+                                </a> 
                             </div>
                             <h5>{{ $user->country }}</h5>
                             <h6>{{ $user->city }}</h6><br>
