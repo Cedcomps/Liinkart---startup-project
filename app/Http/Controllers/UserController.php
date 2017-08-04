@@ -133,10 +133,8 @@ class UserController extends Controller
         $user = User::find($userId);
         $like = $user->likes()->where('user_id', $userId)->first(); //$like = User qui a aimé, dans sa table, cherche l'id de l'user aimé en premier
         if ($like) { //si existant du like
-           
-                $like->delete(); //alors on supprime le like
-                return null;
-            
+            $like->delete(); //alors on supprime le like
+            return $user->likes()->count();       
         } else {
             $like = new Like(); //sinon on créé le like si n'existe pas encore
             $like->like = $is_like;
@@ -144,7 +142,6 @@ class UserController extends Controller
             $like->user_id = $userId;
             $like->save();
         }
-
-        return null;
+        return $user->likes()->count();
     }
 }
