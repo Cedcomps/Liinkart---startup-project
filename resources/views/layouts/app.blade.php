@@ -54,6 +54,7 @@
                     <li><a href="{{ route('login') }}">Se connecter</a></li>
                     <li><a class="waves-effect waves-light sign-up" href="{{ route('register') }}">Créer un compte</a></li>
                 @else
+                    <li><a href="{{ url('/messages') }}">@include('messenger.unread-count')</a></li>
                     <li><a href="{{ url('/artworks/create') }}">Créer une oeuvre</a></li>
                     <li><a href="#!" class="dropdown-button" data-activates="dropdown1">
                             <img class="avatar" src="@if(filter_var(Auth::user()->avatar, FILTER_VALIDATE_URL)) {{ Auth::user()->avatar}}
@@ -67,6 +68,7 @@
                                 <a href="{{ url('dashboard')}}">Administration</a>
                                 @endif
                                 <a href="{{ route('user.show', [auth()->user()->id]) }}">Profil</a>
+                                <a href="/messages">Messagerie @include('messenger.unread-count')</a>
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnexion</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
@@ -97,6 +99,7 @@
                     @endif
                     <li><a href="{{ route('artworks.index')}}"><i class="material-icons">home</i>Accueil</a></li>
                     <li><a href="{{ route('user.show', [auth()->user()->id]) }}"><i class="material-icons">face</i>Profil</a>
+                    <li><a href="/messages"><i class="material-icons">email</i>Messagerie @include('messenger.unread-count')</a></li>
                     <li><a href="{{ url('/artworks/create') }}"><i class="material-icons">add</i>Créer une oeuvre</a></li>
                 @endif
                     <li><div class="divider"></div></li>

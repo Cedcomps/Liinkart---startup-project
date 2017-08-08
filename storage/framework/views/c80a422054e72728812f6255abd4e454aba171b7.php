@@ -56,6 +56,7 @@
 <?php echo e($posts->links()); ?>
 
 <script>// Technique artistique
+$(document).ready(function(){
     $( "span:contains('Peinture')" ).css( "color", "#ef9a9a");
     $( "span:contains('Peinture à Huile')" ).css( "color", "#f48fb1");
     $( "span:contains('Peinture acrylique')" ).css( "color", "#ce93d8");
@@ -97,4 +98,5 @@
         } else if(countLike >= 1000 && countLike <= 9999){
             $('.countLike').prev().css("color", "#C700FF");
         }
+});
 </script>

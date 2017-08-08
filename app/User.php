@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Gstt\Achievements\Achiever;
 use Spatie\Permission\Traits\HasRoles;
 use Laravel\Cashier\Billable;
+use Cmgmyr\Messenger\Traits\Messagable;
 
 class User extends Authenticatable
 {
@@ -14,6 +15,7 @@ class User extends Authenticatable
     use Achiever;
     use HasRoles;
     use Billable;
+    use Messagable;
     /**
      * The attributes that are mass assignable.
      *

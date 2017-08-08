@@ -104,19 +104,8 @@
 											  	<p class="subheading">La vente aux enchères à l'aveugle a un but bien précis et il est bon de vous rappeler pourquoi Afin d'éviter une offre farfelue, nous imposons une fourchette minimale concernant la proposition. De ce fait, vous pourrez estimer la valeur d'une oeuvre en toute intégrité. En effet certains composants et outils nécessaires à la création peuvent parfois être onéreux selon l'oeuvre à créer...</p>
 						    			</blockquote>
 								    	<p>Une fois la proposition envoyée, vous serez avertis de la réponse de l'artiste par email.</p> 
-								    	<form method="POST" action="{{ route('linking', $post) }}" accept-charset="UTF-8">
-		                        			{{ csrf_field() }}
-										    <p class="range-field">
-										    	<input type="range" name="price" class="range" id="test5" min="40" max="2500" />
-										    </p>
-										
-								    	<p>Et n'oubliez pas une chose : la vente peut s'avérer être une véritable surprise pour les amoureux de l'Art !</p>
-							    		<span class="center-align">
-									    	<h3 class="proposition" ><output name="result">--</output></h3>
-									    	<a class="cancel z-depth-3 waves-effect modal-close waves-light btn-danger btn-large red darken-1 left"><i class="material-icons left">cancel</i>ANNULER</a>
-											<button type="submit" class="z-depth-3 waves-effect waves-light btn-large right"><i " class="zoom-gavel material-icons left">gavel</i>FAIRE UNE OFFRE</button>
-				                            </form>
-								    	</span>
+								    	@include('messenger.partials.proposition')
+								    	
 								    </div>
 								</div>
 							</div>

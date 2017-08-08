@@ -55,6 +55,7 @@
                     <li><a href="<?php echo e(route('login')); ?>">Se connecter</a></li>
                     <li><a class="waves-effect waves-light sign-up" href="<?php echo e(route('register')); ?>">Créer un compte</a></li>
                 <?php else: ?>
+                    <li><a href="<?php echo e(url('/messages')); ?>"><?php echo $__env->make('messenger.unread-count', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?></a></li>
                     <li><a href="<?php echo e(url('/artworks/create')); ?>">Créer une oeuvre</a></li>
                     <li><a href="#!" class="dropdown-button" data-activates="dropdown1">
                             <img class="avatar" src="<?php if(filter_var(Auth::user()->avatar, FILTER_VALIDATE_URL)): ?> <?php echo e(Auth::user()->avatar); ?>
@@ -70,6 +71,7 @@
                                 <a href="<?php echo e(url('dashboard')); ?>">Administration</a>
                                 <?php endif; ?>
                                 <a href="<?php echo e(route('user.show', [auth()->user()->id])); ?>">Profil</a>
+                                <a href="/messages">Messagerie <?php echo $__env->make('messenger.unread-count', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?></a>
                                 <a href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnexion</a>
                                 <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
                                     <?php echo e(csrf_field()); ?>
@@ -103,6 +105,7 @@
                     <?php endif; ?>
                     <li><a href="<?php echo e(route('artworks.index')); ?>"><i class="material-icons">home</i>Accueil</a></li>
                     <li><a href="<?php echo e(route('user.show', [auth()->user()->id])); ?>"><i class="material-icons">face</i>Profil</a>
+                    <li><a href="/messages"><i class="material-icons">email</i>Messagerie <?php echo $__env->make('messenger.unread-count', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?></a></li>
                     <li><a href="<?php echo e(url('/artworks/create')); ?>"><i class="material-icons">add</i>Créer une oeuvre</a></li>
                 <?php endif; ?>
                     <li><div class="divider"></div></li>

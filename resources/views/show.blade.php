@@ -13,7 +13,7 @@
                 <div class="card">
                     <div class="card-content center">
                         <div>
-                            <img class="responsive-img" src="@if(filter_var($user->avatar, FILTER_VALIDATE_URL)) {{$user->avatar}}
+                            <img class="responsive-img" alt="{{ $user->name }}" src="@if(filter_var($user->avatar, FILTER_VALIDATE_URL)) {{$user->avatar}}
                                                         @else {{ asset('storage/uploads/avatars/' . $user->avatar) }}
                                                         @endif" style="border-radius: 50%;">
                             <span id="nameandlike">

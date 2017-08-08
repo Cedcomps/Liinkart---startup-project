@@ -210,9 +210,13 @@ return [
          */
         Laravel\Socialite\SocialiteServiceProvider::class,
         /**
-         * sweet alert
+         * Sweet alert
          */
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
+        /**
+         * Messagerie interne
+         */
+        Cmgmyr\Messenger\MessengerServiceProvider::class,
     ],
 
     /*

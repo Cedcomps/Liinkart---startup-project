@@ -13,7 +13,7 @@
                 <div class="card">
                     <div class="card-content center">
                         <div>
-                            <img class="responsive-img" src="<?php if(filter_var($user->avatar, FILTER_VALIDATE_URL)): ?> <?php echo e($user->avatar); ?>
+                            <img class="responsive-img" alt="<?php echo e($user->name); ?>" src="<?php if(filter_var($user->avatar, FILTER_VALIDATE_URL)): ?> <?php echo e($user->avatar); ?>
 
                                                         <?php else: ?> <?php echo e(asset('storage/uploads/avatars/' . $user->avatar)); ?>
 

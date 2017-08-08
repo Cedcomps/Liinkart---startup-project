@@ -1,5 +1,5 @@
 @extends('layouts.app')
- @section('titre')
+@section('titre')
     Demande de contact envoyée
 @endsection
 @section('content')
