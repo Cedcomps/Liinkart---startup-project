@@ -15,6 +15,10 @@ use Illuminate\Http\Request;
 
 class MessagesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Show all of the message threads to the user.
      *
@@ -116,27 +120,30 @@ class MessagesController extends Controller
      * @param $id
      * @return mixed
      */
-    public function update($id)
+    public function update(Request $request)
     {
+        $threadId = $request['threadId'];
+        $message = $request['message'];
+        $userId = $request['userId'];
         try {
-            $thread = Thread::findOrFail($id);
+            $thread = Thread::findOrFail($threadId);
         } catch (ModelNotFoundException $e) {
-            Session::flash('error_message', 'The thread with ID: ' . $id . ' was not found.');
+            Session::flash('error_message', 'The thread with ID: ' . $threadId . ' was not found.');
             return redirect('messages');
         }
         $thread->activateAllParticipants();
         // Message
         Message::create(
             [
-                'thread_id' => $thread->id,
-                'user_id'   => Auth::id(),
-                'body'      => Input::get('message'),
+                'thread_id' => $threadId,
+                'user_id'   => $userId,
+                'body'      => $message,
             ]
         );
         // Add replier as a participant
         $participant = Participant::firstOrCreate(
             [
-                'thread_id' => $thread->id,
+                'thread_id' => $threadId,
                 'user_id'   => Auth::user()->id,
             ]
         );
@@ -146,6 +153,6 @@ class MessagesController extends Controller
         if (Input::has('recipients')) {
             $thread->addParticipant(Input::get('recipients'));
         }
-        return redirect('messages/' . $id);
+        return $message;
     }
 }

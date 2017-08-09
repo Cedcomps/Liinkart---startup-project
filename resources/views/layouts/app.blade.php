@@ -142,7 +142,7 @@
             });
         </script>
     @endif
-    @include('analytics')
+    {{-- @include('analytics') --}}
     @yield('js')
 </body>
 </html>

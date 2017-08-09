@@ -11,7 +11,7 @@ function pagination() {
 			datatype: "html",
 		}).done(function(data){
 			$('.liste-pagination').html(data);
-         pagination();
+        pagination();
 			//location.hash = page;
 		});
 	}

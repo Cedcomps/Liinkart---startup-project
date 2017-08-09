@@ -13,11 +13,11 @@
                 <div class="card">
                     <div class="card-content center">
                         <div>
-                            <img class="responsive-img" alt="<?php echo e($user->name); ?>" src="<?php if(filter_var($user->avatar, FILTER_VALIDATE_URL)): ?> <?php echo e($user->avatar); ?>
+                            <img class="circle responsive-img" alt="<?php echo e($user->name); ?>" src="<?php if(filter_var($user->avatar, FILTER_VALIDATE_URL)): ?> <?php echo e($user->avatar); ?>
 
                                                         <?php else: ?> <?php echo e(asset('storage/uploads/avatars/' . $user->avatar)); ?>
 
-                                                        <?php endif; ?>" style="border-radius: 50%;">
+                                                        <?php endif; ?>">
                             <span id="nameandlike">
                                 <h3 data-userid="<?php echo e($user->id); ?>"><?php echo e($user->name); ?></h3>
                                 <?php if($user->likes()->first()): ?>

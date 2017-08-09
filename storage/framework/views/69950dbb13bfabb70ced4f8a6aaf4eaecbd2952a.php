@@ -149,7 +149,7 @@
             });
         </script>
     <?php endif; ?>
-    <?php echo $__env->make('analytics', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    
     <?php echo $__env->yieldContent('js'); ?>
 </body>
 </html>

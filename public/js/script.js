@@ -71,7 +71,7 @@ $(document).ready(function(){
  	// Select specialisation and categories
     $('select').material_select();
     
- 	//Lien pour remonter en haut du site
+ //Lien pour remonter en haut du site
  	$(window).scroll(function() {
 	 	if($(document).scrollTop() <= 400 ){
 	 		$("#scrollButton").fadeOut("fast");
