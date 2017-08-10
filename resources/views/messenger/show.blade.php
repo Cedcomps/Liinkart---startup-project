@@ -4,9 +4,9 @@
 @endsection
 @section('content')
 <div class="row">
-    <div class="col s12 offset-m2 m8 msg-conversation">
+    <div class="col s12 offset-l2 l8 msg-conversation">
 		<div class="card">
-			<div class="card-content">
+			<div class="card-content"">
 		        <h4 class="center">{{ $thread->subject }}</h4>
 		        <div class="divider"></div>
 		        @each('messenger.partials.messages', $thread->messages, 'message')

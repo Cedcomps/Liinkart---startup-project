@@ -9,6 +9,7 @@
         @endif
 
         @if($thread->latestMessage->price)
+        {{-- Recupérer valeur price du premier message du fil --}}
             <div class="chip">
                 {{ $thread->latestMessage->price }} €
             </div>

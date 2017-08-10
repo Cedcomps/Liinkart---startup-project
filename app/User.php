@@ -13,9 +13,9 @@ class User extends Authenticatable
 {
     use Notifiable;
     use Achiever;
+    use Messagable;
     use HasRoles;
     use Billable;
-    use Messagable;
     /**
      * The attributes that are mass assignable.
      *

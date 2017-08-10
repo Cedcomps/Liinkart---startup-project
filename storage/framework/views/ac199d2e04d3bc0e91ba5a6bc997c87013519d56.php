@@ -3,9 +3,9 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <div class="row">
-    <div class="col s12 offset-m2 m8 msg-conversation">
+    <div class="col s12 offset-l2 l8 msg-conversation">
 		<div class="card">
-			<div class="card-content">
+			<div class="card-content"">
 		        <h4 class="center"><?php echo e($thread->subject); ?></h4>
 		        <div class="divider"></div>
 		        <?php echo $__env->renderEach('messenger.partials.messages', $thread->messages, 'message'); ?>

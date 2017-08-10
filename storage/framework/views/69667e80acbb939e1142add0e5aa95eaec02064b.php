@@ -9,6 +9,7 @@
         <?php endif; ?>
 
         <?php if($thread->latestMessage->price): ?>
+        
             <div class="chip">
                 <?php echo e($thread->latestMessage->price); ?> €
             </div>

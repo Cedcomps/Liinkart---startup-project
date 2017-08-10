@@ -1,6 +1,6 @@
 $(document).ready(function(){
 //disposition des messages
-    blocMessage = $('div.media');
+    var blocMessage = $('div.media');
     blocMessage.each(function(){
         if ($(this).data('userid') == userId) {
               $(this).css({
@@ -22,9 +22,18 @@ $(document).ready(function(){
  			data: {threadId : threadId, message: message.val(), userId: userId, _token: token}
  		})
    			.done(function(data){ 
-            nouveauMessage = $('<p class="body-message">').html(data);
-            nouveauMessage.before($('form'));
-            message.val('');
+            var newMessage;
+            blocMessage.each(function(index, elem){
+                if ($(elem).data('userid') == userId) {
+                    newMessage = $(this).clone();
+                    return false;
+                }
+            });
+           newMessage.find('.body-message').text(message.val());
+           newMessage.find('.text-muted').html('<small><i class="material-icons tiny">access_time</i>Posté à l\'instant</small>');
+           //console.log(newMessage.find('.body-message').text());
+           newMessage.insertAfter(blocMessage.last());
+           message.val('');
         });
 	});
 });
