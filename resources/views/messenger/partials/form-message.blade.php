@@ -8,7 +8,7 @@
             <textarea id="new-message" name="message" placeholder="Ecrivez un message..." class="materialize-textarea"></textarea>
     </div>
 {{-- <input type="hidden" name="recipients" value="{{ $user->id }}"> --}}
-
+<input type="hidden" class="range" name="price" value="{{ $thread->latestMessage->price }}"/>
     <!-- Submit Form Input -->
     <div class="form-group">
         <button type="submit" class="btn btn-primary form-control">Envoyez</button>

@@ -10,7 +10,7 @@
     <title>@yield('titre') - LiinkArt</title>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('bower_components/sweetalert2/dist/sweetalert2.min.css') }}">
     <!--Import Google Icon Font-->
@@ -23,9 +23,9 @@
 <body>
     <nav class="liinkart-white z-depth-2">
         <div class="nav-wrapper">
+        <img id="background-logo-nav" src="{{ asset('/uploads/logo-back.png')}}" width="235px">
             <a id="liinkart-logo" href="{{ url('/') }}" class="brand-logo">
-                <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                         viewBox="0 0 764 1146" style="enable-background:new 0 0 764 1146;" xml:space="preserve">
+                <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 764 1146" style="enable-background:new 0 0 764 1146;" xml:space="preserve">
                     <polygon fill="#73A9C0" points="191,573 0,382 0,764 "/>
                     <polygon fill="#7670AE" points="382,382 191,191 191,573 "/>
                     <polygon fill="#8BAE87" points="382,764 191,573 191,955 "/>

@@ -34,9 +34,10 @@ Route::post('/like', ['as' => 'like', 'uses' => 'UserController@likeUser']);
 //Artworks & tags
 Route::resource('artworks', 'PostController', ['except' => ['edit', 'update']]);
 Route::get('artworks/tag/{tag}', 'PostController@indexTag');
+Route::get('search', 'PostController@search');
 Route::post('revision/{post}', ['as' => 'artworks.revision', 'uses' => 'PostController@revision']);
-//Mise en relation
-Route::post('linking/{post}', 'PropositionController@sendEmail')->name('linking');
+//Mise en relation par email si pas de messagerie interne
+//Route::post('linking/{post}', 'PropositionController@sendEmail')->name('linking');
 
 //Email for Slack
 Route::get('email', 'SlackController@create');
@@ -49,11 +50,11 @@ Route::post('contact', 'ContactController@store');
  * Messagerie interne
  */
 Route::group(['prefix' => 'messages'], function () {
-    Route::get('/', ['as' => 'messages', 'uses' => 'MessagesController@index']);
-    Route::get('create', ['as' => 'messages.create', 'uses' => 'MessagesController@create']);
-    Route::post('/', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
-    Route::get('{id}', ['as' => 'messages.show', 'uses' => 'MessagesController@show']);
-    Route::put('/update', ['as' => 'messages.update', 'uses' => 'MessagesController@update']);
+	Route::get('/', ['as'       => 'messages', 'uses' => 'MessagesController@index']);
+	Route::get('create', ['as'  => 'messages.create', 'uses' => 'MessagesController@create']);
+	Route::post('/', ['as'      => 'messages.store', 'uses' => 'MessagesController@store']);
+	Route::get('{id}', ['as'    => 'messages.show', 'uses' => 'MessagesController@show']);
+	Route::put('/update', ['as' => 'messages.update', 'uses' => 'MessagesController@update']);
 });
 
 /*

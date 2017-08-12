@@ -23,10 +23,9 @@ $(document).ready(function(){
                         event.target.innerText = 'favorite';
                   }      
                   else { 
-            		
                         event.target.innerText = 'favorite_border';
                   }
-                  $('.countLike').text(data);   
+                  $('.countLike').text(' '+data);   
             	console.log(data);
             });
 	});

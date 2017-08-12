@@ -3,7 +3,7 @@
     <div class="row">
         <!-- Subject Form Input -->
             @if(Auth::check())
-            <input type="hidden" class="form-control" name="subject" value="Nouvelle proposition de {{Auth::user()->name}}">
+            <input type="hidden" class="form-control" name="subject" value="{{ $post->titre }}">
             @endif
             <input type="hidden" name="recipients" value="{{ $post->user->id }}">
             <label for="price">Montant de la proposition</label>

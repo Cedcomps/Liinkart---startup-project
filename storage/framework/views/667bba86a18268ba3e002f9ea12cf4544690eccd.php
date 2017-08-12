@@ -7,7 +7,7 @@
 <?php if($level == 'error'): ?>
 # Whoops!
 <?php else: ?>
-# Hello!
+# Bonjour!
 <?php endif; ?>
 <?php endif; ?>
 

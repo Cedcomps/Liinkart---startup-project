@@ -101,12 +101,50 @@ class PostController extends Controller
         \Alert::info('Oeuvre signalée, merci de votre attention')->autoclose(3000);
         return back();
     } 
+
     public function destroy($post)
     {
         $post = Post::find($post);
         $this->postRepository->destroy($post);
         \Alert::info('Oeuvre supprimée');
         return back();
+    }
+
+    public function search(Request $request)
+    {
+        return $availableTags = [
+          'Peinture',
+          'Peinture à Huile',
+          'Peinture acrylique',
+          'Aquarelle',
+          'Technique mixte',
+          'Photographie',
+          'Photographie argentique',
+          'Photographie numérique',
+          'Technique Mixte',
+          'Oeuvres sur papier',
+          'Dessin',
+          'Encre',
+          'Estampe',
+          'Sérigraphie',
+          'Lithographie',
+          'Collage',
+          'Gravure',
+          'Linogravure',
+          'Technique Mixte',
+          'Sculpture',
+          'Sculpture bois',
+          'Sculpture argile',
+          'Sculpture métal',
+          'Sculpture bronze',
+          'Sculpture pierre',
+          'Sculpture terre cuite',
+          'Sculpture céramique',
+          'Sculpture platre',
+          'Sculpture marbre',
+          'Sculpture verre',
+          'Technique mixte'
+        ];
     }
  
     public function indexTag($tag)

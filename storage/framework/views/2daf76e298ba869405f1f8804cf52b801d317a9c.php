@@ -22,19 +22,14 @@
                                 <h3 data-userid="<?php echo e($user->id); ?>"><?php echo e($user->name); ?></h3>
                                 <?php if($user->likes()->first()): ?>
                                 <span>
-                                    <i class="justlike tiny material-icons">favorite</i>
+                                    <i class="justlike material-icons">favorite</i>
                                     <span class="countLike"><?php echo e($user->likes()->count()); ?></span>
                                 </span>
                                 <?php endif; ?>
                             </span>
-                            <div class="interaction">
-                                <a href="#" class="like">
-                                <?php echo $user->likes()->where('user_id', $user->id)->first() ? $user->likes()->where('user_id', $user->id)->first()->like ? '<i class="material-icons">favorite</i>' : '<i class="material-icons">favorite_border</i>' : '<i class="material-icons">favorite_border</i>'; ?>
-
-                                </a> 
-                            </div>
-                            <h5><?php echo e($user->country); ?></h5>
-                            <h6><?php echo e($user->city); ?></h6><br>
+                            <div class="chip"><?php echo e($user->specialist); ?></div>
+                            
+                            <h5><?php echo e($user->country); ?> - <?php echo e($user->city); ?></h5><br>
                             <?php $__currentLoopData = $achievements->sortByDesc('unlocked_at'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
                                 <?php if($item->isUnlocked()): ?>
@@ -137,7 +132,29 @@
             <div class="col s12 l6">  
                 <div class="card">
                     <div class="card-content">
-                        <h5>Description bio</h5>
+                        <h5>Notoriété</h5>
+                        <p>Vous aimez mes oeuvres? Participez à augmenter ma notoriété</p>
+                        <div class="interaction center">
+                            <a href="#" class="like">
+                            <?php echo $user->likes()->where('user_id', $user->id)->first() ? $user->likes()->where('user_id', $user->id)->first()->like ? '<i class="material-icons notoriete">favorite</i>' : '<i class="material-icons notoriete">favorite_border</i>' : '<i class="material-icons notoriete">favorite_border</i>'; ?>
+
+                            </a> 
+                        </div>
+                        <div class="divider"></div>
+                        <p><?php echo e($user->name); ?> a reçu: <i class="justlike tiny material-icons">favorite</i><span class="countLike"> <?php echo e($user->likes()->count()); ?></span>
+                        <?php if($user->likes()->count() <= 1): ?>
+                        <span>  coup de coeur</span>
+                        <?php else: ?>
+                        <span>  coups de coeur</span>
+                        <?php endif; ?>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 l6">  
+                <div class="card">
+                    <div class="card-content">
+                        <h5>Biographie</h5>
                         <p><?php echo e($user->description); ?></p>
                     </div>
                 </div>

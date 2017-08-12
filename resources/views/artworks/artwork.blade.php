@@ -73,7 +73,7 @@
 		                        </div>
 		                        <div class="col s10">
 		                            <a class="black-text" href="{{ route('user.show', ['id' => $post->user->id]) }}"><h4>{{ $post->user->name or "Artiste"}}</h4></a>
-		                            <span>{{ $post->user->specialist }}</span>
+		                            <div class="chip">{{ $post->user->specialist }}</div>
 		                            @if($post->user->likes()->first())
 	                                <span>
 	                                    <i class="justlike tiny material-icons">favorite</i>

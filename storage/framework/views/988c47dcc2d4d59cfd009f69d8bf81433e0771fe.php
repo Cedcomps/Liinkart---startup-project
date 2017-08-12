@@ -76,7 +76,7 @@
 		                        </div>
 		                        <div class="col s10">
 		                            <a class="black-text" href="<?php echo e(route('user.show', ['id' => $post->user->id])); ?>"><h4><?php echo e(isset($post->user->name) ? $post->user->name : "Artiste"); ?></h4></a>
-		                            <span><?php echo e($post->user->specialist); ?></span>
+		                            <div class="chip"><?php echo e($post->user->specialist); ?></div>
 		                            <?php if($post->user->likes()->first()): ?>
 	                                <span>
 	                                    <i class="justlike tiny material-icons">favorite</i>

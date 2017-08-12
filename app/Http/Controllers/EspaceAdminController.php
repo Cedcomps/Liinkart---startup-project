@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Repositories\UserRepository;
 use App\Repositories\PostRepository;
-
+use Cmgmyr\Messenger\Models\Message;
+use Cmgmyr\Messenger\Models\Thread;
 use App\User;
 use Auth;
 use App\Post;
@@ -31,11 +32,13 @@ class EspaceAdminController extends Controller
  
     public function index()
     {
-    	$countPost = Post::count();
-        $users = $this->userRepository->getPaginate($this->nbrPerPage);
-        $posts = Post::all();
-        $countUser = User::count();
-        return view('admin.dashboard', compact('users', 'countUser', 'posts', 'countPost'));
+        $posts = Post::all(); //attributs des posts
+        $users = $this->userRepository->getPaginate($this->nbrPerPage); //attributs des users
+        $countPost = Post::count(); //nombre de posts
+        $countUser = User::count(); //nombre d'users
+        $countMessage = Message::count(); //nombre de messages envoyés sur la plateforme
+        $countThread = Thread::count(); //nombre de propositions 
+        return view('admin.dashboard', compact('users', 'countUser', 'posts', 'countPost', 'countMessage', 'countThread'));
     }
 
     public function destroy($post)

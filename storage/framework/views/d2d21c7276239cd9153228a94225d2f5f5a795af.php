@@ -4,7 +4,7 @@
     <div class="row">
         <!-- Subject Form Input -->
             <?php if(Auth::check()): ?>
-            <input type="hidden" class="form-control" name="subject" value="Nouvelle proposition de <?php echo e(Auth::user()->name); ?>">
+            <input type="hidden" class="form-control" name="subject" value="<?php echo e($post->titre); ?>">
             <?php endif; ?>
             <input type="hidden" name="recipients" value="<?php echo e($post->user->id); ?>">
             <label for="price">Montant de la proposition</label>

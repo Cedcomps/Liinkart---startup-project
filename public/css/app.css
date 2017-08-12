@@ -89,6 +89,16 @@ nav a, nav ul a {
 	padding: 0 25px;
 	color: #fff !important;
 }
+/*recherche*/
+#searchCat {
+	background-color: white;
+	color: black;
+	margin-bottom: 1px;
+	padding: 10px 0;
+}
+.search-prefix {
+	margin-top: 20px;
+}
 /*message*/
 .media {
 	display : flex;
@@ -102,9 +112,12 @@ nav a, nav ul a {
 .body-message {
 	background-color: #9575ff;
 	padding: 10px;
-	color: white;
+	color: white !important;
 	display: inline-flex;
 	border-radius: 3px;
+}
+.text-muted {
+	color: #9e9e9e;
 }
 /*pagination*/
 .pagination li.active {
@@ -195,14 +208,14 @@ h6 {
 	margin-left: auto;
 	margin-right: auto;
 }
+#background-logo-nav {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
 #liinkart-logo {
 	z-index: 10;
-	display: block;
-	width: 225px;
-	height: 160px;
-	background-image: url("/uploads/logo-back.png");
-	background-repeat: no-repeat;
-	background-size: 100%;
+	margin-left: 37px;
 }
 #liinkart-logo svg:hover {
 	transform: rotateY(180deg);
@@ -233,8 +246,11 @@ h6 {
 }
 @media screen and (max-width: 992px){
 	#liinkart-logo{
-		background-image: none;
 		width: auto;
+		margin-left: inherit;
+	}
+	#background-logo-nav {
+		display: none;
 	}
 	#liinkart-logo svg{
 		background-image: none;
@@ -399,4 +415,9 @@ output:after {
 	position: fixed;
 	bottom: 20px;
 	right: 20px;
+}
+/*admin*/
+.admin {
+	padding: 10px 0 10px 0;
+	height: inherit !important;
 }

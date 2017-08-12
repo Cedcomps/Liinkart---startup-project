@@ -7,28 +7,24 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class NewProposition extends Notification
+class NewProposition extends Notification implements ShouldQueue
 {
     use Queueable;
 
     /**
-     * Elements de post
+     * Elements de thread
      * @var array
      */
-    public $post;
-    public $user;
-    public $price;
+    public $thread;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($price, $post, $user)
+    public function __construct($thread)
     {
-        $this->price = $price;
-        $this->post = $post;
-        $this->user = $user;
+        $this->thread = $thread;
     }
 
     /**
@@ -50,11 +46,9 @@ class NewProposition extends Notification
      */
     public function toMail($notifiable)
     {
-        $url = url('/messages/');
         return (new MailMessage)
-                    ->error()
                     ->subject('Nouvelle offre pour votre oeuvre')
-                    ->markdown('email.proposition', ['url' => $url]);
+                    ->markdown('email.proposition',['thread' => $this->thread]);
     }
 
     /**

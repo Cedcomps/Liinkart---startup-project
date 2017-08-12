@@ -14,12 +14,13 @@ $(document).ready(function(){
     });
 //envoi du message en base de données via Ajax
     var message = $('textarea').attr('name', 'message');
+    var price = $('input.range').val();
     $('button').on('click', function(e) {
         e.preventDefault();
  		$.ajax({
  			method: 'PUT',
  			url: urlPutMessage,
- 			data: {threadId : threadId, message: message.val(), userId: userId, _token: token}
+ 			data: {threadId : threadId, message: message.val(), price: price, userId: userId, _token: token}
  		})
    			.done(function(data){ 
             var newMessage;

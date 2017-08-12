@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Notifications\NewProposition;
+use Illuminate\Notifications\Notification;
 
 class MessagesController extends Controller
 {
@@ -75,7 +76,7 @@ class MessagesController extends Controller
     public function store()
     {
         $input = Input::all();
-        $user = Auth::user()->id;
+        $userId = Auth::user()->id;
         $thread = Thread::create(
             [
                 'subject' => $input['subject'],
@@ -86,7 +87,7 @@ class MessagesController extends Controller
             Message::create(
                 [
                     'thread_id' => $thread->id,
-                    'user_id'   => $user,
+                    'user_id'   => $userId,
                     'price'     => $input['price'],
                     'body'      => $input['message'],
                 ]
@@ -96,7 +97,7 @@ class MessagesController extends Controller
             Message::create(
                 [
                     'thread_id' => $thread->id,
-                    'user_id'   => $user,
+                    'user_id'   => $userId,
                     'body'      => $input['message'],
                     'price'     => null,
                 ]
@@ -106,7 +107,7 @@ class MessagesController extends Controller
         Participant::create(
             [
                 'thread_id' => $thread->id,
-                'user_id'   => $user,
+                'user_id'   => $userId,
                 'last_read' => new Carbon,
             ]
         );
@@ -114,9 +115,10 @@ class MessagesController extends Controller
         if (Input::has('recipients')) {
             $thread->addParticipant($input['recipients']);
         }
-        if(Input::has('price')) {
-            $user->notify(new NewProposition($thread));
-        }
+        //dd($thread->subject);
+        $user = User::where('id', $input['recipients'])->first();
+        $user->notify(new NewProposition($thread));
+        
         return redirect('messages');
     }
     /**
@@ -129,6 +131,7 @@ class MessagesController extends Controller
     {
         $threadId = $request['threadId'];
         $message = $request['message'];
+        $price = $request['price'];
         $userId = $request['userId'];
         try {
             $thread = Thread::findOrFail($threadId);
@@ -143,6 +146,7 @@ class MessagesController extends Controller
                 'thread_id' => $threadId,
                 'user_id'   => $userId,
                 'body'      => $message,
+                'price'      => $price,
             ]
         );
         // Add replier as a participant

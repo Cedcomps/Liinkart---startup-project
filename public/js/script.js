@@ -29,6 +29,35 @@ $(document).ready(function(){
 	$( "span:contains('Sculpture marbre')" ).css( "color", "#ad1457");
 	$( "span:contains('Sculpture verre')" ).css( "color", "#6a1b9a");
 	$( "span:contains('Technique mixte')" ).css( "color", "#00695c");
+// Spécialité artistique
+	$( "div.chip:contains('Peinture')" ).css( {"color": "black", "backgroundColor": "#ef9a9a"});
+	$( "div.chip:contains('Peinture à Huile')" ).css( {"color": "black", "backgroundColor": "#f48fb1"});
+	$( "div.chip:contains('Peinture acrylique')" ).css( {"color": "black", "backgroundColor": "#ce93d8"});
+	$( "div.chip:contains('Aquarelle')" ).css( {"color": "black", "backgroundColor": "#b39ddb"});
+	$( "div.chip:contains('Photographie')" ).css( {"color": "black", "backgroundColor": "#9fa8da"});
+	$( "div.chip:contains('Photographie argentique')" ).css( {"color": "black", "backgroundColor": "#90caf9"});
+	$( "div.chip:contains('Photographie numérique')" ).css( {"color": "black", "backgroundColor": "#81d4fa"});
+	$( "div.chip:contains('Oeuvres sur papier')" ).css( {"color": "black", "backgroundColor": "#80deea"});
+	$( "div.chip:contains('Dessin')" ).css( {"color": "black", "backgroundColor": "#80cbc4"});
+	$( "div.chip:contains('Encre')" ).css( {"color": "black", "backgroundColor": "#a5d6a7"});
+	$( "div.chip:contains('Estampe')" ).css( {"color": "black", "backgroundColor": "#c5e1a5"});
+	$( "div.chip:contains('Sérigraphie')" ).css( {"color": "black", "backgroundColor": "#e6ee9c"});
+	$( "div.chip:contains('Lithographie')" ).css( {"color": "black", "backgroundColor": "#fff59d"});
+	$( "div.chip:contains('Collage')" ).css( {"color": "black", "backgroundColor": "#ffe082"});
+	$( "div.chip:contains('Gravure')" ).css( {"color": "black", "backgroundColor": "#ffcc80"});
+	$( "div.chip:contains('Linogravure')" ).css( {"color": "black", "backgroundColor": "#ffab91"});
+	$( "div.chip:contains('Sculpture')" ).css( {"color": "black", "backgroundColor": "#bcaaa4"});
+	$( "div.chip:contains('Sculpture bois')" ).css( {"color": "black", "backgroundColor": "#b0bec5"});
+	$( "div.chip:contains('Sculpture argile')" ).css( {"color": "black", "backgroundColor": "#ef6c00"});
+	$( "div.chip:contains('Sculpture métal')" ).css( {"color": "black", "backgroundColor": "#f9a825"});
+	$( "div.chip:contains('Sculpture bronze')" ).css( {"color": "black", "backgroundColor": "#558b2f"});
+	$( "div.chip:contains('Sculpture pierre')" ).css( {"color": "black", "backgroundColor": "#0277bd"});
+	$( "div.chip:contains('Sculpture terre cuite')" ).css( {"color": "black", "backgroundColor": "#00695c"});
+	$( "div.chip:contains('Sculpture céramique')" ).css( {"color": "black", "backgroundColor": "#4527a0"});
+	$( "div.chip:contains('Sculpture platre')" ).css( {"color": "black", "backgroundColor": "#c62828"});
+	$( "div.chip:contains('Sculpture marbre')" ).css( {"color": "black", "backgroundColor": "#ad1457"});
+	$( "div.chip:contains('Sculpture verre')" ).css( {"color": "black", "backgroundColor": "#6a1b9a"});
+	$( "div.chip:contains('Technique mixte')" ).css( {"color": "black", "backgroundColor": "#00695c"});
 // Couleur coup de coeur
 	var countLike = parseInt($('.countLike').html());
 		if(countLike >= 1 && countLike <= 49){
