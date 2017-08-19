@@ -89,7 +89,7 @@
 
                                                     </div>
                                                     <div class="input-field col s12 <?php echo $errors->has('specialist') ? 'has-error' : ''; ?>">
-                                                        <?php echo Form::select('specialist', ['Peinture', 'Peinture à Huile', 'Peinture acrylique', 'Aquarelle', 'Photographie', 'Photographie argentique', 'Photographie numérique', 'Oeuvres sur papier', 'Dessin', 'Encre', 'Estampe', 'Sérigraphie', 'Lithographie', 'Collage', 'Gravure', 'Linogravure', 'Sculpture', 'Sculpture bois', 'Sculpture argile', 'Sculpture métal', 'Sculpture bronze', 'Sculpture pierre', 'Sculpture terre cuite', 'Sculpture céramique', 'Sculpture platre', 'Sculpture marbre', 'Sculpture verre', 'Technique mixte'], null, ['placeholder' => 'Votre spécialité artistique']); ?>
+                                                        <?php echo Form::select('specialist', ['Peinture', 'Peinture à Huile', 'Peinture acrylique', 'Aquarelle', 'Photographie', 'Photographie argentique', 'Photographie numérique', 'Oeuvres sur papier', 'Dessin', 'Encre', 'Estampe', 'Sérigraphie', 'Lithographie', 'Collage', 'Gravure', 'Linogravure', 'Sculpture', 'Sculpture bois', 'Sculpture argile', 'Sculpture métal', 'Sculpture bronze', 'Sculpture pierre', 'Sculpture terre cuite', 'Sculpture céramique', 'Sculpture platre', 'Sculpture marbre', 'Sculpture verre', 'Technique mixte']); ?>
 
                                                         <?php echo $errors->first('specialist', '<small class="help-block">:message</small>'); ?>
 
@@ -136,7 +136,8 @@
                         <p>Vous aimez mes oeuvres? Participez à augmenter ma notoriété</p>
                         <div class="interaction center">
                             <a href="#" class="like">
-                            <?php echo $user->likes()->where('user_id', $user->id)->first() ? $user->likes()->where('user_id', $user->id)->first()->like ? '<i class="material-icons notoriete">favorite</i>' : '<i class="material-icons notoriete">favorite_border</i>' : '<i class="material-icons notoriete">favorite_border</i>'; ?>
+                            <?php echo $user->likes()->where('user_id', $user->id)->where('userhasliked_id', Auth::user()->id )->where('like', 1)->first() ?
+'<i class="material-icons notoriete">favorite</i>' : '<i class="material-icons notoriete">favorite_border</i>'; ?>
 
                             </a> 
                         </div>
@@ -161,10 +162,10 @@
             </div>
         </div>
         <div class="row">
-      <div class="card">
-                           
+            <div class=" grid">
         <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <div id="artworks" class="col s12 m6 l4">
+            <div class="grid-sizer"></div>               
+            <div id="artworks" class="grid-item">
                 <div class="card hoverable sticky-action">
                     <div class="card-image waves-effect waves-block waves-light">
                         <?php if(count($post->posts_photos)): ?>
@@ -201,23 +202,21 @@
                 </div>
             </div>  
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        </div>
+            </div>
         </div>
     </div>
 </section>
-            
-                
-
-        <br>
-        <div class="panel panel-primary">   
-           
-                     
-        <a href="javascript:history.back()" class="btn btn-primary">
-            <span class="glyphicon glyphicon-circle-arrow-left"></span> Retour
-        </a>
-    </div>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('js'); ?>
+    <script src=<?php echo e(asset("js/masonry.pkgd.min.js")); ?>></script>
+    <script type="text/javascript">
+    $('.grid').masonry({
+        itemSelector: '.grid-item',
+        columnWidth: 0,
+        isFitWidth: true,
+        gutter: 30
+        });
+    </script>
     <script src="<?php echo e(asset('js/user.js')); ?>"></script>
     <?php if(Auth::check()): ?>
     <script>

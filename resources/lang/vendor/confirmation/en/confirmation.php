@@ -2,7 +2,8 @@
 
 return [
     'email-title' => 'Email verification',
-    'email-intro'=> 'To validate your email click on the button below',
+    'email-welcome' => 'Welcome to the LiinkART platform.',
+    'email-intro'=> 'Confirm your email address to finalize your LiinkART account. It\'s simple, just click the button below.',
     'email-button' => 'Email verification',
     'message' => 'Thanks for signing up! Please check your email.',
     'success' => 'You have successfully verified your account! You can now login.',

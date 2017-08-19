@@ -1,3 +1,6 @@
+<?php $__env->startSection('titre'); ?>
+    Créer un compte
+<?php $__env->stopSection(); ?>
 <?php $__env->startSection('css'); ?>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <?php $__env->stopSection(); ?>
@@ -16,13 +19,13 @@
                     <div class="card-content center">
                         <h4>Créer un compte </h4>
                         <?php if(session('confirmation-success')): ?>
-                            <div class="green-text">
+                            <div class="alert alert-success">
                                 <?php echo e(session('confirmation-success')); ?>
 
                             </div>
                         <?php endif; ?>
                         <?php if(session('confirmation-danger')): ?>
-                            <div class="red-text">
+                            <div class="alert alert-danger">
                                 <?php echo session('confirmation-danger'); ?>
 
                             </div>
@@ -87,6 +90,9 @@
             </div>
         </div>
     </div>
+    <div class="section"></div>
+    <div class="section"></div>
+    <div class="section"></div>
 </section>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

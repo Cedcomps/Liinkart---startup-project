@@ -1,5 +1,5 @@
 @extends('layouts.app')
- @section('titre')
+@section('titre')
     Erreur accès base de données
 @endsection
 @section('content')
@@ -12,8 +12,8 @@
             <div class="panel-body"> 
                 <p>Notre base de données semble inaccessible pour le moment.</p>
                 <p>Veuillez nous en excuser.</p>
-                <strong>{{ $errors->has('email') ? ' has-error' : '' }}</strong>
-                <strong>{{ $errors->first('email') }}</strong>
+                <div class="section"></div>
+                <a class="waves-effect waves-light btn-large" href="{{ route('artworks.index')}}">RETOURNER DANS LA GALERIE</a>
             </div>
         </div>
     </div>

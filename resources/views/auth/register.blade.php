@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('titre')
+    Créer un compte
+@endsection
 @section('css')
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 @endsection
@@ -17,12 +20,12 @@
                     <div class="card-content center">
                         <h4>Créer un compte </h4>
                         @if (session('confirmation-success'))
-                            <div class="green-text">
+                            <div class="alert alert-success">
                                 {{ session('confirmation-success') }}
                             </div>
                         @endif
                         @if (session('confirmation-danger'))
-                            <div class="red-text">
+                            <div class="alert alert-danger">
                                 {!! session('confirmation-danger') !!}
                             </div>
                         @endif
@@ -85,5 +88,8 @@
             </div>
         </div>
     </div>
+    <div class="section"></div>
+    <div class="section"></div>
+    <div class="section"></div>
 </section>
 @endsection

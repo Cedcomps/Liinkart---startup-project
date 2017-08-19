@@ -1,4 +1,4 @@
- <?php $__env->startSection('titre'); ?>
+<?php $__env->startSection('titre'); ?>
     Erreur accès base de données
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
@@ -11,8 +11,8 @@
             <div class="panel-body"> 
                 <p>Notre base de données semble inaccessible pour le moment.</p>
                 <p>Veuillez nous en excuser.</p>
-                <strong><?php echo e($errors->has('email') ? ' has-error' : ''); ?></strong>
-                <strong><?php echo e($errors->first('email')); ?></strong>
+                <div class="section"></div>
+                <a class="waves-effect waves-light btn-large" href="<?php echo e(route('artworks.index')); ?>">RETOURNER DANS LA GALERIE</a>
             </div>
         </div>
     </div>

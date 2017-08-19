@@ -34,7 +34,7 @@ Route::post('/like', ['as' => 'like', 'uses' => 'UserController@likeUser']);
 //Artworks & tags
 Route::resource('artworks', 'PostController', ['except' => ['edit', 'update']]);
 Route::get('artworks/tag/{tag}', 'PostController@indexTag');
-Route::get('search', 'PostController@search');
+Route::get('search', ['as' => 'search', 'uses' => 'PostController@search']);
 Route::post('revision/{post}', ['as' => 'artworks.revision', 'uses' => 'PostController@revision']);
 //Mise en relation par email si pas de messagerie interne
 //Route::post('linking/{post}', 'PropositionController@sendEmail')->name('linking');
@@ -61,8 +61,11 @@ Route::group(['prefix' => 'messages'], function () {
  * PAGES Annexes
  */
 Route::get('about', function(){	return view('pages.about'); })->name('about');
-Route::get('team', function(){ return view('pages.team'); })->name('team');
-Route::get('faq', function(){ return view('pages.faq'); })->name('faq');
+Route::get('donation', function(){ return view('pages.donation'); })->name('donation');
+Route::get('faq', function(){ 
+	$categories = App\Category::orderBy('category')->get();
+	return view('pages.faq', compact('categories')); 
+	})->name('faq');
 Route::get('press', function(){	return view('pages.press'); })->name('press');
 Route::get('mentions', function(){ return view('pages.mentions'); })->name('mentions');
 

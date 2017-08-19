@@ -89,6 +89,24 @@ nav a, nav ul a {
 	padding: 0 25px;
 	color: #fff !important;
 }
+.alert {
+	border: 0;
+	border-radius: 0;
+	padding: 15px;
+	margin-bottom: .5rem;
+}
+.alert-success {
+	background-color: #4caf50;
+	color: #fff;
+}
+.alert-danger {
+	background-color: #f44336;
+	color: #fff;
+}
+.alert-info {
+	background-color: #03a9f4;
+	color: #fff;
+}
 /*recherche*/
 #searchCat {
 	background-color: white;
@@ -98,6 +116,10 @@ nav a, nav ul a {
 }
 .search-prefix {
 	margin-top: 20px;
+}
+.avatar-responsive {
+	max-width: 25px;
+	height: auto;
 }
 /*message*/
 .media {
@@ -226,6 +248,18 @@ h6 {
 	margin-left: 22%;
 	transition: all 1s;
 }
+.grid {
+	margin: 0 auto;
+}
+.grid:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+.grid-item {
+	width: 250px;
+	margin-bottom: 10px;
+}
 @media screen and (min-width: 1441px) {
 	#liinkart{
 		max-width: 300px;
@@ -257,10 +291,15 @@ h6 {
 		margin-left: auto;
 	}
 	.side-nav .user-view {
-	padding: 16px 16px 0;
+		padding: 16px 16px 0;
 	}
 }
 /*header*/
+.erreur404 {
+	background-image: url("/uploads/erreur 404.jpg");
+	background-size: cover;
+	
+}
 header {
 	margin-top: -50px;
 	background-image: url("/uploads/header-liinkart1.jpg");
@@ -329,8 +368,9 @@ header div a {
 }
 /*card artwork*/
 .card .card-image img {
-	max-height: 400px;
+	max-height: 300px;
 	margin: auto;
+	max-width: 100% !important;
 	width: inherit !important;
 }
 .chip-technique {
@@ -358,14 +398,10 @@ a, .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
 	text-overflow: ellipsis;
 }
 /*artwork-article*/
-.artworks {
-	break-inside: avoid;
-}
-.artwork-article {
-	margin-top: 50px;
-}
-.artwork-image-first {
-	margin-top: 46.5px;
+#scrollButton {
+	z-index: 999;
+	background: white;
+	opacity: 0.7;
 }
 .tooltipped {
 	display:inline-flex; vertical-align:middle; text-align:center;

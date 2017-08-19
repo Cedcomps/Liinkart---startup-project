@@ -8,6 +8,7 @@ use App\Repositories\TagRepository;
 use App\Http\Requests\PostRequest;
 use App\User;
 use App\Post;
+use App\Category;
 use App\PostsPhoto;
 use Image;
 use Auth;
@@ -22,11 +23,11 @@ class PostController extends Controller
 {
     protected $postRepository;
  
-    protected $nbrPerPage = 9;
+    protected $nbrPerPage = 20;
  
     public function __construct(PostRepository $postRepository)
     {
-        $this->middleware('auth')->except('index', 'indexTag', 'show');
+        $this->middleware('auth')->except('index', 'indexTag', 'show', 'search');
        //$this->middleware('admin')->only('destroy');
  
         $this->postRepository = $postRepository;
@@ -35,12 +36,14 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $posts = $this->postRepository->getWithUserAndTagsPaginate($this->nbrPerPage);
-        $links = $posts->render();        
+        $categories = Category::all();
+        $links = $posts->appends(request()->all())->render();     
         $users = Post::with(array('user'))->get();
         if ($request->ajax()){
-            return view('artworks.liste', compact('posts', 'users'));
+            //$links = $posts->appends(request()->all())->render();
+            return view('artworks.liste', compact('posts', 'users', 'links'));
         }
-        return view('artworks.index', compact('posts', 'links', 'users'));
+        return view('artworks.index', compact('posts', 'links', 'users', 'categories'));
     }
  
     public function create()
@@ -63,7 +66,7 @@ class PostController extends Controller
                     $constraint->upsize();
                 });
                 $watermark = Image::make('storage/uploads/watermark.png');
-                $img->insert($watermark, 'bottom-right', 15, 15);
+                $img->insert($watermark, 'bottom-left', 20, 20);
                 $img->save(public_path('storage/uploads/artworks/').$filename);
                 PostsPhoto::create([
                     'post_id' => $post->id,
@@ -112,39 +115,21 @@ class PostController extends Controller
 
     public function search(Request $request)
     {
-        return $availableTags = [
-          'Peinture',
-          'Peinture à Huile',
-          'Peinture acrylique',
-          'Aquarelle',
-          'Technique mixte',
-          'Photographie',
-          'Photographie argentique',
-          'Photographie numérique',
-          'Technique Mixte',
-          'Oeuvres sur papier',
-          'Dessin',
-          'Encre',
-          'Estampe',
-          'Sérigraphie',
-          'Lithographie',
-          'Collage',
-          'Gravure',
-          'Linogravure',
-          'Technique Mixte',
-          'Sculpture',
-          'Sculpture bois',
-          'Sculpture argile',
-          'Sculpture métal',
-          'Sculpture bronze',
-          'Sculpture pierre',
-          'Sculpture terre cuite',
-          'Sculpture céramique',
-          'Sculpture platre',
-          'Sculpture marbre',
-          'Sculpture verre',
-          'Technique mixte'
-        ];
+        $search = $request['searchCat'];
+        $posts = Post::whereHas('category', function($query) use($search) {
+            $query->where('category', 'like', '%'.$search.'%');
+        })->orWhere('titre','LIKE','%'.$search.'%')
+            ->orWhere('contenu', 'like','%'.$search.'%')
+            ->orWhere('year', 'like','%'.$search.'%')
+            ->orderBy('titre')
+            ->paginate(20);
+        if(count($posts) == 0) {
+            \Alert::info('Aucun résultat pour : ' . $search);
+          return redirect()->back();
+        } 
+        $links = $posts->appends(request()->all())->render();    
+        return view('artworks.index', compact('posts', 'links'))
+            ->with('info', 'Résultats pour la recherche du mot-clé : ' . $search);
     }
  
     public function indexTag($tag)

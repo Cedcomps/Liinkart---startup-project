@@ -90,7 +90,7 @@
 		</div>		
 	</div>
 	<div class="row">
-		<div class="col offset-s6 s6 date">Fait le <?php echo e(Carbon\Carbon::now()->formatLocalized('%d %B %Y')); ?><br><span id="signature"><?php echo e($post->user->name); ?></span></div>
+		<div class="col offset-s6 s6 date">Fait le <?php echo e(Carbon\Carbon::now()->formatLocalized('%d/%m/%Y')); ?><br><span id="signature"><?php echo e($post->user->name); ?></span></div>
 		
 	</div>
 </div>

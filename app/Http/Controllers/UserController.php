@@ -100,7 +100,7 @@ class UserController extends Controller
         {
             $destinationPath = public_path('storage/uploads/avatars/');
             $avatar = $request->file('avatar');
-            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            $filename = 'avatar-'. $user->id . '.' . $avatar->getClientOriginalExtension();
             $img = Image::make($avatar)->fit(150, 150);
             //Must separate fit and save method, both don't work on same line
             $avatar->move($destinationPath, $filename);
@@ -126,12 +126,16 @@ class UserController extends Controller
 
     public function likeUser(Request $request)
     {
-        $userId = $request['userId']; //ID de l'user aimé
+        $userId = $request['userId']; //ID de l'user qui est aimé
         $is_like = $request['isLike'] == 'true'; //SI aimé
-        $ajaxUserHasLiked = $request['ajaxUserHasLiked']; //ID de l'user qui VA aimé
+        $ajaxUserHasLiked = $request['ajaxUserHasLiked']; //ID de l'user qui a aimé
 
-        $user = User::find($userId);
-        $like = $user->likes()->where('user_id', $userId)->first(); //$like = User qui a aimé, dans sa table, cherche l'id de l'user aimé en premier
+        $user = User::find($userId); //on instancie l'user qui est aimé
+        $like = $user->likes()->where([
+            ['user_id', $userId],
+            ['userhasliked_id', $ajaxUserHasLiked]
+        ])->first();//dans sa table on récupere le like ou l'user qui est aimé et a aussi aimé
+        //$already_like = $like->like;
         if ($like) { //si existant du like
             $like->delete(); //alors on supprime le like
             return $user->likes()->count();       

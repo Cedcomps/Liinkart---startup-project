@@ -1,7 +1,6 @@
-<?php echo e($posts->links()); ?>
-
+<div class="grid-sizer"></div>
 <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-    <div class="artworks col s12 m6 l4" data-postid="<?php echo e($post->id); ?>">
+    <div class="grid-item" data-postid="<?php echo e($post->id); ?>">
         <div class="card hoverable sticky-action">
             <div class="card-content">
                 <div class="valign-wrapper">
@@ -10,7 +9,7 @@
 
                     <?php else: ?> <?php echo e(asset('storage/uploads/avatars/' . $post->user->avatar)); ?>
 
-                    <?php endif; ?>" alt="avatar artiste" class="circle responsive-img"></a>
+                    <?php endif; ?>" alt="avatar artiste" class="circle avatar-responsive"></a>
                     </div>
                     <div class="col s10">
                         <a class="black-text" href="<?php echo e(route('user.show', ['id' => $post->user->id])); ?>">By <?php echo e(isset($post->user->name) ? $post->user->name : "Artiste"); ?></a>
@@ -53,9 +52,15 @@
         </div>  
     </div>
 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-<?php echo e($posts->links()); ?>
-
-<script>// Technique artistique
+<script src=<?php echo e(asset("js/masonry.pkgd.min.js")); ?>></script>
+<script>
+$('.grid').masonry({
+  itemSelector: '.grid-item',
+  columnWidth: 0,
+  isFitWidth: true,
+  gutter: 30
+});
+// Technique artistique
 $(document).ready(function(){
     $( "span:contains('Peinture')" ).css( "color", "#ef9a9a");
     $( "span:contains('Peinture à Huile')" ).css( "color", "#f48fb1");

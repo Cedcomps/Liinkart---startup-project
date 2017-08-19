@@ -74,7 +74,7 @@
                                                         {!! $errors->first('city', '<small class="help-block">:message</small>') !!}
                                                     </div>
                                                     <div class="input-field col s12 {!! $errors->has('specialist') ? 'has-error' : '' !!}">
-                                                        {!! Form::select('specialist', ['Peinture', 'Peinture à Huile', 'Peinture acrylique', 'Aquarelle', 'Photographie', 'Photographie argentique', 'Photographie numérique', 'Oeuvres sur papier', 'Dessin', 'Encre', 'Estampe', 'Sérigraphie', 'Lithographie', 'Collage', 'Gravure', 'Linogravure', 'Sculpture', 'Sculpture bois', 'Sculpture argile', 'Sculpture métal', 'Sculpture bronze', 'Sculpture pierre', 'Sculpture terre cuite', 'Sculpture céramique', 'Sculpture platre', 'Sculpture marbre', 'Sculpture verre', 'Technique mixte'], null, ['placeholder' => 'Votre spécialité artistique']) !!}
+                                                        {!! Form::select('specialist', ['Peinture', 'Peinture à Huile', 'Peinture acrylique', 'Aquarelle', 'Photographie', 'Photographie argentique', 'Photographie numérique', 'Oeuvres sur papier', 'Dessin', 'Encre', 'Estampe', 'Sérigraphie', 'Lithographie', 'Collage', 'Gravure', 'Linogravure', 'Sculpture', 'Sculpture bois', 'Sculpture argile', 'Sculpture métal', 'Sculpture bronze', 'Sculpture pierre', 'Sculpture terre cuite', 'Sculpture céramique', 'Sculpture platre', 'Sculpture marbre', 'Sculpture verre', 'Technique mixte']) !!}
                                                         {!! $errors->first('specialist', '<small class="help-block">:message</small>') !!}
                                                         {{ Form::label('specialist', 'Votre specialité') }}
                                                     </div>
@@ -111,7 +111,8 @@
                         <p>Vous aimez mes oeuvres? Participez à augmenter ma notoriété</p>
                         <div class="interaction center">
                             <a href="#" class="like">
-                            {!! $user->likes()->where('user_id', $user->id)->first() ? $user->likes()->where('user_id', $user->id)->first()->like ? '<i class="material-icons notoriete">favorite</i>' : '<i class="material-icons notoriete">favorite_border</i>' : '<i class="material-icons notoriete">favorite_border</i>' !!}
+                            {!! $user->likes()->where('user_id', $user->id)->where('userhasliked_id', Auth::user()->id )->where('like', 1)->first() ?
+'<i class="material-icons notoriete">favorite</i>' : '<i class="material-icons notoriete">favorite_border</i>' !!}
                             </a> 
                         </div>
                         <div class="divider"></div>
@@ -135,10 +136,10 @@
             </div>
         </div>
         <div class="row">
-      <div class="card">
-                           
+            <div class=" grid">
         @foreach($posts as $post)
-            <div id="artworks" class="col s12 m6 l4">
+            <div class="grid-sizer"></div>               
+            <div id="artworks" class="grid-item">
                 <div class="card hoverable sticky-action">
                     <div class="card-image waves-effect waves-block waves-light">
                         @if(count($post->posts_photos))
@@ -171,23 +172,21 @@
                 </div>
             </div>  
         @endforeach
-        </div>
+            </div>
         </div>
     </div>
 </section>
-            
-                
-
-        <br>
-        <div class="panel panel-primary">   
-           
-                     
-        <a href="javascript:history.back()" class="btn btn-primary">
-            <span class="glyphicon glyphicon-circle-arrow-left"></span> Retour
-        </a>
-    </div>
 @endsection
 @section('js')
+    <script src={{ asset("js/masonry.pkgd.min.js") }}></script>
+    <script type="text/javascript">
+    $('.grid').masonry({
+        itemSelector: '.grid-item',
+        columnWidth: 0,
+        isFitWidth: true,
+        gutter: 30
+        });
+    </script>
     <script src="{{ asset('js/user.js') }}"></script>
     @if(Auth::check())
     <script>

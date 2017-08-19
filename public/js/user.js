@@ -19,6 +19,7 @@ $(document).ready(function(){
  			data: {ajaxUserHasLiked : ajaxUserHasLiked, isLike: isLike, userId: userId, _token: token}
  		})
  			.done(function(data) {
+                  //event.target.innerText = isLike ? 'favorite' : 'favorite_border';
 			if(event.target.innerText = isLike){
                         event.target.innerText = 'favorite';
                   }      

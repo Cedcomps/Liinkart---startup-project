@@ -1,13 +1,13 @@
-{{ $posts->links() }}
+<div class="grid-sizer"></div>
 @foreach($posts as $post)
-    <div class="artworks col s12 m6 l4" data-postid="{{ $post->id }}">
+    <div class="grid-item" data-postid="{{ $post->id }}">
         <div class="card hoverable sticky-action">
             <div class="card-content">
                 <div class="valign-wrapper">
                     <div class="col s2">
                         <a href="{{ route('user.show', ['id' => $post->user->id]) }}"><img src="@if(filter_var($post->user->avatar, FILTER_VALIDATE_URL)) {{$post->user->avatar}}
                     @else {{ asset('storage/uploads/avatars/' . $post->user->avatar) }}
-                    @endif" alt="avatar artiste" class="circle responsive-img"></a>
+                    @endif" alt="avatar artiste" class="circle avatar-responsive"></a>
                     </div>
                     <div class="col s10">
                         <a class="black-text" href="{{ route('user.show', ['id' => $post->user->id]) }}">By {{ $post->user->name or "Artiste"}}</a>
@@ -49,8 +49,15 @@
         </div>  
     </div>
 @endforeach
-{{ $posts->links() }}
-<script>// Technique artistique
+<script src={{ asset("js/masonry.pkgd.min.js") }}></script>
+<script>
+$('.grid').masonry({
+  itemSelector: '.grid-item',
+  columnWidth: 0,
+  isFitWidth: true,
+  gutter: 30
+});
+// Technique artistique
 $(document).ready(function(){
     $( "span:contains('Peinture')" ).css( "color", "#ef9a9a");
     $( "span:contains('Peinture à Huile')" ).css( "color", "#f48fb1");

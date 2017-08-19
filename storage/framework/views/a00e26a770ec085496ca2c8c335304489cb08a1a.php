@@ -17,9 +17,9 @@
         <h5 class="white-text">A propos</h5>
         <ul>
           <li><a class="grey-text text-lighten-3" href="<?php echo e(route('about')); ?>">Le concept</a></li>
-          <li><a class="grey-text text-lighten-3" href="<?php echo e(route('team')); ?>">L'équipe</a></li>
-          <li><a class="grey-text text-lighten-3" href="<?php echo e(route('faq')); ?>">FAQ</a></li>
           <li><a class="grey-text text-lighten-3" href="<?php echo e(route('press')); ?>">Presse</a></li>
+          <li><a class="grey-text text-lighten-3" href="<?php echo e(route('donation')); ?>">Faire un don</a></li>
+          <li><a class="grey-text text-lighten-3" href="<?php echo e(route('faq')); ?>">FAQ</a></li>
         </ul>
       </div>
     </div>
