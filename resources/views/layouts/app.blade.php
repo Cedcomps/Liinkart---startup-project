@@ -10,15 +10,14 @@
     <title>@yield('titre') - LiinkArt</title>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('bower_components/sweetalert2/dist/sweetalert2.min.css') }}">
     <!--Import Google Icon Font-->
     {!! Html::style("https://fonts.googleapis.com/icon?family=Material+Icons") !!}
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+    <link rel="stylesheet" href="{{ asset('bower_components/sweetalert2/dist/sweetalert2.min.css') }}">
+    <link href="{{ asset('materialize-css/css/materialize.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    
     @yield('css')
-
 </head>
 <body>
     <nav class="liinkart-white z-depth-2">
@@ -128,8 +127,8 @@
 
     @include('layouts._footer')           
     <!-- Scripts --> 
-    {!! MaterializeCSS::include_full() !!}
-
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src={{ asset("materialize-css/js/materialize.min.js") }}></script>
     <script src={{ asset("js/script.js") }}></script>
     <script src={{ asset('bower_components/sweetalert2/dist/sweetalert2.min.js')}}></script>
     @include('sweet::alert')

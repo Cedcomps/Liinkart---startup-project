@@ -11,7 +11,7 @@
     <div class="section"></div>
 		<div class="col s12 center">
         	<h1>{{ ucfirst($post->titre) }}</h1>
-        	<span class="white-text">Mise en ligne le {{ $post->created_at->format('d/m/Y') }} et se termine d'ici {{ $post->created_at->addDays(30)->diffForHumans(null, true) }}</span>
+        	<span class="white-text">Mise en ligne le {{ $post->created_at->format('d/m/Y') }} {{-- et se termine d'ici {{ $post->created_at->addDays(30)->diffForHumans(null, true) }} --}}</span>
 	    </div>
 	</div>
 </section>	
@@ -19,6 +19,7 @@
 		<div class="row artwork-article">
 			<div class="col s12">
 				<div class="col l6 s12 artwork-image-first">
+			<div class="section"></div>
 				@if(count($post->posts_photos))
 					<div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails is-ready">
 					    <a href="{{ asset('storage/uploads/artworks/' . $post->posts_photos[0]->filename) }}">

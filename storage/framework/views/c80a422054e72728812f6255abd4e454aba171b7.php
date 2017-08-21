@@ -24,10 +24,14 @@
             </div>
             <div class="card-image grey lighten-5 waves-effect waves-block waves-light">
                 <?php if(count($post->posts_photos)): ?>
-                    <img class="activator" src=" <?php echo e(asset('storage/uploads/artworks/' . $post->posts_photos[0]->filename)); ?>" alt="oeuvre d'art liinkart">
+                    <img class="activator" src=" <?php echo e(asset('storage/uploads/artworks/' . $post->posts_photos[0]->filename)); ?>" alt="<?php echo e(ucfirst($post->titre)); ?>">
                 <?php else: ?>
                     <img class="activator" src=" <?php echo e(asset('uploads/office.jpg')); ?>" alt="oeuvre d'art liinkart">
                 <?php endif; ?>
+                <span class="nbr-photo">
+                    <img src="<?php echo e(asset('uploads/pictures.png')); ?>">
+                    <span class="nbr-photo2"><b><?php echo e(count($post->posts_photos)); ?></b></span>
+                </span>
             </div>
             <div class=" card-content">
                 <span class="card-title activator grey-text text-darken-4"><?php echo e(ucfirst($post->titre)); ?><i class="material-icons right">more_vert</i></span>

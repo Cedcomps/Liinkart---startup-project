@@ -1,3 +1,4 @@
+html { overflow-y: scroll; }
 /*charte graphique*/
 input:not([type]).valid, input:not([type]):focus.valid, input[type=text]:not(.browser-default).valid, input[type=text]:not(.browser-default):focus.valid, input[type=password]:not(.browser-default).valid, input[type=password]:not(.browser-default):focus.valid, input[type=email]:not(.browser-default).valid, input[type=email]:not(.browser-default):focus.valid, input[type=url]:not(.browser-default).valid, input[type=url]:not(.browser-default):focus.valid, input[type=time]:not(.browser-default).valid, input[type=time]:not(.browser-default):focus.valid, input[type=date]:not(.browser-default).valid, input[type=date]:not(.browser-default):focus.valid, input[type=datetime]:not(.browser-default).valid, input[type=datetime]:not(.browser-default):focus.valid, input[type=datetime-local]:not(.browser-default).valid, input[type=datetime-local]:not(.browser-default):focus.valid, input[type=tel]:not(.browser-default).valid, input[type=tel]:not(.browser-default):focus.valid, input[type=number]:not(.browser-default).valid, input[type=number]:not(.browser-default):focus.valid, input[type=search]:not(.browser-default).valid, input[type=search]:not(.browser-default):focus.valid, textarea.materialize-textarea.valid, textarea.materialize-textarea:focus.valid {
 	font-size: inherit;
@@ -101,10 +102,6 @@ nav a, nav ul a {
 }
 .alert-danger {
 	background-color: #f44336;
-	color: #fff;
-}
-.alert-info {
-	background-color: #03a9f4;
 	color: #fff;
 }
 /*recherche*/
@@ -257,7 +254,7 @@ h6 {
 	clear: both;
 }
 .grid-item {
-	width: 250px;
+	width: 300px;
 	margin-bottom: 10px;
 }
 @media screen and (min-width: 1441px) {
@@ -396,6 +393,17 @@ a, .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
 }
 .raccourcir-titre {
 	text-overflow: ellipsis;
+}
+.nbr-photo {
+	position: absolute;
+	bottom: 7px;
+	right: 10px;
+}
+.nbr-photo2 {
+	position: absolute;
+	bottom: 1px;
+	left: 8.5px;
+	color: #9575ff;
 }
 /*artwork-article*/
 #scrollButton {

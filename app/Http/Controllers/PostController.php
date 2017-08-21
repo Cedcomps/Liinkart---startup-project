@@ -66,7 +66,7 @@ class PostController extends Controller
                     $constraint->upsize();
                 });
                 $watermark = Image::make('storage/uploads/watermark.png');
-                $img->insert($watermark, 'bottom-left', 20, 20);
+                $img->insert($watermark, 'bottom-right', 30, 25);
                 $img->save(public_path('storage/uploads/artworks/').$filename);
                 PostsPhoto::create([
                     'post_id' => $post->id,

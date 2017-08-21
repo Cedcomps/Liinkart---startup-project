@@ -1,5 +1,8 @@
- <?php $__env->startSection('titre'); ?>
+<?php $__env->startSection('titre'); ?>
     Poster une nouvelle oeuvre 
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('css'); ?>
+    <link href="<?php echo e(asset('css/materialize-tags.min.css')); ?>" rel="stylesheet">
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
     <div class="container">
@@ -35,7 +38,7 @@
                         <div class="row">
                             <div class="input-field col l6 s12 <?php echo e($errors->has('year') ? ' has-error' : ''); ?>">
                                 <label for="year" data-error="wrong" data-success="right">Année de création</label>
-                                <input class="validate" data-length="4" placeholder="Entrez l'année de création de l'oeuvre" name="year" type="text" value="<?php echo e(old('year')); ?>">
+                                <input class="validate" data-length="4" placeholder="Datation de l'oeuvre" name="year" type="text" value="<?php echo e(old('year')); ?>">
                                 <?php if($errors->has('year')): ?>
                                     <span class="help-block">
                                         <strong><?php echo e($errors->first('year')); ?></strong>
@@ -132,7 +135,7 @@
                             </div>
                             <div class="input-field col s12 <?php echo e($errors->has('tags') ? ' has-error' : ''); ?>">
                                 <label for="tags" data-error="wrong" data-success="right">Tags</label>
-                                <input class="validate" placeholder="Entrez les tags séparés par des virgules" name="tags" type="text" value="<?php echo e(old('tags')); ?>">
+                                <input class="validate" placeholder="Entrez les tags séparés par des virgules" name="tags" type="text" value="<?php echo e(old('tags')); ?>" data-role="materialtags" style="display: none;">
                                 <?php if($errors->has('tags')): ?>
                                     <span class="help-block">
                                         <strong><?php echo e($errors->first('tags')); ?></strong>
@@ -147,4 +150,14 @@
         </div>
     </div>
 <?php $__env->stopSection(); ?>
+<?php $__env->startSection('js'); ?>
+<script src=<?php echo e(asset("js/materialize-tags.min.js")); ?>></script>
+<script src=<?php echo e(asset("js/typeahead.bundle.js")); ?>></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("input[data-role=materialtags]").materialtags();
+    });
+</script>
+<?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

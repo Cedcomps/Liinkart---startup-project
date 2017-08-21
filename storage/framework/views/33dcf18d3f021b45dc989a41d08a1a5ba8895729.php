@@ -23,4 +23,7 @@
 			<h2><?php echo e($countThread); ?></h2>
 		</div>
 	</div>
+	<div class="center col s12 l4">
+		
+	</div>
 </div>

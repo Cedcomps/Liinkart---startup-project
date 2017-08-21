@@ -202,10 +202,6 @@ return [
          */
         Barryvdh\DomPDF\ServiceProvider::class,
         /**
-         * Payement
-         */
-        Laravel\Cashier\CashierServiceProvider::class,
-        /**
          * Socialite FB, Twitter ...
          */
         Laravel\Socialite\SocialiteServiceProvider::class,
@@ -217,6 +213,10 @@ return [
          * Messagerie interne
          */
         Cmgmyr\Messenger\MessengerServiceProvider::class,
+        /**
+         * Payement
+         */
+        Laravel\Cashier\CashierServiceProvider::class,
     ],
 
     /*

@@ -111,8 +111,11 @@
                         <p>Vous aimez mes oeuvres? Participez à augmenter ma notoriété</p>
                         <div class="interaction center">
                             <a href="#" class="like">
-                            {!! $user->likes()->where('user_id', $user->id)->where('userhasliked_id', Auth::user()->id )->where('like', 1)->first() ?
-'<i class="material-icons notoriete">favorite</i>' : '<i class="material-icons notoriete">favorite_border</i>' !!}
+                            @if(Auth::check())
+                                {!! $user->likes()->where('user_id', $user->id)->where('userhasliked_id', Auth::user()->id )->where('like', 1)->first() ? '<i class="material-icons notoriete">favorite</i>' : '<i class="material-icons notoriete">favorite_border</i>' !!}
+                            @else
+                            <i class="material-icons notoriete">favorite_border</i>
+                            @endif
                             </a> 
                         </div>
                         <div class="divider"></div>
@@ -136,7 +139,7 @@
             </div>
         </div>
         <div class="row">
-            <div class=" grid">
+        <div class=" grid">
         @foreach($posts as $post)
             <div class="grid-sizer"></div>               
             <div id="artworks" class="grid-item">

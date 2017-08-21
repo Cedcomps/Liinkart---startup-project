@@ -31,6 +31,7 @@
     
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('js'); ?>
+<script src=<?php echo e(asset("js/showCatAndLike.js")); ?>></script>
 <script type="text/javascript">
     $(document).ready(function(){
         $('ul.tabs').tabs();

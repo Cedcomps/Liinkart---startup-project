@@ -32,6 +32,7 @@
     
 @endsection
 @section('js')
+<script src={{ asset("js/showCatAndLike.js") }}></script>
 <script type="text/javascript">
     $(document).ready(function(){
         $('ul.tabs').tabs();

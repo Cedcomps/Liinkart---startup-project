@@ -76,7 +76,7 @@
                     <div class="center">
                         <a href="http://www.lafrenchtech.com/"><img class="responsive-img partenaire" src="<?php echo e(asset ('uploads/weblogo/FrenchTech.png')); ?>" alt="french tech liinkart"></a>
                         <h4 class="light">French Tech</h4>
-                        <p class="center">Estampillée "French Tech" : cela désigne tous ceux qui travaillent dans ou pour les start-up françaises en France ou à l’étranger. LiinkART en fait partie</p>
+                        <p class="center">Estampillé "French Tech" : cela désigne tous ceux qui travaillent dans ou pour les start-ups françaises en France ou à l’étranger. LiinkART en fait partie</p>
                     </div> 
                 </div>  
             </div>
@@ -85,7 +85,7 @@
                     <div class="center">
                         <a href="https://startupweekend.org/"><img class="responsive-img partenaire" src="<?php echo e(asset ('uploads/weblogo/StartupWeekend.jpg')); ?>" alt="startup weekend liinkart"></a>
                         <h4 class="light">Startup Weekend</h4>
-                        <p class="center">LiinkART s'est illustrée au premier Startup Weekend de Metz, dont elle a remportée le premier prix. Une expérience très enrichissante</p>
+                        <p class="center">LiinkART s'est illustré au premier Startup Weekend de Metz, dont elle a remportée le premier prix. Une expérience très enrichissante</p>
                     </div>   
                 </div>
             </div>        

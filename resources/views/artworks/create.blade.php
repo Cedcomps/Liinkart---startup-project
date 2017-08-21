@@ -1,6 +1,9 @@
 @extends('layouts.app')
- @section('titre')
+@section('titre')
     Poster une nouvelle oeuvre 
+@endsection
+@section('css')
+    <link href="{{ asset('css/materialize-tags.min.css') }}" rel="stylesheet">
 @endsection
 @section('content')
     <div class="container">
@@ -35,7 +38,7 @@
                         <div class="row">
                             <div class="input-field col l6 s12 {{ $errors->has('year') ? ' has-error' : '' }}">
                                 <label for="year" data-error="wrong" data-success="right">Année de création</label>
-                                <input class="validate" data-length="4" placeholder="Entrez l'année de création de l'oeuvre" name="year" type="text" value="{{ old('year') }}">
+                                <input class="validate" data-length="4" placeholder="Datation de l'oeuvre" name="year" type="text" value="{{ old('year') }}">
                                 @if ($errors->has('year'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('year') }}</strong>
@@ -129,7 +132,7 @@
                             </div>
                             <div class="input-field col s12 {{ $errors->has('tags') ? ' has-error' : '' }}">
                                 <label for="tags" data-error="wrong" data-success="right">Tags</label>
-                                <input class="validate" placeholder="Entrez les tags séparés par des virgules" name="tags" type="text" value="{{ old('tags') }}">
+                                <input class="validate" placeholder="Entrez les tags séparés par des virgules" name="tags" type="text" value="{{ old('tags') }}" data-role="materialtags" style="display: none;">
                                 @if ($errors->has('tags'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('tags') }}</strong>
@@ -143,4 +146,13 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+<script src={{ asset("js/materialize-tags.min.js") }}></script>
+<script src={{ asset("js/typeahead.bundle.js") }}></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("input[data-role=materialtags]").materialtags();
+    });
+</script>
 @endsection

@@ -24,7 +24,7 @@ class PostRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'titre'       => 'bail|required|max:30|regex:/^[\pL\s\-]+$/u',
+            'titre'       => 'bail|required|max:30|regex:/^[\pL\s\-\']+$/u',
             'contenu'     => 'bail|required|min:100',
             'year'        => 'bail|required|digits:4',
             'largeur'     => 'sometimes|between:0,5', ['Regex:/^[0-9]+/'],

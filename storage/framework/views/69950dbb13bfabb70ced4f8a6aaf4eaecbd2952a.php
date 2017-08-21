@@ -10,16 +10,15 @@
     <title><?php echo $__env->yieldContent('titre'); ?> - LiinkArt</title>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
-    <!-- Styles -->
-    <link rel="stylesheet" href="<?php echo e(asset('bower_components/sweetalert2/dist/sweetalert2.min.css')); ?>">
     <!--Import Google Icon Font-->
     <?php echo Html::style("https://fonts.googleapis.com/icon?family=Material+Icons"); ?>
 
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+    <link rel="stylesheet" href="<?php echo e(asset('bower_components/sweetalert2/dist/sweetalert2.min.css')); ?>">
+    <link href="<?php echo e(asset('materialize-css/css/materialize.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
-    
     <?php echo $__env->yieldContent('css'); ?>
-
 </head>
 <body>
     <nav class="liinkart-white z-depth-2">
@@ -134,9 +133,8 @@
 
     <?php echo $__env->make('layouts._footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>           
     <!-- Scripts --> 
-    <?php echo MaterializeCSS::include_full(); ?>
-
-
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src=<?php echo e(asset("materialize-css/js/materialize.min.js")); ?>></script>
     <script src=<?php echo e(asset("js/script.js")); ?>></script>
     <script src=<?php echo e(asset('bower_components/sweetalert2/dist/sweetalert2.min.js')); ?>></script>
     <?php echo $__env->make('sweet::alert', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

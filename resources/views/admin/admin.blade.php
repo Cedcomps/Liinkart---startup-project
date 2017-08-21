@@ -23,4 +23,22 @@
 			<h2>{{ $countThread }}</h2>
 		</div>
 	</div>
+	<div class="center col s12 l4">
+		{{-- <div class="card-panel deep-purple lighten-2 white-text">
+			<h5>Top 10 notoriété</h5>
+			<table>
+				<tbody>
+				@foreach ($users->likes()->count() as $user)
+	                <tr>
+	                    <td class=""><strong>{!! $user->name !!}</strong></td>
+	                    <td>
+	                        <i class="justlike material-icons">favorite</i>
+	                        <span class="countLike">{{ $user->likes()->count() }}</span>
+	                    </td>
+	                </tr>
+	            @endforeach
+       	 		</tbody>
+            </table>
+		</div> --}}
+	</div>
 </div>
