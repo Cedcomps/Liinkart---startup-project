@@ -14,6 +14,8 @@ use Auth;
 use App\Achievements\UserChangedAvatar; //Achievement
 use App\Achievements\UserCompletedProfile; //Achievement
 use App\Achievements\UserMember; //Achievement
+use App\Achievements\UserTest; //Achievement
+use App\Achievements\UserDevelopement; //Achievement
 use App\Achievements\UserMember1Year; //Achievement
 use App\Achievements\UserMember6Months; //Achievement
 use App\Achievements\UserMemberFoundater; //Achievement
@@ -54,7 +56,17 @@ class UserController extends Controller
  
     public function show(User $user)
     {
-        //$user->unlock(new UserMemberFoundater); membre fondateur
+        //
+        //
+        // Membre fondateur du site
+        $user->unlock(new UserMemberFoundater); //membre fondateur
+        // Membre agit au développement
+        $user->unlock(new UserDevelopement); // Membre participe au développement
+        // Période BETA actuelle jusqu'à fin octobre
+        $user->unlock(new UserTest); //membre beta test
+        //
+        //
+        //
         $creer = new Carbon($user->created_at);
         $now = Carbon::now();
 
@@ -64,11 +76,9 @@ class UserController extends Controller
         elseif ($creer->diffInMonths($now) >= 6) {
             $user->unlock(new UserMember6Months); //Achievement
         }
-
         if (!empty($user->provider)) {
             $user->unlock(new UserSocialProvider);//Achievement
         }    
-
         $user->unlock(new UserMember); //Achievement
         if ($user->avatar != 'default.jpg') {
             $user->unlock(new UserChangedAvatar()); //Achievement

@@ -14,7 +14,7 @@
 	<div class="row">
 		<div class="col s12 offset-m1 m10">
 			<div class="section"></div>
-			<p class="center">Nous espérons que vous avez apprécié l'utilisation de LiinkART! Si vous pensez que LiinkART vous a aidé à diffuser plus facilement vos oeuvres d'arts, ou à trouver l'oeuvre qui vous à fait chavirer votre coeur, envoyez-nous un don! <br> <br>Tout montant aidant à soutenir et à poursuivre l'évolution de ce projet est grandement apprécié.</p>
+			<p class="center">Nous espérons que vous appréciez l'utilisation de LiinkART! Si vous pensez que LiinkART vous a aidé à diffuser plus facilement vos oeuvres d'arts, ou à trouver l'oeuvre qui vous à fait chavirer votre coeur, envoyez-nous un don! <br> <br>Tout montant aidant à soutenir et à poursuivre l'évolution de ce projet est grandement apprécié.</p>
 			<div class="section"></div>
 			<div class="section"></div>
 				<div class="col s12">
@@ -32,7 +32,7 @@
 			            <td>
 			            	<div class="chip">
 						    	<img alt="BitCoin" src="<?php echo e(asset('/uploads/bitcoinLogo.png')); ?>">
-						    	1F1QbbnZKhKdF2Ly6pvrfNRqoV8mywRNZR
+						    	3Kb578vj769ZubCJmod1N7A19aNAqsCYH5
 							</div>
 						</td>
 			            <td><form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">

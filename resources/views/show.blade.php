@@ -182,13 +182,17 @@
 @endsection
 @section('js')
     <script src={{ asset("js/masonry.pkgd.min.js") }}></script>
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
     <script type="text/javascript">
-    $('.grid').masonry({
+    var $grid = $('.grid').masonry({
         itemSelector: '.grid-item',
         columnWidth: 0,
         isFitWidth: true,
         gutter: 30
         });
+    $grid.imagesLoaded().progress( function() {
+        $grid.masonry('layout');
+    });
     </script>
     <script src="{{ asset('js/user.js') }}"></script>
     @if(Auth::check())

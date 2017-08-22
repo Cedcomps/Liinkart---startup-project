@@ -41,12 +41,16 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('js'); ?>
 <script src=<?php echo e(asset("js/masonry.pkgd.min.js")); ?>></script>
-<script type="text/javascript">
-    $('.grid').masonry({
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+    <script type="text/javascript">
+    var $grid = $('.grid').masonry({
         itemSelector: '.grid-item',
         columnWidth: 0,
         isFitWidth: true,
         gutter: 30
+        });
+    $grid.imagesLoaded().progress( function() {
+        $grid.masonry('layout');
     });
 </script>
 <?php $__env->stopSection(); ?>
