@@ -36,6 +36,11 @@
 						</li>
 					<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>	
 				</ul>
+				<a data-position="bottom" data-delay="50" data-tooltip="Signaler à la modération?" href="<?php echo e(route('artworks.revision',$post)); ?>" onclick="event.preventDefault(); document.getElementById('revision').submit();"><i class="material-icons tiny">error</i> Signaler l'annonce</a>
+                <form id="revision" action="<?php echo e(route('artworks.revision',$post)); ?>" method="POST" style="display: none;">
+                    <?php echo e(csrf_field()); ?>
+
+                </form>
 				</div>
 				<div class="col l6 s12">
 					
@@ -43,6 +48,7 @@
 					<div class="section">
 						<div class="card-panel"><h3>Description de l'oeuvre</h3>
 						<p><?php echo e($post->contenu); ?></p>
+		                    <a class="tooltipped" target=_blank href="<?php echo e(route('certificat.pdf',$post)); ?>"" data-position="bottom" data-delay="50" data-tooltip="Télécharger le certificat d'authenticité"><img width="35" height="35" src="<?php echo e(asset('uploads/achievement/Certificat d\'authenticité créé.png')); ?>" alt="certificat d'authenticité liinkart" style="">&nbsp;Certificat d'authenticité</a>
 						<div class="section"></div>
 						<h5>Technique</h5>
 							<span class="chip-technique">
@@ -87,19 +93,8 @@
 		                            <p><?php echo e($post->user->country); ?></p><br>
 		                        </div>
 		                    </div>  
-                    		<div class="section"></div>
-							<div class="col s4 center">
-								<a class="tooltipped waves-effect icone-artwork" target=_blank href="<?php echo e(route('certificat.pdf',$post)); ?>"" data-position="bottom" data-delay="50" data-tooltip="Télécharger le certificat d'authenticité"><img src="<?php echo e(asset('uploads/achievement/Certificat d\'authenticité créé.png')); ?>" alt="certificat d'authenticité liinkart"></a>
-							</div>
-							<div class="col s4 center">
-								<a class="tooltipped waves-effect icone-artwork" data-position="bottom" data-delay="50" data-tooltip="Signaler à la modération?" href="<?php echo e(route('artworks.revision',$post)); ?>" onclick="event.preventDefault(); document.getElementById('revision').submit();"><img src="<?php echo e(asset('uploads/achievement/Signaler moderation.png')); ?>" alt="Signalement modération liinkart"></a>
-                                <form id="revision" action="<?php echo e(route('artworks.revision',$post)); ?>" method="POST" style="display: none;">
-                                    <?php echo e(csrf_field()); ?>
-
-                                </form>
-							</div>
-							<div class="col s4 center">
-								<span class="right-align"><a class="tooltipped waves-effect icone-artwork" data-position="bottom" data-delay="50" data-tooltip="Proposez votre offre" href="#modal1"><img src="<?php echo e(asset('uploads/achievement/Proposez votre offre.png')); ?>" alt="Signalement modération liinkart"></a></span><br>
+						</div>
+							<a class="white-text btn waves-effect btn-large liinkart-light waves-input-wrapper z-depth-3" href="#modal1"><i class="zoom-gavel material-icons left">gavel</i>PROPOSER UNE OFFRE</a>
 								
 								<div id="modal1" class="modal">
 								    <div class="modal-content">
@@ -110,11 +105,8 @@
 						    			</blockquote>
 								    	<p>Une fois la proposition envoyée, vous serez avertis de la réponse de l'artiste par email.</p> 
 								    	<?php echo $__env->make('messenger.partials.proposition', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-								    	
 								    </div>
 								</div>
-							</div>
-						</div>
 					</div>
 					<div class="section"></div>
 					

@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col l5 m6 s12">
       <div class="valign-wrapper">
-        <img src="<?php echo e(asset('uploads/liinkart logo blanc_petit.png')); ?>" width="32px" height="48px" alt="liinkart logo white">
+        <img src="<?php echo e(asset('uploads/liinkart_logo_blanc_petit.png')); ?>" width="32" height="48" alt="liinkart logo white">
         <h5 class="white-text" style="display: inline-flex; ">&nbsp;LiinkART</h5>
         </div>
         <p class="grey-text text-lighten-4" style="margin-top: 5px;">Nous mettons en relation les amoureux de l'Art et les talents de demain - Laissez quelqu'un évaluer votre art, il peut valoir plus que ce que vous ne l'imaginiez !</p>
@@ -26,7 +26,7 @@
   </div>
   <div class="footer-copyright">
     <div class="container">
-    2016 - <?php echo e(Carbon\Carbon::now()->year); ?> LiinkArt 
+    Tous droits réservés - 2016 - <?php echo e(Carbon\Carbon::now()->year); ?> LiinkART 
       <span class="right hide-on-small-only">
         <a class="grey-text text-lighten-4" href="https://cedeev.com">Réalisé par CeDeeV - </a>
         <a class="grey-text text-lighten-4" href="<?php echo e(route('mentions')); ?>">Mentions légales</a>

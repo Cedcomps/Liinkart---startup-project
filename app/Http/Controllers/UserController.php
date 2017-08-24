@@ -110,7 +110,7 @@ class UserController extends Controller
         {
             $destinationPath = public_path('storage/uploads/avatars/');
             $avatar = $request->file('avatar');
-            $filename = 'avatar-'. $user->id . '.' . $avatar->getClientOriginalExtension();
+            $filename = 'avatar-'. $user->name . '.' . $avatar->getClientOriginalExtension();
             $img = Image::make($avatar)->fit(150, 150);
             //Must separate fit and save method, both don't work on same line
             $avatar->move($destinationPath, $filename);

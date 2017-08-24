@@ -26,11 +26,11 @@
 </section>
     {{-- <div class="container">    --}}
         <div class="row">
-            {{ $posts->links() }}
+            <span style="text-align: center;">{{ $posts->links() }}</span>
             <section class="grid">
                 @include('artworks.liste')
             </section>  
-            {{ $posts->links() }}
+            <span style="text-align: center;">{{ $posts->links() }}</span>
         </div>
     {{-- </div> --}}
 @endsection

@@ -12,7 +12,7 @@
     </div>
 </header>
 <span id="liinkart">
-   <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 764 1146" style="enable-background:new 0 0 764 1146;" xml:space="preserve">
+   <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 764 1146" style="enable-background:new 0 0 764 1146;" xml:space="preserve">
         <polygon fill="#73A9C0" points="191,573 0,382 0,764 "/>
         <polygon fill="#7670AE" points="382,382 191,191 191,573 "/>
         <polygon fill="#8BAE87" points="382,764 191,573 191,955 "/>
@@ -39,7 +39,7 @@
     <div class="container">
         <div class="row">
             <div class="col s12 m6">
-                <img class="responsive-img" src="<?php echo e(asset ('uploads/mockup artiste.png')); ?>" alt="artiste mockup liinkart">
+                <img class="responsive-img" src="<?php echo e(asset ('uploads/mockup-artiste.png')); ?>" alt="artiste mockup liinkart">
             </div>
             <div class="col s12 m6 mockup">
                 <div class="section center">
@@ -62,7 +62,7 @@
                 </div>
             </div>
             <div class="col s12 m6 mockup2">
-                <img class="responsive-img" src="<?php echo e(asset ('uploads/mockup acheteur.png')); ?>" alt="acheteur mockup liinkart">
+                <img class="responsive-img" src="<?php echo e(asset ('uploads/mockup-acheteur.png')); ?>" alt="acheteur mockup liinkart">
             </div>
         </div>
     </div>

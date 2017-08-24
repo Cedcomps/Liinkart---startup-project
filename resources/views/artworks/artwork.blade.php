@@ -36,6 +36,10 @@
 						</li>
 					@endforeach	
 				</ul>
+				<a data-position="bottom" data-delay="50" data-tooltip="Signaler à la modération?" href="{{ route('artworks.revision',$post) }}" onclick="event.preventDefault(); document.getElementById('revision').submit();"><i class="material-icons tiny">error</i> Signaler l'annonce</a>
+                <form id="revision" action="{{ route('artworks.revision',$post)  }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
 				</div>
 				<div class="col l6 s12">
 					
@@ -43,6 +47,19 @@
 					<div class="section">
 						<div class="card-panel"><h3>Description de l'oeuvre</h3>
 						<p>{{ $post->contenu }}</p>
+							<a class="white-text btn waves-effect btn-large liinkart-light waves-input-wrapper z-depth-3" href="#modal1"><i class="zoom-gavel material-icons left">gavel</i>PROPOSER UNE OFFRE</a>
+								{{-- gavel modal --}}
+								<div id="modal1" class="modal">
+								    <div class="modal-content">
+								    	<h2>Proposez votre offre</h2>
+								    	<blockquote>
+								    			Rappel
+											  	<p class="subheading">La vente aux enchères à l'aveugle a un but bien précis et il est bon de vous rappeler pourquoi Afin d'éviter une offre farfelue, nous imposons une fourchette minimale concernant la proposition. De ce fait, vous pourrez estimer la valeur d'une oeuvre en toute intégrité. En effet certains composants et outils nécessaires à la création peuvent parfois être onéreux selon l'oeuvre à créer...</p>
+						    			</blockquote>
+								    	<p>Une fois la proposition envoyée, vous serez avertis de la réponse de l'artiste par email.</p> 
+								    	@include('messenger.partials.proposition')
+								    </div>
+								</div>
 						<div class="section"></div>
 						<h5>Technique</h5>
 							<span class="chip-technique">
@@ -84,32 +101,7 @@
 		                            <p>{{ $post->user->country }}</p><br>
 		                        </div>
 		                    </div>  
-                    		<div class="section"></div>
-							<div class="col s4 center">
-								<a class="tooltipped waves-effect icone-artwork" target=_blank href="{{route('certificat.pdf',$post)}}"" data-position="bottom" data-delay="50" data-tooltip="Télécharger le certificat d'authenticité"><img src="{{ asset('uploads/achievement/Certificat d\'authenticité créé.png') }}" alt="certificat d'authenticité liinkart"></a>
-							</div>
-							<div class="col s4 center">
-								<a class="tooltipped waves-effect icone-artwork" data-position="bottom" data-delay="50" data-tooltip="Signaler à la modération?" href="{{ route('artworks.revision',$post) }}" onclick="event.preventDefault(); document.getElementById('revision').submit();"><img src="{{ asset('uploads/achievement/Signaler moderation.png') }}" alt="Signalement modération liinkart"></a>
-                                <form id="revision" action="{{ route('artworks.revision',$post)  }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-							</div>
-							<div class="col s4 center">
-								<span class="right-align"><a class="tooltipped waves-effect icone-artwork" data-position="bottom" data-delay="50" data-tooltip="Proposez votre offre" href="#modal1"><img src="{{ asset('uploads/achievement/Proposez votre offre.png') }}" alt="Signalement modération liinkart"></a></span><br>
-								{{-- gavel modal --}}
-								<div id="modal1" class="modal">
-								    <div class="modal-content">
-								    	<h2>Proposez votre offre</h2>
-								    	<blockquote>
-								    			Rappel
-											  	<p class="subheading">La vente aux enchères à l'aveugle a un but bien précis et il est bon de vous rappeler pourquoi Afin d'éviter une offre farfelue, nous imposons une fourchette minimale concernant la proposition. De ce fait, vous pourrez estimer la valeur d'une oeuvre en toute intégrité. En effet certains composants et outils nécessaires à la création peuvent parfois être onéreux selon l'oeuvre à créer...</p>
-						    			</blockquote>
-								    	<p>Une fois la proposition envoyée, vous serez avertis de la réponse de l'artiste par email.</p> 
-								    	@include('messenger.partials.proposition')
-								    	
-								    </div>
-								</div>
-							</div>
+		                    <a class="tooltipped" target=_blank href="{{route('certificat.pdf',$post)}}"" data-position="bottom" data-delay="50" data-tooltip="Télécharger le certificat d'authenticité"><img width="35" height="35" src="{{ asset('uploads/achievement/Certificat d\'authenticité créé.png') }}" alt="certificat d'authenticité liinkart" style="">&nbsp;Certificat d'authenticité</a>
 						</div>
 					</div>
 					<div class="section"></div>

@@ -1,4 +1,3 @@
-html { overflow-y: scroll; }
 /*charte graphique*/
 input:not([type]).valid, input:not([type]):focus.valid, input[type=text]:not(.browser-default).valid, input[type=text]:not(.browser-default):focus.valid, input[type=password]:not(.browser-default).valid, input[type=password]:not(.browser-default):focus.valid, input[type=email]:not(.browser-default).valid, input[type=email]:not(.browser-default):focus.valid, input[type=url]:not(.browser-default).valid, input[type=url]:not(.browser-default):focus.valid, input[type=time]:not(.browser-default).valid, input[type=time]:not(.browser-default):focus.valid, input[type=date]:not(.browser-default).valid, input[type=date]:not(.browser-default):focus.valid, input[type=datetime]:not(.browser-default).valid, input[type=datetime]:not(.browser-default):focus.valid, input[type=datetime-local]:not(.browser-default).valid, input[type=datetime-local]:not(.browser-default):focus.valid, input[type=tel]:not(.browser-default).valid, input[type=tel]:not(.browser-default):focus.valid, input[type=number]:not(.browser-default).valid, input[type=number]:not(.browser-default):focus.valid, input[type=search]:not(.browser-default).valid, input[type=search]:not(.browser-default):focus.valid, textarea.materialize-textarea.valid, textarea.materialize-textarea:focus.valid {
 	font-size: inherit;
@@ -19,18 +18,28 @@ input:not([type]).valid, input:not([type]):focus.valid, input[type=text]:not(.br
 	background-color: #342959 !important;
 }
 .gradient--sunset {
+	background: -webkit-radial-gradient(1.98% 38.00%, circle, #FF8008, transparent 100%),-webkit-radial-gradient(98.02% 80.00%, circle, #FFC837, transparent 100%),-webkit-radial-gradient(50% 50%, circle, #ffffff, #ffffff 100%);
+	background: -o-radial-gradient(1.98% 38.00%, circle, #FF8008, transparent 100%),-o-radial-gradient(98.02% 80.00%, circle, #FFC837, transparent 100%),-o-radial-gradient(50% 50%, circle, #ffffff, #ffffff 100%);
 	background: radial-gradient(circle at 1.98% 38.00%, #FF8008, transparent 100%),radial-gradient(circle at 98.02% 80.00%, #FFC837, transparent 100%),radial-gradient(circle at 50% 50%, #ffffff, #ffffff 100%);
 }
 .gradient--bloody {
+	background: -webkit-radial-gradient(1.98% 83.05%, circle, #FF512F, transparent 100%),-webkit-radial-gradient(98.02% 80.00%, circle, #DD2476, transparent 100%),-webkit-radial-gradient(50% 50%, circle, #ffffff, #ffffff 100%);
+	background: -o-radial-gradient(1.98% 83.05%, circle, #FF512F, transparent 100%),-o-radial-gradient(98.02% 80.00%, circle, #DD2476, transparent 100%),-o-radial-gradient(50% 50%, circle, #ffffff, #ffffff 100%);
 	background: radial-gradient(circle at 1.98% 83.05%, #FF512F, transparent 100%),radial-gradient(circle at 98.02% 80.00%, #DD2476, transparent 100%),radial-gradient(circle at 50% 50%, #ffffff, #ffffff 100%);
 }
 .gradient--cloud {
+	background: -webkit-radial-gradient(1.98% 92.00%, circle, #73C8A9, transparent 100%),-webkit-radial-gradient(98.02% 42.00%, circle, #373B44, transparent 100%),-webkit-radial-gradient(50% 50%, circle, #ffffff, #ffffff 100%);
+	background: -o-radial-gradient(1.98% 92.00%, circle, #73C8A9, transparent 100%),-o-radial-gradient(98.02% 42.00%, circle, #373B44, transparent 100%),-o-radial-gradient(50% 50%, circle, #ffffff, #ffffff 100%);
 	background: radial-gradient(circle at 1.98% 92.00%, #73C8A9, transparent 100%),radial-gradient(circle at 98.02% 42.00%, #373B44, transparent 100%),radial-gradient(circle at 50% 50%, #ffffff, #ffffff 100%);
 }
 .gradient--lemon {
+	background: -webkit-radial-gradient(1.98% 92.00%, circle, #3CA55C, transparent 100%),-webkit-radial-gradient(98.02% 22.00%, circle, #B5AC49, transparent 100%),-webkit-radial-gradient(50% 50%, circle, #ffffff, #ffffff 100%);
+	background: -o-radial-gradient(1.98% 92.00%, circle, #3CA55C, transparent 100%),-o-radial-gradient(98.02% 22.00%, circle, #B5AC49, transparent 100%),-o-radial-gradient(50% 50%, circle, #ffffff, #ffffff 100%);
 	background: radial-gradient(circle at 1.98% 92.00%, #3CA55C, transparent 100%),radial-gradient(circle at 98.02% 22.00%, #B5AC49, transparent 100%),radial-gradient(circle at 50% 50%, #ffffff, #ffffff 100%);
 }
 .gradient--pink {
+	background: -webkit-radial-gradient(55.68% 98.11%, circle, #25e186, transparent 23%),-webkit-radial-gradient(15.63% 56.21%, circle, #7781f1, transparent 76%),-webkit-radial-gradient(90.52% 58.11%, circle, #a2dcd4, transparent 43%),-webkit-radial-gradient(31.98% 21.05%, circle, #7c6084, transparent 47%),-webkit-radial-gradient(70.57% 40.74%, circle, #9846ea, transparent 65%),-webkit-radial-gradient(50% 50%, circle, #e9906a, #e9906a 100%);
+	background: -o-radial-gradient(55.68% 98.11%, circle, #25e186, transparent 23%),-o-radial-gradient(15.63% 56.21%, circle, #7781f1, transparent 76%),-o-radial-gradient(90.52% 58.11%, circle, #a2dcd4, transparent 43%),-o-radial-gradient(31.98% 21.05%, circle, #7c6084, transparent 47%),-o-radial-gradient(70.57% 40.74%, circle, #9846ea, transparent 65%),-o-radial-gradient(50% 50%, circle, #e9906a, #e9906a 100%);
 	background: radial-gradient(circle at 55.68% 98.11%, #25e186, transparent 23%),radial-gradient(circle at 15.63% 56.21%, #7781f1, transparent 76%),radial-gradient(circle at 90.52% 58.11%, #a2dcd4, transparent 43%),radial-gradient(circle at 31.98% 21.05%, #7c6084, transparent 47%),radial-gradient(circle at 70.57% 40.74%, #9846ea, transparent 65%),radial-gradient(circle at 50% 50%, #e9906a, #e9906a 100%);
 }
 #background-design {
@@ -83,6 +92,8 @@ nav a, nav ul a {
 	right: 15px;
 }
 .sign-up {
+	background: -webkit-radial-gradient(1.98% 17.05%, circle, #DD5E89, transparent 100%),-webkit-radial-gradient(98.02% 97.05%, circle, #F7BB97, transparent 100%),-webkit-radial-gradient(50% 50%, circle, #ffffff, #ffffff 100%);
+	background: -o-radial-gradient(1.98% 17.05%, circle, #DD5E89, transparent 100%),-o-radial-gradient(98.02% 97.05%, circle, #F7BB97, transparent 100%),-o-radial-gradient(50% 50%, circle, #ffffff, #ffffff 100%);
 	background: radial-gradient(circle at 1.98% 17.05%, #DD5E89, transparent 100%),radial-gradient(circle at 98.02% 97.05%, #F7BB97, transparent 100%),radial-gradient(circle at 50% 50%, #ffffff, #ffffff 100%);
 	margin-left: 10px;
 	margin-bottom: 2px;
@@ -120,6 +131,8 @@ nav a, nav ul a {
 }
 /*message*/
 .media {
+	display : -webkit-box;
+	display : -ms-flexbox;
 	display : flex;
 }
 .avatar-chat {
@@ -132,6 +145,8 @@ nav a, nav ul a {
 	background-color: #9575ff;
 	padding: 10px;
 	color: white !important;
+	display: -webkit-inline-box;
+	display: -ms-inline-flexbox;
 	display: inline-flex;
 	border-radius: 3px;
 }
@@ -165,10 +180,17 @@ h6 {
 }
 .mockup {
 	height: 500px;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	align-content: center;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-ms-flex-line-pack: center;
+	    align-content: center;
 }
 .mockup2 img {
 	width: 70%;
@@ -201,7 +223,7 @@ h6 {
 	right: 0;
 	z-index: -1;
 }
-.side-nav .user-view .circle, .side-nav {
+.side-nav .user-view .circle {
 	height: 80px;
 	width: 80px;
 }
@@ -237,12 +259,15 @@ h6 {
 	margin-left: 37px;
 }
 #liinkart-logo svg:hover {
-	transform: rotateY(180deg);
+	-webkit-transform: rotateY(180deg);
+	        transform: rotateY(180deg);
 }
 #liinkart-logo svg {
 	margin-top: 15px;
 	height: 100px;
 	margin-left: 22%;
+	-webkit-transition: all 1s;
+	-o-transition: all 1s;
 	transition: all 1s;
 }
 .grid {
@@ -304,14 +329,18 @@ header {
 	width: 100%;
 	background-repeat: no-repeat;
 	height: 800px;
+	display: -webkit-box !important;
+	display: -ms-flexbox !important;
 	display: flex !important;
-	align-items: center;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
 }
 header h1 {
 	color: white;
 	font-size: 3.6rem;
 	line-height: 1.3;
-	font-weight: 100;
+	font-weight: 300;
 }
 header div a {
 	margin: 25px;
@@ -392,7 +421,8 @@ a, .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
 	cursor: initial !important;
 }
 .raccourcir-titre {
-	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis;
 }
 .nbr-photo {
 	position: absolute;
@@ -412,7 +442,11 @@ a, .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
 	opacity: 0.7;
 }
 .tooltipped {
+	display:-webkit-inline-box;
+	display:-ms-inline-flexbox;
 	display:inline-flex; vertical-align:middle; text-align:center;
+	-webkit-transition: all .5s ease-in-out;
+	-o-transition: all .5s ease-in-out;
 	transition: all .5s ease-in-out;
 	line-height: 36px;
 	margin: 5px;
@@ -440,6 +474,20 @@ output:after {
 .zoom-gavel {
 	-webkit-animation: zoom 2s ease-in-out infinite alternate;
 	animation: zoom 2s ease-in-out infinite alternate;
+}
+@-webkit-keyframes zoom {
+    0% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
+    50% {
+        transform: scale(1.5);
+        -webkit-transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
 }
 @keyframes zoom {
     0% {

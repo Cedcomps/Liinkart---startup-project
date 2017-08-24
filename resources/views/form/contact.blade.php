@@ -26,7 +26,7 @@
                         {!! Form::email('email', null, array('class' => 'form-control', 'placeholder' => 'Entrez votre email')) !!}
                         {!! $errors->first('email', '<small class="help-block">:message</small>') !!}
                 	</div>
-		                {!! Form::submit('Envoyer !', ['class' => 'btn waves-effect waves-light liinkart-light']) !!}
+		                {!! Form::submit('Envoyer !', ['class' => 'btn waves-effect waves-light liinkart-light white-text']) !!}
 	            </div>
 		                {!! Form::close() !!}
 	        </div>
@@ -71,7 +71,7 @@
 							<input class="file-path validate" type="text">
                         </div>
 					</div> --}}
-					{!! Form::submit('Envoyer ', ['class' => 'btn waves-effect waves-light liinkart-light']) !!}
+					{!! Form::submit('Envoyer ', ['class' => 'btn waves-effect waves-light liinkart-light white-text']) !!}
 				</div>
 					{!! Form::close() !!}
 			</div>

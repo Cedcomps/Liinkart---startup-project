@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="LiinkArt, l'application de facturation en ligne pour les professions libérales"/>
+    <meta name="description" content="Découvrez les talents artistiques de demain en estimant leurs oeuvres. Laissez quelqu'un évaluer votre art, il peut valoir plus que ce que vous ne l'imaginiez!"/>
     <meta name="author" content="CeDeeV"/>
 
     <title><?php echo $__env->yieldContent('titre'); ?> - LiinkArt</title>
@@ -23,9 +23,9 @@
 <body>
     <nav class="liinkart-white z-depth-2">
         <div class="nav-wrapper">
-        <img id="background-logo-nav" src="<?php echo e(asset('/uploads/logo-back.png')); ?>" width="235px">
+        <img id="background-logo-nav" src="<?php echo e(asset('/uploads/logo-back.png')); ?>" width="235" alt="LiinkArt logo background">
             <a id="liinkart-logo" href="<?php echo e(url('/')); ?>" class="brand-logo">
-                <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 764 1146" style="enable-background:new 0 0 764 1146;" xml:space="preserve">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 764 1146" style="enable-background:new 0 0 764 1146;" xml:space="preserve">
                     <polygon fill="#73A9C0" points="191,573 0,382 0,764 "/>
                     <polygon fill="#7670AE" points="382,382 191,191 191,573 "/>
                     <polygon fill="#8BAE87" points="382,764 191,573 191,955 "/>
@@ -82,7 +82,7 @@
                 <?php endif; ?>
             </ul>
             <ul class="side-nav" id="mobile-demo">
-            <li><img src="<?php echo e(asset('/uploads/liinkart-logo-sidenav.png')); ?>"></li>
+            <li><img src="<?php echo e(asset('/uploads/liinkart-logo-sidenav.png')); ?>" alt="LiinkArt logo mobile"></li>
                 <?php if(Auth::guest()): ?>
                     <li><a href="<?php echo e(route('login')); ?>"><i class="material-icons">perm_identity</i>Se connecter</a></li>
                     <li><a href="<?php echo e(route('register')); ?>"><i class="material-icons">person_add</i>Créer un compte</a></li>
@@ -138,16 +138,18 @@
     <script src=<?php echo e(asset("js/script.js")); ?>></script>
     <script src=<?php echo e(asset('bower_components/sweetalert2/dist/sweetalert2.min.js')); ?>></script>
     <?php echo $__env->make('sweet::alert', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-    <?php if(Session::has('achievement')): ?>
-        <script type="text/javascript">
-            swal({
-                title: 'Challenge débloqué !',
-                text: 'Vous avez débloqué un nouveau badge: <?php echo e(Session::get('achievement')); ?>',
-                type: 'success'
-            });
-        </script>
+    <?php if(Auth::check()): ?>
+        <?php if(Session::has('achievement')): ?>
+            <script type="text/javascript">
+                swal({
+                    title: 'Challenge débloqué !',
+                    text: 'Vous avez débloqué un nouveau badge: <?php echo e(Session::get('achievement')); ?>',
+                    type: 'success'
+                });
+            </script>
+        <?php endif; ?>
     <?php endif; ?>
-    
+    <?php echo $__env->make('analytics', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     <?php echo $__env->yieldContent('js'); ?>
 </body>
 </html>

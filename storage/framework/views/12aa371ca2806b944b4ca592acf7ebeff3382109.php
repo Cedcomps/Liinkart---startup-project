@@ -29,13 +29,11 @@
 </section>
     
         <div class="row">
-            <?php echo e($posts->links()); ?>
-
+            <span style="text-align: center;"><?php echo e($posts->links()); ?></span>
             <section class="grid">
                 <?php echo $__env->make('artworks.liste', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             </section>  
-            <?php echo e($posts->links()); ?>
-
+            <span style="text-align: center;"><?php echo e($posts->links()); ?></span>
         </div>
     
 <?php $__env->stopSection(); ?>

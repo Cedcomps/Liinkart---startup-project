@@ -28,7 +28,7 @@
                         <?php echo $errors->first('email', '<small class="help-block">:message</small>'); ?>
 
                 	</div>
-		                <?php echo Form::submit('Envoyer !', ['class' => 'btn waves-effect waves-light liinkart-light']); ?>
+		                <?php echo Form::submit('Envoyer !', ['class' => 'btn waves-effect waves-light liinkart-light white-text']); ?>
 
 	            </div>
 		                <?php echo Form::close(); ?>
@@ -75,7 +75,7 @@
 
 					</div>
 					
-					<?php echo Form::submit('Envoyer ', ['class' => 'btn waves-effect waves-light liinkart-light']); ?>
+					<?php echo Form::submit('Envoyer ', ['class' => 'btn waves-effect waves-light liinkart-light white-text']); ?>
 
 				</div>
 					<?php echo Form::close(); ?>

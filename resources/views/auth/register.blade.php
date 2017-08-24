@@ -64,7 +64,7 @@
                                 </div>
 
                                 <div class="input-field col s12">
-                                    <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                                    <label for="password-confirm" class="col-md-4 control-label">Confirmer le mot de passe</label>
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                                 </div>
                                 
@@ -78,7 +78,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col s12 offset-l3 l6">
-                                        <button type="submit" class="btn btn-large">Créer un compte</button>
+                                        <button type="submit" class="btn btn-large">S'inscrire</button>
                                     </div>
                                 </div>
                             </form>
