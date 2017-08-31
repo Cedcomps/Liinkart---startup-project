@@ -41,11 +41,11 @@
                 <span class="time-ago">{{ $post->created_at->diffForHumans() }} </span>
             </div>
             <div class="card-reveal">
+                @foreach($post->tags as $tag)
+                    <a href="{{ url('artworks/tag/' . $tag->tag_url) }}" class="chip">{{ $tag->tag }}</a>
+                @endforeach
                 <span class="card-title grey-text text-darken-4">{{ ucfirst($post->titre) }}<i class="material-icons right">close</i></span>
                 <p>{{ $post->contenu }}</p>
-                @foreach($post->tags as $tag)
-                    <a href="{{ url('artworks/tag/' . $tag->tag_url) }}" class="chip">{{ $tag->tag }}</a></li>
-                @endforeach
             </div>
             <div class="card-action">
                 <a href="{{ route('artworks.show', ['id' => $post]) }}" class="right-align">VOIR EN DETAILS</a>

@@ -16,7 +16,7 @@
 			<div class="col m2"></div>
 			<div class="col s12 m8 center">
 				<h2>Sur slack</h2><img class="responsive-img" src="{{ asset("/uploads/slack.png") }}">
-				<h5>Vous souhaitez discuter sur le chat d'un soucis technique ou simplement apporter votre pierre a l'édifice?</h5><br>
+				<h5>Vous souhaitez discuter sur le chat d'un soucis technique ou simplement apporter votre pierre à l'édifice?</h5><br>
 				<p>Nous sommes à l'écoute de toutes personnes souhaitant apporter son expérience sur la plateforme LiinkART. La communauté est au coeur de notre réflexion. Afin de répondre à vos besoins et d'améliorer considérablement votre expérience sur le site, enregistrez votre adresse email pour que nous vous envoyons une invitation à vous connecter sur notre slack.</p>
 				<br><br>
 				<div class="card-panel grey lighten-5">
