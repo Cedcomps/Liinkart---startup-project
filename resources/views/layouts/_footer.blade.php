@@ -7,6 +7,7 @@
         <h5 class="white-text" style="display: inline-flex; ">&nbsp;LiinkART</h5>
         </div>
         <p class="grey-text text-lighten-4" style="margin-top: 5px;">Nous mettons en relation les amoureux de l'Art et les talents de demain - Laissez quelqu'un évaluer votre art, il peut valoir plus que ce que vous ne l'imaginiez !</p>
+        <a href="https://www.facebook.com/Liinkart/" target="_blank"><img src="{{ asset('uploads/facebook.png')}}" alt="facebook logo"></a>
       </div>
       <div class="col l5 m6 s12">
         <h5 class="white-text">Rejoignez-nous</h5>

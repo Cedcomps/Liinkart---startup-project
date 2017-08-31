@@ -18,8 +18,8 @@ use App\Achievements\UserTest; //Achievement
 use App\Achievements\UserDevelopement; //Achievement
 use App\Achievements\UserMember1Year; //Achievement
 use App\Achievements\UserMember6Months; //Achievement
-use App\Achievements\UserMemberFoundater; //Achievement
 use App\Achievements\UserSocialProvider; //Achievement
+//use App\Achievements\UserMemberFoundater; //Achievement
 
 use Carbon\Carbon;
  
@@ -59,7 +59,7 @@ class UserController extends Controller
         //
         //
         // Membre fondateur du site
-        $user->unlock(new UserMemberFoundater); //membre fondateur
+        //$user->unlock(new UserMemberFoundater); //membre fondateur
         // Membre agit au développement
         $user->unlock(new UserDevelopement); // Membre participe au développement
         // Période BETA actuelle jusqu'à fin octobre

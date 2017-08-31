@@ -36,6 +36,9 @@
 						</li>
 					@endforeach	
 				</ul>
+				@foreach($post->tags as $tag)
+                    <a href="{{ url('artworks/tag/' . $tag->tag_url) }}" class="chip">{{ $tag->tag }}</a>
+                @endforeach
 				<a data-position="bottom" data-delay="50" data-tooltip="Signaler à la modération?" href="{{ route('artworks.revision',$post) }}" onclick="event.preventDefault(); document.getElementById('revision').submit();"><i class="material-icons tiny">error</i> Signaler l'annonce</a>
                 <form id="revision" action="{{ route('artworks.revision',$post)  }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
@@ -45,7 +48,7 @@
 					
 					<br>
 					<div class="section">
-						<div class="card-panel"><h3>Description de l'oeuvre</h3>
+						<div class="card-panel" style="overflow-x: auto;"><h3>Description de l'oeuvre</h3>
 						<p>{{ $post->contenu }}</p>
 							<a class="white-text btn waves-effect btn-large liinkart-light waves-input-wrapper z-depth-3" href="#modal1"><i class="zoom-gavel material-icons left">gavel</i>PROPOSER UNE OFFRE</a>
 								{{-- gavel modal --}}
