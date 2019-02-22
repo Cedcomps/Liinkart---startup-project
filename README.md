@@ -29,6 +29,7 @@ TODO:
 ## Setup
 
 FAKER: faker créé en place pour alimenter en oeuvres la galerie ainsi qu'en utilisateur
+Le fichier .env.example est à renommer en .env et à éditer pour son bon fonctionnement en local
 
 ## Deployment
 
