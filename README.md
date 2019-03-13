@@ -19,10 +19,10 @@ Application qui délivre:
 *       "laravel/framework": "5.4.*",
 *      "laravel/socialite": "^3.0",
 *     "laravel/tinker": "~1.0",
-*    "laravelcollective/html": "^5.4",
-*   "skydiver/laravel-materialize-css": "dev-master",
-*   "spatie/laravel-permission": "^1.12",
-*    "uxweb/sweet-alert": "^1.4"
+*     "laravelcollective/html": "^5.4",
+*      "skydiver/laravel-materialize-css": "dev-master",
+*      "spatie/laravel-permission": "^1.12",
+*     "uxweb/sweet-alert": "^1.4"
 
 ## Setup
 
@@ -39,4 +39,5 @@ Cédric COMPAGNON
 ## USER STORY
 
 > As a user I would like to connect via Facebook in order to create an account in the web app (socialite to be upgrade/app to update)
+----
 > As a user I would like to load more faster the web app so that easily to load it (compress IMG)
